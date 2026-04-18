@@ -519,7 +519,7 @@ const Home = () => {
       {/* LEFT IMAGE */}
       <Col lg={6}>
         <div style={{ position: "relative" }}>
-          <img
+          {/* <img
             src="/Images/h5.jpg"
             alt="About VITAL AI"
             style={{
@@ -529,7 +529,7 @@ const Home = () => {
               borderRadius: "25px",
               boxShadow: "0 25px 60px rgba(0,0,0,0.15)"
             }}
-          />
+          /> */}
         </div>
       </Col>
 
