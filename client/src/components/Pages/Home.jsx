@@ -509,118 +509,77 @@ const Home = () => {
 
       {/* ABOUT - IMAGE WITH FLOATING GLASS CARD */}
       <section
-        className="section-space"
-        ref={(el) => (sectionRefs.current[2] = el)}
-        data-id="about"
-        style={reveal("about")}
-      >
-        <Container>
-          <Row className="align-items-center g-5">
-            {/* LEFT IMAGE */}
-            <Col lg={6}>
-              <div style={{ position: "relative" }}>
-                <img
-                  src="/Images/h5.jpg"
-                  alt="About VITAL AI"
-                  style={{
-                    width: "100%",
-                    height: "450px",
-                    objectFit: "cover",
-                    borderRadius: "25px",
-                    boxShadow: "0 25px 60px rgba(0,0,0,0.15)"
-                  }}
-                />
+  className="section-space"
+  ref={(el) => (sectionRefs.current[2] = el)}
+  data-id="about"
+  style={reveal("about")}
+>
+  <Container>
+    <Row className="align-items-center g-5">
+      {/* LEFT IMAGE */}
+      <Col lg={6}>
+        <div style={{ position: "relative" }}>
+          <img
+            src="/Images/h5.jpg"
+            alt="About VITAL AI"
+            style={{
+              width: "100%",
+              height: "450px",
+              objectFit: "cover",
+              borderRadius: "25px",
+              boxShadow: "0 25px 60px rgba(0,0,0,0.15)"
+            }}
+          />
+        </div>
+      </Col>
 
-                {/* FLOATING GLASS CARD (BOTTOM RIGHT) */}
-                <div
-                  style={{
-                    position: "absolute",
-                    right: "-20px",
-                    bottom: "-20px",
-                    width: "260px",
-                    padding: "15px 18px",
-                    borderRadius: "18px",
-                    background: "rgba(255,255,255,0.75)",
-                    backdropFilter: "blur(18px)",
-                    border: "1px solid rgba(255,255,255,0.3)",
-                    boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
-                    display: "flex",
-                    gap: "12px",
-                    alignItems: "flex-start"
-                  }}
-                >
-                  {/* ICON */}
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "linear-gradient(135deg,#7c3aed,#ec4899)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fff",
-                      fontSize: "18px",
-                      flexShrink: 0
-                    }}
-                  >
-                    ⚡
-                  </div>
+      {/* RIGHT CONTENT */}
+      <Col lg={6}>
+        <div className="ps-lg-4">
+          <div className="mini-title">About Us</div>
+          <h2 className="display-5 fw-bold">
+            We Are Building The <br />
+            <span className="gradient-text">Future of Digital</span>
+          </h2>
 
-                  {/* TEXT */}
-                  <div>
-                    <div style={{ fontWeight: "700", fontSize: "14px" }}>
-                      Fast Delivery
-                    </div>
-                    <div style={{ fontSize: "12px", color: "#6b7280", marginTop: "4px" }}>
-                      We launch MVPs in as little as 4 weeks using our AI-accelerated workflow.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
+          <p className="text-muted fs-5 mt-4">
+            We leverage the latest in machine learning and automation to
+            build products that are not just functional—but intelligent.
+          </p>
 
-            {/* RIGHT CONTENT */}
-            <Col lg={6}>
-              <div className="ps-lg-4">
-                <div className="mini-title">About Us</div>
-                <h2 className="display-5 fw-bold">
-                  We Are Building The <br />
-                  <span className="gradient-text">Future of Digital</span>
-                </h2>
-                <p className="text-muted fs-5 mt-4">
-                  We leverage the latest in machine learning and automation to
-                  build products that are not just functional—but intelligent.
-                </p>
-                <div className="mt-4">
-                  <div className="d-flex align-items-center gap-2 mb-3">
-                    <CheckCircleFill color="#16a34a" />
-                    <span>AI-driven product development</span>
-                  </div>
-                  <div className="d-flex align-items-center gap-2 mb-3">
-                    <CheckCircleFill color="#16a34a" />
-                    <span>Modern scalable architecture</span>
-                  </div>
-                  <div className="d-flex align-items-center gap-2 mb-3">
-                    <CheckCircleFill color="#16a34a" />
-                    <span>Global expert team</span>
-                  </div>
-                  <div className="d-flex align-items-center gap-2 mb-3">
-                    <CheckCircleFill color="#16a34a" />
-                    <span>High-performance AI systems</span>
-                  </div>
-                </div>
-                <Button
-                  className="main-btn mt-3"
-                  onClick={() => navigate("/about")}
-                >
-                  Learn More About Us
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+          <div className="mt-4">
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <CheckCircleFill color="#16a34a" />
+              <span>AI-driven product development</span>
+            </div>
+
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <CheckCircleFill color="#16a34a" />
+              <span>Modern scalable architecture</span>
+            </div>
+
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <CheckCircleFill color="#16a34a" />
+              <span>Global expert team</span>
+            </div>
+
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <CheckCircleFill color="#16a34a" />
+              <span>High-performance AI systems</span>
+            </div>
+          </div>
+
+          <Button
+            className="main-btn mt-3"
+            onClick={() => navigate("/about")}
+          >
+            Learn More About Us
+          </Button>
+        </div>
+      </Col>
+    </Row>
+  </Container>
+</section>
 
       {/* OUR WORK */}
       <section className="section-space">
