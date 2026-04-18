@@ -46,17 +46,17 @@ const Home = () => {
   };
 
   const [showVideo, setShowVideo] = useState(false);
-const [activeVideo, setActiveVideo] = useState("");
+  const [activeVideo, setActiveVideo] = useState("");
 
-const openVideo = (path) => {
-  setActiveVideo(path);
-  setShowVideo(true);
-};
+  const openVideo = (path) => {
+    setActiveVideo(path);
+    setShowVideo(true);
+  };
 
-const closeVideo = () => {
-  setShowVideo(false);
-  setActiveVideo("");
-};
+  const closeVideo = () => {
+    setShowVideo(false);
+    setActiveVideo("");
+  };
 
   // Scroll Reveal
   useEffect(() => {
@@ -231,7 +231,7 @@ const closeVideo = () => {
               </p>
 
               <div className="d-flex gap-3 flex-wrap mb-4">
-                <Button 
+                <Button
                   className="main-btn"
                   onClick={() => navigate("/contact")}
                 >
@@ -310,82 +310,80 @@ const closeVideo = () => {
         </Container>
       </section>
 
-   {/* AI Virtual Studio Section */}
-<section className="section-space">
-  <Container>
-    <Row className="align-items-center g-5">
-      {/* LEFT CONTENT */}
-      <Col lg={6}>
-        <div className="mini-title">🎬 New: AI Virtual Studio</div>
+      {/* AI Virtual Studio Section */}
+      <section className="section-space">
+        <Container>
+          <Row className="align-items-center g-5">
+            {/* LEFT CONTENT */}
+            <Col lg={6}>
+              <div className="mini-title">🎬 New: AI Virtual Studio</div>
 
-        <h2 className="fw-bold display-4 mb-3">
-          Revolutionize Your <br />
-          <span className="gradient-text">Product Presentation</span>
-        </h2>
+              <h2 className="fw-bold display-4 mb-3">
+                Revolutionize Your <br />
+                <span className="gradient-text">Product Presentation</span>
+              </h2>
 
-        <p className="text-muted fs-5 mb-4">
-          Stop spending thousands on photoshoots. Our AI generates hyper-realistic
-          virtual try-ons and model demonstrations for your clothes and jewelry.
-        </p>
-
-        <Row className="g-3 mb-4">
-          <Col md={6}>
-            <div className="glass p-3 h-100 hover-card">
-              <b>Virtual Try-Ons</b>
-              <p className="text-muted small mb-0">
-                Let customers see clothes on realistic AI models.
+              <p className="text-muted fs-5 mb-4">
+                Stop spending thousands on photoshoots. Our AI generates hyper-realistic
+                virtual try-ons and model demonstrations for your clothes and jewelry.
               </p>
-            </div>
-          </Col>
 
-          <Col md={6}>
-            <div className="glass p-3 h-100 hover-card">
-              <b>Jewelry Rendering</b>
-              <p className="text-muted small mb-0">
-                Hyper-realistic 3D jewelry demonstrations.
-              </p>
-            </div>
-          </Col>
+              <Row className="g-3 mb-4">
+                <Col md={6}>
+                  <div className="glass p-3 h-100 hover-card">
+                    <b>Virtual Try-Ons</b>
+                    <p className="text-muted small mb-0">
+                      Let customers see clothes on realistic AI models.
+                    </p>
+                  </div>
+                </Col>
 
-          <Col md={6}>
-            <div className="glass p-3 h-100 hover-card">
-              <b>Social Media Ads</b>
-              <p className="text-muted small mb-0">
-                Viral-ready videos for TikTok & Instagram.
-              </p>
-            </div>
-          </Col>
+                <Col md={6}>
+                  <div className="glass p-3 h-100 hover-card">
+                    <b>Jewelry Rendering</b>
+                    <p className="text-muted small mb-0">
+                      Hyper-realistic 3D jewelry demonstrations.
+                    </p>
+                  </div>
+                </Col>
 
-          <Col md={6}>
-            <div className="glass p-3 h-100 hover-card">
-              <b>Instant Ad Creative</b>
-              <p className="text-muted small mb-0">
-                Generate 100+ ad variations in minutes.
-              </p>
-            </div>
-          </Col>
-        </Row>
+                <Col md={6}>
+                  <div className="glass p-3 h-100 hover-card">
+                    <b>Social Media Ads</b>
+                    <p className="text-muted small mb-0">
+                      Viral-ready videos for TikTok & Instagram.
+                    </p>
+                  </div>
+                </Col>
 
-        <div className="d-flex gap-3 flex-wrap">
-          <Button
-            className="main-btn"
-            onClick={() => navigate("/contact")}
-          >
-            Book a Demo
-          </Button>
+                <Col md={6}>
+                  <div className="glass p-3 h-100 hover-card">
+                    <b>Instant Ad Creative</b>
+                    <p className="text-muted small mb-0">
+                      Generate 100+ ad variations in minutes.
+                    </p>
+                  </div>
+                </Col>
+              </Row>
 
-          <Button
-            className="outline-btn"
-            onClick={() => navigate("/services")}
-          >
-            Learn More
-          </Button>
-        </div>
-      </Col>
+              <div className="d-flex gap-3 flex-wrap">
+                <Button
+                  className="main-btn"
+                  onClick={() => navigate("/contact")}
+                >
+                  Book a Demo
+                </Button>
 
-      {/* RIGHT VIDEOS */}
-{/* RIGHT VIDEOS */}
-<Col lg={6}>
+                <Button
+                  className="outline-btn"
+                  onClick={() => navigate("/services")}
+                >
+                  Learn More
+                </Button>
+              </div>
+            </Col>
+
+             <Col lg={6}>
   <Row className="g-3 align-items-start">
 
     {/* Video 1 */}
@@ -398,7 +396,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: window.innerWidth < 768 ? "260px" : "400px",
+          height: window.innerWidth < 768 ? "240px" : "400px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -407,12 +405,12 @@ const closeVideo = () => {
       </video>
     </Col>
 
-    {/* Video 2 */}
+    {/* Video 2 (SMALL FIXED) */}
     <Col
       xs={12}
       md={6}
       style={{
-        marginTop: window.innerWidth < 768 ? "0px" : "60px"
+        marginTop: window.innerWidth < 768 ? "0px" : "50px"
       }}
     >
       <video
@@ -423,7 +421,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: window.innerWidth < 768 ? "240px" : "300px",
+          height: window.innerWidth < 768 ? "200px" : "240px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -442,7 +440,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: window.innerWidth < 768 ? "240px" : "300px",
+          height: window.innerWidth < 768 ? "220px" : "300px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -467,7 +465,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: window.innerWidth < 768 ? "280px" : "430px",
+          height: window.innerWidth < 768 ? "260px" : "430px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -478,9 +476,10 @@ const closeVideo = () => {
 
   </Row>
 </Col>
-    </Row>
-  </Container>
-</section>
+
+          </Row>
+        </Container>
+      </section>
 
       {/* SERVICES */}
       <section
@@ -524,73 +523,73 @@ const closeVideo = () => {
         </Container>
       </section>
 
-{/* ABOUT SECTION */}
-<section
-  className="section-space"
-  ref={(el) => (sectionRefs.current[2] = el)}
-  data-id="about"
-  style={reveal("about")}
->
-  <Container>
-    <Row className="justify-content-center">
-      <Col lg={8}>
-        <div className="text-center">
-          <div className="mini-title">About Us</div>
+      {/* ABOUT SECTION */}
+      <section
+        className="section-space"
+        ref={(el) => (sectionRefs.current[2] = el)}
+        data-id="about"
+        style={reveal("about")}
+      >
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={8}>
+              <div className="text-center">
+                <div className="mini-title">About Us</div>
 
-          <h2 className="display-5 fw-bold">
-            We Are Building The <br />
-            <span className="gradient-text">Future of Digital</span>
-          </h2>
+                <h2 className="display-5 fw-bold">
+                  We Are Building The <br />
+                  <span className="gradient-text">Future of Digital</span>
+                </h2>
 
-          <p className="text-muted fs-5 mt-4">
-            We leverage the latest in machine learning and automation to
-            build products that are not just functional—but intelligent.
-          </p>
+                <p className="text-muted fs-5 mt-4">
+                  We leverage the latest in machine learning and automation to
+                  build products that are not just functional—but intelligent.
+                </p>
 
-          {/* Cards Section */}
-          <Row className="mt-5 g-4">
-            <Col md={6}>
-              <div className="about-card d-flex align-items-center gap-3">
-                <CheckCircleFill color="#16a34a" size={24} />
-                <span>AI-driven product development</span>
-              </div>
-            </Col>
+                {/* Cards Section */}
+                <Row className="mt-5 g-4">
+                  <Col md={6}>
+                    <div className="about-card d-flex align-items-center gap-3">
+                      <CheckCircleFill color="#16a34a" size={24} />
+                      <span>AI-driven product development</span>
+                    </div>
+                  </Col>
 
-            <Col md={6}>
-              <div className="about-card d-flex align-items-center gap-3">
-                <CheckCircleFill color="#16a34a" size={24} />
-                <span>Modern scalable architecture</span>
-              </div>
-            </Col>
+                  <Col md={6}>
+                    <div className="about-card d-flex align-items-center gap-3">
+                      <CheckCircleFill color="#16a34a" size={24} />
+                      <span>Modern scalable architecture</span>
+                    </div>
+                  </Col>
 
-            <Col md={6}>
-              <div className="about-card d-flex align-items-center gap-3">
-                <CheckCircleFill color="#16a34a" size={24} />
-                <span>Global expert team</span>
-              </div>
-            </Col>
+                  <Col md={6}>
+                    <div className="about-card d-flex align-items-center gap-3">
+                      <CheckCircleFill color="#16a34a" size={24} />
+                      <span>Global expert team</span>
+                    </div>
+                  </Col>
 
-            <Col md={6}>
-              <div className="about-card d-flex align-items-center gap-3">
-                <CheckCircleFill color="#16a34a" size={24} />
-                <span>High-performance AI systems</span>
+                  <Col md={6}>
+                    <div className="about-card d-flex align-items-center gap-3">
+                      <CheckCircleFill color="#16a34a" size={24} />
+                      <span>High-performance AI systems</span>
+                    </div>
+                  </Col>
+                </Row>
+
+                <div>
+                  <Button
+                    className="main-btn mt-4"
+                    onClick={() => navigate("/about")}
+                  >
+                    Learn More About Us
+                  </Button>
+                </div>
               </div>
             </Col>
           </Row>
-
-          <div>
-            <Button
-              className="main-btn mt-4"
-              onClick={() => navigate("/about")}
-            >
-              Learn More About Us
-            </Button>
-          </div>
-        </div>
-      </Col>
-    </Row>
-  </Container>
-</section>
+        </Container>
+      </section>
 
 
       {/* OUR WORK */}
@@ -919,13 +918,13 @@ const closeVideo = () => {
               Join 500+ businesses already growing with VITAL AI to automate their <br /> growth and dominate their market.
             </p>
             <div className="d-flex gap-3 justify-content-center flex-wrap">
-              <Button 
+              <Button
                 className="main-btn"
                 onClick={() => navigate("/contact")}
               >
                 Get Started Now
               </Button>
-              <Button 
+              <Button
                 className="outline-btn"
                 onClick={() => navigate("/pricing")}
               >
@@ -935,24 +934,29 @@ const closeVideo = () => {
           </Card>
         </Container>
       </section>
+
+
       <Modal
   show={showVideo}
   onHide={closeVideo}
   centered
-  size="lg"
+  size="xl"
+  contentClassName="video-modal"
 >
-  <Modal.Body className="p-0 bg-black">
+  <Modal.Body className="p-0 bg-black d-flex align-items-center justify-content-center">
     <video
       src={activeVideo}
       controls
       autoPlay
       style={{
         width: "100%",
-        maxHeight: "80vh"
+        height: "90vh",
+        objectFit: "contain",
+        backgroundColor: "black"
       }}
     />
   </Modal.Body>
-</Modal>  
+</Modal>
     </>
   );
 };
