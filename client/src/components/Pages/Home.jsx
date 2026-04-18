@@ -293,18 +293,15 @@ const Home = () => {
         }
 
         .studio-video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.3s ease;
-        }
-          @media (max-width: 768px) {
-  .studio-video {
-    object-fit: contain;   /* 👈 MAIN FIX */
-    background: #000;      /* optional: empty space black look */
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+  .studio-video {
+  object-position: center center;
+}
+          
 
         .studio-video:hover {
           transform: scale(1.02);
