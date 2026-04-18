@@ -303,167 +303,156 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* AI Virtual Studio Section */}
-      <section className="section-space">
-        <Container>
-          <Row className="align-items-center g-5">
-            {/* LEFT CONTENT */}
-            <Col lg={6}>
-              <div className="mini-title">🎬 New: AI Virtual Studio</div>
+   {/* AI Virtual Studio Section */}
+<section className="section-space">
+  <Container>
+    <Row className="align-items-center g-5">
+      {/* LEFT CONTENT */}
+      <Col lg={6}>
+        <div className="mini-title">🎬 New: AI Virtual Studio</div>
 
-              <h2 className="fw-bold display-4 mb-3">
-                Revolutionize Your <br />
-                <span className="gradient-text">Product Presentation</span>
-              </h2>
+        <h2 className="fw-bold display-4 mb-3">
+          Revolutionize Your <br />
+          <span className="gradient-text">Product Presentation</span>
+        </h2>
 
-              <p className="text-muted fs-5 mb-4">
-                Stop spending thousands on photoshoots. Our AI generates hyper-realistic
-                virtual try-ons and model demonstrations for your clothes and jewelry.
+        <p className="text-muted fs-5 mb-4">
+          Stop spending thousands on photoshoots. Our AI generates hyper-realistic
+          virtual try-ons and model demonstrations for your clothes and jewelry.
+        </p>
+
+        <Row className="g-3 mb-4">
+          <Col md={6}>
+            <div className="glass p-3 h-100 hover-card">
+              <b>Virtual Try-Ons</b>
+              <p className="text-muted small mb-0">
+                Let customers see clothes on realistic AI models.
               </p>
+            </div>
+          </Col>
 
-              <Row className="g-3 mb-4">
-                <Col md={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <div className="d-flex gap-2 align-items-start">
-                      <div>
-                        <b>Virtual Try-Ons</b>
-                        <p className="text-muted small mb-0">
-                          Let customers see clothes on realistic AI models.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
+          <Col md={6}>
+            <div className="glass p-3 h-100 hover-card">
+              <b>Jewelry Rendering</b>
+              <p className="text-muted small mb-0">
+                Hyper-realistic 3D jewelry demonstrations.
+              </p>
+            </div>
+          </Col>
 
-                <Col md={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <div className="d-flex gap-2 align-items-start">
-                      <div>
-                        <b>Jewelry Rendering</b>
-                        <p className="text-muted small mb-0">
-                          Hyper-realistic 3D jewelry demonstrations.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
+          <Col md={6}>
+            <div className="glass p-3 h-100 hover-card">
+              <b>Social Media Ads</b>
+              <p className="text-muted small mb-0">
+                Viral-ready videos for TikTok & Instagram.
+              </p>
+            </div>
+          </Col>
 
-                <Col md={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <div className="d-flex gap-2 align-items-start">
-                      <div>
-                        <b>Social Media Ads</b>
-                        <p className="text-muted small mb-0">
-                          Viral-ready videos for TikTok & Instagram.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
+          <Col md={6}>
+            <div className="glass p-3 h-100 hover-card">
+              <b>Instant Ad Creative</b>
+              <p className="text-muted small mb-0">
+                Generate 100+ ad variations in minutes.
+              </p>
+            </div>
+          </Col>
+        </Row>
 
-                <Col md={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <div className="d-flex gap-2 align-items-start">
-                      <div>
-                        <b>Instant Ad Creative</b>
-                        <p className="text-muted small mb-0">
-                          Generate 100+ ad variations in minutes.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+        <div className="d-flex gap-3 flex-wrap">
+          <Button
+            className="main-btn"
+            onClick={() => navigate("/contact")}
+          >
+            Book a Demo
+          </Button>
 
-              <div className="d-flex gap-3 flex-wrap">
-                <Button 
-                  className="main-btn"
-                  onClick={() => navigate("/contact")}
-                >
-                  Book a Demo
-                </Button>
-                <Button 
-                  className="outline-btn"
-                  onClick={() => navigate("/services")}
-                >
-                  Learn More
-                </Button>
-              </div>
-            </Col>
+          <Button
+            className="outline-btn"
+            onClick={() => navigate("/services")}
+          >
+            Learn More
+          </Button>
+        </div>
+      </Col>
 
-            {/* RIGHT CARDS */}
-            <Col lg={6}>
-              <Row className="g-3 align-items-start">
-                {/* Card 1 - BIG (normal) */}
-                <Col md={6}>
-                  <img
-                    src="/Images/h1.jpg"
-                    alt="Virtual Try-Ons"
-                    className="w-100 rounded-4"
-                    style={{
-                      height: "410px",
-                      objectFit: "cover"
-                    }}
-                  />
-                </Col>
+      {/* RIGHT VIDEOS */}
+      <Col lg={6}>
+        <Row className="g-3 align-items-start">
 
-                {/* Card 2 - SMALL (shift DOWN) */}
-                <Col md={6} style={{ marginTop: "60px" }}>
-                  <img
-                    src="/Images/h2.jpg"
-                    alt="Jewelry AI"
-                    className="w-100 rounded-4"
-                    style={{
-                      height: "260px",
-                      objectFit: "cover"
-                    }}
-                  />
-                </Col>
+          {/* Video 1 */}
+          <Col md={6}>
+            <video
+              className="w-100 rounded-4 studio-video"
+              muted
+              autoPlay
+              loop
+              playsInline
+              style={{
+                height: "410px",
+                objectFit: "cover"
+              }}
+            >
+              <source src="/videos/h1.mp4" type="video/mp4" />
+            </video>
+          </Col>
 
-                {/* Card 3 - SMALL (normal) */}
-                <Col md={6}>
-                  <img
-                    src="/Images/h3.jpg"
-                    alt="Fashion AI"
-                    className="w-100 rounded-4"
-                    style={{
-                      height: "260px",
-                      objectFit: "cover"
-                    }}
-                  />
-                </Col>
+          {/* Video 2 */}
+          <Col md={6} style={{ marginTop: "60px" }}>
+            <video
+              className="w-100 rounded-4 studio-video"
+              muted
+              autoPlay
+              loop
+              playsInline
+              style={{
+                height: "260px",
+                objectFit: "cover"
+              }}
+            >
+              <source src="/videos/h2.mp4" type="video/mp4" />
+            </video>
+          </Col>
 
-                {/* FLOATING BADGE */}
-                <Col md={6} style={{ position: "relative", marginTop: "-40px" }}>
-                  <div className="float-badge"
-                    style={{
-                      position: "absolute",
-                      right: "-15px",
-                      top: "45%",
-                      background: "rgba(255,255,255,0.8)",
-                      backdropFilter: "blur(16px)",
-                      padding: "12px",
-                      borderRadius: "16px",
-                      display: "flex",
-                      gap: "10px",
-                      alignItems: "center",
-                      boxShadow: "0 15px 40px rgba(0,0,0,0.15)",
-                    }}>
-                    <CameraVideoFill color="#7c3aed" />
-                    <div>
-                      <div className="fw-bold">TikTok & Reels</div>
-                      <small>AI Generated</small>
-                    </div>
-                  </div>
-                  <img src="/Images/h1.jpg"
-                    className="w-100 rounded-4"
-                    style={{ height: "440px", objectFit: "cover" }} />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+          {/* Video 3 */}
+          <Col md={6}>
+            <video
+              className="w-100 rounded-4 studio-video"
+              muted
+              autoPlay
+              loop
+              playsInline
+              style={{
+                height: "260px",
+                objectFit: "cover"
+              }}
+            >
+              <source src="/videos/h3.mp4" type="video/mp4" />
+            </video>
+          </Col>
+
+          {/* Video 4 */}
+          <Col md={6} style={{ marginTop: "-40px" }}>
+            <video
+              className="w-100 rounded-4 studio-video"
+              muted
+              autoPlay
+              loop
+              playsInline
+              style={{
+                height: "440px",
+                objectFit: "cover"
+              }}
+            >
+              <source src="/videos/h4.mp4" type="video/mp4" />
+            </video>
+          </Col>
+
+        </Row>
+      </Col>
+    </Row>
+  </Container>
+</section>
 
       {/* SERVICES */}
       <section
