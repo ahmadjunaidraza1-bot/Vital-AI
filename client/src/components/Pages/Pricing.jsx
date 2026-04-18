@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card, Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
+  const navigate = useNavigate();
   return (
     <Container fluid className="py-5" style={{ background: "#f8f9fc" }}>
       <Container>
@@ -55,6 +57,7 @@ const Pricing = () => {
                   <li className="mb-2">✓ Email Support</li>
                 </ul>
                 <Button
+                onClick={() => navigate("/contact")}
                   variant="outline-primary"
                   className="w-100 rounded-pill py-2 border-2 fw-semibold position-relative overflow-hidden"
                   style={{
@@ -107,6 +110,7 @@ const Pricing = () => {
 
               {/* Card with gradient border on hover */}
               <Card
+              
                 className="border-0 rounded-4 h-100 bg-white transition-all"
                 style={{
                   transition: "all 0.3s ease",
@@ -142,6 +146,7 @@ const Pricing = () => {
                   </ul>
                   {/* GRADIENT BUTTON */}
                   <Button
+                  onClick={() => navigate("/contact")}
                     className="w-100 fw-semibold border-0 rounded-pill py-2"
                     style={{
                       background: "linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4)",
@@ -180,6 +185,7 @@ const Pricing = () => {
                   <li className="mb-2">✓ ML Models</li>
                 </ul>
                 <Button
+                  onClick={() => navigate("/contact")}
                   variant="outline-primary"
                   className="w-100 rounded-pill py-2 border-2 fw-semibold position-relative overflow-hidden"
                   style={{

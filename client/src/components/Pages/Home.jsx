@@ -401,7 +401,7 @@ const Home = () => {
                       cursor: "pointer"
                     }}
                   >
-                    <source src="/videos/h1.mp4" type="video/mp4" />
+                    <source src="/videos/h2.mp4" type="video/mp4" />
                   </video>
                 </Col>
 
@@ -426,7 +426,7 @@ const Home = () => {
                       cursor: "pointer"
                     }}
                   >
-                    <source src="/videos/h2.mp4" type="video/mp4" />
+                    <source src="/videos/h1.mp4" type="video/mp4" />
                   </video>
                 </Col>
 

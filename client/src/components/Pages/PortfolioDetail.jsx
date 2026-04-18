@@ -366,7 +366,7 @@ const PortfolioDetail = () => {
       {/* Back Button */}
       <section className="pt-5">
         <Container>
-          <div onClick={() => navigate("/")} className="back-link">
+          <div onClick={() => navigate("/portfolio")} className="back-link">
             <ArrowLeft size={20} /> Back to Portfolio
           </div>
         </Container>
