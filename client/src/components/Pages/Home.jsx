@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import {
@@ -29,7 +29,6 @@ const Home = () => {
 
   const [visible, setVisible] = useState({});
   const sectionRefs = useRef([]);
-  const [isMobile, setIsMobile] = useState(false);
   const [videosLoaded, setVideosLoaded] = useState({
     v1: false,
     v2: false,
@@ -39,16 +38,6 @@ const Home = () => {
 
   const [showVideo, setShowVideo] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
-
-  // Check for mobile screen on mount and resize
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const openVideo = (path) => {
     setActiveVideo(path);
@@ -107,7 +96,7 @@ const Home = () => {
     transition: "all 1s ease",
   });
 
-  // Video sources
+  // Video sources - all videos will have same dimensions
   const videoSources = {
     v1: "/videos/h1.mp4",
     v2: "/videos/h2.mp4",
@@ -240,7 +229,7 @@ const Home = () => {
           margin-bottom: 18px;
         }
 
-        /* ========== FIXED VIDEO STYLES - NO CUT OFF ========== */
+        /* ========== UNIFIED VIDEO STYLES - SAME HEIGHT & WIDTH FOR ALL VIDEOS ========== */
         .video-section-wrapper {
           width: 100%;
           overflow: visible;
@@ -249,59 +238,58 @@ const Home = () => {
         .video-grid-container {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          gap: 24px;
           width: 100%;
         }
 
         /* Mobile specific styles */
         @media (max-width: 768px) {
           .video-grid-container {
-            gap: 15px;
+            gap: 16px;
           }
         }
 
+        /* ALL VIDEOS - SAME CONSISTENT DIMENSIONS */
         .video-item {
           position: relative;
           width: 100%;
           border-radius: 20px;
           overflow: hidden;
           cursor: pointer;
-          background: #f5f5f5;
+          background: #f0f0f0;
+          /* Fixed aspect ratio - all videos identical */
+          aspect-ratio: 4 / 5;
         }
 
-        /* Fixed aspect ratio to prevent cut-off */
-        .video-item {
-          aspect-ratio: 3 / 4;
+        /* Remove all individual video styling - ALL VIDEOS ARE SAME */
+        .video-item-1,
+        .video-item-2,
+        .video-item-3,
+        .video-item-4 {
+          aspect-ratio: 4 / 5 !important;
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
         }
 
-        /* Different aspect ratios for different videos on desktop */
-        @media (min-width: 769px) {
-          .video-item-1 { aspect-ratio: 3 / 4; }
-          .video-item-2 { aspect-ratio: 4 / 5; margin-top: 40px; }
-          .video-item-3 { aspect-ratio: 4 / 5; }
-          .video-item-4 { aspect-ratio: 2 / 3; margin-top: -20px; }
-        }
-
-        /* Mobile - all videos same aspect ratio for consistency */
+        /* Mobile - all videos same aspect ratio */
         @media (max-width: 768px) {
-          .video-item {
+          .video-item,
+          .video-item-1,
+          .video-item-2,
+          .video-item-3,
+          .video-item-4 {
             aspect-ratio: 16 / 9 !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-            border-radius: 16px;
+            border-radius: 14px;
           }
         }
 
         .studio-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-  .studio-video {
-  object-position: center center;
-}
-          
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          transition: transform 0.3s ease;
+        }
 
         .studio-video:hover {
           transform: scale(1.02);
@@ -319,6 +307,7 @@ const Home = () => {
           border-top-color: #7c3aed;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;
+          z-index: 2;
         }
 
         @keyframes spin {
@@ -339,6 +328,7 @@ const Home = () => {
           opacity: 0;
           transition: opacity 0.3s ease;
           pointer-events: none;
+          z-index: 3;
         }
 
         .video-item:hover .play-overlay {
@@ -355,6 +345,8 @@ const Home = () => {
           justify-content: center;
           color: #7c3aed;
           font-size: 28px;
+          font-weight: bold;
+          padding-left: 4px;
         }
 
         @media (max-width: 768px) {
@@ -597,6 +589,9 @@ const Home = () => {
           .modal-dialog {
             margin: 10px;
           }
+          .modal-content {
+            border-radius: 20px;
+          }
           .modal-video {
             max-height: 60vh;
           }
@@ -715,7 +710,7 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* AI VIRTUAL STUDIO SECTION - FIXED VIDEOS (NO CUT OFF) */}
+      {/* AI VIRTUAL STUDIO SECTION - ALL VIDEOS SAME SIZE */}
       <section className="section-space">
         <Container>
           <Row className="align-items-center g-5">
@@ -773,13 +768,13 @@ const Home = () => {
               </div>
             </Col>
 
-            {/* FIXED: Responsive Video Grid - No overlap, No cut off, Full visibility */}
+            {/* ALL VIDEOS - SAME DIMENSIONS, FULL WIDTH, NO CUT OFF */}
             <Col lg={6}>
               <div className="video-section-wrapper">
                 <div className="video-grid-container">
                   {/* Video 1 */}
                   <div 
-                    className={`video-item video-item-1 ${isMobile ? 'mobile-video' : ''}`}
+                    className="video-item video-item-1"
                     onClick={() => openVideo(videoSources.v1)}
                   >
                     {!videosLoaded.v1 && <div className="video-loading"></div>}
@@ -789,7 +784,7 @@ const Home = () => {
                       autoPlay
                       loop
                       playsInline
-                      preload="auto"
+                      preload="metadata"
                       onLoadedData={() => handleVideoLoad('v1')}
                     >
                       <source src={videoSources.v1} type="video/mp4" />
@@ -801,7 +796,7 @@ const Home = () => {
 
                   {/* Video 2 */}
                   <div 
-                    className={`video-item video-item-2 ${isMobile ? 'mobile-video' : ''}`}
+                    className="video-item video-item-2"
                     onClick={() => openVideo(videoSources.v2)}
                   >
                     {!videosLoaded.v2 && <div className="video-loading"></div>}
@@ -811,7 +806,7 @@ const Home = () => {
                       autoPlay
                       loop
                       playsInline
-                      preload="auto"
+                      preload="metadata"
                       onLoadedData={() => handleVideoLoad('v2')}
                     >
                       <source src={videoSources.v2} type="video/mp4" />
@@ -823,7 +818,7 @@ const Home = () => {
 
                   {/* Video 3 */}
                   <div 
-                    className={`video-item video-item-3 ${isMobile ? 'mobile-video' : ''}`}
+                    className="video-item video-item-3"
                     onClick={() => openVideo(videoSources.v3)}
                   >
                     {!videosLoaded.v3 && <div className="video-loading"></div>}
@@ -833,7 +828,7 @@ const Home = () => {
                       autoPlay
                       loop
                       playsInline
-                      preload="auto"
+                      preload="metadata"
                       onLoadedData={() => handleVideoLoad('v3')}
                     >
                       <source src={videoSources.v3} type="video/mp4" />
@@ -845,7 +840,7 @@ const Home = () => {
 
                   {/* Video 4 */}
                   <div 
-                    className={`video-item video-item-4 ${isMobile ? 'mobile-video' : ''}`}
+                    className="video-item video-item-4"
                     onClick={() => openVideo(videoSources.v4)}
                   >
                     {!videosLoaded.v4 && <div className="video-loading"></div>}
@@ -855,7 +850,7 @@ const Home = () => {
                       autoPlay
                       loop
                       playsInline
-                      preload="auto"
+                      preload="metadata"
                       onLoadedData={() => handleVideoLoad('v4')}
                     >
                       <source src={videoSources.v4} type="video/mp4" />
