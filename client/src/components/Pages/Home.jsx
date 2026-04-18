@@ -652,13 +652,13 @@ const Home = () => {
                 id: "aura-e-commerce",
                 title: "Aura E-Commerce",
                 category: "E-Commerce",
-                img: "/Images/p1.webp",
+                img: "/Images/p3.webp",
               },
               {
                 id: "zenith-mobile-app",
                 title: "Zenith Mobile App",
                 category: "Mobile App",
-                img: "/Images/p1.webp",
+                img: "/Images/p2.webp",
               },
             ].map((item, i) => (
               <Col md={6} lg={4} key={i}>
