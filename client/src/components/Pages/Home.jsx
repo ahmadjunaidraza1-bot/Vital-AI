@@ -507,36 +507,19 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* ABOUT - IMAGE WITH FLOATING GLASS CARD */}
-      <section
+{/* ABOUT SECTION */}
+<section
   className="section-space"
   ref={(el) => (sectionRefs.current[2] = el)}
   data-id="about"
   style={reveal("about")}
 >
   <Container>
-    <Row className="align-items-center g-5">
-      {/* LEFT IMAGE */}
-      <Col lg={6}>
-        <div style={{ position: "relative" }}>
-          {/* <img
-            src="/Images/h5.jpg"
-            alt="About VITAL AI"
-            style={{
-              width: "100%",
-              height: "450px",
-              objectFit: "cover",
-              borderRadius: "25px",
-              boxShadow: "0 25px 60px rgba(0,0,0,0.15)"
-            }}
-          /> */}
-        </div>
-      </Col>
-
-      {/* RIGHT CONTENT */}
-      <Col lg={6}>
-        <div className="ps-lg-4">
+    <Row className="justify-content-center">
+      <Col lg={8}>
+        <div className="text-center">
           <div className="mini-title">About Us</div>
+
           <h2 className="display-5 fw-bold">
             We Are Building The <br />
             <span className="gradient-text">Future of Digital</span>
@@ -547,7 +530,7 @@ const Home = () => {
             build products that are not just functional—but intelligent.
           </p>
 
-          <div className="mt-4">
+          <div className="mt-4 d-inline-block text-start">
             <div className="d-flex align-items-center gap-2 mb-3">
               <CheckCircleFill color="#16a34a" />
               <span>AI-driven product development</span>
@@ -569,17 +552,20 @@ const Home = () => {
             </div>
           </div>
 
-          <Button
-            className="main-btn mt-3"
-            onClick={() => navigate("/about")}
-          >
-            Learn More About Us
-          </Button>
+          <div>
+            <Button
+              className="main-btn mt-3"
+              onClick={() => navigate("/about")}
+            >
+              Learn More About Us
+            </Button>
+          </div>
         </div>
       </Col>
     </Row>
   </Container>
 </section>
+
 
       {/* OUR WORK */}
       <section className="section-space">
