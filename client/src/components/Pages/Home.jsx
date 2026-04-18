@@ -8,22 +8,16 @@ import {
   Button,
   Card,
   ProgressBar,
-  Navbar,
-  Nav,
 } from "react-bootstrap";
 import {
-  LightningChargeFill,
-  GraphUpArrow,
-  ShieldCheck,
-  Stars,
-  RocketTakeoffFill,
-  Gem,
   CameraVideoFill,
   Globe2,
+  LightningChargeFill,
+  Stars,
+  ShieldCheck,
   CheckCircleFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 const Home = () => {
   const navigate = useNavigate();
@@ -35,18 +29,20 @@ const Home = () => {
 
   const [visible, setVisible] = useState({});
   const sectionRefs = useRef([]);
-
-  const colors = {
-    primary: "#7c3aed",
-    secondary: "#ec4899",
-    accent: "#06b6d4",
-    dark: "#111827",
-    text: "#374151",
-    white: "#ffffff",
-  };
+  const [isMobile, setIsMobile] = useState(false);
 
   const [showVideo, setShowVideo] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
+
+  // Check for mobile screen on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const openVideo = (path) => {
     setActiveVideo(path);
@@ -118,7 +114,7 @@ const Home = () => {
           font-weight:800;
         }
 
-         @keyframes floatY{
+        @keyframes floatY{
           0%,100%{transform:translateY(0)}
           50%{transform:translateY(-15px)}
         }
@@ -166,20 +162,30 @@ const Home = () => {
           border-radius:50px;
           font-weight:700;
           background:#fff;
+          cursor:pointer;
+          transition: all 0.3s ease;
+          display: inline-block;
+          text-align: center;
+        }
+
+        .outline-btn:hover{
+          background:#7c3aed10;
+          transform:translateY(-2px);
         }
 
         .float-card{
           animation:floatY 4s ease-in-out infinite;
         }
 
-        @keyframes floatY{
-          0%,100%{transform:translateY(0)}
-          50%{transform:translateY(-18px)}
+        .section-space{
+          padding:80px 0;
+          background:#fff;
         }
 
-        .section-space{
-          padding:100px 0;
-          background:#fff;
+        @media (max-width: 768px) {
+          .section-space {
+            padding: 50px 0;
+          }
         }
 
         .mini-title{
@@ -208,15 +214,346 @@ const Home = () => {
           margin-bottom:18px;
         }
 
+        /* FIXED: Responsive Video Grid Styles */
+        .studio-video-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .video-col {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .studio-video {
+          width: 100%;
+          border-radius: 24px;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        .studio-video:hover {
+          transform: scale(1.02);
+          box-shadow: 0 25px 40px -12px rgba(124,58,237,0.25);
+        }
+
+        /* Desktop Layout (2x2 grid with staggered heights) */
+        @media (min-width: 769px) {
+          .video-grid-desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            align-items: start;
+          }
+          
+          .video-item-1 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          }
+          
+          .video-item-2 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            margin-top: 60px;
+          }
+          
+          .video-item-3 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+          }
+          
+          .video-item-4 {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            margin-top: -40px;
+          }
+          
+          .video-height-lg-1 { height: 400px; }
+          .video-height-lg-2 { height: 300px; }
+          .video-height-lg-3 { height: 300px; }
+          .video-height-lg-4 { height: 430px; }
+        }
+
+        /* Mobile Layout (vertical stack with proper spacing) */
+        @media (max-width: 768px) {
+          .video-grid-desktop {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          
+          .video-item-1,
+          .video-item-2,
+          .video-item-3,
+          .video-item-4 {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+          }
+          
+          .video-height-mobile {
+            height: 260px;
+          }
+          
+          /* Ensure videos don't overflow on mobile */
+          .studio-video {
+            max-height: 300px;
+          }
+        }
+
+        /* FIXED: Work Card Styles - responsive */
+        .work-card {
+          position: relative;
+          height: 480px;
+          border-radius: 24px;
+          overflow: hidden;
+          cursor: pointer;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+        }
+
+        @media (max-width: 768px) {
+          .work-card {
+            height: 380px;
+          }
+        }
+
+        .work-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: 0.8s ease;
+        }
+
+        .work-overlay {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: flex-end;
+          padding: 30px;
+          background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.92),
+            rgba(0,0,0,0.35),
+            transparent
+          );
+          opacity: 0;
+          transition: 0.5s ease;
+        }
+
+        .work-content {
+          transform: translateY(30px);
+          transition: 0.5s ease;
+        }
+
+        .work-line {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+
+        .work-bar {
+          width: 35px;
+          height: 2px;
+          background: #06b6d4;
+        }
+
+        .work-category {
+          font-size: 11px;
+          letter-spacing: 2px;
+          color: #06b6d4;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        .work-title {
+          color: #fff;
+          font-size: 26px;
+          font-weight: 800;
+          margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+          .work-title {
+            font-size: 22px;
+          }
+        }
+
+        .work-btn {
+          color: #fff;
+          font-weight: 600;
+          font-size: 14px;
+          transition: 0.3s;
+        }
+
+        .work-btn:hover {
+          color: #ec4899;
+        }
+
+        .work-glass {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          right: 20px;
+          padding: 16px 18px;
+          border-radius: 18px;
+          background: rgba(255,255,255,0.75);
+          backdrop-filter: blur(18px);
+          border: 1px solid rgba(255,255,255,0.3);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+          transition: 0.5s ease;
+        }
+
+        .glass-cat {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #7c3aed;
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        .glass-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #111;
+          margin: 0;
+        }
+
+        .work-card:hover .work-img {
+          transform: scale(1.15);
+          filter: blur(3px) brightness(0.7);
+        }
+
+        .work-card:hover .work-overlay {
+          opacity: 1;
+        }
+
+        .work-card:hover .work-content {
+          transform: translateY(0);
+        }
+
+        .work-card:hover .work-glass {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+          position: relative;
+          padding: 35px;
+          border-radius: 24px;
+          background: rgba(255,255,255,0.85);
+          backdrop-filter: blur(18px);
+          border: 1px solid rgba(0,0,0,0.06);
+          box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+          transition: 0.4s ease;
+          height: 100%;
+        }
+
+        @media (max-width: 768px) {
+          .testimonial-card {
+            padding: 25px;
+          }
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 25px 60px rgba(124,58,237,0.15);
+        }
+
+        .quote-icon {
+          font-size: 50px;
+          color: #7c3aed;
+          opacity: 0.2;
+          position: absolute;
+          top: 15px;
+          right: 20px;
+        }
+
+        .testimonial-text {
+          font-size: 16px;
+          line-height: 1.7;
+          color: #374151;
+          margin-bottom: 25px;
+        }
+
+        .client-flex {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .client-img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid #7c3aed;
+        }
+
+        .client-name {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 700;
+          color: #111;
+        }
+
+        .client-role {
+          font-size: 13px;
+          color: #6b7280;
+        }
+
+        /* About Card */
+        .about-card {
+          background: #ffffff;
+          padding: 18px 20px;
+          border-radius: 14px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+          font-weight: 500;
+          transition: 0.3s ease;
+          height: 100%;
+        }
+
+        .about-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Modal Video Styles */
+        .modal-video {
+          width: 100%;
+          max-height: 80vh;
+          outline: none;
+        }
+
+        /* Typography adjustments for mobile */
+        @media (max-width: 768px) {
+          .display-4 {
+            font-size: 2.5rem;
+          }
+          .display-5 {
+            font-size: 2rem;
+          }
+          .fs-5 {
+            font-size: 1rem !important;
+          }
+          .main-btn, .outline-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+          }
+        }
       `}</style>
 
-      {/* HERO */}
-      <section className="section-space" style={{ paddingTop: "150px" }}>
+      {/* HERO SECTION */}
+      <section className="section-space" style={{ paddingTop: "120px" }}>
         <Container>
           <Row className="align-items-center g-5">
             <Col lg={6}>
-              <div className="mini-title">✨Next-Gen Digital Agency</div>
-
+              <div className="mini-title">✨ Next-Gen Digital Agency</div>
               <h1 className="display-4 fw-bold lh-sm mb-4">
                 <span className="gradient-text">AI-Powered</span>
                 <br />
@@ -224,31 +561,21 @@ const Home = () => {
                 <br />
                 <span className="gradient-text">for Modern Business</span>
               </h1>
-
               <p className="text-muted fs-5 mb-4">
                 Helping businesses grow with intelligent automation,
                 scalable technology, and high-end design that converts.
               </p>
-
               <div className="d-flex gap-3 flex-wrap mb-4">
-                <Button
-                  className="main-btn"
-                  onClick={() => navigate("/contact")}
-                >
+                <Button className="main-btn" onClick={() => navigate("/contact")}>
                   Get Started
                 </Button>
-                <span
-                  className="outline-btn"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => navigate("/services")}
-                >
+                <span className="outline-btn" onClick={() => navigate("/services")}>
                   Learn More →
                 </span>
               </div>
-
             </Col>
 
-            {/* ANALYTICS */}
+            {/* Analytics Section */}
             <Col lg={6}>
               <div
                 ref={(el) => (sectionRefs.current[0] = el)}
@@ -261,13 +588,11 @@ const Home = () => {
                       <h4 className="mb-0 fw-bold">Growth Analytics</h4>
                       <small className="text-muted">Live Data Feed</small>
                     </div>
-
                     <span className="badge bg-success px-3 py-2 fs-6">
                       +24% Increase
                     </span>
                   </div>
 
-                  {/* Bars */}
                   {[
                     ["AI Automation", stats.ai],
                     ["User Engagement", stats.engagement],
@@ -276,11 +601,8 @@ const Home = () => {
                     <div className="mb-4" key={i}>
                       <div className="d-flex justify-content-between mb-2 fw-semibold">
                         <span>{item[0]}</span>
-                        <span className="gradient-text">
-                          {item[1]}%
-                        </span>
+                        <span className="gradient-text">{item[1]}%</span>
                       </div>
-
                       <ProgressBar
                         now={item[1]}
                         style={{
@@ -310,24 +632,20 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* AI Virtual Studio Section */}
+      {/* AI VIRTUAL STUDIO SECTION - FIXED VIDEO LAYOUT */}
       <section className="section-space">
         <Container>
           <Row className="align-items-center g-5">
-            {/* LEFT CONTENT */}
             <Col lg={6}>
               <div className="mini-title">🎬 New: AI Virtual Studio</div>
-
               <h2 className="fw-bold display-4 mb-3">
                 Revolutionize Your <br />
                 <span className="gradient-text">Product Presentation</span>
               </h2>
-
               <p className="text-muted fs-5 mb-4">
                 Stop spending thousands on photoshoots. Our AI generates hyper-realistic
                 virtual try-ons and model demonstrations for your clothes and jewelry.
               </p>
-
               <Row className="g-3 mb-4">
                 <Col md={6}>
                   <div className="glass p-3 h-100 hover-card">
@@ -337,7 +655,6 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-
                 <Col md={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Jewelry Rendering</b>
@@ -346,7 +663,6 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-
                 <Col md={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Social Media Ads</b>
@@ -355,7 +671,6 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-
                 <Col md={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Instant Ad Creative</b>
@@ -365,123 +680,85 @@ const Home = () => {
                   </div>
                 </Col>
               </Row>
-
               <div className="d-flex gap-3 flex-wrap">
-                <Button
-                  className="main-btn"
-                  onClick={() => navigate("/contact")}
-                >
+                <Button className="main-btn" onClick={() => navigate("/contact")}>
                   Book a Demo
                 </Button>
-
-                <Button
-                  className="outline-btn"
-                  onClick={() => navigate("/services")}
-                >
+                <Button className="outline-btn" onClick={() => navigate("/services")}>
                   Learn More
                 </Button>
               </div>
             </Col>
 
-              <Col lg={6}>
-              <Row className="g-3 align-items-start">
-
-                {/* Video 1 */}
-                <Col xs={12} md={6}>
+            {/* FIXED: Responsive Video Grid - No overlap, proper mobile layout */}
+            <Col lg={6}>
+              <div className="video-grid-desktop">
+                {/* Video 1 - Top Left */}
+                <div className="video-item-1">
                   <video
                     onClick={() => openVideo("/videos/h1.mp4")}
-                    className="w-100 rounded-4 studio-video"
+                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-1'}`}
                     muted
                     autoPlay
                     loop
                     playsInline
-                    style={{
-                      height: window.innerWidth < 768 ? "260px" : "400px",
-                      objectFit: "cover",
-                      cursor: "pointer"
-                    }}
+                    preload="metadata"
                   >
                     <source src="/videos/h2.mp4" type="video/mp4" />
                   </video>
-                </Col>
+                </div>
 
-                {/* Video 2 */}
-                <Col
-                  xs={12}
-                  md={6}
-                  style={{
-                    marginTop: window.innerWidth < 768 ? "0px" : "60px"
-                  }}
-                >
+                {/* Video 2 - Top Right */}
+                <div className="video-item-2">
                   <video
                     onClick={() => openVideo("/videos/h2.mp4")}
-                    className="w-100 rounded-4 studio-video"
+                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-2'}`}
                     muted
                     autoPlay
                     loop
                     playsInline
-                    style={{
-                      height: window.innerWidth < 768 ? "240px" : "300px",
-                      objectFit: "cover",
-                      cursor: "pointer"
-                    }}
+                    preload="metadata"
                   >
                     <source src="/videos/h1.mp4" type="video/mp4" />
                   </video>
-                </Col>
+                </div>
 
-                {/* Video 3 */}
-                <Col xs={12} md={6}>
+                {/* Video 3 - Bottom Left */}
+                <div className="video-item-3">
                   <video
                     onClick={() => openVideo("/videos/h3.mp4")}
-                    className="w-100 rounded-4 studio-video"
+                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-3'}`}
                     muted
                     autoPlay
                     loop
                     playsInline
-                    style={{
-                      height: window.innerWidth < 768 ? "240px" : "300px",
-                      objectFit: "cover",
-                      cursor: "pointer"
-                    }}
+                    preload="metadata"
                   >
                     <source src="/videos/h3.mp4" type="video/mp4" />
                   </video>
-                </Col>
+                </div>
 
-                {/* Video 4 */}
-                <Col
-                  xs={12}
-                  md={6}
-                  style={{
-                    marginTop: window.innerWidth < 768 ? "0px" : "-40px"
-                  }}
-                >
+                {/* Video 4 - Bottom Right */}
+                <div className="video-item-4">
                   <video
                     onClick={() => openVideo("/videos/h4.mp4")}
-                    className="w-100 rounded-4 studio-video"
+                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-4'}`}
                     muted
                     autoPlay
                     loop
                     playsInline
-                    style={{
-                      height: window.innerWidth < 768 ? "280px" : "430px",
-                      objectFit: "cover",
-                      cursor: "pointer"
-                    }}
+                    preload="metadata"
                   >
                     <source src="/videos/h4.mp4" type="video/mp4" />
                   </video>
-                </Col>
-
-              </Row>
+                </div>
+              </div>
             </Col>
-            
           </Row>
         </Container>
       </section>
 
-      {/* SERVICES */}
+      {/* SERVICES SECTION */}
       <section
         className="section-space"
         ref={(el) => (sectionRefs.current[1] = el)}
@@ -535,18 +812,15 @@ const Home = () => {
             <Col lg={8}>
               <div className="text-center">
                 <div className="mini-title">About Us</div>
-
                 <h2 className="display-5 fw-bold">
                   We Are Building The <br />
                   <span className="gradient-text">Future of Digital</span>
                 </h2>
-
                 <p className="text-muted fs-5 mt-4">
                   We leverage the latest in machine learning and automation to
                   build products that are not just functional—but intelligent.
                 </p>
 
-                {/* Cards Section */}
                 <Row className="mt-5 g-4">
                   <Col md={6}>
                     <div className="about-card d-flex align-items-center gap-3">
@@ -554,21 +828,18 @@ const Home = () => {
                       <span>AI-driven product development</span>
                     </div>
                   </Col>
-
                   <Col md={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>Modern scalable architecture</span>
                     </div>
                   </Col>
-
                   <Col md={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>Global expert team</span>
                     </div>
                   </Col>
-
                   <Col md={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
@@ -591,11 +862,9 @@ const Home = () => {
         </Container>
       </section>
 
-
-      {/* OUR WORK */}
+      {/* OUR WORK SECTION */}
       <section className="section-space">
         <Container>
-          {/* HEADER */}
           <div className="text-center mb-5">
             <div className="mini-title">Our Work</div>
             <h2 className="fw-bold display-5">
@@ -609,7 +878,6 @@ const Home = () => {
             </Button>
           </div>
 
-          {/* PROJECTS */}
           <Row className="g-4">
             {[
               {
@@ -637,7 +905,7 @@ const Home = () => {
                   onClick={() => navigate(`/portfolio/${item.id}`)}
                 >
                   <div className="work-card">
-                    <img src={item.img} alt={item.title} className="work-img" />
+                    <img src={item.img} alt={item.title} className="work-img" loading="lazy" />
                     <div className="work-overlay">
                       <div className="work-content">
                         <div className="work-line">
@@ -658,151 +926,9 @@ const Home = () => {
             ))}
           </Row>
         </Container>
-
-        {/* STYLES */}
-        <style>{`
-        .about-card {
-  background: #ffffff;
-  padding: 18px 20px;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-  font-weight: 500;
-  transition: 0.3s ease;
-  height: 100%;
-}
-
-.about-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
-}
-          .work-card{
-            position:relative;
-            height:480px;
-            border-radius:24px;
-            overflow:hidden;
-            cursor:pointer;
-            box-shadow:0 20px 50px rgba(0,0,0,0.10);
-          }
-
-          .work-img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            transition:0.8s ease;
-          }
-
-          .work-overlay{
-            position:absolute;
-            inset:0;
-            display:flex;
-            align-items:flex-end;
-            padding:30px;
-            background:linear-gradient(
-              to top,
-              rgba(0,0,0,0.92),
-              rgba(0,0,0,0.35),
-              transparent
-            );
-            opacity:0;
-            transition:0.5s ease;
-          }
-
-          .work-content{
-            transform:translateY(30px);
-            transition:0.5s ease;
-          }
-
-          .work-line{
-            display:flex;
-            align-items:center;
-            gap:10px;
-            margin-bottom:10px;
-          }
-
-          .work-bar{
-            width:35px;
-            height:2px;
-            background:#06b6d4;
-          }
-
-          .work-category{
-            font-size:11px;
-            letter-spacing:2px;
-            color:#06b6d4;
-            font-weight:700;
-            text-transform:uppercase;
-          }
-
-          .work-title{
-            color:#fff;
-            font-size:26px;
-            font-weight:800;
-            margin-bottom:12px;
-          }
-
-          .work-btn{
-            color:#fff;
-            font-weight:600;
-            font-size:14px;
-            transition:0.3s;
-          }
-
-          .work-btn:hover{
-            color:#ec4899;
-          }
-
-          .work-glass{
-            position:absolute;
-            bottom:20px;
-            left:20px;
-            right:20px;
-            padding:16px 18px;
-            border-radius:18px;
-            background:rgba(255,255,255,0.75);
-            backdrop-filter:blur(18px);
-            border:1px solid rgba(255,255,255,0.3);
-            box-shadow:0 15px 40px rgba(0,0,0,0.15);
-            transition:0.5s ease;
-          }
-
-          .glass-cat{
-            font-size:10px;
-            font-weight:800;
-            letter-spacing:2px;
-            text-transform:uppercase;
-            color:#7c3aed;
-            display:block;
-            margin-bottom:4px;
-          }
-
-          .glass-title{
-            font-size:16px;
-            font-weight:700;
-            color:#111;
-            margin:0;
-          }
-
-          .work-card:hover .work-img{
-            transform:scale(1.15);
-            filter:blur(3px) brightness(0.7);
-          }
-
-          .work-card:hover .work-overlay{
-            opacity:1;
-          }
-
-          .work-card:hover .work-content{
-            transform:translateY(0);
-          }
-
-          .work-card:hover .work-glass{
-            opacity:0;
-            transform:translateY(20px);
-          }
-        `}</style>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS SECTION */}
       <section className="section-space">
         <Container>
           <div className="text-center mb-5">
@@ -832,7 +958,7 @@ const Home = () => {
                   <div className="quote-icon">❝</div>
                   <p className="testimonial-text">{item.text}</p>
                   <div className="client-flex">
-                    <img src={item.img} alt={item.name} className="client-img" />
+                    <img src={item.img} alt={item.name} className="client-img" loading="lazy" />
                     <div>
                       <h5 className="client-name">{item.name}</h5>
                       <span className="client-role">{item.role}</span>
@@ -843,70 +969,9 @@ const Home = () => {
             ))}
           </Row>
         </Container>
-
-        <style>{`
-          .testimonial-card{
-            position:relative;
-            padding:35px;
-            border-radius:24px;
-            background:rgba(255,255,255,0.85);
-            backdrop-filter:blur(18px);
-            border:1px solid rgba(0,0,0,0.06);
-            box-shadow:0 15px 45px rgba(0,0,0,0.08);
-            transition:0.4s ease;
-            height:100%;
-          }
-
-          .testimonial-card:hover{
-            transform:translateY(-8px);
-            box-shadow:0 25px 60px rgba(124,58,237,0.15);
-          }
-
-          .quote-icon{
-            font-size:50px;
-            color:#7c3aed;
-            opacity:0.2;
-            position:absolute;
-            top:15px;
-            right:20px;
-          }
-
-          .testimonial-text{
-            font-size:16px;
-            line-height:1.7;
-            color:#374151;
-            margin-bottom:25px;
-          }
-
-          .client-flex{
-            display:flex;
-            align-items:center;
-            gap:12px;
-          }
-
-          .client-img{
-            width:50px;
-            height:50px;
-            border-radius:50%;
-            object-fit:cover;
-            border:2px solid #7c3aed;
-          }
-
-          .client-name{
-            margin:0;
-            font-size:16px;
-            font-weight:700;
-            color:#111;
-          }
-
-          .client-role{
-            font-size:13px;
-            color:#6b7280;
-          }
-        `}</style>
       </section>
 
-      {/* CTA */}
+      {/* CTA SECTION */}
       <section className="section-space">
         <Container>
           <Card className="glass border-0 p-5 text-center">
@@ -918,37 +983,26 @@ const Home = () => {
               Join 500+ businesses already growing with VITAL AI to automate their <br /> growth and dominate their market.
             </p>
             <div className="d-flex gap-3 justify-content-center flex-wrap">
-              <Button
-                className="main-btn"
-                onClick={() => navigate("/contact")}
-              >
+              <Button className="main-btn" onClick={() => navigate("/contact")}>
                 Get Started Now
               </Button>
-              <Button
-                className="outline-btn"
-                onClick={() => navigate("/pricing")}
-              >
+              <Button className="outline-btn" onClick={() => navigate("/pricing")}>
                 View Pricing
               </Button>
             </div>
           </Card>
         </Container>
       </section>
-      <Modal
-        show={showVideo}
-        onHide={closeVideo}
-        centered
-        size="lg"
-      >
+
+      {/* VIDEO MODAL */}
+      <Modal show={showVideo} onHide={closeVideo} centered size="lg">
         <Modal.Body className="p-0 bg-black">
           <video
             src={activeVideo}
             controls
             autoPlay
-            style={{
-              width: "100%",
-              maxHeight: "80vh"
-            }}
+            className="modal-video"
+            playsInline
           />
         </Modal.Body>
       </Modal>
