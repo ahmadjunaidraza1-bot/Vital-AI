@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import {
@@ -30,6 +30,12 @@ const Home = () => {
   const [visible, setVisible] = useState({});
   const sectionRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [videosLoaded, setVideosLoaded] = useState({
+    v1: false,
+    v2: false,
+    v3: false,
+    v4: false,
+  });
 
   const [showVideo, setShowVideo] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
@@ -52,6 +58,11 @@ const Home = () => {
   const closeVideo = () => {
     setShowVideo(false);
     setActiveVideo("");
+  };
+
+  // Handle video load
+  const handleVideoLoad = (videoKey) => {
+    setVideosLoaded(prev => ({ ...prev, [videoKey]: true }));
   };
 
   // Scroll Reveal
@@ -96,90 +107,105 @@ const Home = () => {
     transition: "all 1s ease",
   });
 
+  // Video sources
+  const videoSources = {
+    v1: "/videos/h1.mp4",
+    v2: "/videos/h2.mp4",
+    v3: "/videos/h3.mp4",
+    v4: "/videos/h4.mp4",
+  };
+
   return (
     <>
       <style>{`
-        body{
-          background:#fff;
-          font-family: 'Poppins',sans-serif;
-          overflow-x:hidden;
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
 
-        .gradient-text{
-          background:linear-gradient(90deg,#7c3aed,#ec4899,#06b6d4,#7c3aed);
-          background-size:300% auto;
-          -webkit-background-clip:text;
-          -webkit-text-fill-color:transparent;
-          animation:shine 5s linear infinite;
-          font-weight:800;
+        body {
+          background: #fff;
+          font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
+          width: 100%;
         }
 
-        @keyframes floatY{
-          0%,100%{transform:translateY(0)}
-          50%{transform:translateY(-15px)}
+        .gradient-text {
+          background: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4, #7c3aed);
+          background-size: 300% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shine 5s linear infinite;
+          font-weight: 800;
         }
 
-        @keyframes shine{
-          to{background-position:300% center;}
+        @keyframes floatY {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
         }
 
-        .glass{
-          background:rgba(255,255,255,.92);
-          backdrop-filter:blur(18px);
-          border:1px solid rgba(0,0,0,.06);
-          box-shadow:0 20px 50px rgba(0,0,0,.08);
-          border-radius:24px;
+        @keyframes shine {
+          to { background-position: 300% center; }
         }
 
-        .hover-card{
-          transition:.4s;
+        .glass {
+          background: rgba(255, 255, 255, .92);
+          backdrop-filter: blur(18px);
+          border: 1px solid rgba(0, 0, 0, .06);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, .08);
+          border-radius: 24px;
         }
 
-        .hover-card:hover{
-          transform:translateY(-10px);
-          box-shadow:0 25px 60px rgba(124,58,237,.15);
+        .hover-card {
+          transition: .4s;
         }
 
-        .main-btn{
-          border:none;
-          padding:12px 28px;
-          border-radius:50px;
-          color:#fff;
-          font-weight:700;
-          background:linear-gradient(90deg,#7c3aed,#ec4899);
-          transition:.4s;
+        .hover-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 25px 60px rgba(124, 58, 237, .15);
         }
 
-        .main-btn:hover{
-          transform:translateY(-3px) scale(1.03);
-          box-shadow:0 15px 35px rgba(236,72,153,.3);
+        .main-btn {
+          border: none;
+          padding: 12px 28px;
+          border-radius: 50px;
+          color: #fff;
+          font-weight: 700;
+          background: linear-gradient(90deg, #7c3aed, #ec4899);
+          transition: .4s;
         }
 
-        .outline-btn{
-          border:2px solid #7c3aed;
-          color:#7c3aed;
-          padding:12px 28px;
-          border-radius:50px;
-          font-weight:700;
-          background:#fff;
-          cursor:pointer;
+        .main-btn:hover {
+          transform: translateY(-3px) scale(1.03);
+          box-shadow: 0 15px 35px rgba(236, 72, 153, .3);
+        }
+
+        .outline-btn {
+          border: 2px solid #7c3aed;
+          color: #7c3aed;
+          padding: 12px 28px;
+          border-radius: 50px;
+          font-weight: 700;
+          background: #fff;
+          cursor: pointer;
           transition: all 0.3s ease;
           display: inline-block;
           text-align: center;
         }
 
-        .outline-btn:hover{
-          background:#7c3aed10;
-          transform:translateY(-2px);
+        .outline-btn:hover {
+          background: #7c3aed10;
+          transform: translateY(-2px);
         }
 
-        .float-card{
-          animation:floatY 4s ease-in-out infinite;
+        .float-card {
+          animation: floatY 4s ease-in-out infinite;
         }
 
-        .section-space{
-          padding:80px 0;
-          background:#fff;
+        .section-space {
+          padding: 80px 0;
+          background: #fff;
         }
 
         @media (max-width: 768px) {
@@ -188,8 +214,8 @@ const Home = () => {
           }
         }
 
-        .mini-title{
-           display: inline-block;
+        .mini-title {
+          display: inline-block;
           padding: 6px 16px;
           background: linear-gradient(135deg, #7c3aed20, #ec489920);
           border-radius: 50px;
@@ -198,119 +224,152 @@ const Home = () => {
           color: #7c3aed;
           letter-spacing: 1px;
           text-transform: uppercase;
-          margin-bottom: 12px;  
+          margin-bottom: 12px;
         }
 
-        .feature-icon{
-          width:60px;
-          height:60px;
-          border-radius:18px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size:26px;
-          color:#fff;
-          background:linear-gradient(135deg,#7c3aed,#ec4899);
-          margin-bottom:18px;
-        }
-
-        /* FIXED: Responsive Video Grid Styles */
-        .studio-video-grid {
+        .feature-icon {
+          width: 60px;
+          height: 60px;
+          border-radius: 18px;
           display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
+          align-items: center;
+          justify-content: center;
+          font-size: 26px;
+          color: #fff;
+          background: linear-gradient(135deg, #7c3aed, #ec4899);
+          margin-bottom: 18px;
         }
 
-        .video-col {
-          flex: 1;
-          min-width: 0;
+        /* ========== FIXED VIDEO STYLES - NO CUT OFF ========== */
+        .video-section-wrapper {
+          width: 100%;
+          overflow: visible;
+        }
+
+        .video-grid-container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          width: 100%;
+        }
+
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+          .video-grid-container {
+            gap: 15px;
+          }
+        }
+
+        .video-item {
+          position: relative;
+          width: 100%;
+          border-radius: 20px;
+          overflow: hidden;
+          cursor: pointer;
+          background: #f5f5f5;
+        }
+
+        /* Fixed aspect ratio to prevent cut-off */
+        .video-item {
+          aspect-ratio: 3 / 4;
+        }
+
+        /* Different aspect ratios for different videos on desktop */
+        @media (min-width: 769px) {
+          .video-item-1 { aspect-ratio: 3 / 4; }
+          .video-item-2 { aspect-ratio: 4 / 5; margin-top: 40px; }
+          .video-item-3 { aspect-ratio: 4 / 5; }
+          .video-item-4 { aspect-ratio: 2 / 3; margin-top: -20px; }
+        }
+
+        /* Mobile - all videos same aspect ratio for consistency */
+        @media (max-width: 768px) {
+          .video-item {
+            aspect-ratio: 16 / 9 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            border-radius: 16px;
+          }
         }
 
         .studio-video {
           width: 100%;
-          border-radius: 24px;
+          height: 100%;
           object-fit: cover;
-          cursor: pointer;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+          display: block;
+          transition: transform 0.3s ease;
         }
 
         .studio-video:hover {
           transform: scale(1.02);
-          box-shadow: 0 25px 40px -12px rgba(124,58,237,0.25);
         }
 
-        /* Desktop Layout (2x2 grid with staggered heights) */
-        @media (min-width: 769px) {
-          .video-grid-desktop {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            align-items: start;
-          }
-          
-          .video-item-1 {
-            grid-column: 1 / 2;
-            grid-row: 1 / 2;
-          }
-          
-          .video-item-2 {
-            grid-column: 2 / 3;
-            grid-row: 1 / 2;
-            margin-top: 60px;
-          }
-          
-          .video-item-3 {
-            grid-column: 1 / 2;
-            grid-row: 2 / 3;
-          }
-          
-          .video-item-4 {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-            margin-top: -40px;
-          }
-          
-          .video-height-lg-1 { height: 400px; }
-          .video-height-lg-2 { height: 300px; }
-          .video-height-lg-3 { height: 300px; }
-          .video-height-lg-4 { height: 430px; }
+        /* Video loading placeholder */
+        .video-loading {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(124, 58, 237, 0.2);
+          border-top-color: #7c3aed;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
         }
 
-        /* Mobile Layout (vertical stack with proper spacing) */
+        @keyframes spin {
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Play button overlay */
+        .play-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .video-item:hover .play-overlay {
+          opacity: 1;
+        }
+
+        .play-icon {
+          width: 60px;
+          height: 60px;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #7c3aed;
+          font-size: 28px;
+        }
+
         @media (max-width: 768px) {
-          .video-grid-desktop {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-          }
-          
-          .video-item-1,
-          .video-item-2,
-          .video-item-3,
-          .video-item-4 {
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-          }
-          
-          .video-height-mobile {
-            height: 260px;
-          }
-          
-          /* Ensure videos don't overflow on mobile */
-          .studio-video {
-            max-height: 300px;
+          .play-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
           }
         }
 
-        /* FIXED: Work Card Styles - responsive */
+        /* Work Card Styles */
         .work-card {
           position: relative;
           height: 480px;
           border-radius: 24px;
           overflow: hidden;
           cursor: pointer;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
         }
 
         @media (max-width: 768px) {
@@ -334,8 +393,8 @@ const Home = () => {
           padding: 30px;
           background: linear-gradient(
             to top,
-            rgba(0,0,0,0.92),
-            rgba(0,0,0,0.35),
+            rgba(0, 0, 0, 0.92),
+            rgba(0, 0, 0, 0.35),
             transparent
           );
           opacity: 0;
@@ -399,10 +458,10 @@ const Home = () => {
           right: 20px;
           padding: 16px 18px;
           border-radius: 18px;
-          background: rgba(255,255,255,0.75);
+          background: rgba(255, 255, 255, 0.75);
           backdrop-filter: blur(18px);
-          border: 1px solid rgba(255,255,255,0.3);
-          box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
           transition: 0.5s ease;
         }
 
@@ -446,10 +505,10 @@ const Home = () => {
           position: relative;
           padding: 35px;
           border-radius: 24px;
-          background: rgba(255,255,255,0.85);
+          background: rgba(255, 255, 255, 0.85);
           backdrop-filter: blur(18px);
-          border: 1px solid rgba(0,0,0,0.06);
-          box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
           transition: 0.4s ease;
           height: 100%;
         }
@@ -462,7 +521,7 @@ const Home = () => {
 
         .testimonial-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 25px 60px rgba(124,58,237,0.15);
+          box-shadow: 0 25px 60px rgba(124, 58, 237, 0.15);
         }
 
         .quote-icon {
@@ -530,20 +589,41 @@ const Home = () => {
           outline: none;
         }
 
+        /* Modal responsive */
+        @media (max-width: 768px) {
+          .modal-dialog {
+            margin: 10px;
+          }
+          .modal-video {
+            max-height: 60vh;
+          }
+        }
+
         /* Typography adjustments for mobile */
         @media (max-width: 768px) {
           .display-4 {
-            font-size: 2.5rem;
-          }
-          .display-5 {
             font-size: 2rem;
           }
+          .display-5 {
+            font-size: 1.75rem;
+          }
           .fs-5 {
-            font-size: 1rem !important;
+            font-size: 0.95rem !important;
           }
           .main-btn, .outline-btn {
-            padding: 10px 20px;
-            font-size: 14px;
+            padding: 8px 18px;
+            font-size: 13px;
+          }
+          h1, h2, h3 {
+            word-break: break-word;
+          }
+        }
+
+        /* Container padding for mobile */
+        @media (max-width: 768px) {
+          .container {
+            padding-left: 15px;
+            padding-right: 15px;
           }
         }
       `}</style>
@@ -583,7 +663,7 @@ const Home = () => {
                 style={reveal("analytics")}
               >
                 <Card className="glass p-4 border-0 float-card">
-                  <div className="d-flex justify-content-between mb-4">
+                  <div className="d-flex justify-content-between mb-4 flex-wrap gap-2">
                     <div>
                       <h4 className="mb-0 fw-bold">Growth Analytics</h4>
                       <small className="text-muted">Live Data Feed</small>
@@ -616,7 +696,7 @@ const Home = () => {
                   ))}
 
                   <div className="glass p-3 mt-2">
-                    <div className="d-flex align-items-center gap-2 fw-bold">
+                    <div className="d-flex align-items-center gap-2 fw-bold flex-wrap">
                       <ShieldCheck size={20} color="#16a34a" />
                       Enterprise Security
                     </div>
@@ -632,7 +712,7 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* AI VIRTUAL STUDIO SECTION - FIXED VIDEO LAYOUT */}
+      {/* AI VIRTUAL STUDIO SECTION - FIXED VIDEOS (NO CUT OFF) */}
       <section className="section-space">
         <Container>
           <Row className="align-items-center g-5">
@@ -647,7 +727,7 @@ const Home = () => {
                 virtual try-ons and model demonstrations for your clothes and jewelry.
               </p>
               <Row className="g-3 mb-4">
-                <Col md={6}>
+                <Col sm={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Virtual Try-Ons</b>
                     <p className="text-muted small mb-0">
@@ -655,7 +735,7 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-                <Col md={6}>
+                <Col sm={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Jewelry Rendering</b>
                     <p className="text-muted small mb-0">
@@ -663,7 +743,7 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-                <Col md={6}>
+                <Col sm={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Social Media Ads</b>
                     <p className="text-muted small mb-0">
@@ -671,7 +751,7 @@ const Home = () => {
                     </p>
                   </div>
                 </Col>
-                <Col md={6}>
+                <Col sm={6}>
                   <div className="glass p-3 h-100 hover-card">
                     <b>Instant Ad Creative</b>
                     <p className="text-muted small mb-0">
@@ -690,67 +770,97 @@ const Home = () => {
               </div>
             </Col>
 
-            {/* FIXED: Responsive Video Grid - No overlap, proper mobile layout */}
+            {/* FIXED: Responsive Video Grid - No overlap, No cut off, Full visibility */}
             <Col lg={6}>
-              <div className="video-grid-desktop">
-                {/* Video 1 - Top Left */}
-                <div className="video-item-1">
-                  <video
-                    onClick={() => openVideo("/videos/h1.mp4")}
-                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-1'}`}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
+              <div className="video-section-wrapper">
+                <div className="video-grid-container">
+                  {/* Video 1 */}
+                  <div 
+                    className={`video-item video-item-1 ${isMobile ? 'mobile-video' : ''}`}
+                    onClick={() => openVideo(videoSources.v1)}
                   >
-                    <source src="/videos/h2.mp4" type="video/mp4" />
-                  </video>
-                </div>
+                    {!videosLoaded.v1 && <div className="video-loading"></div>}
+                    <video
+                      className="studio-video"
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      onLoadedData={() => handleVideoLoad('v1')}
+                    >
+                      <source src={videoSources.v1} type="video/mp4" />
+                    </video>
+                    <div className="play-overlay">
+                      <div className="play-icon">▶</div>
+                    </div>
+                  </div>
 
-                {/* Video 2 - Top Right */}
-                <div className="video-item-2">
-                  <video
-                    onClick={() => openVideo("/videos/h2.mp4")}
-                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-2'}`}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
+                  {/* Video 2 */}
+                  <div 
+                    className={`video-item video-item-2 ${isMobile ? 'mobile-video' : ''}`}
+                    onClick={() => openVideo(videoSources.v2)}
                   >
-                    <source src="/videos/h1.mp4" type="video/mp4" />
-                  </video>
-                </div>
+                    {!videosLoaded.v2 && <div className="video-loading"></div>}
+                    <video
+                      className="studio-video"
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      onLoadedData={() => handleVideoLoad('v2')}
+                    >
+                      <source src={videoSources.v2} type="video/mp4" />
+                    </video>
+                    <div className="play-overlay">
+                      <div className="play-icon">▶</div>
+                    </div>
+                  </div>
 
-                {/* Video 3 - Bottom Left */}
-                <div className="video-item-3">
-                  <video
-                    onClick={() => openVideo("/videos/h3.mp4")}
-                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-3'}`}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
+                  {/* Video 3 */}
+                  <div 
+                    className={`video-item video-item-3 ${isMobile ? 'mobile-video' : ''}`}
+                    onClick={() => openVideo(videoSources.v3)}
                   >
-                    <source src="/videos/h3.mp4" type="video/mp4" />
-                  </video>
-                </div>
+                    {!videosLoaded.v3 && <div className="video-loading"></div>}
+                    <video
+                      className="studio-video"
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      onLoadedData={() => handleVideoLoad('v3')}
+                    >
+                      <source src={videoSources.v3} type="video/mp4" />
+                    </video>
+                    <div className="play-overlay">
+                      <div className="play-icon">▶</div>
+                    </div>
+                  </div>
 
-                {/* Video 4 - Bottom Right */}
-                <div className="video-item-4">
-                  <video
-                    onClick={() => openVideo("/videos/h4.mp4")}
-                    className={`studio-video ${isMobile ? 'video-height-mobile' : 'video-height-lg-4'}`}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
+                  {/* Video 4 */}
+                  <div 
+                    className={`video-item video-item-4 ${isMobile ? 'mobile-video' : ''}`}
+                    onClick={() => openVideo(videoSources.v4)}
                   >
-                    <source src="/videos/h4.mp4" type="video/mp4" />
-                  </video>
+                    {!videosLoaded.v4 && <div className="video-loading"></div>}
+                    <video
+                      className="studio-video"
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="auto"
+                      onLoadedData={() => handleVideoLoad('v4')}
+                    >
+                      <source src={videoSources.v4} type="video/mp4" />
+                    </video>
+                    <div className="play-overlay">
+                      <div className="play-icon">▶</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -809,7 +919,7 @@ const Home = () => {
       >
         <Container>
           <Row className="justify-content-center">
-            <Col lg={8}>
+            <Col lg={10} xl={8}>
               <div className="text-center">
                 <div className="mini-title">About Us</div>
                 <h2 className="display-5 fw-bold">
@@ -822,25 +932,25 @@ const Home = () => {
                 </p>
 
                 <Row className="mt-5 g-4">
-                  <Col md={6}>
+                  <Col sm={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>AI-driven product development</span>
                     </div>
                   </Col>
-                  <Col md={6}>
+                  <Col sm={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>Modern scalable architecture</span>
                     </div>
                   </Col>
-                  <Col md={6}>
+                  <Col sm={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>Global expert team</span>
                     </div>
                   </Col>
-                  <Col md={6}>
+                  <Col sm={6}>
                     <div className="about-card d-flex align-items-center gap-3">
                       <CheckCircleFill color="#16a34a" size={24} />
                       <span>High-performance AI systems</span>
@@ -974,13 +1084,13 @@ const Home = () => {
       {/* CTA SECTION */}
       <section className="section-space">
         <Container>
-          <Card className="glass border-0 p-5 text-center">
+          <Card className="glass border-0 p-4 p-md-5 text-center">
             <h2 className="fw-bold display-5">
               Ready to Scale Your <br />
               <span className="gradient-text">Business with AI?</span>
             </h2>
             <p className="text-muted fs-5 mt-3 mb-4">
-              Join 500+ businesses already growing with VITAL AI to automate their <br /> growth and dominate their market.
+              Join 500+ businesses already growing with VITAL AI to automate their <br className="d-none d-md-block" /> growth and dominate their market.
             </p>
             <div className="d-flex gap-3 justify-content-center flex-wrap">
               <Button className="main-btn" onClick={() => navigate("/contact")}>
