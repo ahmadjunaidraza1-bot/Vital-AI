@@ -384,11 +384,12 @@ const closeVideo = () => {
       </Col>
 
       {/* RIGHT VIDEOS */}
+{/* RIGHT VIDEOS */}
 <Col lg={6}>
   <Row className="g-3 align-items-start">
 
     {/* Video 1 */}
-    <Col md={6}>
+    <Col xs={12} md={6}>
       <video
         onClick={() => openVideo("/videos/h1.mp4")}
         className="w-100 rounded-4 studio-video"
@@ -397,7 +398,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: "400px",
+          height: window.innerWidth < 768 ? "260px" : "400px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -407,7 +408,13 @@ const closeVideo = () => {
     </Col>
 
     {/* Video 2 */}
-    <Col md={6} style={{ marginTop: "60px" }}>
+    <Col
+      xs={12}
+      md={6}
+      style={{
+        marginTop: window.innerWidth < 768 ? "0px" : "60px"
+      }}
+    >
       <video
         onClick={() => openVideo("/videos/h2.mp4")}
         className="w-100 rounded-4 studio-video"
@@ -416,7 +423,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: "300px",
+          height: window.innerWidth < 768 ? "240px" : "300px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -426,7 +433,7 @@ const closeVideo = () => {
     </Col>
 
     {/* Video 3 */}
-    <Col md={6}>
+    <Col xs={12} md={6}>
       <video
         onClick={() => openVideo("/videos/h3.mp4")}
         className="w-100 rounded-4 studio-video"
@@ -435,7 +442,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: "300px",
+          height: window.innerWidth < 768 ? "240px" : "300px",
           objectFit: "cover",
           cursor: "pointer"
         }}
@@ -445,7 +452,13 @@ const closeVideo = () => {
     </Col>
 
     {/* Video 4 */}
-    <Col md={6} style={{ marginTop: "-40px" }}>
+    <Col
+      xs={12}
+      md={6}
+      style={{
+        marginTop: window.innerWidth < 768 ? "0px" : "-40px"
+      }}
+    >
       <video
         onClick={() => openVideo("/videos/h4.mp4")}
         className="w-100 rounded-4 studio-video"
@@ -454,7 +467,7 @@ const closeVideo = () => {
         loop
         playsInline
         style={{
-          height: "430px",
+          height: window.innerWidth < 768 ? "280px" : "430px",
           objectFit: "cover",
           cursor: "pointer"
         }}
