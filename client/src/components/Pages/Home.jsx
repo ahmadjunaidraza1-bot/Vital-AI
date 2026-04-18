@@ -383,100 +383,100 @@ const Home = () => {
               </div>
             </Col>
 
-             <Col lg={6}>
-  <Row className="g-3 align-items-start">
+              <Col lg={6}>
+              <Row className="g-3 align-items-start">
 
-    {/* Video 1 */}
-    <Col xs={12} md={6}>
-      <video
-        onClick={() => openVideo("/videos/h1.mp4")}
-        className="w-100 rounded-4 studio-video"
-        muted
-        autoPlay
-        loop
-        playsInline
-        style={{
-          height: window.innerWidth < 768 ? "240px" : "400px",
-          objectFit: "cover",
-          cursor: "pointer"
-        }}
-      >
-        <source src="/videos/h1.mp4" type="video/mp4" />
-      </video>
-    </Col>
+                {/* Video 1 */}
+                <Col xs={12} md={6}>
+                  <video
+                    onClick={() => openVideo("/videos/h1.mp4")}
+                    className="w-100 rounded-4 studio-video"
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    style={{
+                      height: window.innerWidth < 768 ? "260px" : "400px",
+                      objectFit: "cover",
+                      cursor: "pointer"
+                    }}
+                  >
+                    <source src="/videos/h1.mp4" type="video/mp4" />
+                  </video>
+                </Col>
 
-    {/* Video 2 (SMALL FIXED) */}
-    <Col
-      xs={12}
-      md={6}
-      style={{
-        marginTop: window.innerWidth < 768 ? "0px" : "50px"
-      }}
-    >
-      <video
-        onClick={() => openVideo("/videos/h2.mp4")}
-        className="w-100 rounded-4 studio-video"
-        muted
-        autoPlay
-        loop
-        playsInline
-        style={{
-          height: window.innerWidth < 768 ? "200px" : "240px",
-          objectFit: "cover",
-          cursor: "pointer"
-        }}
-      >
-        <source src="/videos/h2.mp4" type="video/mp4" />
-      </video>
-    </Col>
+                {/* Video 2 */}
+                <Col
+                  xs={12}
+                  md={6}
+                  style={{
+                    marginTop: window.innerWidth < 768 ? "0px" : "60px"
+                  }}
+                >
+                  <video
+                    onClick={() => openVideo("/videos/h2.mp4")}
+                    className="w-100 rounded-4 studio-video"
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    style={{
+                      height: window.innerWidth < 768 ? "240px" : "300px",
+                      objectFit: "cover",
+                      cursor: "pointer"
+                    }}
+                  >
+                    <source src="/videos/h2.mp4" type="video/mp4" />
+                  </video>
+                </Col>
 
-    {/* Video 3 */}
-    <Col xs={12} md={6}>
-      <video
-        onClick={() => openVideo("/videos/h3.mp4")}
-        className="w-100 rounded-4 studio-video"
-        muted
-        autoPlay
-        loop
-        playsInline
-        style={{
-          height: window.innerWidth < 768 ? "220px" : "300px",
-          objectFit: "cover",
-          cursor: "pointer"
-        }}
-      >
-        <source src="/videos/h3.mp4" type="video/mp4" />
-      </video>
-    </Col>
+                {/* Video 3 */}
+                <Col xs={12} md={6}>
+                  <video
+                    onClick={() => openVideo("/videos/h3.mp4")}
+                    className="w-100 rounded-4 studio-video"
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    style={{
+                      height: window.innerWidth < 768 ? "240px" : "300px",
+                      objectFit: "cover",
+                      cursor: "pointer"
+                    }}
+                  >
+                    <source src="/videos/h3.mp4" type="video/mp4" />
+                  </video>
+                </Col>
 
-    {/* Video 4 */}
-    <Col
-      xs={12}
-      md={6}
-      style={{
-        marginTop: window.innerWidth < 768 ? "0px" : "-40px"
-      }}
-    >
-      <video
-        onClick={() => openVideo("/videos/h4.mp4")}
-        className="w-100 rounded-4 studio-video"
-        muted
-        autoPlay
-        loop
-        playsInline
-        style={{
-          height: window.innerWidth < 768 ? "260px" : "430px",
-          objectFit: "cover",
-          cursor: "pointer"
-        }}
-      >
-        <source src="/videos/h4.mp4" type="video/mp4" />
-      </video>
-    </Col>
+                {/* Video 4 */}
+                <Col
+                  xs={12}
+                  md={6}
+                  style={{
+                    marginTop: window.innerWidth < 768 ? "0px" : "-40px"
+                  }}
+                >
+                  <video
+                    onClick={() => openVideo("/videos/h4.mp4")}
+                    className="w-100 rounded-4 studio-video"
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    style={{
+                      height: window.innerWidth < 768 ? "280px" : "430px",
+                      objectFit: "cover",
+                      cursor: "pointer"
+                    }}
+                  >
+                    <source src="/videos/h4.mp4" type="video/mp4" />
+                  </video>
+                </Col>
 
-  </Row>
-</Col>
-
+              </Row>
+            </Col>
+            
           </Row>
         </Container>
       </section>
@@ -934,29 +934,24 @@ const Home = () => {
           </Card>
         </Container>
       </section>
-
-
       <Modal
-  show={showVideo}
-  onHide={closeVideo}
-  centered
-  size="xl"
-  contentClassName="video-modal"
->
-  <Modal.Body className="p-0 bg-black d-flex align-items-center justify-content-center">
-    <video
-      src={activeVideo}
-      controls
-      autoPlay
-      style={{
-        width: "100%",
-        height: "90vh",
-        objectFit: "contain",
-        backgroundColor: "black"
-      }}
-    />
-  </Modal.Body>
-</Modal>
+        show={showVideo}
+        onHide={closeVideo}
+        centered
+        size="lg"
+      >
+        <Modal.Body className="p-0 bg-black">
+          <video
+            src={activeVideo}
+            controls
+            autoPlay
+            style={{
+              width: "100%",
+              maxHeight: "80vh"
+            }}
+          />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
