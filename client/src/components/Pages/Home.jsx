@@ -530,31 +530,40 @@ const Home = () => {
             build products that are not just functional—but intelligent.
           </p>
 
-          <div className="mt-4 d-inline-block text-start">
-            <div className="d-flex align-items-center gap-2 mb-3">
-              <CheckCircleFill color="#16a34a" />
-              <span>AI-driven product development</span>
-            </div>
+          {/* Cards Section */}
+          <Row className="mt-5 g-4">
+            <Col md={6}>
+              <div className="about-card d-flex align-items-center gap-3">
+                <CheckCircleFill color="#16a34a" size={24} />
+                <span>AI-driven product development</span>
+              </div>
+            </Col>
 
-            <div className="d-flex align-items-center gap-2 mb-3">
-              <CheckCircleFill color="#16a34a" />
-              <span>Modern scalable architecture</span>
-            </div>
+            <Col md={6}>
+              <div className="about-card d-flex align-items-center gap-3">
+                <CheckCircleFill color="#16a34a" size={24} />
+                <span>Modern scalable architecture</span>
+              </div>
+            </Col>
 
-            <div className="d-flex align-items-center gap-2 mb-3">
-              <CheckCircleFill color="#16a34a" />
-              <span>Global expert team</span>
-            </div>
+            <Col md={6}>
+              <div className="about-card d-flex align-items-center gap-3">
+                <CheckCircleFill color="#16a34a" size={24} />
+                <span>Global expert team</span>
+              </div>
+            </Col>
 
-            <div className="d-flex align-items-center gap-2 mb-3">
-              <CheckCircleFill color="#16a34a" />
-              <span>High-performance AI systems</span>
-            </div>
-          </div>
+            <Col md={6}>
+              <div className="about-card d-flex align-items-center gap-3">
+                <CheckCircleFill color="#16a34a" size={24} />
+                <span>High-performance AI systems</span>
+              </div>
+            </Col>
+          </Row>
 
           <div>
             <Button
-              className="main-btn mt-3"
+              className="main-btn mt-4"
               onClick={() => navigate("/about")}
             >
               Learn More About Us
@@ -636,6 +645,20 @@ const Home = () => {
 
         {/* STYLES */}
         <style>{`
+        .about-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
           .work-card{
             position:relative;
             height:480px;
