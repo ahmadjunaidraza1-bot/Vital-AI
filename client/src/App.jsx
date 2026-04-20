@@ -14,7 +14,7 @@ import Contact from "./components/Pages/Contact";
 import NotFound from "./components/Pages/NotFound";
 import PortfolioDetail from "./components/Pages/PortfolioDetail";
 import Jewelry from "./components/Pages/Jewelery";
-import Clothes from "./components/Pages/clothes";
+import Clothes from "./components/Pages/Clothes";
 import TikTok from "./components/Pages/TikTok";
 import SocialMedia from "./components/Pages/SocialMedia";
 
