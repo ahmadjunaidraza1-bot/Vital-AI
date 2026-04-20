@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Header() {
@@ -9,12 +8,18 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Route change hone par bhi navbar close ho jaye
+  useEffect(() => {
+    setExpanded(false);
+  }, [location.pathname]);
 
   const navItems = [
     "Home",
@@ -26,6 +31,10 @@ export default function Header() {
     "Pricing",
   ];
 
+  const handleNavClick = () => {
+    setExpanded(false);
+  };
+
   return (
     <div
       style={{
@@ -36,9 +45,10 @@ export default function Header() {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      {/* NAVBAR */}
       <Navbar
         expand="lg"
+        expanded={expanded}
+        onToggle={(isOpen) => setExpanded(isOpen)}
         style={{
           width: scrolled ? "92%" : "100%",
           position: "fixed",
@@ -59,10 +69,8 @@ export default function Header() {
         }}
       >
         {/* LOGO */}
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" onClick={handleNavClick}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-
-            {/* LOGO IMAGE */}
             <img
               src="/Images/logo.webp"
               alt="logo"
@@ -80,7 +88,6 @@ export default function Header() {
               }}
             />
 
-            {/* LOGO TEXT */}
             <div style={{ lineHeight: "1.1" }}>
               <div
                 style={{
@@ -113,9 +120,12 @@ export default function Header() {
           </div>
         </Navbar.Brand>
 
-        <Navbar.Toggle />
+        <Navbar.Toggle
+          aria-controls="main-navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
 
-        <Navbar.Collapse>
+        <Navbar.Collapse id="main-navbar-nav">
           <Nav className="ms-auto align-items-center gap-4">
             {navItems.map((item, i) => {
               const path =
@@ -128,10 +138,12 @@ export default function Header() {
                   key={i}
                   as={Link}
                   to={path}
+                  onClick={handleNavClick}
                   style={{
                     color: isActive(path) ? "#111" : "#6b7280",
                     fontStyle: "italic",
-                    fontSize: scrolled ? "13px" : "14px",
+                    fontSize: scrolled ? "14px" : "12px",
+                    fontWeight:700,
                     transition: "0.3s",
                   }}
                   onMouseEnter={(e) => {
@@ -139,9 +151,7 @@ export default function Header() {
                     e.target.style.transform = "translateY(-2px)";
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.color = isActive(path)
-                      ? "#111"
-                      : "#6b7280";
+                    e.target.style.color = isActive(path) ? "#111" : "#6b7280";
                     e.target.style.transform = "translateY(0px)";
                   }}
                 >
@@ -160,28 +170,27 @@ export default function Header() {
               );
             })}
 
-            {/* SEPARATOR */}
-            <span style={{ color: "#94a3b8", fontWeight: "300" }}>|</span>
+            {/* <span style={{ color: "#94a3b8", fontWeight: "300" }}>|</span>
 
-            {/* 🔥 ANIMATED GRADIENT BUTTON */}
-            <Button as={Link} to="/contact"  className="main-btn">
+            <Button
+              as={Link}
+              to="/contact"
+              className="main-btn"
+              onClick={handleNavClick}
+            >
               Book a strategy Call ✨
-            </Button>
+            </Button> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
-      
-      {/* 🔥 STYLES */}
       <style>{`
-        /* LOGO TEXT ANIMATION */
         @keyframes gradientMove {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
 
-        /* BUTTON */
         .main-btn{
           border:none;
           padding:10px 25px;

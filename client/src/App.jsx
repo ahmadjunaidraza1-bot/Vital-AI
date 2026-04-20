@@ -13,6 +13,10 @@ import Pricing from "./components/Pages/Pricing";
 import Contact from "./components/Pages/Contact";
 import NotFound from "./components/Pages/NotFound";
 import PortfolioDetail from "./components/Pages/PortfolioDetail";
+import Jewelry from "./components/Pages/Jewelery";
+import Clothes from "./components/Pages/clothes";
+import TikTok from "./components/Pages/TikTok";
+import SocialMedia from "./components/Pages/SocialMedia";
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="jewelery" element={<Jewelry />} />
+          <Route path="clothes" element={<Clothes />} />
+          <Route path="tiktok" element={<TikTok />} />
+          <Route path="socialmedia" element={<SocialMedia />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/portfolio/:id" element={<PortfolioDetail />} />
         </Route>

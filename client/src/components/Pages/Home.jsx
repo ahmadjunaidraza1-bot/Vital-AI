@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import {
   Container,
   Row,
@@ -51,7 +52,7 @@ const Home = () => {
 
   // Handle video load
   const handleVideoLoad = (videoKey) => {
-    setVideosLoaded(prev => ({ ...prev, [videoKey]: true }));
+    setVideosLoaded((prev) => ({ ...prev, [videoKey]: true }));
   };
 
   // Scroll Reveal
@@ -163,11 +164,17 @@ const Home = () => {
           font-weight: 700;
           background: linear-gradient(90deg, #7c3aed, #ec4899);
           transition: .4s;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .main-btn:hover {
           transform: translateY(-3px) scale(1.03);
           box-shadow: 0 15px 35px rgba(236, 72, 153, .3);
+          color: #fff;
+          text-decoration: none;
         }
 
         .outline-btn {
@@ -179,13 +186,18 @@ const Home = () => {
           background: #fff;
           cursor: pointer;
           transition: all 0.3s ease;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           text-align: center;
+          text-decoration: none;
         }
 
         .outline-btn:hover {
           background: #7c3aed10;
           transform: translateY(-2px);
+          color: #7c3aed;
+          text-decoration: none;
         }
 
         .float-card {
@@ -624,242 +636,307 @@ const Home = () => {
             padding-right: 15px;
           }
         }
+
+        @media (max-width: 768px) {
+          .carousel img {
+            height: 450px !important;
+          }
+        }
       `}</style>
 
-      {/* HERO SECTION */}
-      <section className="section-space" style={{ paddingTop: "120px" }}>
-        <Container>
-          <Row className="align-items-center g-5">
-            <Col lg={6}>
-              <div className="mini-title">✨ Next-Gen Digital Agency</div>
-              <h1 className="display-4 fw-bold lh-sm mb-4">
-                <span className="gradient-text">AI-Powered</span>
-                <br />
-                Digital Solutions
-                <br />
-                <span className="gradient-text">for Modern Business</span>
-              </h1>
-              <p className="text-muted fs-5 mb-4">
-                Helping businesses grow with intelligent automation,
-                scalable technology, and high-end design that converts.
-              </p>
-              <div className="d-flex gap-3 flex-wrap mb-4">
-                <Button className="main-btn" onClick={() => navigate("/contact")}>
-                  Get Started
-                </Button>
-                <span className="outline-btn" onClick={() => navigate("/services")}>
-                  Learn More →
-                </span>
-              </div>
-            </Col>
+      {/* HERO SECTION - FULL WIDTH CAROUSEL */}
+      <section>
+        <Carousel fade controls indicators interval={3500} pause={false}>
+          {/* Slide 1 */}
+          <Carousel.Item>
+            <div style={{ position: "relative" }}>
+              <img
+                src="/Images/hcr1.jpeg"
+                className="w-100"
+                style={{ height: "550px", objectFit: "cover" }}
+                alt="slide1"
+              />
 
-            {/* Analytics Section */}
-            <Col lg={6}>
+              {/* Overlay */}
               <div
-                ref={(el) => (sectionRefs.current[0] = el)}
-                data-id="analytics"
-                style={reveal("analytics")}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
-                <Card className="glass p-4 border-0 float-card">
-                  <div className="d-flex justify-content-between mb-4 flex-wrap gap-2">
-                    <div>
-                      <h4 className="mb-0 fw-bold">Growth Analytics</h4>
-                      <small className="text-muted">Live Data Feed</small>
-                    </div>
-                    <span className="badge bg-success px-3 py-2 fs-6">
-                      +24% Increase
-                    </span>
-                  </div>
-
-                  {[
-                    ["AI Automation", stats.ai],
-                    ["User Engagement", stats.engagement],
-                    ["Conversion Rate", stats.conversion],
-                  ].map((item, i) => (
-                    <div className="mb-4" key={i}>
-                      <div className="d-flex justify-content-between mb-2 fw-semibold">
-                        <span>{item[0]}</span>
-                        <span className="gradient-text">{item[1]}%</span>
+                <Container>
+                  <Row className="justify-content-center text-center">
+                    <Col lg={8}>
+                      <div className="mini-title text-white">
+                        ✨ Next-Gen Digital Agency
                       </div>
-                      <ProgressBar
-                        now={item[1]}
-                        style={{
-                          height: "10px",
-                          borderRadius: "20px",
-                          background: "#eee",
-                        }}
-                        variant="info"
-                      />
-                    </div>
-                  ))}
 
-                  <div className="glass p-3 mt-2">
-                    <div className="d-flex align-items-center gap-2 fw-bold flex-wrap">
-                      <ShieldCheck size={20} color="#16a34a" />
-                      Enterprise Security
-                    </div>
-                    <small className="text-muted">
-                      Your data is protected with military-grade encryption and
-                      AI monitoring.
-                    </small>
-                  </div>
-                </Card>
+                      <h1 className="display-4 fw-bold text-white mb-4">
+                        <span className="gradient-text">AI-Powered</span>
+                        <br />
+                        Digital Solutions
+                      </h1>
+
+                      <div className="d-flex gap-3 flex-wrap justify-content-center">
+                        <Button as={Link} to="/contact" className="main-btn">
+                          Book a strategy Call ✨
+                        </Button>
+
+                        <Link
+                          to="/services"
+                          className="outline-btn"
+                          style={{ background: "#fff" }}
+                        >
+                          Learn More →
+                        </Link>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </Carousel.Item>
+
+          {/* Slide 2 */}
+          <Carousel.Item>
+            <div style={{ position: "relative" }}>
+              <img
+                src="/Images/hcr2.jpeg"
+                className="w-100"
+                style={{ height: "550px", objectFit: "cover" }}
+                alt="slide2"
+              />
+
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Container>
+                  <Row className="justify-content-center text-center">
+                    <Col lg={8}>
+                      <h1 className="display-4 fw-bold text-white mb-2">
+                        <span className="gradient-text">Luxury Jewelry</span>
+                        <br />
+                        Visual Experience
+                      </h1>
+
+                      <div className="d-flex gap-3 flex-wrap justify-content-center">
+                        <Button as={Link} to="/jewelery" className="main-btn">
+                          View Jewelry Collection
+                        </Button>
+
+                        <Link to="/contact" className="outline-btn" style={{ background: "#fff" }}>
+                          Get Started →
+                        </Link>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </Carousel.Item>
+
+          {/* Slide 3 */}
+          <Carousel.Item>
+            <div style={{ position: "relative" }}>
+              <img
+                src="/Images/hcr3.jpeg"
+                className="w-100"
+                style={{ height: "550px", objectFit: "cover" }}
+                alt="slide3"
+              />
+
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <Container>
+                  <Row className="justify-content-center text-center">
+                    <Col lg={8}>
+                      <h1 className="display-4 fw-bold text-white mb-4">
+                        <span className="gradient-text">Smart AI Websites</span>
+                        <br />
+                        Built to Convert
+                      </h1>
+
+                      <div className="d-flex gap-3 flex-wrap justify-content-center">
+                        <Button as={Link} to="/services" className="main-btn">
+                          Explore Services
+                        </Button>
+
+                        <Link to="/contact" className="outline-btn" style={{ background: "#fff" }}>
+                          Start Your Project →
+                        </Link>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
       </section>
 
-      {/* AI VIRTUAL STUDIO SECTION - ALL VIDEOS SAME SIZE */}
+      {/* AI VIRTUAL STUDIO SECTION */}
       <section className="section-space">
         <Container>
           <Row className="align-items-center g-5">
-            <Col lg={6}>
-              <div className="mini-title">🎬 New: AI Virtual Studio</div>
-              <h2 className="fw-bold display-4 mb-3">
-                Revolutionize Your <br />
-                <span className="gradient-text">Product Presentation</span>
-              </h2>
-              <p className="text-muted fs-5 mb-4">
-                Stop spending thousands on photoshoots. Our AI generates hyper-realistic
-                virtual try-ons and model demonstrations for your clothes and jewelry.
-              </p>
-              <Row className="g-3 mb-4">
-                <Col sm={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <b>Virtual Try-Ons</b>
-                    <p className="text-muted small mb-0">
-                      Let customers see clothes on realistic AI models.
-                    </p>
-                  </div>
-                </Col>
-                <Col sm={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <b>Jewelry Rendering</b>
-                    <p className="text-muted small mb-0">
-                      Hyper-realistic 3D jewelry demonstrations.
-                    </p>
-                  </div>
-                </Col>
-                <Col sm={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <b>Social Media Ads</b>
-                    <p className="text-muted small mb-0">
-                      Viral-ready videos for TikTok & Instagram.
-                    </p>
-                  </div>
-                </Col>
-                <Col sm={6}>
-                  <div className="glass p-3 h-100 hover-card">
-                    <b>Instant Ad Creative</b>
-                    <p className="text-muted small mb-0">
-                      Generate 100+ ad variations in minutes.
-                    </p>
-                  </div>
-                </Col>
+            <Col lg={12}>
+              <div className="text-center mb-5">
+                <div className="mini-title">🎬 New: AI Virtual Studio</div>
+                <h2 className="fw-bold display-4 mb-3">
+                  Revolutionize Your <br />
+                  <span className="gradient-text">Product Presentation</span>
+                </h2>
+                <p
+                  className="text-muted fs-5 mb-4 mx-auto"
+                  style={{ maxWidth: "800px" }}
+                >
+                  Stop spending thousands on photoshoots. Our AI generates
+                  hyper-realistic virtual try-ons and model demonstrations for
+                  your clothes and jewelry.
+                </p>
+              </div>
+
+              <Row className="g-4 justify-content-center mb-4">
+                {[
+                  {
+                    title: "Virtual Try-Ons",
+                    desc: "Let customers see clothes on realistic AI models.",
+                    img: "/Images/42.png",
+                    link: "/clothes",
+                  },
+                  {
+                    title: "Jewelry Rendering",
+                    desc: "Hyper-realistic 3D jewelry demonstrations.",
+                    img: "/Images/4.png",
+                    link: "/jewelery",
+                  },
+                  {
+                    title: "TikTok Trending Store",
+                    desc: "Viral-ready videos for TikTok & Instagram.",
+                    src: "/videos/h6.mp4", // 👈 video
+                    link: "/tiktok",
+                  },
+                  {
+                    title: "Social Media Ads",
+                    desc: "Generate 100+ ad variations in minutes.",
+                    img: "/Images/cr6.png",
+                    link: "/socialmedia",
+                  },
+                ].map((item, i) => (
+                  <Col sm={6} md={6} lg={3} key={i}>
+                    <Link to={item.link} style={{ textDecoration: "none" }}>
+                      <div
+                        className="hover-card d-flex flex-column justify-content-end"
+                        style={{
+                          position: "relative",
+                          height: "260px",
+                          borderRadius: "20px",
+                          overflow: "hidden",
+                          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.10)",
+                        }}
+                      >
+
+                        {/* 🔥 IMAGE OR VIDEO CONDITION */}
+                        {item.src ? (
+                          <video
+                            src={item.src}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            style={{
+                              position: "absolute",
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              top: 0,
+                              left: 0,
+                            }}
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              position: "absolute",
+                              width: "100%",
+                              height: "100%",
+                              backgroundImage: `url(${item.img})`,
+                              backgroundSize: "contain",
+                              backgroundRepeat: "no-repeat",
+                              backgroundPosition: "center",
+                              top: 0,
+                              left: 0,
+                            }}
+                          />
+                        )}
+
+                        {/* overlay */}
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background:
+                              "linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), rgba(0,0,0,0.10))",
+                          }}
+                        />
+
+                        {/* content */}
+                        <div
+                          style={{
+                            position: "relative",
+                            zIndex: 2,
+                            padding: "22px 18px",
+                            textAlign: "center",
+                            color: "#fff",
+                          }}
+                        >
+                          <b style={{ fontSize: "22px", display: "block", marginBottom: "8px" }}>
+                            {item.title}
+                          </b>
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: "14px",
+                              lineHeight: "1.6",
+                              color: "rgba(255,255,255,0.92)",
+                            }}
+                          >
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </Col>
+                ))}
               </Row>
-              <div className="d-flex gap-3 flex-wrap">
-                <Button className="main-btn" onClick={() => navigate("/contact")}>
+              {/* BUTTONS CENTER */}
+              <div className="d-flex gap-3 flex-wrap justify-content-center">
+                <Button as={Link} to="/contact" className="main-btn">
                   Book a Demo
                 </Button>
-                <Button className="outline-btn" onClick={() => navigate("/services")}>
+                <Button as={Link} to="/services" className="outline-btn">
                   Learn More
                 </Button>
-              </div>
-            </Col>
-
-            {/* ALL VIDEOS - SAME DIMENSIONS, FULL WIDTH, NO CUT OFF */}
-            <Col lg={6}>
-              <div className="video-section-wrapper">
-                <div className="video-grid-container">
-                  {/* Video 1 */}
-                  <div 
-                    className="video-item video-item-1"
-                    onClick={() => openVideo(videoSources.v1)}
-                  >
-                    {!videosLoaded.v1 && <div className="video-loading"></div>}
-                    <video
-                      className="studio-video"
-                      muted
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onLoadedData={() => handleVideoLoad('v1')}
-                    >
-                      <source src={videoSources.v1} type="video/mp4" />
-                    </video>
-                    <div className="play-overlay">
-                      <div className="play-icon">▶</div>
-                    </div>
-                  </div>
-
-                  {/* Video 2 */}
-                  <div 
-                    className="video-item video-item-2"
-                    onClick={() => openVideo(videoSources.v2)}
-                  >
-                    {!videosLoaded.v2 && <div className="video-loading"></div>}
-                    <video
-                      className="studio-video"
-                      muted
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onLoadedData={() => handleVideoLoad('v2')}
-                    >
-                      <source src={videoSources.v2} type="video/mp4" />
-                    </video>
-                    <div className="play-overlay">
-                      <div className="play-icon">▶</div>
-                    </div>
-                  </div>
-
-                  {/* Video 3 */}
-                  <div 
-                    className="video-item video-item-3"
-                    onClick={() => openVideo(videoSources.v3)}
-                  >
-                    {!videosLoaded.v3 && <div className="video-loading"></div>}
-                    <video
-                      className="studio-video"
-                      muted
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onLoadedData={() => handleVideoLoad('v3')}
-                    >
-                      <source src={videoSources.v3} type="video/mp4" />
-                    </video>
-                    <div className="play-overlay">
-                      <div className="play-icon">▶</div>
-                    </div>
-                  </div>
-
-                  {/* Video 4 */}
-                  <div 
-                    className="video-item video-item-4"
-                    onClick={() => openVideo(videoSources.v4)}
-                  >
-                    {!videosLoaded.v4 && <div className="video-loading"></div>}
-                    <video
-                      className="studio-video"
-                      muted
-                      autoPlay
-                      loop
-                      playsInline
-                      preload="metadata"
-                      onLoadedData={() => handleVideoLoad('v4')}
-                    >
-                      <source src={videoSources.v4} type="video/mp4" />
-                    </video>
-                    <div className="play-overlay">
-                      <div className="play-icon">▶</div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </Col>
           </Row>
@@ -884,9 +961,17 @@ const Home = () => {
 
           <Row className="g-4">
             {[
-              ["Virtual Product Demo", <CameraVideoFill />, "AI-powered try-ons and ads"],
+              [
+                "Virtual Product Demo",
+                <CameraVideoFill />,
+                "AI-powered try-ons and ads",
+              ],
               ["E-Commerce Solutions", <Globe2 />, "Smart stores & AI automation"],
-              ["Web Development", <LightningChargeFill />, "Modern blazing-fast websites"],
+              [
+                "Web Development",
+                <LightningChargeFill />,
+                "Modern blazing-fast websites",
+              ],
               ["Social Media Content", <Stars />, "Viral reels and ad creatives"],
             ].map((item, i) => (
               <Col md={6} lg={3} key={i}>
@@ -894,13 +979,9 @@ const Home = () => {
                   <div className="feature-icon">{item[1]}</div>
                   <h5 className="fw-bold">{item[0]}</h5>
                   <p className="text-muted">{item[2]}</p>
-                  <span
-                    className="gradient-text"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate("/services")}
-                  >
+                  <Link to="/services" className="gradient-text" style={{ cursor: "pointer" }}>
                     Learn More →
-                  </span>
+                  </Link>
                 </Card>
               </Col>
             ))}
@@ -957,10 +1038,7 @@ const Home = () => {
                 </Row>
 
                 <div>
-                  <Button
-                    className="main-btn mt-4"
-                    onClick={() => navigate("/about")}
-                  >
+                  <Button as={Link} to="/about" className="main-btn mt-4">
                     Learn More About Us
                   </Button>
                 </div>
@@ -978,10 +1056,7 @@ const Home = () => {
             <h2 className="fw-bold display-5">
               Selected <span className="gradient-text">Projects</span>
             </h2>
-            <Button
-              className="main-btn mt-3"
-              onClick={() => navigate("/portfolio")}
-            >
+            <Button as={Link} to="/portfolio" className="main-btn mt-3">
               View All Projects
             </Button>
           </div>
@@ -1013,7 +1088,12 @@ const Home = () => {
                   onClick={() => navigate(`/portfolio/${item.id}`)}
                 >
                   <div className="work-card">
-                    <img src={item.img} alt={item.title} className="work-img" loading="lazy" />
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="work-img"
+                      loading="lazy"
+                    />
                     <div className="work-overlay">
                       <div className="work-content">
                         <div className="work-line">
@@ -1066,7 +1146,12 @@ const Home = () => {
                   <div className="quote-icon">❝</div>
                   <p className="testimonial-text">{item.text}</p>
                   <div className="client-flex">
-                    <img src={item.img} alt={item.name} className="client-img" loading="lazy" />
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="client-img"
+                      loading="lazy"
+                    />
                     <div>
                       <h5 className="client-name">{item.name}</h5>
                       <span className="client-role">{item.role}</span>
@@ -1088,13 +1173,15 @@ const Home = () => {
               <span className="gradient-text">Business with AI?</span>
             </h2>
             <p className="text-muted fs-5 mt-3 mb-4">
-              Join 500+ businesses already growing with VITAL AI to automate their <br className="d-none d-md-block" /> growth and dominate their market.
+              Join 500+ businesses already growing with VITAL AI to automate
+              their <br className="d-none d-md-block" /> growth and dominate
+              their market.
             </p>
             <div className="d-flex gap-3 justify-content-center flex-wrap">
-              <Button className="main-btn" onClick={() => navigate("/contact")}>
+              <Button as={Link} to="/contact" className="main-btn">
                 Get Started Now
               </Button>
-              <Button className="outline-btn" onClick={() => navigate("/pricing")}>
+              <Button as={Link} to="/pricing" className="outline-btn">
                 View Pricing
               </Button>
             </div>
