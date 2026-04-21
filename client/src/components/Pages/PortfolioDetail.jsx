@@ -21,7 +21,7 @@ const PortfolioDetail = () => {
     "pro-chauffeurs": {
       title: "Pro Chauffeurs",
       category: "Social Media Campaign",
-      banner: "/Images/p1.webp",
+      banner: "/Images/cr8.png",
       description: "Luxury car booking system branding and social media growth strategy.",
       story: "Pro Chauffeurs is a premier luxury car booking service that redefines executive travel. Our goal was to translate their high-end physical service into a digital experience that resonates with elite clients. We focused on 'The Arrival Experience'—the feeling of luxury from the moment you book to the moment you reach your destination.",
       highlights: [
@@ -50,14 +50,13 @@ const PortfolioDetail = () => {
       },
       gallery: [
         "/Images/p1.webp",
-        "/Images/p2.webp",
-        "/Images/p3.webp",
-        "/Images/p4.webp",
-        "/Images/p5.webp",
-        "/Images/p6.webp",
-        "/Images/p7.webp",
-        "/Images/p8.webp",
-        "/Images/p9.webp",
+        "/Images/cr4.png",
+        "/Images/cr6.png",
+        "/Images/cr7.png",
+        "/Images/cr5.png",
+        "/Images/cr9.png",
+        "/Images/cr10.png",
+        "/Images/cr11.png",
       ],
     },
     "aura-e-commerce": {
@@ -134,10 +133,10 @@ const PortfolioDetail = () => {
       },
       gallery: [
         "/Images/p1.webp",
-        "/Images/p2.webp",
-        "/Images/p3.webp",
-        "/Images/p4.webp",
-        "/Images/p5.webp",
+        "/Images/cr2.png",
+        "/Images/cr4.png",
+        "/Images/cr7.png",
+        "/Images/cr6.png",
         "/Images/p6.webp",
         "/Images/p7.webp",
         "/Images/p8.webp",
@@ -394,7 +393,7 @@ const PortfolioDetail = () => {
               <span
                 className="section-title bg-white px-3 py-1 rounded-pill"
                 style={{ fontSize: "12px" }}
-              >
+              > 
                 {project.category}
               </span>
               <h1 className="text-white display-3 fw-bold mt-3">{project.title}</h1>
