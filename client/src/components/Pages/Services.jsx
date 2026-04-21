@@ -7,7 +7,7 @@ const services = [
   {
     title: "AI Virtual Product Demonstration",
     desc: "Revolutionize how you showcase your products with AI-powered virtual try-ons.",
-    image: "/Images/s1.jpg",
+    image: "/Images/CR2.png",
     features: [
       "Virtual Try-On for Apparel",
       "3D Jewelry Rendering",
@@ -23,7 +23,7 @@ const services = [
   {
     title: "AI Powered E-Commerce Solutions",
     desc: "Smart AI systems to optimize sales and customer experience.",
-    image: "/Images/s2.jpg",
+    image: "/Images/Sr1.png",
     features: [
       "Smart Recommendations",
       "Inventory Automation",
@@ -39,7 +39,7 @@ const services = [
   {
     title: "AI Powered Website Building",
     desc: "Fast, SEO optimized and intelligent websites.",
-    image: "/Images/s3.jpg",
+    image: "/Images/CR3.png",
     features: [
       "Real-time Optimization",
       "A/B Testing AI",
@@ -55,7 +55,7 @@ const services = [
   {
     title: "AI Powered Digital Marketing",
     desc: "Scale your brand with data-driven precision using AI-managed ads, SEO and content strategies.",
-    image: "/Images/s4.jpg",
+    image: "/Images/CR1.png",
     features: [
       "Automated Ad Bidding",
       "AI Content Generation",
@@ -66,22 +66,6 @@ const services = [
       "Reduce acquisition cost by 40%",
       "24/7 campaign automation",
       "Precise audience targeting",
-    ],
-  },
-  {
-    title: "AI Powered Mobile App Development",
-    desc: "Next-generation Android & iOS apps powered by machine learning and predictive systems.",
-    image: "/Images/s5.jpg",
-    features: [
-      "Natural Language Processing",
-      "Facial Recognition",
-      "Predictive User Actions",
-      "Offline AI Features",
-    ],
-    benefits: [
-      "Personalized experiences",
-      "Higher app engagement",
-      "Future-proof technology",
     ],
   },
 ];

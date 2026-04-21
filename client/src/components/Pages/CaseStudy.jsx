@@ -37,7 +37,18 @@ const CaseStudy = () => {
 
         {/* HEADER */}
         <div className="text-center mb-5">
-          <div className="mini-title">Case Studies</div>
+          <h5
+            className="fw-bold"
+            style={{
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              color: "#7c3aed",
+              fontSize: "16px",
+              marginTop: "50px",
+            }}
+          >
+            Case Studies
+          </h5>
 
           <h2 className="fw-bold display-5 gradient-shine-text">
             Real Results, Real <span>Impact</span>

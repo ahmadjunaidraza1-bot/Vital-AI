@@ -149,15 +149,11 @@ const Clothes = () => {
       {/* TOP SIMPLE CAROUSEL */}
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/40.png" className="w-100" alt="slide1" />
+          <img src="/Images/cb1.png" className="w-100" alt="slide1" />
         </Carousel.Item>
 
         <Carousel.Item>
-          <img src="/Images/42.png" className="w-100" alt="slide2" />
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img src="/Images/30.png" className="w-100" alt="slide3" />
+          <img src="/Images/cb2.png" className="w-100" alt="slide2" />
         </Carousel.Item>
       </Carousel>
 

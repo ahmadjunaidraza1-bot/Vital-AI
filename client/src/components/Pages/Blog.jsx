@@ -7,28 +7,27 @@ const Blog = () => {
       category: "AI",
       date: "March 24, 2024",
       author: "Alex Rivera",
-      img: "https://picsum.photos/seed/blog1/800/600",
+      img: "/Images/Sr1.png",
     },
     {
       title: "The Future of Web Development: Beyond React",
       category: "Technology",
       date: "March 20, 2024",
       author: "Elena Vance",
-      img: "https://picsum.photos/seed/blog2/800/600",
+      img: "/Images/CR3.png",
     },
     {
       title: "Data-Driven Marketing: A Guide for Startups",
       category: "Marketing",
       date: "March 15, 2024",
       author: "Marcus Thorne",
-      img: "https://picsum.photos/seed/blog3/800/600",
+      img: "/Images/CR1.png",
     },
   ];
 
   return (
     <section style={{ padding: "120px 0" }}>
       <div className="container">
-
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <h1 className="blog-mini-title">Blog</h1>
@@ -44,10 +43,8 @@ const Blog = () => {
 
         {/* GRID */}
         <div className="blog-grid">
-
           {posts.map((post, i) => (
             <div key={i} className="blog-item">
-
               {/* IMAGE */}
               <div className="img-wrapper">
                 <span className="category">{post.category}</span>
@@ -56,7 +53,6 @@ const Blog = () => {
 
               {/* CONTENT */}
               <div className="content">
-
                 {/* META INLINE */}
                 <div className="meta">
                   <span>{post.date}</span>
@@ -72,22 +68,14 @@ const Blog = () => {
                 <p className="desc">
                   Discover insights and strategies shaping the future of digital industry.
                 </p>
-
-                <div className="read-more">
-                  Read More →
-                </div>
-
               </div>
-
             </div>
           ))}
-
         </div>
       </div>
 
       {/* STYLE */}
       <style>{`
-
         /* HEADER */
         .blog-mini-title{
           font-size:14px;
@@ -98,12 +86,12 @@ const Blog = () => {
         }
 
         .blog-title-main{
-  font-size:48px;
-  font-weight:900;
-  background: linear-gradient(90deg,#7c3aed,#ec4899,#06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+          font-size:48px;
+          font-weight:900;
+          background: linear-gradient(90deg,#7c3aed,#ec4899,#06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
 
         .blog-desc{
           font-size:18px;
@@ -198,19 +186,6 @@ const Blog = () => {
           margin-top:8px;
         }
 
-        .read-more{
-          margin-top:12px;
-          font-weight:700;
-          color:#7c3aed;
-          transition:0.3s;
-          display:inline-block;
-        }
-
-        .blog-item:hover .read-more{
-          transform:translateX(6px);
-          color:#ec4899;
-        }
-
         /* RESPONSIVE */
         @media (max-width: 992px){
           .blog-grid{
@@ -227,9 +202,7 @@ const Blog = () => {
             font-size:34px;
           }
         }
-
       `}</style>
-
     </section>
   );
 };

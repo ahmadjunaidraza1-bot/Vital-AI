@@ -61,7 +61,7 @@ const SocialMedia = () => {
           font-weight: 700;
           letter-spacing: 1px;
           text-transform: uppercase;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
           backdrop-filter: blur(10px);
         }
 
@@ -250,10 +250,6 @@ const SocialMedia = () => {
                                     <h1>
                                         Creative <span className="gradient-text">Social Media Content</span>
                                     </h1>
-                                    <p>
-                                        Explore premium visuals, engaging creatives, and scroll-stopping
-                                        content designed for modern brands across Instagram, TikTok, and Facebook.
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -268,10 +264,6 @@ const SocialMedia = () => {
                                     <h1>
                                         Bold Ideas for <span className="gradient-text">Modern Campaigns</span>
                                     </h1>
-                                    <p>
-                                        Present your best campaigns with a polished and professional gallery
-                                        that highlights impactful content for social media growth.
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -286,10 +278,6 @@ const SocialMedia = () => {
                                     <h1>
                                         Showcase Your <span className="gradient-text">Best Social Posts</span>
                                     </h1>
-                                    <p>
-                                        A clean and elegant page to display branded creatives, ad visuals,
-                                        and content assets in a premium presentation style.
-                                    </p>
                                 </div>
                             </div>
                         </div>

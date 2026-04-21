@@ -97,13 +97,10 @@ const Jewelry = () => {
       {/* CAROUSEL */}
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/1.png" className="w-100" alt="" />
+          <img src="/Images/jb1.png" className="w-100" alt="" />
         </Carousel.Item>
         <Carousel.Item>
-          <img src="/Images/4.png" className="w-100" alt="" />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src="/Images/10.png" className="w-100" alt="" />
+          <img src="/Images/jb2.png" className="w-100" alt="" />
         </Carousel.Item>
       </Carousel>
 

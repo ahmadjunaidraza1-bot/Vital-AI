@@ -5,10 +5,41 @@ import {
   Stars,
   Gem,
   RocketTakeoffFill,
+  ShieldCheck,
+  LightningChargeFill,
+  PeopleFill,
+  BarChartLineFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
+  const whyChooseUs = [
+    {
+      id: 1,
+      icon: <ShieldCheck size={28} />,
+      title: "Trusted Execution",
+      text: "We deliver reliable digital solutions with precision, consistency, and a strong commitment to quality.",
+    },
+    {
+      id: 2,
+      icon: <LightningChargeFill size={28} />,
+      title: "Fast Innovation",
+      text: "Our agile approach helps brands move faster, adapt quickly, and launch modern solutions without delays.",
+    },
+    {
+      id: 3,
+      icon: <PeopleFill size={28} />,
+      title: "Client-Centric Approach",
+      text: "Every strategy is built around your goals, audience, and long-term business growth.",
+    },
+    {
+      id: 4,
+      icon: <BarChartLineFill size={28} />,
+      title: "Results Driven",
+      text: "We focus on measurable growth, stronger brand visibility, and performance that truly matters.",
+    },
+  ];
+
   return (
     <div style={{ padding: "120px 0", background: "#fff" }}>
       <style>{`
@@ -18,6 +49,12 @@ const About = () => {
           -webkit-background-clip:text;
           -webkit-text-fill-color:transparent;
           font-weight:800;
+          animation: gradientMove 6s linear infinite;
+        }
+
+        @keyframes gradientMove{
+          0%{background-position:0% center;}
+          100%{background-position:300% center;}
         }
 
         .glass{
@@ -32,7 +69,7 @@ const About = () => {
           text-align:center;
           padding:25px;
           border-radius:18px;
-          transition:0.3s;
+          transition:0.35s ease;
         }
 
         .stat-box:hover{
@@ -85,7 +122,6 @@ const About = () => {
           -webkit-text-fill-color:transparent;
         }
 
-        /* MISSION + VISION */
         .mission-card,
         .vision-card{
           transition:0.4s ease;
@@ -98,7 +134,6 @@ const About = () => {
           box-shadow:0 25px 60px rgba(124,58,237,0.15);
         }
 
-        /* TEAM */
         .team-member {
           display:flex;
           flex-direction:column;
@@ -121,7 +156,6 @@ const About = () => {
           transition:transform 0.6s ease;
         }
 
-        /* INNER ZOOM */
         .team-img-wrap:hover img {
           transform:scale(1.15);
         }
@@ -129,18 +163,180 @@ const About = () => {
         .team-member h5{
           margin-top:15px;
         }
+
+        .why-choose-section{
+          position:relative;
+          margin:100px 0 60px;
+          padding:50px 35px;
+          border-radius:30px;
+          overflow:hidden;
+          background:
+            radial-gradient(circle at top left, rgba(124,58,237,0.08), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(236,72,153,0.08), transparent 30%),
+            linear-gradient(135deg, rgba(255,255,255,0.96), rgba(248,250,252,0.95));
+          border:1px solid rgba(0,0,0,0.05);
+          box-shadow:0 20px 60px rgba(0,0,0,0.06);
+        }
+
+        .why-choose-badge{
+          display:inline-block;
+          padding:8px 18px;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:700;
+          letter-spacing:1px;
+          text-transform:uppercase;
+          background:linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.12));
+          color:#7c3aed;
+          margin-bottom:18px;
+        }
+
+        .why-choose-left{
+          padding-right:22px;
+          animation: slideLeft 0.9s ease both;
+        }
+
+        .why-choose-right{
+          animation: slideRight 1s ease both;
+        }
+
+        .why-card{
+          position:relative;
+          display:flex;
+          align-items:flex-start;
+          gap:18px;
+          padding:24px 22px;
+          border-radius:22px;
+          height:100%;
+          background:rgba(255,255,255,0.82);
+          backdrop-filter:blur(12px);
+          border:1px solid rgba(0,0,0,0.05);
+          box-shadow:0 15px 40px rgba(0,0,0,0.06);
+          transition:all 0.35s ease;
+          opacity:0;
+          transform:translateY(40px);
+          animation: slideUpCard 0.8s ease forwards;
+        }
+
+        .why-card:hover{
+          transform:translateY(-8px);
+          box-shadow:0 24px 55px rgba(124,58,237,0.14);
+          border-color:rgba(124,58,237,0.15);
+        }
+
+        .why-card-icon{
+          min-width:62px;
+          width:62px;
+          height:62px;
+          border-radius:18px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#fff;
+          background:linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
+          box-shadow:0 12px 28px rgba(124,58,237,0.22);
+          flex-shrink:0;
+        }
+
+        .why-card h5{
+          font-weight:700;
+          margin-bottom:10px;
+          color:#111827;
+        }
+
+        .why-card p{
+          margin:0;
+          color:#6b7280;
+          line-height:1.7;
+          font-size:15px;
+        }
+
+        .why-highlight-box{
+          margin-top:24px;
+          padding:22px 24px;
+          border-radius:22px;
+          background:linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.08));
+          border:1px solid rgba(124,58,237,0.08);
+          box-shadow:0 15px 35px rgba(0,0,0,0.04);
+        }
+
+        .why-highlight-box h6{
+          font-weight:800;
+          margin-bottom:10px;
+          color:#111827;
+        }
+
+        .why-highlight-box p{
+          margin:0;
+          color:#6b7280;
+          line-height:1.8;
+        }
+
+        @keyframes slideLeft{
+          from{
+            opacity:0;
+            transform:translateX(-50px);
+          }
+          to{
+            opacity:1;
+            transform:translateX(0);
+          }
+        }
+
+        @keyframes slideRight{
+          from{
+            opacity:0;
+            transform:translateX(50px);
+          }
+          to{
+            opacity:1;
+            transform:translateX(0);
+          }
+        }
+
+        @keyframes slideUpCard{
+          from{
+            opacity:0;
+            transform:translateY(40px);
+          }
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
+
+        @media (max-width: 991px){
+          .why-choose-left{
+            padding-right:0;
+            margin-bottom:24px;
+          }
+        }
+
+        @media (max-width: 768px){
+          .why-choose-section{
+            padding:30px 18px;
+            margin:70px 0 40px;
+          }
+
+          .why-card{
+            padding:20px 18px;
+            gap:14px;
+          }
+
+          .why-card-icon{
+            min-width:54px;
+            width:54px;
+            height:54px;
+          }
+        }
       `}</style>
 
       <Container>
-
         {/* HERO */}
         <div className="mb-5">
           <Row className="align-items-center g-5">
-
             <Col lg={6}>
-              <h5 className="text-uppercase text-muted fw-bold">
-                About Us
-              </h5>
+              <h5 className="text-uppercase text-muted fw-bold">About Us</h5>
 
               <h1 className="fw-bold display-4">
                 Pioneering the <br />
@@ -154,24 +350,28 @@ const About = () => {
             </Col>
 
             <Col lg={6}>
-              <img
-                src="/Images/a1.jpg"
-                alt="About"
-                style={{
-                  width: "100%",
-                  height: "420px",
-                  objectFit: "cover",
-                  borderRadius: "25px",
-                }}
-              />
-            </Col>
-
+  <video
+    src="/videos/pd2.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+    style={{
+      width: "100%",
+      height: "420px",
+      objectFit: "contain",
+      borderRadius: "25px",
+      display: "block",
+      // background: "#000",
+    }}
+  />
+</Col>
           </Row>
         </div>
 
         {/* STATS */}
         <Row className="g-4 text-center mb-5">
-
           <Col md={3}>
             <div className="glass stat-box p-4">
               <div className="icon-wrap mb-3"><GraphUpArrow size={26} /></div>
@@ -203,12 +403,61 @@ const About = () => {
               <p>Team Members</p>
             </div>
           </Col>
-
         </Row>
+
+        {/* WHY CHOOSE US */}
+        <section className="why-choose-section">
+          <Row className="align-items-center g-4">
+            <Col lg={5}>
+              <div className="why-choose-left">
+                <div className="why-choose-badge">Why Choose Us</div>
+
+                <h2 className="fw-bold display-6 mb-3">
+                  The smarter partner for your{" "}
+                  <span className="gradient-text">digital growth</span>
+                </h2>
+
+                <p className="text-muted fs-5" style={{ lineHeight: "1.8" }}>
+                  We combine strategy, creativity, and AI-powered execution to help
+                  brands scale with confidence. Our focus is not just design or
+                  development — it is building meaningful results for your business.
+                </p>
+
+                <div className="why-highlight-box">
+                  <h6>Professional. Scalable. Future-Ready.</h6>
+                  <p>
+                    From branding to automation, we build modern solutions that look
+                    premium, perform better, and create long-term value.
+                  </p>
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={7}>
+              <div className="why-choose-right">
+                <Row className="g-4">
+                  {whyChooseUs.map((item, index) => (
+                    <Col md={6} key={item.id}>
+                      <div
+                        className="why-card"
+                        style={{ animationDelay: `${0.15 + index * 0.12}s` }}
+                      >
+                        <div className="why-card-icon">{item.icon}</div>
+                        <div>
+                          <h5>{item.title}</h5>
+                          <p>{item.text}</p>
+                        </div>
+                      </div>
+                    </Col>
+                  ))}
+                </Row>
+              </div>
+            </Col>
+          </Row>
+        </section>
 
         {/* MISSION + VISION */}
         <Row className="g-5 mb-5">
-
           <Col lg={6}>
             <Card className="glass mission-card p-4 border-0 h-100">
               <h3 className="fw-bold gradient-text">Our Mission</h3>
@@ -228,7 +477,6 @@ const About = () => {
               </p>
             </Card>
           </Col>
-
         </Row>
 
         {/* LEADERSHIP */}
@@ -239,11 +487,10 @@ const About = () => {
         </div>
 
         <Row className="g-5 text-center">
-
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a2.jpg" alt="" />
+                <img src="/Images/a2.jpg" alt="Dr. Aris Thorne" />
               </div>
               <h5>Dr. Aris Thorne</h5>
               <p className="text-muted">Chief AI Officer</p>
@@ -253,7 +500,7 @@ const About = () => {
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a3.jpg" alt="" />
+                <img src="/Images/a3.jpg" alt="Sarah Jenkins" />
               </div>
               <h5>Sarah Jenkins</h5>
               <p className="text-muted">CEO & Founder</p>
@@ -263,15 +510,13 @@ const About = () => {
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a4.jpg" alt="" />
+                <img src="/Images/a4.jpg" alt="Marcus Chen" />
               </div>
               <h5>Marcus Chen</h5>
               <p className="text-muted">Head of Design</p>
             </div>
           </Col>
-
         </Row>
-
       </Container>
     </div>
   );

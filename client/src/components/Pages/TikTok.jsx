@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col, Carousel } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const videos = [
@@ -14,6 +14,19 @@ const videos = [
 ];
 
 const TikTok = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [activeVideo, setActiveVideo] = useState("");
+
+  const handleVideoClick = (src) => {
+    setActiveVideo(src);
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+    setActiveVideo("");
+  };
+
   return (
     <>
       <style>{`
@@ -88,7 +101,7 @@ const TikTok = () => {
         .hero-content {
           max-width: 850px;
           margin: 0 auto;
-          margin-top:150px;
+          margin-top: 150px;
         }
 
         .hero-content .mini-title {
@@ -119,6 +132,7 @@ const TikTok = () => {
         }
 
         .video-card {
+          position: relative;
           height: 360px;
           border-radius: 20px;
           overflow: hidden;
@@ -126,6 +140,7 @@ const TikTok = () => {
           transition: all 0.4s ease;
           animation: fadeUp 0.7s ease both;
           background: #000;
+          cursor: pointer;
         }
 
         .video-card:hover {
@@ -138,6 +153,62 @@ const TikTok = () => {
           height: 100%;
           object-fit: cover;
           display: block;
+        }
+
+        .video-card::after {
+          content: "▶";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.18);
+          backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-size: 24px;
+          opacity: 0;
+          transition: 0.3s ease;
+          pointer-events: none;
+        }
+
+        .video-card:hover::after {
+          opacity: 1;
+        }
+
+        .custom-modal .modal-content {
+          background: #000;
+          border: none;
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
+        .custom-modal .modal-header {
+          border: none;
+          padding: 10px 14px;
+          background: #000;
+        }
+
+        .custom-modal .btn-close {
+          filter: invert(1);
+          opacity: 1;
+        }
+
+        .custom-modal .modal-body {
+          padding: 0;
+          background: #000;
+        }
+
+        .modal-video {
+          width: 100%;
+          height: auto;
+          display: block;
+          background: #000;
+          max-height: 80vh;
         }
 
         @keyframes fadeUp {
@@ -162,6 +233,10 @@ const TikTok = () => {
             height: 420px;
           }
 
+          .hero-content {
+            margin-top: 80px;
+          }
+
           .hero-content h1 {
             font-size: 2rem;
           }
@@ -172,6 +247,13 @@ const TikTok = () => {
 
           .video-card {
             height: 260px;
+          }
+
+          .video-card::after {
+            opacity: 1;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
           }
         }
       `}</style>
@@ -218,6 +300,7 @@ const TikTok = () => {
                 <div
                   className="video-card"
                   style={{ animationDelay: `${index * 0.08}s` }}
+                  onClick={() => handleVideoClick(item.src)}
                 >
                   <video
                     src={item.src}
@@ -232,6 +315,28 @@ const TikTok = () => {
           </Row>
         </Container>
       </section>
+
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        centered
+        size="md"
+        className="custom-modal"
+      >
+        <Modal.Header closeButton />
+        <Modal.Body>
+          {activeVideo && (
+            <video
+              key={activeVideo}
+              src={activeVideo}
+              controls
+              autoPlay
+              playsInline
+              className="modal-video"
+            />
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
