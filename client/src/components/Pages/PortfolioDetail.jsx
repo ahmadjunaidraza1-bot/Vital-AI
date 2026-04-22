@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import {
   ArrowLeft,
-  CheckCircleFill,
   StarFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,11 +21,19 @@ const PortfolioDetail = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Campaign",
       banner: "/Images/cr8.png",
-      description: "Luxury car booking system branding and social media growth strategy.",
-      story: "Pro Chauffeurs is a premier luxury car booking service that redefines executive travel. Our goal was to translate their high-end physical service into a digital experience that resonates with elite clients. We focused on 'The Arrival Experience'—the feeling of luxury from the moment you book to the moment you reach your destination.",
+      description:
+        "Luxury car booking system branding and social media growth strategy.",
+      story:
+        "Pro Chauffeurs is a premier luxury car booking service that redefines executive travel. Our goal was to translate their high-end physical service into a digital experience that resonates with elite clients. We focused on 'The Arrival Experience'—the feeling of luxury from the moment you book to the moment you reach your destination.",
       highlights: [
-        { title: "Mobile-First Ads", desc: "Optimized visuals for high-speed scrolling on Instagram and TikTok." },
-        { title: "Luxury UI Kit", desc: "A consistent visual language using deep blacks, gold accents, and clean typography." },
+        {
+          title: "Mobile-First Ads",
+          desc: "Optimized visuals for high-speed scrolling on Instagram and TikTok.",
+        },
+        {
+          title: "Luxury UI Kit",
+          desc: "A consistent visual language using deep blacks, gold accents, and clean typography.",
+        },
       ],
       details: {
         client: "Pro Chauffeurs",
@@ -43,8 +50,14 @@ const PortfolioDetail = () => {
       socialMedia: {
         title: "Social Media",
         subtitle: "Viral Content Strategy",
-        description: "We created a series of vertical reels designed to capture attention in the first 2 seconds. By showcasing the sleek interiors and professional service, we increased their social engagement by 200%.",
-        features: ["High-Retention Hooks", "Seamless Transitions", "Luxury Color Grading", "Trend-Aligned Audio"],
+        description:
+          "We created a series of vertical reels designed to capture attention in the first 2 seconds. By showcasing the sleek interiors and professional service, we increased their social engagement by 200%.",
+        features: [
+          "High-Retention Hooks",
+          "Seamless Transitions",
+          "Luxury Color Grading",
+          "Trend-Aligned Audio",
+        ],
         videoSrc: "/videos/pd2.mp4",
         posterUrl: "/Images/p2.webp",
       },
@@ -59,88 +72,172 @@ const PortfolioDetail = () => {
         "/Images/cr11.png",
       ],
     },
-    "aura-e-commerce": {
-      title: "Aura E-Commerce",
-      category: "E-Commerce",
-      banner: "/Images/p1.webp",
-      description: "Modern e-commerce platform with AI-powered recommendations.",
-      story: "Aura E-Commerce is a cutting-edge online store that leverages AI to provide personalized shopping experiences, increasing conversion rates by 156%.",
+
+    viper: {
+      title: "Viper",
+      category: "Automotive Brand Campaign",
+      banner: "/Images/vd.png",
+      description:
+        "A bold digital campaign crafted for a performance-driven automotive brand.",
+      story:
+        "Viper was positioned as a high-impact automotive identity focused on speed, power, and aggressive visual storytelling. We built a campaign system that highlighted the vehicle's strong personality across digital banners, premium ad creatives, and cinematic motion-led visuals. The aim was to create a brand presence that felt modern, premium, and unmistakably performance-focused.",
       highlights: [
-        { title: "AI Product Recommendations", desc: "Personalized product suggestions based on user behavior." },
-        { title: "Seamless Checkout", desc: "One-click checkout with multiple payment options." },
+        {
+          title: "Performance Visual Identity",
+          desc: "A high-contrast, bold design direction inspired by speed, motion, and power.",
+        },
+        {
+          title: "Ad Creative System",
+          desc: "Multiple campaign-ready layouts for web, social media, and promotional banners.",
+        },
       ],
       details: {
-        client: "Aura Retail",
-        industry: "E-Commerce",
-        services: "Web Development, AI Integration",
+        client: "Viper Performance",
+        industry: "Automotive",
+        services: "Branding, Social Media, Ad Creatives",
         year: "2024",
       },
       cinematic: {
-        title: "Shopping Experience",
-        subtitle: "E-Commerce Platform Demo",
-        videoSrc: "/videos/pd1.mp4",
-        posterUrl: "/Images/p1.webp",
+        title: "Cinematic Experience",
+        subtitle: "Performance Brand Showcase",
+        videoSrc: "/videos/h3.mp4",
+        posterUrl: "/Images/viper2.png",
       },
       socialMedia: {
-        title: "Digital Marketing",
-        subtitle: "Social Media Strategy",
-        description: "Comprehensive social media campaign that drove 300% increase in traffic and 45% boost in sales.",
-        features: ["Instagram Shopping", "Facebook Ads Optimization", "Email Marketing Automation", "Influencer Partnerships"],
-        videoSrc: "/videos/pd2.mp4",
-        posterUrl: "/Images/p2.webp",
+        title: "Social Media",
+        subtitle: "Automotive Content Strategy",
+        description:
+          "For Viper, we developed attention-grabbing visuals and short-form promotional content designed to amplify brand personality and create a premium automotive aesthetic across social platforms.",
+        features: [
+          "Bold Motion Visuals",
+          "Luxury Automotive Styling",
+          "High-Impact Reels",
+          "Performance-Led Branding",
+        ],
+        videoSrc: "/videos/h3.mp4",
+        posterUrl: "/Images/viper3.png",
       },
       gallery: [
-        "/Images/p1.webp",
-        "/Images/p2.webp",
-        "/Images/p3.webp",
-        "/Images/p4.webp",
-        "/Images/p5.webp",
-        "/Images/p6.webp",
-        "/Images/p7.webp",
-        "/Images/p8.webp",
-        "/Images/p9.webp",
+        "/Images/vg1.png",
+        "/Images/vg2.png",
+        "/Images/vg3.png",
+        "/Images/vg4.png",
+        "/Images/vg5.png",
+        "/Images/vg6.png",
+        "/Images/vg7.png",
+        "/Images/vg8.png",
       ],
     },
-    "zenith-mobile-app": {
-      title: "Zenith Mobile App",
-      category: "Mobile App",
-      banner: "/Images/p1.webp",
-      description: "Feature-rich mobile application with stunning UI/UX.",
-      story: "Zenith is a lifestyle app that helps users track their daily activities, set goals, and achieve personal milestones with an intuitive interface.",
+
+    "women-bags": {
+      title: "Women Bags",
+      category: "Fashion Accessories Campaign",
+      banner: "/Images/jb2.png",
+      description:
+        "Premium campaign design for elegant women’s handbags and fashion accessories.",
+      story:
+        "Women Bags was developed as a polished fashion-focused portfolio project for showcasing premium handbags with a luxury editorial feel. The visual direction centered around elegance, lifestyle appeal, and product-first storytelling. We created a refined campaign language suitable for e-commerce, social promotions, and seasonal launch creatives.",
       highlights: [
-        { title: "Intuitive UI", desc: "Clean and user-friendly interface for seamless navigation." },
-        { title: "Real-time Analytics", desc: "Track your progress with live data and insights." },
+        {
+          title: "Luxury Product Presentation",
+          desc: "Editorial-inspired layouts that make the bags feel premium and desirable.",
+        },
+        {
+          title: "Fashion Campaign Assets",
+          desc: "A coordinated asset system for product launches, promotions, and social media campaigns.",
+        },
       ],
       details: {
-        client: "Zenith Labs",
-        industry: "Mobile Technology",
-        services: "App Development, UI/UX",
+        client: "Women Bags Studio",
+        industry: "Fashion Accessories",
+        services: "Creative Direction, Product Campaigns, Social Media",
         year: "2024",
       },
       cinematic: {
-        title: "App Experience",
-        subtitle: "Mobile App Demo",
-        videoSrc: "/videos/pd1.mp4",
-        posterUrl: "/Images/p1.webp",
+        title: "Cinematic Experience",
+        subtitle: "Luxury Bag Collection Showcase",
+        videoSrc: "/videos/bags1.mp4",
+        posterUrl: "/Images/bag2.png",
       },
       socialMedia: {
-        title: "App Launch",
-        subtitle: "Marketing Campaign",
-        description: "Strategic launch campaign that achieved 500K+ downloads in first month.",
-        features: ["App Store Optimization", "Influencer Marketing", "Launch Event", "Referral Program"],
-        videoSrc: "/videos/pd2.mp4",
-        posterUrl: "/Images/p2.webp",
+        title: "Social Media",
+        subtitle: "Fashion Visual Strategy",
+        description:
+          "We designed premium visual assets tailored for handbag promotions, fashion drops, and social media storytelling that elevated the brand with a polished, upscale look.",
+        features: [
+          "Luxury Fashion Layouts",
+          "Premium Product Focus",
+          "Women-Centric Branding",
+          "Campaign Ready Visuals",
+        ],
+        videoSrc: "/videos/h2.mp4",
+        posterUrl: "/Images/bag3.png",
       },
       gallery: [
-        "/Images/p1.webp",
-        "/Images/cr2.png",
-        "/Images/cr4.png",
-        "/Images/cr7.png",
-        "/Images/cr6.png",
-        "/Images/p6.webp",
-        "/Images/p7.webp",
-        "/Images/p8.webp",
-        "/Images/p9.webp",
+        "/Images/3.png",
+        "/Images/5.png",
+        "/Images/6.png",
+        "/Images/7.png",
+        "/Images/8.png",
+        "/Images/9.png",
+        "/Images/10.png",
+        "/Images/11.png",
+      ],
+    },
+
+    "ecommerce-clothing": {
+      title: "E-Commerce Clothing",
+      category: "Fashion E-Commerce",
+      banner: "/Images/cb1.png",
+      description:
+        "A modern fashion e-commerce project focused on conversion and product appeal.",
+      story:
+        "E-Commerce Clothing was built to represent a modern online apparel brand where product presentation, trust, and conversion were equally important. We created a visually clean and brand-consistent approach that balanced lifestyle branding with strong product visibility, making it ideal for collection launches, digital storefronts, and ad campaigns.",
+      highlights: [
+        {
+          title: "Conversion-Focused Design",
+          desc: "Layouts designed to support product discovery, engagement, and online sales.",
+        },
+        {
+          title: "Collection-Based Branding",
+          desc: "A scalable creative system for seasonal drops, hero banners, and clothing promotions.",
+        },
+      ],
+      details: {
+        client: "E-Commerce Clothing",
+        industry: "Fashion Retail",
+        services: "E-Commerce Design, Branding, Social Media",
+        year: "2024",
+      },
+      cinematic: {
+        title: "Cinematic Experience",
+        subtitle: "Fashion Store Brand Showcase",
+        videoSrc: "/videos/clothing1.mp4",
+        posterUrl: "/Images/cloth2.png",
+      },
+      socialMedia: {
+        title: "Social Media",
+        subtitle: "Apparel Marketing Strategy",
+        description:
+          "We designed a fashion-led visual system for digital marketing, enabling the brand to showcase clothing collections in a premium and conversion-friendly way across web and social platforms.",
+        features: [
+          "Fashion Drop Campaigns",
+          "E-Commerce Banner Design",
+          "Lifestyle Product Showcase",
+          "High-Converting Social Ads",
+        ],
+        videoSrc: "/videos/h4.mp4",
+        posterUrl: "/Images/cloth3.png",
+      },
+      gallery: [
+        "/Images/42.png",
+        "/Images/43.png",
+        "/Images/46.png",
+        "/Images/47.png",
+        "/Images/48.png",
+        "/Images/51.png",
+        "/Images/34.png",
+        "/Images/39.png",
       ],
     },
   };
@@ -152,13 +249,13 @@ const PortfolioDetail = () => {
     const options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.3, // Changed to 0.3 for earlier trigger
+      threshold: 0.3,
     };
 
     const handleIntersection = (entries, videoRef) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && videoRef.current) {
-          videoRef.current.play().catch(error => {
+          videoRef.current.play().catch((error) => {
             console.log("Auto-play prevented:", error);
           });
         } else if (videoRef.current) {
@@ -171,6 +268,7 @@ const PortfolioDetail = () => {
       (entries) => handleIntersection(entries, cinematicVideoRef),
       options
     );
+
     const socialObserver = new IntersectionObserver(
       (entries) => handleIntersection(entries, socialVideoRef),
       options
@@ -179,6 +277,7 @@ const PortfolioDetail = () => {
     if (cinematicVideoRef.current) {
       cinematicObserver.observe(cinematicVideoRef.current);
     }
+
     if (socialVideoRef.current) {
       socialObserver.observe(socialVideoRef.current);
     }
@@ -191,7 +290,7 @@ const PortfolioDetail = () => {
         socialObserver.unobserve(socialVideoRef.current);
       }
     };
-  }, []);
+  }, [id]);
 
   if (!project) {
     return (
@@ -310,7 +409,6 @@ const PortfolioDetail = () => {
           color: #ec4899;
         }
 
-        /* Cinematic Video - Full Width */
         .video-wrapper {
           position: relative;
           border-radius: 3rem;
@@ -326,7 +424,6 @@ const PortfolioDetail = () => {
           object-fit: cover;
         }
 
-        /* Social Video - Reduced Height */
         .portrait-video-wrapper {
           position: relative;
           border-radius: 2rem;
@@ -353,7 +450,6 @@ const PortfolioDetail = () => {
           outline: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
           .portrait-video-wrapper {
             max-width: 280px;
@@ -387,16 +483,19 @@ const PortfolioDetail = () => {
             <div
               className="position-absolute bottom-0 start-0 end-0 p-5"
               style={{
-                background: "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
+                background:
+                  "linear-gradient(to top, rgba(0,0,0,0.85), transparent)",
               }}
             >
               <span
                 className="section-title bg-white px-3 py-1 rounded-pill"
                 style={{ fontSize: "12px" }}
-              > 
+              >
                 {project.category}
               </span>
-              <h1 className="text-white display-3 fw-bold mt-3">{project.title}</h1>
+              <h1 className="text-white display-3 fw-bold mt-3">
+                {project.title}
+              </h1>
               <p className="text-white-50 fs-5">{project.description}</p>
             </div>
           </div>
@@ -414,14 +513,19 @@ const PortfolioDetail = () => {
                   <h2 className="fw-bold display-6 mb-4 card-gradient-heading">
                     {project.title}
                   </h2>
-                  <p className="text-muted fs-5 mb-4" style={{ lineHeight: "1.8" }}>
+                  <p
+                    className="text-muted fs-5 mb-4"
+                    style={{ lineHeight: "1.8" }}
+                  >
                     {project.story}
                   </p>
                   <Row className="g-3 mt-2">
                     {project.highlights.map((item, i) => (
                       <Col md={6} key={i}>
                         <div className="feature-badge">
-                          <h6 className="fw-bold mb-2 card-gradient-heading">{item.title}</h6>
+                          <h6 className="fw-bold mb-2 card-gradient-heading">
+                            {item.title}
+                          </h6>
                           <p className="text-muted small mb-0">{item.desc}</p>
                         </div>
                       </Col>
@@ -458,31 +562,35 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {/* Cinematic Experience Section */}
-      <section className="py-5">
-        <Container>
-          <Card className="custom-card border-0 shadow-sm overflow-hidden">
-            <Card.Body className="p-4 p-lg-5 text-center">
-              <span className="section-title">{project.cinematic.title}</span>
-              <h2 className="display-4 fw-bold card-gradient-heading mb-4">{project.cinematic.subtitle}</h2>
-              <div className="video-wrapper">
-                <video 
-                  ref={cinematicVideoRef}
-                  controls
-                  muted
-                  playsInline
-                  poster={project.cinematic.posterUrl}
-                  preload="metadata"
-                  loop
-                >
-                  <source src={project.cinematic.videoSrc} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </Card.Body>
-          </Card>
-        </Container>
-      </section>
+      {/* Cinematic Experience Section - ONLY for Pro Chauffeurs */}
+      {id === "pro-chauffeurs" && (
+        <section className="py-5">
+          <Container>
+            <Card className="custom-card border-0 shadow-sm overflow-hidden">
+              <Card.Body className="p-4 p-lg-5 text-center">
+                <span className="section-title">{project.cinematic.title}</span>
+                <h2 className="display-4 fw-bold card-gradient-heading mb-4">
+                  {project.cinematic.subtitle}
+                </h2>
+                <div className="video-wrapper">
+                  <video
+                    ref={cinematicVideoRef}
+                    controls
+                    muted
+                    playsInline
+                    poster={project.cinematic.posterUrl}
+                    preload="metadata"
+                    loop
+                  >
+                    <source src={project.cinematic.videoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </Card.Body>
+            </Card>
+          </Container>
+        </section>
+      )}
 
       {/* Social Media Section */}
       <section className="py-5">
@@ -492,8 +600,13 @@ const PortfolioDetail = () => {
               <Row className="align-items-center g-5">
                 <Col lg={6}>
                   <span className="section-title">{project.socialMedia.title}</span>
-                  <h2 className="fw-bold display-5 mb-4 card-gradient-heading">{project.socialMedia.subtitle}</h2>
-                  <p className="text-muted fs-5 mb-4" style={{ lineHeight: "1.8" }}>
+                  <h2 className="fw-bold display-5 mb-4 card-gradient-heading">
+                    {project.socialMedia.subtitle}
+                  </h2>
+                  <p
+                    className="text-muted fs-5 mb-4"
+                    style={{ lineHeight: "1.8" }}
+                  >
                     {project.socialMedia.description}
                   </p>
                   <Row className="g-3">
@@ -507,9 +620,10 @@ const PortfolioDetail = () => {
                     ))}
                   </Row>
                 </Col>
+
                 <Col lg={6}>
                   <div className="portrait-video-wrapper">
-                    <video 
+                    <video
                       ref={socialVideoRef}
                       controls
                       muted
@@ -518,7 +632,10 @@ const PortfolioDetail = () => {
                       preload="metadata"
                       loop
                     >
-                      <source src={project.socialMedia.videoSrc} type="video/mp4" />
+                      <source
+                        src={project.socialMedia.videoSrc}
+                        type="video/mp4"
+                      />
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -536,12 +653,18 @@ const PortfolioDetail = () => {
             <Card.Body className="p-4 p-lg-5">
               <div className="text-center mb-5">
                 <span className="section-title">Visual Gallery</span>
-                <h2 className="display-4 fw-bold card-gradient-heading">The Campaign Assets</h2>
+                <h2 className="display-4 fw-bold card-gradient-heading">
+                  The Campaign Assets
+                </h2>
               </div>
               <Row className="g-4">
                 {project.gallery.map((img, i) => (
                   <Col md={4} lg={3} key={i}>
-                    <img src={img} alt={`Gallery ${i + 1}`} className="gallery-img" />
+                    <img
+                      src={img}
+                      alt={`Gallery ${i + 1}`}
+                      className="gallery-img"
+                    />
                   </Col>
                 ))}
               </Row>
@@ -559,8 +682,8 @@ const PortfolioDetail = () => {
                 Want Results <span className="gradient-text">Like This?</span>
               </h2>
               <p className="text-muted fs-5 mb-4">
-                Let's transform your brand with AI-powered visuals and high-converting
-                social media strategies.
+                Let's transform your brand with AI-powered visuals and
+                high-converting social media strategies.
               </p>
               <Button className="main-btn" onClick={() => navigate("/contact")}>
                 Start Your Project →

@@ -4,23 +4,37 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 const Portfolio = () => {
   const [active, setActive] = useState("All");
 
-  const projects = [
-    { title: "Pro Chauffeurs", category: "Social Media Posts", img: "/Images/p1.webp", link: "/portfolio/pro-chauffeurs" },
-    { title: "ViperSports.uk", category: "E-Commerce", img: "/Images/p2.webp", link: "/portfolio/vipersports" },
-    { title: "Luxe Women Bags", category: "Virtual Demos", img: "/Images/p3.webp", link: "/portfolio/women-bags" },
-    { title: "Rebel.uk Gym", category: "E-Commerce", img: "/Images/p4.webp", link: "/portfolio/rebel-uk" },
-    { title: "Premium T-Shirts", category: "Virtual Demos", img: "/Images/p5.webp", link: "/portfolio/tshirts" },
-    { title: "Pet Cave Beds", category: "Virtual Demos", img: "/Images/p6.webp", link: "/portfolio/pet-beds" },
-    { title: "Urban Headwear", category: "Virtual Demos", img: "/Images/p7.webp", link: "/portfolio/headwear" },
-    { title: "Women's Activewear", category: "Virtual Demos", img: "/Images/p1.webp", link: "/portfolio/activewear" },
-    { title: "Leather Belts", category: "Virtual Demos", img: "/Images/p8.webp", link: "/portfolio/belts" },
-  ];
+ const projects = [
+  {
+    title: "Pro Chauffeurs",
+    category: "Social Media Posts",
+    img: "/Images/p1.webp",
+    link: "/portfolio/pro-chauffeurs",
+  },
+  {
+    title: "Viper",
+    category: "E-Commerce",
+    img: "/Images/p2.webp",
+    link: "/portfolio/viper", // ✅ FIXED
+  },
+  {
+    title: "Women Bags",
+    category: "Virtual Demos",
+    img: "/Images/5.png",
+    link: "/portfolio/women-bags", // ✅ FIXED
+  },
+  {
+    title: "E-Commerce Clothing",
+    category: "E-Commerce",
+    img: "/Images/31.png",
+    link: "/portfolio/ecommerce-clothing", // ✅ FIXED
+  },
+];
 
   const categories = [
     "All",
     "E-Commerce",
     "Websites",
-    "Mobile Apps",
     "Social Media Posts",
     "Virtual Demos",
   ];

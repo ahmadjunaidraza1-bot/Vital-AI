@@ -29,6 +29,7 @@ export default function Header() {
     "Case Study",
     "Blog",
     "Pricing",
+    "Contact",
   ];
 
   const handleNavClick = () => {
@@ -170,16 +171,6 @@ export default function Header() {
               );
             })}
 
-            {/* <span style={{ color: "#94a3b8", fontWeight: "300" }}>|</span>
-
-            <Button
-              as={Link}
-              to="/contact"
-              className="main-btn"
-              onClick={handleNavClick}
-            >
-              Book a strategy Call ✨
-            </Button> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
