@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import {
   GraphUpArrow,
@@ -13,6 +13,54 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
+  const videoRef = useRef(null);
+  const [hasUserStarted, setHasUserStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!hasUserStarted) return;
+
+        if (entry.isIntersecting) {
+          video.play().then(() => {
+            setIsPlaying(true);
+          }).catch(() => {});
+        } else {
+          video.pause();
+          setIsPlaying(false);
+        }
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.unobserve(video);
+    };
+  }, [hasUserStarted]);
+
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      setHasUserStarted(true);
+      video.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
   const whyChooseUs = [
     {
       id: 1,
@@ -143,7 +191,7 @@ const About = () => {
         .team-img-wrap {
           width:100%;
           max-width:340px;
-          height:420px;
+          height:370px;
           border-radius:20px;
           overflow:hidden;
           box-shadow:0 15px 40px rgba(0,0,0,0.08);
@@ -157,7 +205,7 @@ const About = () => {
         }
 
         .team-img-wrap:hover img {
-          transform:scale(1.15);
+          transform:scale(1.05);
         }
 
         .team-member h5{
@@ -272,6 +320,45 @@ const About = () => {
           line-height:1.8;
         }
 
+        .video-wrap{
+          position:relative;
+          width:100%;
+          height:420px;
+          cursor:pointer;
+        }
+
+        .video-play-overlay{
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%, -50%);
+          width:78px;
+          height:78px;
+          border-radius:50%;
+          background:rgba(0,0,0,0.55);
+          backdrop-filter:blur(10px);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          box-shadow:0 14px 35px rgba(0,0,0,0.18);
+          transition:all 0.3s ease;
+          z-index:2;
+        }
+
+        .video-play-overlay:hover{
+          transform:translate(-50%, -50%) scale(1.08);
+          background:rgba(0,0,0,0.68);
+        }
+
+        .video-play-triangle{
+          width:0;
+          height:0;
+          border-top:13px solid transparent;
+          border-bottom:13px solid transparent;
+          border-left:20px solid #fff;
+          margin-left:5px;
+        }
+
         @keyframes slideLeft{
           from{
             opacity:0;
@@ -328,6 +415,21 @@ const About = () => {
             width:54px;
             height:54px;
           }
+
+          .video-wrap{
+            height:340px;
+          }
+
+          .video-play-overlay{
+            width:66px;
+            height:66px;
+          }
+
+          .video-play-triangle{
+            border-top:11px solid transparent;
+            border-bottom:11px solid transparent;
+            border-left:17px solid #fff;
+          }
         }
       `}</style>
 
@@ -350,23 +452,27 @@ const About = () => {
             </Col>
 
             <Col lg={6}>
-  <video
-    src="/videos/pd2.mp4"
-    autoPlay
-    muted
-    loop
-    playsInline
-    preload="metadata"
-    style={{
-      width: "100%",
-      height: "420px",
-      objectFit: "contain",
-      borderRadius: "25px",
-      display: "block",
-      // background: "#000",
-    }}
-  />
-</Col>
+              <div className="video-wrap" onClick={handleVideoClick}>
+                <video
+                  ref={videoRef}
+                  src="/videos/ab1.mp4"
+                  loop
+                  playsInline
+                  preload="metadata"
+                  style={{
+                    width: "100%",
+                    height: "420px",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+                {!isPlaying && (
+                  <div className="video-play-overlay">
+                    <div className="video-play-triangle"></div>
+                  </div>
+                )}
+              </div>
+            </Col>
           </Row>
         </div>
 
@@ -490,7 +596,7 @@ const About = () => {
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a2.jpg" alt="Dr. Aris Thorne" />
+                <img src="/Images/user9.png" alt="Dr. Aris Thorne" />
               </div>
               <h5>Dr. Aris Thorne</h5>
               <p className="text-muted">Chief AI Officer</p>
@@ -500,7 +606,7 @@ const About = () => {
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a3.jpg" alt="Sarah Jenkins" />
+                <img src="/Images/user9.png" alt="Sarah Jenkins" />
               </div>
               <h5>Sarah Jenkins</h5>
               <p className="text-muted">CEO & Founder</p>
@@ -510,7 +616,7 @@ const About = () => {
           <Col md={4}>
             <div className="team-member">
               <div className="team-img-wrap">
-                <img src="/Images/a4.jpg" alt="Marcus Chen" />
+                <img src="/Images/user9.png" alt="Marcus Chen" />
               </div>
               <h5>Marcus Chen</h5>
               <p className="text-muted">Head of Design</p>

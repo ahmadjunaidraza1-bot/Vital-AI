@@ -250,7 +250,8 @@ const Footer = () => {
             <Col xs={12} md={6} lg={3}>
               <div className="glass-card">
                 <div className="vital-brand mb-3">
-                  <span className="vital-logo">V</span>
+                  {/* <span className="vital-logo">V</span> */}
+                  <img src="/Images/logoW.png" alt="" style={{height:"40px"}} />
                   <span>VITAL AI</span>
                 </div>
 
@@ -277,6 +278,7 @@ const Footer = () => {
                   <li><a href="#portfolio" className="footer-link">Portfolio</a></li>
                   <li><a href="#blog" className="footer-link">Blog</a></li>
                   <li><a href="#contact" className="footer-link">Contact</a></li>
+                  <li><a href="#about" className="footer-link">About</a></li>
                 </ul>
               </div>
             </Col>
@@ -289,7 +291,8 @@ const Footer = () => {
                   <li><a href="#services" className="footer-link">AI E-Commerce</a></li>
                   <li><a href="#services" className="footer-link">Web Development</a></li>
                   <li><a href="#services" className="footer-link">Digital Marketing</a></li>
-                  <li><a href="#services" className="footer-link">Mobile Apps</a></li>
+                  <li><a href="#services" className="footer-link">Virtual Product Demo</a></li>
+                  <li><a href="#services" className="footer-link">Social Media Content</a></li>
                 </ul>
               </div>
             </Col>
@@ -301,33 +304,23 @@ const Footer = () => {
 
                 <div className="contact-row">
                   <span className="contact-icon"><GeoAltFill size={15} /></span>
-                  <span>123 Innovation Way, Tech City</span>
+                  <span>MANCHESTER,United Kingdom</span>
                 </div>
 
                 <div className="contact-row">
                   <span className="contact-icon"><TelephoneFill size={14} /></span>
-                  <span>+1 (555) 000-1234</span>
+                  <span>+44 7398 390815</span>
                 </div>
 
                 <div className="contact-row">
                   <span className="contact-icon"><EnvelopeFill size={14} /></span>
-                  <span>hello@vital-ai.com</span>
+                  <span>info@vitalai.co.uk</span>
                 </div>
 
                 <Form
                   className="d-flex gap-2 mt-3"
                   onSubmit={(e) => e.preventDefault()}
                 >
-                  <Form.Control
-                    type="email"
-                    placeholder="Your email"
-                    className="newsletter-input"
-                    required
-                  />
-
-                  <Button type="submit" className="btn-gradient">
-                    Subscribe
-                  </Button>
                 </Form>
               </div>
             </Col>

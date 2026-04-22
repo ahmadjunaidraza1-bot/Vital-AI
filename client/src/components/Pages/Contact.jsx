@@ -224,7 +224,7 @@ const Contact = () => {
                   href="mailto:hello@vital-ai.com"
                   style={{ color: "#7c3aed", textDecoration: "none", fontWeight: "600" }}
                 >
-                  hello@vital-ai.com →
+                  Info@vitalai.co.uk →
                 </a>
               </div>
 
@@ -241,7 +241,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   style={{ color: "#25D366", textDecoration: "none", fontWeight: "600" }}
                 >
-                  +1 (555) 000-1234 →
+                  +44 7398 390815 →
                 </a>
               </div>
 
@@ -251,8 +251,8 @@ const Contact = () => {
                   <GeoAltFill size={24} />
                 </div>
                 <h5 className="fw-bold mb-2">Our Headquarters</h5>
-                <p className="text-muted mb-0">Silicon Valley, CA</p>
-                <p className="text-muted">United States</p>
+                <p className="text-muted mb-0">MANCHESTER</p>
+                <p className="text-muted">United Kingdom</p>
               </div>
 
               {/* Availability */}
@@ -266,7 +266,7 @@ const Contact = () => {
                   immediately. We usually respond within 2 hours.
                 </p>
                 <div className="availability-badge">
-                  📅 Mon - Fri, 9am - 6pm EST
+                  📅  Mon - Fri, 09:00 AM – 06:00 PM (BST)
                 </div>
               </div>
             </Col>
@@ -307,7 +307,7 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="hello@example.com"
+                        placeholder="Info@vitalai.co.uk"
                         className="form-control-custom"
                         required
                       />
@@ -319,7 +319,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 000-1234"
+                        placeholder="+44 7398 390815"
                         className="form-control-custom"
                       />
                     </Col>
@@ -362,14 +362,14 @@ const Contact = () => {
         <Container>
           <div className="glass-card p-2 overflow-hidden" style={{ borderRadius: "24px" }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50770.36281254623!2d-122.083851!3d37.386051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb68ad0cfc739%3A0x7f9b2e2f5b6b8b2e!2sSilicon%20Valley%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.3759876462436!2d-2.2487476!3d53.4796115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1c2f9e3cdf9%3A0x429f267898d93986!2sDeansgate%2C%20Manchester%2C%20UK!5e0!3m2!1sen!2s!4v1776843668991!5m2!1sen!2s"
               width="100%"
               height="350"
               style={{ border: 0, borderRadius: "16px" }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Our Location"
+              title="Manchester Location"
             ></iframe>
           </div>
         </Container>
@@ -424,8 +424,8 @@ const Contact = () => {
             <p className="text-white-50 fs-5 mb-4">
               Join 500+ businesses already growing with VITAL AI
             </p>
-            <Button 
-              className="main-btn bg-white" 
+            <Button
+              className="main-btn bg-white"
               style={{ color: "#7c3aed", background: "white" }}
               onClick={() => window.location.href = "/pricing"}
             >

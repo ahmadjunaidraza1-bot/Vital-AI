@@ -23,11 +23,6 @@ const Home = () => {
     if (el) observedRefs.current[id] = el;
   };
 
-  const openVideo = (path) => {
-    setActiveVideo(path);
-    setShowVideo(true);
-  };
-
   const closeVideo = () => {
     setShowVideo(false);
     setActiveVideo("");
@@ -59,6 +54,112 @@ const Home = () => {
 
   const revealClass = (sectionId, type = "up") =>
     `${visible[sectionId] ? `reveal ${type} show` : `reveal ${type}`}`;
+
+  const services = [
+    {
+      title: "Virtual Product Demo",
+      icon: <CameraVideoFill />,
+      desc: "AI-powered try-ons and ads",
+      motion: "left",
+    },
+    {
+      title: "E-Commerce Solutions",
+      icon: <Globe2 />,
+      desc: "Smart stores & AI automation",
+      motion: "up",
+    },
+    {
+      title: "Web Development",
+      icon: <LightningChargeFill />,
+      desc: "Modern blazing-fast websites",
+      motion: "up",
+    },
+    {
+      title: "Social Media Content",
+      icon: <Stars />,
+      desc: "Viral reels and ad creatives",
+      motion: "right",
+    },
+  ];
+
+  const studioItems = [
+    {
+      title: "Virtual Try-Ons",
+      desc: "Let customers see clothes on realistic AI models.",
+      img: "/Images/42.png",
+      link: "/clothes",
+      motion: "left",
+    },
+    {
+      title: "Jewelry Rendering",
+      desc: "Hyper-realistic 3D jewelry demonstrations.",
+      img: "/Images/4.png",
+      link: "/jewelery",
+      motion: "up",
+    },
+    {
+      title: "TikTok Trending Store",
+      desc: "Viral-ready videos for TikTok & Instagram.",
+      src: "/videos/h6.mp4",
+      link: "/tiktok",
+      motion: "up",
+    },
+    {
+      title: "Social Media Ads",
+      desc: "Generate 100+ ad variations in minutes.",
+      img: "/Images/cr4.png",
+      link: "/socialmedia",
+      motion: "right",
+    },
+  ];
+
+  const projects = [
+    {
+      id: "pro-chauffeurs",
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts",
+      img: "/Images/p1.webp",
+      motion: "left",
+    },
+    {
+      id: "aura-e-commerce",
+      title: "Aura E-Commerce",
+      category: "E-Commerce",
+      img: "/Images/p3.webp",
+      motion: "up",
+    },
+    {
+      id: "zenith-mobile-app",
+      title: "Zenith Mobile App",
+      category: "Mobile App",
+      img: "/Images/p2.webp",
+      motion: "right",
+    },
+  ];
+
+  const testimonials = [
+    {
+      text: `"VITAL AI transformed our digital presence. Their AI-driven approach to e-commerce increased our conversion rate by 45% in just three months."`,
+      name: "Sarah Johnson",
+      role: "CEO at TechFlow",
+      img: "/Images/t1.jpg",
+      motion: "left",
+    },
+    {
+      text: `"The most professional team we have worked with. Their ability to blend high-end design with complex AI logic is truly impressive."`,
+      name: "Michael Chen",
+      role: "Founder of Nexus",
+      img: "/Images/t2.jpg",
+      motion: "right",
+    },
+  ];
+
+  const aboutPoints = [
+    "AI-driven product development",
+    "Modern scalable architecture",
+    "Global expert team",
+    "High-performance AI systems",
+  ];
 
   return (
     <>
@@ -109,21 +210,21 @@ const Home = () => {
         }
 
         .main-btn {
-  border: none;
-  padding: 9px 20px;
-  border-radius: 50px;
-  color: #fff;
-  font-weight: 600;
-  background: linear-gradient(90deg, #7c3aed, #ec4899);
-  transition: 0.3s ease;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 40px;
-  font-size: 14px;
-}
+          border: none;
+          padding: 9px 20px;
+          border-radius: 50px;
+          color: #fff;
+          font-weight: 600;
+          background: linear-gradient(90deg, #7c3aed, #ec4899);
+          transition: 0.3s ease;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          min-height: 40px;
+          font-size: 14px;
+        }
 
         .main-btn:hover {
           transform: translateY(-3px);
@@ -133,22 +234,22 @@ const Home = () => {
         }
 
         .outline-btn {
-  border: 2px solid #7c3aed;
-  color: #7c3aed;
-  padding: 9px 20px;
-  border-radius: 50px;
-  font-weight: 600;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  min-height: 40px;
-  font-size: 14px;
-}
+          border: 2px solid #7c3aed;
+          color: #7c3aed;
+          padding: 9px 20px;
+          border-radius: 50px;
+          font-weight: 600;
+          background: #fff;
+          cursor: pointer;
+          transition: 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          text-decoration: none;
+          min-height: 40px;
+          font-size: 14px;
+        }
 
         .outline-btn:hover {
           background: #7c3aed10;
@@ -197,19 +298,51 @@ const Home = () => {
         }
 
         .hero-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(
-    90deg,
-    rgba(0,0,0,0.7) 0%,
-    rgba(0,0,0,0.3) 50%,
-    transparent 100%
-  );
-  padding: 20px 0;
-  padding-top: 70px;
-}
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          text-align: left;
+          background: linear-gradient(
+            90deg,
+            rgba(0,0,0,0.72) 0%,
+            rgba(0,0,0,0.42) 38%,
+            rgba(0,0,0,0.18) 60%,
+            transparent 100%
+          );
+          padding: 20px 0;
+          padding-top: 70px;
+        }
+
+        .hero-content {
+          max-width: 560px;
+        }
+
+        .hero-mini-title {
+          font-size: 11px;
+          padding: 5px 12px;
+          margin-bottom: 10px;
+        }
+
+        .hero-title {
+          font-size: 2.2rem;
+          line-height: 1.25;
+          font-weight: 700;
+        }
+
+        .hero-buttons {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+
+        .hero-btn-small {
+          padding: 8px 18px !important;
+          min-height: 38px !important;
+          font-size: 13px !important;
+        }
 
         .studio-card {
           position: relative;
@@ -502,195 +635,234 @@ const Home = () => {
           .section-space {
             padding: 70px 0;
           }
-        }
 
-        @media (max-width: 991px) {
-          .section-space {
-            padding: 60px 0;
-          }
-
-          .hero-overlay {
-  text-align: center;
-  justify-content: center;
-  background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.68) 0%,
-    rgba(0,0,0,0.42) 55%,
-    rgba(0,0,0,0.28) 100%
-  );
-  padding-top: 90px;
-}
-
-          .studio-card {
-            height: 240px;
-          }
-
-          .work-overlay {
-            padding: 24px;
-          }
-
-          .work-glass {
-            left: 16px;
-            right: 16px;
-            bottom: 16px;
-          }
-        }
-
-        @media (max-width: 767px) {
-          .section-space {
-            padding: 50px 0;
-          }
-
-          .container {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .display-4 {
+          .hero-title {
             font-size: 2rem;
-            line-height: 1.2;
           }
+        }
 
-          .display-5 {
-            font-size: 1.75rem;
-            line-height: 1.25;
-          }
+       @media (max-width: 991px) {
+  .section-space {
+    padding: 60px 0;
+  }
 
-          .fs-5 {
-            font-size: 0.98rem !important;
-            line-height: 1.75;
-          }
+  .hero-overlay {
+    align-items: flex-end;
+    justify-content: flex-start;
+    text-align: left;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.18) 0%,
+      rgba(0,0,0,0.28) 35%,
+      rgba(0,0,0,0.72) 100%
+    );
+    padding: 0 0 28px 0;
+  }
 
-          .hero-media {
-            height: 480px;
-          }
+  .hero-content {
+    max-width: 85%;
+    margin: 0;
+  }
 
-          .main-btn,
-.outline-btn {
-  padding: 8px 10px;
-  font-size: 12px;
-  min-height: 38px;
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  .studio-card {
+    height: 240px;
+  }
+
+  .work-overlay {
+    padding: 24px;
+  }
+
+  .work-glass {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
 }
 
-          .studio-card {
-            height: 240px;
-          }
+@media (max-width: 767px) {
+  .section-space {
+    padding: 50px 0;
+  }
 
-          .studio-visual.image {
-            background-size: cover;
-            background-position: center;
-          }
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
-          .feature-icon {
-            width: 54px;
-            height: 54px;
-            font-size: 22px;
-            border-radius: 16px;
-          }
+  .display-4 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
 
-          .about-card {
-            padding: 16px 16px;
-            font-size: 14px;
-          }
+  .display-5 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
 
-          .work-card {
-            height: 360px;
-            border-radius: 20px;
-          }
+  .fs-5 {
+    font-size: 0.98rem !important;
+    line-height: 1.75;
+  }
 
-          .work-overlay {
-            opacity: 1;
-            padding: 20px;
-            background: linear-gradient(
-              to top,
-              rgba(0, 0, 0, 0.82),
-              rgba(0, 0, 0, 0.28),
-              transparent
-            );
-          }
+  .hero-media {
+    height: 480px;
+  }
 
-          .work-content {
-            transform: translateY(0);
-          }
+  .hero-title {
+    font-size: 1.45rem;
+    line-height: 1.2;
+    margin-bottom: 10px !important;
+  }
 
-          .work-glass {
-            display: none;
-          }
+  .hero-mini-title {
+    font-size: 10px;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+  }
 
-          .work-title {
-            font-size: 22px;
-            margin-bottom: 10px;
-          }
+  .hero-buttons {
+    gap: 8px;
+  }
 
-          .testimonial-card {
-            padding: 24px;
-            border-radius: 20px;
-          }
+  .main-btn,
+  .outline-btn {
+    padding: 7px 10px;
+    font-size: 11px;
+    min-height: 34px;
+  }
 
-          .quote-icon {
-            font-size: 42px;
-            top: 12px;
-            right: 16px;
-          }
+  .hero-btn-small {
+    padding: 7px 12px !important;
+    min-height: 34px !important;
+    font-size: 11px !important;
+  }
 
-          .testimonial-text {
-            font-size: 15px;
-            margin-bottom: 20px;
-          }
+  .studio-card {
+    height: 240px;
+  }
 
-          .client-img {
-            width: 46px;
-            height: 46px;
-          }
+  .studio-visual.image {
+    background-size: cover;
+    background-position: center;
+  }
 
-          .modal-dialog {
-            margin: 10px;
-          }
+  .feature-icon {
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+    border-radius: 16px;
+  }
 
-          .modal-content {
-            border-radius: 20px;
-            overflow: hidden;
-          }
+  .about-card {
+    padding: 16px 16px;
+    font-size: 14px;
+  }
 
-          .modal-video {
-            max-height: 60vh;
-          }
-        }
+  .work-card {
+    height: 360px;
+    border-radius: 20px;
+  }
 
-        @media (max-width: 575px) {
-          .hero-media {
-            height: 430px;
-          }
+  .work-overlay {
+    opacity: 1;
+    padding: 20px;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.82),
+      rgba(0, 0, 0, 0.28),
+      transparent
+    );
+  }
 
-          .mini-title {
-            font-size: 11px;
-            padding: 6px 14px;
-          }
+  .work-content {
+    transform: translateY(0);
+  }
 
-          .studio-card {
-            height: 220px;
-          }
+  .work-glass {
+    display: none;
+  }
 
-          .work-card {
-            height: 320px;
-          }
+  .work-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
 
-          .main-btn,
-          .outline-btn {
-            width: 35%;
-          }
+  .testimonial-card {
+    padding: 24px;
+    border-radius: 20px;
+  }
 
-          .d-flex.gap-3.flex-wrap.justify-content-center {
-            width: 100%;
-          }
+  .quote-icon {
+    font-size: 42px;
+    top: 12px;
+    right: 16px;
+  }
 
-          .client-flex {
-            align-items: flex-start;
-          }
-        }
+  .testimonial-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .client-img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+  }
+
+  .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .modal-video {
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-media {
+    height: 430px;
+  }
+
+  .hero-content {
+    max-width: 92%;
+  }
+
+  .mini-title {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+
+  .hero-title {
+    font-size: 1.3rem;
+  }
+
+  .studio-card {
+    height: 220px;
+  }
+
+  .work-card {
+    height: 320px;
+  }
+
+  .main-btn,
+  .outline-btn {
+    width: auto;
+  }
+
+  .client-flex {
+    align-items: flex-start;
+  }
+}
       `}</style>
 
-      {/* HERO SECTION - FULL WIDTH CAROUSEL */}
       <section>
         <Carousel fade controls indicators interval={3500} pause={false}>
           <Carousel.Item>
@@ -703,27 +875,29 @@ const Home = () => {
               />
               <div className="hero-overlay">
                 <Container>
-                  <Row className="justify-content-center text-center">
-                    <Col lg={8}>
-                      <div className="mini-title text-white">
-                        ✨ Next-Gen Digital Agency
-                      </div>
-                      <h1 className="display-4 fw-bold text-white mb-4">
-                        <span className="gradient-text">AI-Powered</span>
-                        <br />
-                        Digital Solutions
-                      </h1>
-                      <div className="d-flex gap-3 flex-wrap justify-content-center">
-                        <Button as={Link} to="/contact" className="main-btn">
-                          Book a strategy Call ✨
-                        </Button>
-                        <Link
-                          to="/services"
-                          className="outline-btn"
-                          style={{ background: "#fff" }}
-                        >
-                          Learn More →
-                        </Link>
+                  <Row className="align-items-center">
+                    <Col lg={6} md={8}>
+                      <div className="hero-content">
+                        <div className="mini-title text-white hero-mini-title">
+                          ✨ Next-Gen Digital Agency
+                        </div>
+                        <h1 className="text-white mb-3 hero-title">
+                          <span className="gradient-text">AI-Powered</span>
+                          <br />
+                          Digital Solutions
+                        </h1>
+                        <div className="hero-buttons">
+                          <Button as={Link} to="/contact" className="main-btn hero-btn-small">
+                            Book a strategy Call ✨
+                          </Button>
+                          <Link
+                            to="/services"
+                            className="outline-btn hero-btn-small"
+                            style={{ background: "#fff" }}
+                          >
+                            Learn More →
+                          </Link>
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -742,20 +916,14 @@ const Home = () => {
               />
               <div className="hero-overlay">
                 <Container>
-                  <Row className="justify-content-center text-center">
-                    <Col lg={8}>
-                      <h1 className="display-4 fw-bold text-white mb-2">
-                        <span className="gradient-text">Luxury Jewelry</span>
-                        <br />
-                        Visual Experience
-                      </h1>
-                      <div className="d-flex gap-3 flex-wrap justify-content-center">
-                        <Button as={Link} to="/jewelery" className="main-btn">
-                          View Jewelry Collection
-                        </Button>
-                        <Link to="/contact" className="outline-btn" style={{ background: "#fff" }}>
-                          Get Started →
-                        </Link>
+                  <Row className="align-items-center">
+                    <Col lg={6} md={8}>
+                      <div className="hero-content">
+                        <h1 className="text-white mb-2 hero-title">
+                          <span className="gradient-text">Luxury Jewelry</span>
+                          <br />
+                          Visual Experience
+                        </h1>
                       </div>
                     </Col>
                   </Row>
@@ -774,20 +942,14 @@ const Home = () => {
               />
               <div className="hero-overlay">
                 <Container>
-                  <Row className="justify-content-center text-center">
-                    <Col lg={8}>
-                      <h1 className="display-4 fw-bold text-white mb-4">
-                        <span className="gradient-text">Smart AI Websites</span>
-                        <br />
-                        Built to Convert
-                      </h1>
-                      <div className="d-flex gap-3 flex-wrap justify-content-center">
-                        <Button as={Link} to="/services" className="main-btn">
-                          Explore Services
-                        </Button>
-                        <Link to="/contact" className="outline-btn" style={{ background: "#fff" }}>
-                          Get Started →
-                        </Link>
+                  <Row className="align-items-center">
+                    <Col lg={6} md={8}>
+                      <div className="hero-content">
+                        <h1 className="text-white mb-3 hero-title">
+                          <span className="gradient-text">Smart AI Websites</span>
+                          <br />
+                          Built to Convert
+                        </h1>
                       </div>
                     </Col>
                   </Row>
@@ -798,7 +960,6 @@ const Home = () => {
         </Carousel>
       </section>
 
-      {/* AI VIRTUAL STUDIO SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("studio")}
@@ -812,7 +973,7 @@ const Home = () => {
                   <div className="mini-title">🎬 New: AI Virtual Studio</div>
                 </div>
                 <h2 className={`fw-bold display-4 mb-3 ${revealClass("studio", "zoom")}`}>
-                  Revolutionize Your <br />
+                  Revolutionise Your <br />
                   <span className="gradient-text">Product Presentation</span>
                 </h2>
                 <p
@@ -826,36 +987,7 @@ const Home = () => {
               </div>
 
               <Row className="g-4 justify-content-center mb-4">
-                {[
-                  {
-                    title: "Virtual Try-Ons",
-                    desc: "Let customers see clothes on realistic AI models.",
-                    img: "/Images/42.png",
-                    link: "/clothes",
-                    motion: "left",
-                  },
-                  {
-                    title: "Jewelry Rendering",
-                    desc: "Hyper-realistic 3D jewelry demonstrations.",
-                    img: "/Images/4.png",
-                    link: "/jewelery",
-                    motion: "up",
-                  },
-                  {
-                    title: "TikTok Trending Store",
-                    desc: "Viral-ready videos for TikTok & Instagram.",
-                    src: "/videos/h6.mp4",
-                    link: "/tiktok",
-                    motion: "up",
-                  },
-                  {
-                    title: "Social Media Ads",
-                    desc: "Generate 100+ ad variations in minutes.",
-                    img: "/Images/cr6.png",
-                    link: "/socialmedia",
-                    motion: "right",
-                  },
-                ].map((item, i) => (
+                {studioItems.map((item, i) => (
                   <Col sm={6} md={6} lg={3} key={i}>
                     <div className={revealClass("studio", item.motion)}>
                       <Link to={item.link} style={{ textDecoration: "none" }}>
@@ -897,7 +1029,14 @@ const Home = () => {
                               color: "#fff",
                             }}
                           >
-                            <b style={{ fontSize: "22px", display: "block", marginBottom: "8px", lineHeight: "1.25" }}>
+                            <b
+                              style={{
+                                fontSize: "22px",
+                                display: "block",
+                                marginBottom: "8px",
+                                lineHeight: "1.25",
+                              }}
+                            >
                               {item.title}
                             </b>
                             <p
@@ -931,7 +1070,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* SERVICES SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("services")}
@@ -949,18 +1087,13 @@ const Home = () => {
           </div>
 
           <Row className="g-4">
-            {[
-              ["Virtual Product Demo", <CameraVideoFill />, "AI-powered try-ons and ads", "left"],
-              ["E-Commerce Solutions", <Globe2 />, "Smart stores & AI automation", "up"],
-              ["Web Development", <LightningChargeFill />, "Modern blazing-fast websites", "up"],
-              ["Social Media Content", <Stars />, "Viral reels and ad creatives", "right"],
-            ].map((item, i) => (
+            {services.map((item, i) => (
               <Col md={6} lg={3} key={i}>
-                <div className={revealClass("services", item[3])}>
+                <div className={revealClass("services", item.motion)}>
                   <Card className="glass p-4 h-100 border-0 hover-card">
-                    <div className="feature-icon">{item[1]}</div>
-                    <h5 className="fw-bold">{item[0]}</h5>
-                    <p className="text-muted">{item[2]}</p>
+                    <div className="feature-icon">{item.icon}</div>
+                    <h5 className="fw-bold">{item.title}</h5>
+                    <p className="text-muted">{item.desc}</p>
                     <Link to="/services" className="gradient-text" style={{ cursor: "pointer" }}>
                       Learn More →
                     </Link>
@@ -972,7 +1105,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* ABOUT SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("about")}
@@ -995,12 +1127,7 @@ const Home = () => {
                 </p>
 
                 <Row className="mt-5 g-4">
-                  {[
-                    "AI-driven product development",
-                    "Modern scalable architecture",
-                    "Global expert team",
-                    "High-performance AI systems",
-                  ].map((text, i) => (
+                  {aboutPoints.map((text, i) => (
                     <Col sm={6} key={i}>
                       <div className={revealClass("about", i % 2 === 0 ? "left" : "right")}>
                         <div className="about-card d-flex align-items-center gap-3">
@@ -1023,7 +1150,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* OUR WORK SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("work")}
@@ -1045,29 +1171,7 @@ const Home = () => {
           </div>
 
           <Row className="g-4">
-            {[
-              {
-                id: "pro-chauffeurs",
-                title: "Pro Chauffeurs",
-                category: "Social Media Posts",
-                img: "/Images/p1.webp",
-                motion: "left",
-              },
-              {
-                id: "aura-e-commerce",
-                title: "Aura E-Commerce",
-                category: "E-Commerce",
-                img: "/Images/p3.webp",
-                motion: "up",
-              },
-              {
-                id: "zenith-mobile-app",
-                title: "Zenith Mobile App",
-                category: "Mobile App",
-                img: "/Images/p2.webp",
-                motion: "right",
-              },
-            ].map((item, i) => (
+            {projects.map((item, i) => (
               <Col md={6} lg={4} key={i}>
                 <div className={revealClass("work", item.motion)}>
                   <div
@@ -1104,7 +1208,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* TESTIMONIALS SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("testimonials")}
@@ -1121,22 +1224,7 @@ const Home = () => {
           </div>
 
           <Row className="g-4">
-            {[
-              {
-                text: `"VITAL AI transformed our digital presence. Their AI-driven approach to e-commerce increased our conversion rate by 45% in just three months."`,
-                name: "Sarah Johnson",
-                role: "CEO at TechFlow",
-                img: "/Images/t1.jpg",
-                motion: "left",
-              },
-              {
-                text: `"The most professional team we have worked with. Their ability to blend high-end design with complex AI logic is truly impressive."`,
-                name: "Michael Chen",
-                role: "Founder of Nexus",
-                img: "/Images/t2.jpg",
-                motion: "right",
-              },
-            ].map((item, i) => (
+            {testimonials.map((item, i) => (
               <Col md={6} key={i}>
                 <div className={revealClass("testimonials", item.motion)}>
                   <div className="testimonial-card">
@@ -1162,7 +1250,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* CTA SECTION */}
       <section
         className="section-space"
         ref={setSectionRef("cta")}
@@ -1193,7 +1280,6 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* VIDEO MODAL */}
       <Modal show={showVideo} onHide={closeVideo} centered size="lg">
         <Modal.Body className="p-0 bg-black">
           <video

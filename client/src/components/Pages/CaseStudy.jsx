@@ -5,7 +5,7 @@ const CaseStudy = () => {
   const cases = [
     {
       title: "Global Retailer AI Transformation",
-      img: "/Images/cs1.jpg",
+      img: "/Images/cr11.png",
       problem:
         "A major retail brand was struggling with low conversion rates and inefficient inventory management across 50+ stores.",
       solution:
@@ -18,7 +18,7 @@ const CaseStudy = () => {
     },
     {
       title: "FinTech App User Engagement",
-      img: "/Images/cs2.jpg",
+      img: "/Images/cr 17.png",
       problem:
         "A startup fintech app had high churn rates due to a complex onboarding process and lack of personalized features.",
       solution:
