@@ -304,7 +304,7 @@ const Footer = () => {
 
                 <div className="contact-row">
                   <span className="contact-icon"><GeoAltFill size={15} /></span>
-                  <span>MANCHESTER,United Kingdom</span>
+                  <span>Manchester, United Kingdom</span>
                 </div>
 
                 <div className="contact-row">

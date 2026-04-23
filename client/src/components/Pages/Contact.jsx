@@ -251,7 +251,7 @@ const Contact = () => {
                   <GeoAltFill size={24} />
                 </div>
                 <h5 className="fw-bold mb-2">Our Headquarters</h5>
-                <p className="text-muted mb-0">MANCHESTER</p>
+                <p className="text-muted mb-0">Manchester,</p>
                 <p className="text-muted">United Kingdom</p>
               </div>
 
