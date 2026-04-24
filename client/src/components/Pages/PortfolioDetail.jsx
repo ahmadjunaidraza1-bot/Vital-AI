@@ -1,21 +1,29 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import {
-  ArrowLeft,
-  StarFill,
-} from "react-bootstrap-icons";
+import { Container, Row, Col, Button, Card, Modal } from "react-bootstrap";
+import { ArrowLeft, StarFill } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const PortfolioDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Refs for auto-play videos
   const cinematicVideoRef = useRef(null);
   const socialVideoRef = useRef(null);
 
-  // Project data with clear separation
+  const [showGalleryModal, setShowGalleryModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const openGalleryImage = (img) => {
+    setSelectedImage(img);
+    setShowGalleryModal(true);
+  };
+
+  const closeGalleryImage = () => {
+    setShowGalleryModal(false);
+    setSelectedImage("");
+  };
+
   const projects = {
     "pro-chauffeurs": {
       title: "Pro Chauffeurs",
@@ -244,7 +252,6 @@ const PortfolioDetail = () => {
 
   const project = projects[id];
 
-  // Auto-play video when in viewport
   useEffect(() => {
     const options = {
       root: null,
@@ -286,6 +293,7 @@ const PortfolioDetail = () => {
       if (cinematicVideoRef.current) {
         cinematicObserver.unobserve(cinematicVideoRef.current);
       }
+
       if (socialVideoRef.current) {
         socialObserver.unobserve(socialVideoRef.current);
       }
@@ -332,6 +340,7 @@ const PortfolioDetail = () => {
         .main-btn:hover {
           transform: translateY(-3px);
           box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+          color: #fff;
         }
 
         .custom-card {
@@ -379,6 +388,32 @@ const PortfolioDetail = () => {
         .gallery-img:hover {
           transform: scale(1.05);
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-popup-img {
+          width: 100%;
+          max-height: 85vh;
+          object-fit: contain;
+          border-radius: 18px;
+        }
+
+        .gallery-modal .modal-content {
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+
+        .gallery-modal .modal-header {
+          border: none;
+          padding: 0 0 10px 0;
+        }
+
+        .gallery-modal .btn-close {
+          background-color: #fff;
+          border-radius: 50%;
+          opacity: 1;
+          padding: 10px;
+          margin-left: auto;
         }
 
         .feature-badge {
@@ -455,10 +490,17 @@ const PortfolioDetail = () => {
             max-width: 280px;
             aspect-ratio: 4 / 5;
           }
+
+          .gallery-img {
+            height: 200px;
+          }
+
+          .gallery-popup-img {
+            max-height: 75vh;
+          }
         }
       `}</style>
 
-      {/* Back Button */}
       <section className="pt-5">
         <Container>
           <div onClick={() => navigate("/portfolio")} className="back-link">
@@ -467,7 +509,6 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {/* Banner Section */}
       <section className="py-4">
         <Container>
           <div className="position-relative rounded-4 overflow-hidden shadow-lg">
@@ -480,6 +521,7 @@ const PortfolioDetail = () => {
                 objectFit: "cover",
               }}
             />
+
             <div
               className="position-absolute bottom-0 start-0 end-0 p-5"
               style={{
@@ -493,16 +535,17 @@ const PortfolioDetail = () => {
               >
                 {project.category}
               </span>
+
               <h1 className="text-white display-3 fw-bold mt-3">
                 {project.title}
               </h1>
+
               <p className="text-white-50 fs-5">{project.description}</p>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* The Brand Story Section */}
       <section className="py-5">
         <Container>
           <Row className="g-5">
@@ -510,15 +553,18 @@ const PortfolioDetail = () => {
               <Card className="custom-card h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 p-lg-5">
                   <span className="section-title">The Brand Story</span>
+
                   <h2 className="fw-bold display-6 mb-4 card-gradient-heading">
                     {project.title}
                   </h2>
+
                   <p
                     className="text-muted fs-5 mb-4"
                     style={{ lineHeight: "1.8" }}
                   >
                     {project.story}
                   </p>
+
                   <Row className="g-3 mt-2">
                     {project.highlights.map((item, i) => (
                       <Col md={6} key={i}>
@@ -538,19 +584,25 @@ const PortfolioDetail = () => {
             <Col lg={5}>
               <Card className="custom-card h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 p-lg-5">
-                  <h5 className="fw-bold mb-4 gradient-text">Project Details</h5>
+                  <h5 className="fw-bold mb-4 gradient-text">
+                    Project Details
+                  </h5>
+
                   <div className="mb-3 pb-2 border-bottom">
                     <small className="text-muted d-block mb-1">Client</small>
                     <strong>{project.details.client}</strong>
                   </div>
+
                   <div className="mb-3 pb-2 border-bottom">
                     <small className="text-muted d-block mb-1">Industry</small>
                     <strong>{project.details.industry}</strong>
                   </div>
+
                   <div className="mb-3 pb-2 border-bottom">
                     <small className="text-muted d-block mb-1">Services</small>
                     <strong>{project.details.services}</strong>
                   </div>
+
                   <div>
                     <small className="text-muted d-block mb-1">Year</small>
                     <strong>{project.details.year}</strong>
@@ -562,16 +614,17 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {/* Cinematic Experience Section - ONLY for Pro Chauffeurs */}
       {id === "pro-chauffeurs" && (
         <section className="py-5">
           <Container>
             <Card className="custom-card border-0 shadow-sm overflow-hidden">
               <Card.Body className="p-4 p-lg-5 text-center">
                 <span className="section-title">{project.cinematic.title}</span>
+
                 <h2 className="display-4 fw-bold card-gradient-heading mb-4">
                   {project.cinematic.subtitle}
                 </h2>
+
                 <div className="video-wrapper">
                   <video
                     ref={cinematicVideoRef}
@@ -592,23 +645,27 @@ const PortfolioDetail = () => {
         </section>
       )}
 
-      {/* Social Media Section */}
       <section className="py-5">
         <Container>
           <Card className="custom-card border-0 shadow-sm overflow-hidden">
             <Card.Body className="p-4 p-lg-5">
               <Row className="align-items-center g-5">
                 <Col lg={6}>
-                  <span className="section-title">{project.socialMedia.title}</span>
+                  <span className="section-title">
+                    {project.socialMedia.title}
+                  </span>
+
                   <h2 className="fw-bold display-5 mb-4 card-gradient-heading">
                     {project.socialMedia.subtitle}
                   </h2>
+
                   <p
                     className="text-muted fs-5 mb-4"
                     style={{ lineHeight: "1.8" }}
                   >
                     {project.socialMedia.description}
                   </p>
+
                   <Row className="g-3">
                     {project.socialMedia.features.map((feature, i) => (
                       <Col md={6} key={i}>
@@ -646,17 +703,18 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {/* Visual Gallery Section */}
       <section className="py-5">
         <Container>
           <Card className="custom-card border-0 shadow-sm overflow-hidden">
             <Card.Body className="p-4 p-lg-5">
               <div className="text-center mb-5">
                 <span className="section-title">Visual Gallery</span>
+
                 <h2 className="display-4 fw-bold card-gradient-heading">
                   The Campaign Assets
                 </h2>
               </div>
+
               <Row className="g-4">
                 {project.gallery.map((img, i) => (
                   <Col md={4} lg={3} key={i}>
@@ -664,6 +722,7 @@ const PortfolioDetail = () => {
                       src={img}
                       alt={`Gallery ${i + 1}`}
                       className="gallery-img"
+                      onClick={() => openGalleryImage(img)}
                     />
                   </Col>
                 ))}
@@ -673,7 +732,6 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {/* CTA Section */}
       <section className="py-5 mb-5">
         <Container>
           <Card className="custom-card border-0 shadow-lg text-center overflow-hidden">
@@ -681,10 +739,12 @@ const PortfolioDetail = () => {
               <h2 className="display-5 fw-bold mb-3">
                 Want Results <span className="gradient-text">Like This?</span>
               </h2>
+
               <p className="text-muted fs-5 mb-4">
                 Let's transform your brand with AI-powered visuals and
                 high-converting social media strategies.
               </p>
+
               <Button className="main-btn" onClick={() => navigate("/contact")}>
                 Start Your Project →
               </Button>
@@ -692,6 +752,23 @@ const PortfolioDetail = () => {
           </Card>
         </Container>
       </section>
+
+      <Modal
+        show={showGalleryModal}
+        onHide={closeGalleryImage}
+        centered
+        size="xl"
+        className="gallery-modal"
+      >
+        <Modal.Header closeButton />
+        <Modal.Body className="text-center p-2">
+          <img
+            src={selectedImage}
+            alt="Gallery Preview"
+            className="gallery-popup-img"
+          />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

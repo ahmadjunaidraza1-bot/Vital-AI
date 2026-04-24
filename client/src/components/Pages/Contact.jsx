@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button, Form, Card } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import {
   EnvelopeFill,
   Whatsapp,
   GeoAltFill,
-  TelephoneFill,
   ClockFill,
   SendFill,
   CheckCircleFill,
@@ -18,6 +17,7 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -29,11 +29,33 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Form submitted:", formData);
+
+    const subject = `New Inquiry from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+`;
+
+    window.location.href = `mailto:Info@vitalai.co.uk?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
   };
 
   return (
@@ -69,20 +91,6 @@ const Contact = () => {
         .main-btn:hover {
           transform: translateY(-3px);
           box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
-        }
-
-        .outline-btn {
-          border: 2px solid #7c3aed;
-          color: #7c3aed;
-          padding: 10px 28px;
-          border-radius: 50px;
-          font-weight: 600;
-          background: transparent;
-          transition: all 0.3s ease;
-        }
-
-        .outline-btn:hover {
-          background: #7c3aed;
           color: #fff;
         }
 
@@ -92,11 +100,12 @@ const Contact = () => {
           border: 1px solid rgba(0, 0, 0, 0.05);
           border-radius: 24px;
           transition: all 0.3s ease;
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
         }
 
         .glass-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          transform: translateY(-4px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09);
         }
 
         .contact-card {
@@ -104,7 +113,6 @@ const Contact = () => {
           border-radius: 20px;
           padding: 24px;
           transition: all 0.3s ease;
-          cursor: pointer;
           border: 1px solid #e5e7eb;
         }
 
@@ -160,26 +168,6 @@ const Contact = () => {
           font-weight: 600;
         }
 
-        .info-row {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          padding: 12px 0;
-          border-bottom: 1px solid #f0f0f0;
-        }
-
-        .info-icon {
-          width: 40px;
-          height: 40px;
-          border-radius: 12px;
-          background: linear-gradient(135deg, #7c3aed10, #ec489910);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #7c3aed;
-          font-size: 18px;
-        }
-
         .availability-badge {
           background: linear-gradient(135deg, #7c3aed10, #ec489910);
           padding: 8px 16px;
@@ -187,21 +175,55 @@ const Contact = () => {
           font-size: 13px;
           color: #7c3aed;
           font-weight: 600;
+          display: inline-block;
+        }
+
+        .contact-link {
+          text-decoration: none;
+          font-weight: 600;
+        }
+
+        .contact-link:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+          .contact-hero {
+            padding-top: 100px !important;
+          }
+
+          .contact-title {
+            font-size: 2.1rem;
+          }
+
+          .glass-card {
+            border-radius: 20px;
+          }
+
+          .contact-card {
+            padding: 20px;
+          }
         }
       `}</style>
 
       {/* Hero Section */}
-      <section className="py-5" style={{ paddingTop: "120px" }}>
+      <section className="py-5 contact-hero" style={{ paddingTop: "120px" }}>
         <Container>
           <div className="text-center mb-5">
             <span className="section-title">Contact Us</span>
-            <h1 className="display-3 fw-bold mb-3">
+
+            <h1 className="display-3 fw-bold mb-3 contact-title">
               Let's Build Something <br />
               <span className="gradient-text">Exceptional Together</span>
             </h1>
-            <p className="text-muted fs-5 mx-auto" style={{ maxWidth: "600px" }}>
-              Have a project in mind? We'd love to hear from you. Our team of
-              experts is ready to help you scale your business with AI.
+
+            <p
+              className="text-muted fs-5 mx-auto"
+              style={{ maxWidth: "650px" }}
+            >
+              Have a project in mind? We'd love to hear from you. Our team is
+              ready to help you scale your business with AI, websites,
+              e-commerce, and digital marketing.
             </p>
           </div>
         </Container>
@@ -211,18 +233,23 @@ const Contact = () => {
       <section className="py-4">
         <Container>
           <Row className="g-5">
-            {/* Left Side - Contact Options */}
+            {/* Left Side */}
             <Col lg={5}>
               {/* Email Card */}
               <div className="contact-card mb-4">
                 <div className="contact-icon">
                   <EnvelopeFill size={24} />
                 </div>
+
                 <h5 className="fw-bold mb-2">Email Us</h5>
-                <p className="text-muted mb-3">Get a response within 24 hours</p>
+                <p className="text-muted mb-3">
+                  Click below to open your email app instantly.
+                </p>
+
                 <a
-                  href="mailto:hello@vital-ai.com"
-                  style={{ color: "#7c3aed", textDecoration: "none", fontWeight: "600" }}
+                  href="mailto:Info@vitalai.co.uk"
+                  className="contact-link"
+                  style={{ color: "#7c3aed" }}
                 >
                   Info@vitalai.co.uk →
                 </a>
@@ -230,29 +257,41 @@ const Contact = () => {
 
               {/* WhatsApp Card */}
               <div className="contact-card mb-4">
-                <div className="contact-icon" style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}>
+                <div
+                  className="contact-icon"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #25D366, #128C7E)",
+                  }}
+                >
                   <Whatsapp size={24} />
                 </div>
+
                 <h5 className="fw-bold mb-2">WhatsApp Us</h5>
-                <p className="text-muted mb-3">Instant chat support</p>
+                <p className="text-muted mb-3">
+                  Instant chat support for quick discussion.
+                </p>
+
                 <a
-                  href="https://wa.me/15550001234"
+                  href="https://wa.me/447398390815"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: "#25D366", textDecoration: "none", fontWeight: "600" }}
+                  className="contact-link"
+                  style={{ color: "#25D366" }}
                 >
                   +44 7398 390815 →
                 </a>
               </div>
 
-              {/* Map / Location Card */}
+              {/* Location Card */}
               <div className="contact-card mb-4">
                 <div className="contact-icon">
                   <GeoAltFill size={24} />
                 </div>
+
                 <h5 className="fw-bold mb-2">Our Headquarters</h5>
-                <p className="text-muted mb-0">Manchester,</p>
-                <p className="text-muted">United Kingdom</p>
+                <p className="text-muted mb-0">Manchester</p>
+                <p className="text-muted mb-0">United Kingdom</p>
               </div>
 
               {/* Availability */}
@@ -261,35 +300,42 @@ const Contact = () => {
                   <ClockFill color="#7c3aed" size={22} />
                   <h6 className="fw-bold mb-0">Ready to Start?</h6>
                 </div>
+
                 <p className="text-muted small mb-3">
-                  Click one of the options above to get in touch with our team
-                  immediately. We usually respond within 2 hours.
+                  Click email or WhatsApp to get in touch with our team. We
+                  usually respond quickly during working hours.
                 </p>
+
                 <div className="availability-badge">
-                  📅  Mon - Fri, 09:00 AM – 06:00 PM (BST)
+                  📅 Mon - Fri, 09:00 AM – 06:00 PM (BST)
                 </div>
               </div>
             </Col>
 
-            {/* Right Side - Contact Form */}
+            {/* Right Side */}
             <Col lg={7}>
               <div className="glass-card p-4 p-lg-5">
                 <h3 className="fw-bold mb-2">Send us a Message</h3>
+
                 <p className="text-muted mb-4">
-                  Fill out the form below and we'll get back to you shortly.
+                  Fill out the form below. When you click send, your email app
+                  will open with all details ready to send.
                 </p>
 
                 {submitted && (
                   <div className="success-message mb-4 d-flex align-items-center gap-2">
                     <CheckCircleFill size={18} />
-                    Thank you! Your message has been sent successfully.
+                    Message prepared successfully. Please send it from your
+                    email app.
                   </div>
                 )}
 
                 <Form onSubmit={handleSubmit}>
                   <Row className="g-3">
                     <Col md={6}>
-                      <Form.Label className="fw-semibold">Full Name</Form.Label>
+                      <Form.Label className="fw-semibold">
+                        Full Name
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         name="name"
@@ -300,20 +346,26 @@ const Contact = () => {
                         required
                       />
                     </Col>
+
                     <Col md={6}>
-                      <Form.Label className="fw-semibold">Email Address</Form.Label>
+                      <Form.Label className="fw-semibold">
+                        Email Address
+                      </Form.Label>
                       <Form.Control
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Info@vitalai.co.uk"
+                        placeholder="you@example.com"
                         className="form-control-custom"
                         required
                       />
                     </Col>
+
                     <Col md={12}>
-                      <Form.Label className="fw-semibold">Phone Number</Form.Label>
+                      <Form.Label className="fw-semibold">
+                        Phone Number
+                      </Form.Label>
                       <Form.Control
                         type="tel"
                         name="phone"
@@ -323,6 +375,7 @@ const Contact = () => {
                         className="form-control-custom"
                       />
                     </Col>
+
                     <Col md={12}>
                       <Form.Label className="fw-semibold">Message</Form.Label>
                       <Form.Control
@@ -336,6 +389,7 @@ const Contact = () => {
                         required
                       />
                     </Col>
+
                     <Col md={12}>
                       <Button type="submit" className="main-btn w-100">
                         <SendFill size={16} className="me-2" />
@@ -347,8 +401,7 @@ const Contact = () => {
 
                 <div className="mt-4 pt-3 text-center">
                   <p className="text-muted small mb-0">
-                    By submitting this form, you agree to our{" "}
-                    <a href="#" style={{ color: "#7c3aed" }}>Privacy Policy</a>
+                    Your message will be opened in your default email app.
                   </p>
                 </div>
               </div>
@@ -360,7 +413,10 @@ const Contact = () => {
       {/* Map Section */}
       <section className="py-5">
         <Container>
-          <div className="glass-card p-2 overflow-hidden" style={{ borderRadius: "24px" }}>
+          <div
+            className="glass-card p-2 overflow-hidden"
+            style={{ borderRadius: "24px" }}
+          >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.3759876462436!2d-2.2487476!3d53.4796115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1c2f9e3cdf9%3A0x429f267898d93986!2sDeansgate%2C%20Manchester%2C%20UK!5e0!3m2!1sen!2s!4v1776843668991!5m2!1sen!2s"
               width="100%"
@@ -380,28 +436,31 @@ const Contact = () => {
         <Container>
           <div className="text-center mb-5">
             <span className="section-title">FAQ</span>
+
             <h2 className="display-5 fw-bold">
-              Frequently Asked <span className="gradient-text">Questions</span>
+              Frequently Asked{" "}
+              <span className="gradient-text">Questions</span>
             </h2>
           </div>
+
           <Row className="g-4">
             {[
               {
                 q: "How quickly can you start on my project?",
-                a: "We typically begin within 2-3 business days after signing the agreement and receiving initial requirements."
+                a: "We typically begin within 2-3 business days after receiving your initial requirements.",
               },
               {
                 q: "What is your typical project timeline?",
-                a: "Project timelines vary based on complexity. Most projects take 4-8 weeks from start to launch."
+                a: "Project timelines vary based on complexity. Most projects take 4-8 weeks from planning to launch.",
               },
               {
                 q: "Do you offer ongoing support?",
-                a: "Yes! We offer various maintenance and support packages to keep your project running smoothly."
+                a: "Yes, we offer maintenance and support packages to keep your website, store, or digital system running smoothly.",
               },
               {
                 q: "Can you work with our existing team?",
-                a: "Absolutely! We collaborate seamlessly with in-house teams to extend your capabilities."
-              }
+                a: "Absolutely. We can collaborate with your in-house team and support design, development, automation, and marketing work.",
+              },
             ].map((faq, i) => (
               <Col md={6} key={i}>
                 <div className="glass-card p-4 h-100">
@@ -421,13 +480,21 @@ const Contact = () => {
             <h2 className="display-5 fw-bold text-white mb-3">
               Ready to Scale Your Business?
             </h2>
+
             <p className="text-white-50 fs-5 mb-4">
-              Join 500+ businesses already growing with VITAL AI
+              Join growing businesses using VITAL AI for websites, e-commerce,
+              automation, and digital growth.
             </p>
+
             <Button
               className="main-btn bg-white"
-              style={{ color: "#7c3aed", background: "white" }}
-              onClick={() => window.location.href = "/pricing"}
+              style={{
+                color: "#7c3aed",
+                background: "white",
+              }}
+              onClick={() => {
+                window.location.href = "/pricing";
+              }}
             >
               View Pricing Plans →
             </Button>
