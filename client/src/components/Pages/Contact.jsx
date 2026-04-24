@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import {
   EnvelopeFill,
@@ -19,6 +20,7 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -29,33 +31,42 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const subject = `New Inquiry from ${formData.name}`;
-    const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
+    const templateParams = {
+  name: formData.name,
+  email: formData.email,
+  phone: formData.phone,
+  message: formData.message,
+};
 
-Message:
-${formData.message}
-`;
+    emailjs
+      .send(
+        "service_hu2j0xj",
+        "template_fsra6hr",
+        templateParams,
+        "3dGE9V8RomIrvwleh"
+      )
+      .then(() => {
+        setSubmitted(true);
+        setLoading(false);
 
-    window.location.href = `mailto:Info@vitalai.co.uk?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
 
-    setSubmitted(true);
-
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 4000);
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setLoading(false);
+        alert("Message send nahi hua. EmailJS IDs check karo.");
+      });
   };
 
   return (
@@ -92,6 +103,11 @@ ${formData.message}
           transform: translateY(-3px);
           box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
           color: #fff;
+        }
+
+        .main-btn:disabled {
+          opacity: 0.75;
+          cursor: not-allowed;
         }
 
         .glass-card {
@@ -206,7 +222,6 @@ ${formData.message}
         }
       `}</style>
 
-      {/* Hero Section */}
       <section className="py-5 contact-hero" style={{ paddingTop: "120px" }}>
         <Container>
           <div className="text-center mb-5">
@@ -217,10 +232,7 @@ ${formData.message}
               <span className="gradient-text">Exceptional Together</span>
             </h1>
 
-            <p
-              className="text-muted fs-5 mx-auto"
-              style={{ maxWidth: "650px" }}
-            >
+            <p className="text-muted fs-5 mx-auto" style={{ maxWidth: "650px" }}>
               Have a project in mind? We'd love to hear from you. Our team is
               ready to help you scale your business with AI, websites,
               e-commerce, and digital marketing.
@@ -229,13 +241,10 @@ ${formData.message}
         </Container>
       </section>
 
-      {/* Contact Options and Form */}
       <section className="py-4">
         <Container>
           <Row className="g-5">
-            {/* Left Side */}
             <Col lg={5}>
-              {/* Email Card */}
               <div className="contact-card mb-4">
                 <div className="contact-icon">
                   <EnvelopeFill size={24} />
@@ -243,25 +252,23 @@ ${formData.message}
 
                 <h5 className="fw-bold mb-2">Email Us</h5>
                 <p className="text-muted mb-3">
-                  Click below to open your email app instantly.
+                  Send us your requirements anytime.
                 </p>
 
                 <a
-                  href="mailto:Info@vitalai.co.uk"
+                  href="mailto:ahmadjunaidraza1@gmail.com"
                   className="contact-link"
                   style={{ color: "#7c3aed" }}
                 >
-                  Info@vitalai.co.uk →
+                  ahmadjunaidraza1@gmail.com →
                 </a>
               </div>
 
-              {/* WhatsApp Card */}
               <div className="contact-card mb-4">
                 <div
                   className="contact-icon"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #25D366, #128C7E)",
+                    background: "linear-gradient(135deg, #25D366, #128C7E)",
                   }}
                 >
                   <Whatsapp size={24} />
@@ -283,7 +290,6 @@ ${formData.message}
                 </a>
               </div>
 
-              {/* Location Card */}
               <div className="contact-card mb-4">
                 <div className="contact-icon">
                   <GeoAltFill size={24} />
@@ -294,7 +300,6 @@ ${formData.message}
                 <p className="text-muted mb-0">United Kingdom</p>
               </div>
 
-              {/* Availability */}
               <div className="glass-card p-4 mt-3">
                 <div className="d-flex align-items-center gap-3 mb-3">
                   <ClockFill color="#7c3aed" size={22} />
@@ -302,8 +307,8 @@ ${formData.message}
                 </div>
 
                 <p className="text-muted small mb-3">
-                  Click email or WhatsApp to get in touch with our team. We
-                  usually respond quickly during working hours.
+                  Fill the form and your message will come directly to our Gmail
+                  inbox.
                 </p>
 
                 <div className="availability-badge">
@@ -312,30 +317,26 @@ ${formData.message}
               </div>
             </Col>
 
-            {/* Right Side */}
             <Col lg={7}>
               <div className="glass-card p-4 p-lg-5">
                 <h3 className="fw-bold mb-2">Send us a Message</h3>
 
                 <p className="text-muted mb-4">
-                  Fill out the form below. When you click send, your email app
-                  will open with all details ready to send.
+                  Fill out the form below. Your inquiry will be sent directly to
+                  our Gmail inbox.
                 </p>
 
                 {submitted && (
                   <div className="success-message mb-4 d-flex align-items-center gap-2">
                     <CheckCircleFill size={18} />
-                    Message prepared successfully. Please send it from your
-                    email app.
+                    Message sent successfully.
                   </div>
                 )}
 
                 <Form onSubmit={handleSubmit}>
                   <Row className="g-3">
                     <Col md={6}>
-                      <Form.Label className="fw-semibold">
-                        Full Name
-                      </Form.Label>
+                      <Form.Label className="fw-semibold">Full Name</Form.Label>
                       <Form.Control
                         type="text"
                         name="name"
@@ -363,9 +364,7 @@ ${formData.message}
                     </Col>
 
                     <Col md={12}>
-                      <Form.Label className="fw-semibold">
-                        Phone Number
-                      </Form.Label>
+                      <Form.Label className="fw-semibold">Phone Number</Form.Label>
                       <Form.Control
                         type="tel"
                         name="phone"
@@ -391,9 +390,13 @@ ${formData.message}
                     </Col>
 
                     <Col md={12}>
-                      <Button type="submit" className="main-btn w-100">
+                      <Button
+                        type="submit"
+                        className="main-btn w-100"
+                        disabled={loading}
+                      >
                         <SendFill size={16} className="me-2" />
-                        Send Message
+                        {loading ? "Sending..." : "Send Message"}
                       </Button>
                     </Col>
                   </Row>
@@ -401,7 +404,7 @@ ${formData.message}
 
                 <div className="mt-4 pt-3 text-center">
                   <p className="text-muted small mb-0">
-                    Your message will be opened in your default email app.
+                    Messages will be delivered to: ahmadjunaidraza1@gmail.com
                   </p>
                 </div>
               </div>
@@ -410,7 +413,6 @@ ${formData.message}
         </Container>
       </section>
 
-      {/* Map Section */}
       <section className="py-5">
         <Container>
           <div
@@ -431,15 +433,13 @@ ${formData.message}
         </Container>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-5">
         <Container>
           <div className="text-center mb-5">
             <span className="section-title">FAQ</span>
 
             <h2 className="display-5 fw-bold">
-              Frequently Asked{" "}
-              <span className="gradient-text">Questions</span>
+              Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
           </div>
 
@@ -473,7 +473,6 @@ ${formData.message}
         </Container>
       </section>
 
-      {/* CTA Section */}
       <section className="py-5 mb-5">
         <Container>
           <div className="gradient-bg p-5 text-center rounded-4">
