@@ -4,29 +4,29 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 const CaseStudy = () => {
   const cases = [
     {
-      title: "Global Retailer AI Transformation",
+      title: "Pro Chauffeurs Luxury Growth Campaign",
       img: "/Images/cr11.png",
       problem:
-        "A major retail brand was struggling with low conversion rates and inefficient inventory management across 50+ stores.",
+        "Pro Chauffeurs wanted premium online branding and more direct bookings for airport transfers, business travel, weddings, and VIP transport services in a competitive luxury market.",
       solution:
-        "We implemented a custom AI engine that analyzed customer traffic patterns and automated inventory restocking based on predictive demand.",
+        "We created luxury ad creatives, high-converting landing visuals, social media campaigns, and premium brand positioning focused on trust, elegance, and customer convenience.",
       stats: [
-        { value: "45%", label: "Conversion Growth" },
-        { value: "30%", label: "Operational Efficiency" },
-        { value: "25%", label: "Customer Retention" },
+        { value: "220%", label: "Lead Increase" },
+        { value: "3.8x", label: "ROAS Growth" },
+        { value: "65%", label: "Booking Growth" },
       ],
     },
     {
-      title: "FinTech App User Engagement",
-      img: "/Images/cr 17.png",
+      title: "Luxury Jewelry Visual Experience",
+      img: "/Images/jb1.png",
       problem:
-        "A startup fintech app had high churn rates due to a complex onboarding process and lack of personalized features.",
+        "A jewelry brand needed premium visuals to showcase products online and increase trust, engagement, and conversion for high-ticket luxury customers.",
       solution:
-        "We redesigned the UX and integrated a machine learning model that provides personalized financial insights to each user.",
+        "We designed elegant product campaigns, AI model showcases, luxury banners, and social creatives that highlighted shine, craftsmanship, and exclusivity.",
       stats: [
-        { value: "60%", label: "User Retention" },
-        { value: "50%", label: "Onboarding Speed" },
-        { value: "4.9/5", label: "App Rating" },
+        { value: "180%", label: "Engagement Boost" },
+        { value: "52%", label: "Sales Growth" },
+        { value: "4.9/5", label: "Client Rating" },
       ],
     },
   ];
@@ -34,7 +34,6 @@ const CaseStudy = () => {
   return (
     <section className="section-space">
       <Container>
-
         {/* HEADER */}
         <div className="text-center mb-5">
           <h5
@@ -55,30 +54,27 @@ const CaseStudy = () => {
           </h2>
 
           <p className="text-muted fs-5 mx-auto" style={{ maxWidth: "800px" }}>
-            Deep dives into how we solve complex business problems with intelligent technology.
+            Deep dives into how we build premium brands, generate leads, and
+            create results with modern digital strategies.
           </p>
         </div>
 
         {/* CASES */}
         <div className="d-flex flex-column gap-5">
-
           {cases.map((item, i) => (
             <Row key={i} className="align-items-center g-5 case-wrapper">
-
-              {/* IMAGE SIDE */}
+              {/* IMAGE */}
               <Col lg={5} className={i % 2 !== 0 ? "order-lg-2" : ""}>
                 <div className="case-img">
                   <img src={item.img} alt={item.title} />
                 </div>
               </Col>
 
-              {/* CONTENT SIDE */}
+              {/* CONTENT */}
               <Col lg={7} className={i % 2 !== 0 ? "order-lg-1" : ""}>
-
                 <h3 className="case-title mb-4">{item.title}</h3>
 
                 <Row className="g-4">
-
                   <Col md={6}>
                     <div className="glass-box">
                       <h5 className="section-label">The Problem</h5>
@@ -92,7 +88,6 @@ const CaseStudy = () => {
                       <p>{item.solution}</p>
                     </div>
                   </Col>
-
                 </Row>
 
                 <Row className="mt-4 g-3">
@@ -107,48 +102,47 @@ const CaseStudy = () => {
                 </Row>
 
                 <div className="mt-4">
-                  <Button className="main-btn">
-                    Read Full Story
-                  </Button>
+                  <Button className="main-btn">Read Full Story</Button>
                 </div>
-
               </Col>
             </Row>
           ))}
-
         </div>
       </Container>
 
-      {/* STYLES */}
       <style>{`
-      .gradient-shine-text{
-  font-weight: 800;
-  font-size: 3rem;
-  background: linear-gradient(
-    90deg,
-    #7c3aed,
-    #ec4899,
-    #06b6d4,
-    #7c3aed
-  );
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShine 5s linear infinite;
-}
+        .section-space{
+          padding:80px 0;
+          background:#fff;
+        }
 
-/* extra glow on "Impact" */
-.gradient-shine-text span{
-  background: linear-gradient(90deg,#ec4899,#7c3aed,#06b6d4);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation: textShine 3s linear infinite;
-}
+        .gradient-shine-text{
+          font-weight:800;
+          font-size:3rem;
+          background:linear-gradient(
+            90deg,
+            #7c3aed,
+            #ec4899,
+            #06b6d4,
+            #7c3aed
+          );
+          background-size:300% auto;
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+          animation:textShine 5s linear infinite;
+        }
 
-@keyframes textShine{
-  0% { background-position: 0% center; }
-  100% { background-position: 300% center; }
-}
+        .gradient-shine-text span{
+          background:linear-gradient(90deg,#ec4899,#7c3aed,#06b6d4);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+          animation:textShine 3s linear infinite;
+        }
+
+        @keyframes textShine{
+          0%{background-position:0% center;}
+          100%{background-position:300% center;}
+        }
 
         .case-wrapper{
           padding:20px 0;
@@ -179,7 +173,7 @@ const CaseStudy = () => {
         .glass-box{
           padding:20px;
           border-radius:18px;
-          background:rgba(255,255,255,0.7);
+          background:rgba(255,255,255,0.75);
           backdrop-filter:blur(14px);
           border:1px solid rgba(0,0,0,0.05);
           height:100%;
@@ -221,51 +215,61 @@ const CaseStudy = () => {
         }
 
         .main-btn{
-  position: relative;
-  overflow: hidden;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 50px;
-  color: #fff;
-  font-weight: 700;
-  background: linear-gradient(90deg,#7c3aed,#ec4899);
-  transition: 0.4s;
-}
+          position:relative;
+          overflow:hidden;
+          border:none;
+          padding:12px 28px;
+          border-radius:50px;
+          color:#fff;
+          font-weight:700;
+          background:linear-gradient(90deg,#7c3aed,#ec4899);
+          transition:0.4s;
+        }
 
-/* hover lift */
-.main-btn:hover{
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 15px 35px rgba(236,72,153,.3);
-}
+        .main-btn:hover{
+          transform:translateY(-3px) scale(1.03);
+          box-shadow:0 15px 35px rgba(236,72,153,.3);
+        }
 
-/* ✨ shine effect */
-.main-btn::before{
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.6),
-    transparent
-  );
-  transform: skewX(-25deg);
-}
+        .main-btn::before{
+          content:"";
+          position:absolute;
+          top:0;
+          left:-75%;
+          width:50%;
+          height:100%;
+          background:linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.6),
+            transparent
+          );
+          transform:skewX(-25deg);
+        }
 
-/* animate on hover */
-.main-btn:hover::before{
-  animation: shine 0.9s ease;
-}
+        .main-btn:hover::before{
+          animation:shine 0.9s ease;
+        }
 
-@keyframes shine{
-  0% { left: -75%; }
-  100% { left: 130%; }
-}
+        @keyframes shine{
+          0%{left:-75%;}
+          100%{left:130%;}
+        }
+
+        @media (max-width:768px){
+          .gradient-shine-text{
+            font-size:2rem;
+          }
+
+          .case-img img{
+            height:320px;
+          }
+
+          .case-title{
+            font-size:24px;
+          }
+        }
       `}</style>
-
     </section>
   );
 };

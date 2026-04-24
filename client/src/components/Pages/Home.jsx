@@ -113,29 +113,38 @@ const Home = () => {
     },
   ];
 
-  const projects = [
-    {
-      id: "pro-chauffeurs",
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts",
-      img: "/Images/p1.webp",
-      motion: "left",
-    },
-    {
-      id: "aura-e-commerce",
-      title: "Aura E-Commerce",
-      category: "E-Commerce",
-      img: "/Images/p3.webp",
-      motion: "up",
-    },
-    {
-      id: "zenith-mobile-app",
-      title: "Zenith Mobile App",
-      category: "Mobile App",
-      img: "/Images/p2.webp",
-      motion: "right",
-    },
-  ];
+ // projects array ko is updated version se replace kar do
+
+const projects = [
+  {
+    id: "pro-chauffeurs",
+    title: "Pro Chauffeurs",
+    category: "Social Media Posts",
+    img: "/Images/cr11.png",
+    motion: "left",
+  },
+  {
+    id: "viper",
+    title: "Viper",
+    category: "Automotive Brand Campaign",
+    img: "/Images/vg4.png",
+    motion: "up",
+  },
+  {
+    id: "women-bags",
+    title: "Women Bags",
+    category: "Fashion Accessories Campaign",
+    img: "/Images/5.png",
+    motion: "up",
+  },
+  {
+    id: "ecommerce-clothing",
+    title: "E-Commerce Clothing",
+    category: "Fashion E-Commerce",
+    img: "/Images/cb1.png",
+    motion: "right",
+  },
+];
 
   const testimonials = [
     {

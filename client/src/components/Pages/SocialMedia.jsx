@@ -3,10 +3,10 @@ import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const socialMediaItems = [
-    { id: 1, img: "/Images/cr 2.png" },
-    { id: 2, img: "/Images/cr 4.png" },
+    { id: 1, img: "/Images/cr10.png" },
+    { id: 2, img: "/Images/cr4.png" },
     { id: 3, img: "/Images/cr6.png" },
-    { id: 4, img: "/Images/cr 7.png" },
+    { id: 4, img: "/Images/cr7.png" },
     { id: 5, img: "/Images/cr 15.png" },
     { id: 6, img: "/Images/cr 16.png" },
     { id: 7, img: "/Images/cr 17.png" },
@@ -243,7 +243,7 @@ const SocialMedia = () => {
                 <Carousel className="hero-carousel" fade controls indicators interval={3000}>
                     <Carousel.Item>
                         <div style={{ position: "relative", height: "100%" }}>
-                            <img src="/Images/cr 2.png" alt="Social media banner 1" />
+                            <img src="/Images/CR2.png" alt="Social media banner 1" />
                             <div className="hero-overlay">
                                 <div className="hero-content">
                                     <div className="mini-title">Social Media Showcase</div>
