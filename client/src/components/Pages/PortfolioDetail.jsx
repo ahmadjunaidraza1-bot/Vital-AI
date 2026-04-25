@@ -290,13 +290,8 @@ const PortfolioDetail = () => {
     }
 
     return () => {
-      if (cinematicVideoRef.current) {
-        cinematicObserver.unobserve(cinematicVideoRef.current);
-      }
-
-      if (socialVideoRef.current) {
-        socialObserver.unobserve(socialVideoRef.current);
-      }
+      cinematicObserver.disconnect();
+      socialObserver.disconnect();
     };
   }, [id]);
 
@@ -317,6 +312,7 @@ const PortfolioDetail = () => {
         body {
           background: #f8f9fc;
           font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
         }
 
         .gradient-text {
@@ -376,13 +372,25 @@ const PortfolioDetail = () => {
           display: inline-block;
         }
 
+        .project-banner-img {
+          width: 100%;
+          height: 480px;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
+
         .gallery-img {
           width: 100%;
           height: 220px;
-          object-fit: cover;
+          object-fit: contain;
+          object-position: center;
+          background: #fff;
           border-radius: 16px;
           transition: all 0.3s ease;
           cursor: pointer;
+          padding: 8px;
+          display: block;
         }
 
         .gallery-img:hover {
@@ -394,6 +402,7 @@ const PortfolioDetail = () => {
           width: 100%;
           max-height: 85vh;
           object-fit: contain;
+          background: #fff;
           border-radius: 18px;
         }
 
@@ -449,7 +458,7 @@ const PortfolioDetail = () => {
           border-radius: 3rem;
           overflow: hidden;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          background: black;
+          background: #000;
           aspect-ratio: 16 / 9;
         }
 
@@ -464,7 +473,7 @@ const PortfolioDetail = () => {
           border-radius: 2rem;
           overflow: hidden;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          background: black;
+          background: #000;
           aspect-ratio: 4 / 5;
           max-width: 350px;
           margin: 0 auto;
@@ -486,17 +495,71 @@ const PortfolioDetail = () => {
         }
 
         @media (max-width: 768px) {
+          .project-banner-img {
+            height: 320px;
+            object-fit: contain;
+            background: #fff;
+          }
+
           .portrait-video-wrapper {
-            max-width: 280px;
-            aspect-ratio: 4 / 5;
+            max-width: 100%;
+            height: 420px;
+            aspect-ratio: auto;
+          }
+
+          .portrait-video-wrapper video {
+            object-fit: contain;
+            background: #000;
+          }
+
+          .video-wrapper {
+            border-radius: 1.5rem;
+          }
+
+          .video-wrapper video {
+            object-fit: contain;
+            background: #000;
           }
 
           .gallery-img {
-            height: 200px;
+            height: 300px;
+            object-fit: contain;
+            background: #fff;
+            padding: 6px;
           }
 
           .gallery-popup-img {
             max-height: 75vh;
+          }
+
+          .position-absolute.bottom-0.start-0.end-0.p-5 {
+            padding: 24px !important;
+          }
+
+          .display-3 {
+            font-size: 2.1rem;
+          }
+
+          .display-4 {
+            font-size: 2rem;
+          }
+
+          .display-5 {
+            font-size: 1.8rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .project-banner-img {
+            height: 280px;
+          }
+
+          .gallery-img {
+            height: 260px;
+          }
+
+          .portrait-video-wrapper {
+            height: 360px;
           }
         }
       `}</style>
@@ -515,11 +578,7 @@ const PortfolioDetail = () => {
             <img
               src={project.banner}
               alt={project.title}
-              style={{
-                width: "100%",
-                height: "480px",
-                objectFit: "cover",
-              }}
+              className="project-banner-img"
             />
 
             <div
@@ -717,7 +776,7 @@ const PortfolioDetail = () => {
 
               <Row className="g-4">
                 {project.gallery.map((img, i) => (
-                  <Col md={4} lg={3} key={i}>
+                  <Col md={4} lg={3} sm={6} xs={12} key={i}>
                     <img
                       src={img}
                       alt={`Gallery ${i + 1}`}
