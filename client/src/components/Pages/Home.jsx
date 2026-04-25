@@ -1,12 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Modal, Carousel, Container, Row, Col, Button, Card } from "react-bootstrap";
+import {
+  Modal,
+  Carousel,
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+} from "react-bootstrap";
 import {
   CameraVideoFill,
   Globe2,
   LightningChargeFill,
   Stars,
   CheckCircleFill,
+  GraphUpArrow,
+  Gem,
+  RocketTakeoffFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,7 +28,16 @@ const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
 
+  const [startCount, setStartCount] = useState(false);
+  const [counts, setCounts] = useState({
+    projects: 0,
+    clients: 0,
+    awards: 0,
+    team: 0,
+  });
+
   const observedRefs = useRef({});
+  const statsRef = useRef(null);
 
   const setSectionRef = (id) => (el) => {
     if (el) observedRefs.current[id] = el;
@@ -48,6 +68,45 @@ const Home = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !startCount) {
+          setStartCount(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.6 }
+    );
+
+    if (statsRef.current) observer.observe(statsRef.current);
+
+    return () => observer.disconnect();
+  }, [startCount]);
+
+  useEffect(() => {
+    if (!startCount) return;
+
+    let current = 0;
+
+    const interval = setInterval(() => {
+      current += 1;
+
+      setCounts({
+        projects: Math.min(current * 10, 500),
+        clients: Math.min(current * 4, 200),
+        awards: Math.min(Math.floor(current * 0.3), 15),
+        team: Math.min(Math.floor(current * 0.8), 40),
+      });
+
+      if (current >= 50) {
+        clearInterval(interval);
+      }
+    }, 90);
+
+    return () => clearInterval(interval);
+  }, [startCount]);
 
   const revealClass = (sectionId, type = "up") =>
     `${visible[sectionId] ? `reveal ${type} show` : `reveal ${type}`}`;
@@ -83,7 +142,7 @@ const Home = () => {
     {
       title: "Virtual Try-Ons",
       desc: "Let customers see clothes on realistic AI models.",
-      img: "/Images/42.png",
+      img: "/Images/new.png",
       link: "/clothes",
       motion: "left",
     },
@@ -369,6 +428,75 @@ const Home = () => {
           background-color: #fff;
         }
 
+        .stats-section {
+          padding: 20px 0 60px;
+          background: #fff;
+        }
+
+        .stat-box {
+          text-align: center;
+          padding: 25px;
+          border-radius: 18px;
+          transition: 0.35s ease;
+          height: 100%;
+        }
+
+        .stat-box:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 50px rgba(124,58,237,0.15);
+        }
+
+        .icon-wrap {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
+          color: #fff;
+          box-shadow: 0 12px 30px rgba(124,58,237,0.25);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .icon-wrap::after {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.4),
+            transparent
+          );
+          transform: rotate(25deg);
+          animation: shineIcon 3s infinite;
+        }
+
+        @keyframes shineIcon {
+          0% { transform: translateX(-100%) rotate(25deg); }
+          100% { transform: translateX(100%) rotate(25deg); }
+        }
+
+        .number {
+          font-size: 30px;
+          font-weight: 800;
+          background: linear-gradient(90deg,#7c3aed,#ec4899);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .stat-box p {
+          margin: 0;
+          color: #6b7280;
+          font-weight: 500;
+        }
+
         .about-card {
           background: #ffffff;
           padding: 18px 20px;
@@ -395,14 +523,14 @@ const Home = () => {
         }
 
         .work-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: 0.8s ease;
-  padding: 0;
-  background: transparent;
-}
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          transition: 0.8s ease;
+          padding: 0;
+          background: transparent;
+        }
 
         .work-overlay {
           position: absolute;
@@ -494,9 +622,9 @@ const Home = () => {
         }
 
         .work-card:hover .work-img {
-  transform: scale(1.15);
-  filter: blur(3px) brightness(0.7);
-}
+          transform: scale(1.15);
+          filter: blur(3px) brightness(0.7);
+        }
 
         .work-card:hover .work-overlay {
           opacity: 1;
@@ -707,24 +835,22 @@ const Home = () => {
             background-color: #fff;
           }
 
+          .stats-section {
+            padding: 10px 0 45px;
+          }
+
+          .stat-box {
+            padding: 22px 16px;
+          }
+
+          .number {
+            font-size: 26px;
+          }
+
           .work-card {
             height: 420px;
             background: #fff;
           }
-
-          .work-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: 0.8s ease;
-  padding: 0;
-  background: transparent;
-}
-  .work-card:hover .work-img {
-  transform: scale(1.15);
-  filter: blur(3px) brightness(0.7);
-}
 
           .work-overlay {
             opacity: 1;
@@ -799,6 +925,31 @@ const Home = () => {
           .client-flex {
             align-items: flex-start;
           }
+
+          .stats-section .row {
+            --bs-gutter-x: 12px;
+            --bs-gutter-y: 12px;
+          }
+
+          .stat-box {
+            padding: 16px 8px;
+            border-radius: 16px;
+          }
+
+          .icon-wrap {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+          }
+
+          .number {
+            font-size: 22px;
+          }
+
+          .stat-box p {
+            font-size: 12px;
+            line-height: 1.3;
+          }
         }
       `}</style>
 
@@ -821,9 +972,6 @@ const Home = () => {
                           Digital Solutions
                         </h1>
                         <div className="hero-buttons">
-                          <Button as={Link} to="/contact" className="main-btn hero-btn-small">
-                            Book a strategy Call ✨
-                          </Button>
                           <Link to="/services" className="outline-btn hero-btn-small">
                             Learn More →
                           </Link>
@@ -849,6 +997,11 @@ const Home = () => {
                           <br />
                           Visual Experience
                         </h1>
+                        <div className="hero-buttons">
+                          <Link to="/services" className="outline-btn hero-btn-small">
+                            Learn More →
+                          </Link>
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -870,6 +1023,11 @@ const Home = () => {
                           <br />
                           Built to Convert
                         </h1>
+                        <div className="hero-buttons">
+                          <Link to="/services" className="outline-btn hero-btn-small">
+                            Learn More →
+                          </Link>
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -890,7 +1048,10 @@ const Home = () => {
               Revolutionise Your <br />
               <span className="gradient-text">Product Presentation</span>
             </h2>
-            <p className={`text-muted fs-5 mb-4 mx-auto ${revealClass("studio", "up")}`} style={{ maxWidth: "800px" }}>
+            <p
+              className={`text-muted fs-5 mb-4 mx-auto ${revealClass("studio", "up")}`}
+              style={{ maxWidth: "800px" }}
+            >
               Stop spending thousands on photoshoots. Our AI generates
               hyper-realistic virtual try-ons and model demonstrations for
               your clothes and jewelry.
@@ -960,6 +1121,52 @@ const Home = () => {
               Learn More
             </Button>
           </div>
+        </Container>
+      </section>
+
+      <section className="stats-section" ref={statsRef}>
+        <Container>
+          <Row className="g-4 text-center">
+            <Col lg={3} md={3} sm={6} xs={6}>
+              <div className="glass stat-box">
+                <div className="icon-wrap mb-3">
+                  <GraphUpArrow size={26} />
+                </div>
+                <div className="number">{counts.projects}+</div>
+                <p>Projects Completed</p>
+              </div>
+            </Col>
+
+            <Col lg={3} md={3} sm={6} xs={6}>
+              <div className="glass stat-box">
+                <div className="icon-wrap mb-3">
+                  <Stars size={26} />
+                </div>
+                <div className="number">{counts.clients}+</div>
+                <p>Happy Clients</p>
+              </div>
+            </Col>
+
+            <Col lg={3} md={3} sm={6} xs={6}>
+              <div className="glass stat-box">
+                <div className="icon-wrap mb-3">
+                  <Gem size={26} />
+                </div>
+                <div className="number">{counts.awards}+</div>
+                <p>Awards Won</p>
+              </div>
+            </Col>
+
+            <Col lg={3} md={3} sm={6} xs={6}>
+              <div className="glass stat-box">
+                <div className="icon-wrap mb-3">
+                  <RocketTakeoffFill size={26} />
+                </div>
+                <div className="number">{counts.team}+</div>
+                <p>Team Members</p>
+              </div>
+            </Col>
+          </Row>
         </Container>
       </section>
 

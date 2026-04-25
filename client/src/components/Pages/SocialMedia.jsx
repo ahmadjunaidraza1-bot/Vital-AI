@@ -3,28 +3,28 @@ import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const socialMediaItems = [
-  { id: 1, img: "/Images/cr10.png" },
-  { id: 2, img: "/Images/cr4.png" },
-  { id: 3, img: "/Images/cr11.png" },
-  { id: 4, img: "/Images/cr7.png" },
-  { id: 5, img: "/Images/cr 15.png" },
-  { id: 6, img: "/Images/cr 16.png" },
-  { id: 7, img: "/Images/cr 17.png" },
-  { id: 8, img: "/Images/cr 18.png" },
+  { id: 1, type: "img", src: "/Images/new1.png" },
+  { id: 2, type: "img", src: "/Images/new5.png" },
+  { id: 3, type: "video", src: "/videos/tiktok.mp4" },
+  { id: 4, type: "img", src: "/Images/new3.png" },
+  { id: 5, type: "img", src: "/Images/new2.png" },
 ];
 
 const SocialMedia = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedSrc, setSelectedSrc] = useState("");
+  const [selectedType, setSelectedType] = useState("");
 
-  const handleOpenPopup = (img) => {
-    setSelectedImage(img);
+  const handleOpenPopup = (src, type) => {
+    setSelectedSrc(src);
+    setSelectedType(type);
     setShowPopup(true);
   };
 
   const handleClosePopup = () => {
     setShowPopup(false);
-    setSelectedImage("");
+    setSelectedSrc("");
+    setSelectedType("");
   };
 
   return (
@@ -68,7 +68,6 @@ const SocialMedia = () => {
           margin-bottom: 10px;
         }
 
-        /* HERO SECTION */
         .hero-carousel .carousel-item {
           height: 560px;
         }
@@ -109,7 +108,6 @@ const SocialMedia = () => {
           line-height: 1.15;
         }
 
-        /* SECTION */
         .section-heading {
           max-width: 820px;
           margin: 60px auto 50px;
@@ -146,7 +144,6 @@ const SocialMedia = () => {
           font-size: 1rem;
         }
 
-        /* GALLERY CARD UPDATED */
         .img-card {
           height: 250px;
           border-radius: 15px;
@@ -162,22 +159,28 @@ const SocialMedia = () => {
           box-shadow: 0 25px 60px rgba(0,0,0,0.15);
         }
 
-        /* FULL IMAGE SHOW */
-        .img-card img {
+        .img-card img,
+        .gallery-video {
           width: 100%;
           height: 100%;
           object-fit: contain;
           padding: 10px;
           background: #fff;
           transition: transform 0.6s ease;
+          display: block;
         }
 
-        /* ZOOM EFFECT */
-        .img-card:hover img {
-          transform: scale(1.12);
+        .gallery-video {
+          object-fit: cover;
+          padding: 0;
+          background: #000;
         }
 
-        /* MODAL */
+        .img-card:hover img,
+        .img-card:hover .gallery-video {
+          transform: scale(1.08);
+        }
+
         .image-popup-modal .modal-content {
           background: transparent;
           border: none;
@@ -189,7 +192,7 @@ const SocialMedia = () => {
           text-align: center;
         }
 
-        .popup-image {
+        .popup-media {
           width: 100%;
           max-height: 90vh;
           object-fit: contain;
@@ -197,7 +200,10 @@ const SocialMedia = () => {
           background: #fff;
         }
 
-        /* RESPONSIVE */
+        .popup-video {
+          background: #000;
+        }
+
         @media (max-width: 991px) {
           .hero-content h1 {
             font-size: 2.5rem;
@@ -221,7 +227,6 @@ const SocialMedia = () => {
             font-size: 2rem;
           }
 
-          /* MOBILE BIGGER IMAGES */
           .img-card {
             height: 400px;
           }
@@ -229,6 +234,11 @@ const SocialMedia = () => {
           .img-card img {
             object-fit: contain;
             padding: 8px;
+          }
+
+          .gallery-video {
+            object-fit: contain;
+            background: #000;
           }
         }
 
@@ -240,7 +250,6 @@ const SocialMedia = () => {
       `}</style>
 
       <section className="social-page">
-        {/* HERO */}
         <Carousel
           className="hero-carousel"
           fade
@@ -273,9 +282,7 @@ const SocialMedia = () => {
                   <div className="mini-title">Viral Content Design</div>
                   <h1>
                     Bold Ideas for{" "}
-                    <span className="gradient-text">
-                      Modern Campaigns
-                    </span>
+                    <span className="gradient-text">Modern Campaigns</span>
                   </h1>
                 </div>
               </div>
@@ -290,9 +297,7 @@ const SocialMedia = () => {
                   <div className="mini-title">Brand Visual Gallery</div>
                   <h1>
                     Showcase Your{" "}
-                    <span className="gradient-text">
-                      Best Social Posts
-                    </span>
+                    <span className="gradient-text">Best Social Posts</span>
                   </h1>
                 </div>
               </div>
@@ -300,21 +305,18 @@ const SocialMedia = () => {
           </Carousel.Item>
         </Carousel>
 
-        {/* GALLERY */}
         <Container>
           <div className="section-heading">
             <div className="section-mini">Social Media Collection</div>
 
             <h2>
               Explore Premium{" "}
-              <span className="gradient-text">
-                Social Media Gallery
-              </span>
+              <span className="gradient-text">Social Media Gallery</span>
             </h2>
 
             <p>
-              Discover modern social media creatives in a clean
-              and elegant visual showcase.
+              Discover modern social media creatives in a clean and elegant
+              visual showcase.
             </p>
           </div>
 
@@ -323,16 +325,26 @@ const SocialMedia = () => {
               <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
                 <div
                   className="img-card"
-                  onClick={() => handleOpenPopup(item.img)}
+                  onClick={() => handleOpenPopup(item.src, item.type)}
                 >
-                  <img src={item.img} alt="gallery" />
+                  {item.type === "video" ? (
+                    <video
+                      src={item.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="gallery-video"
+                    />
+                  ) : (
+                    <img src={item.src} alt="gallery" />
+                  )}
                 </div>
               </Col>
             ))}
           </Row>
         </Container>
 
-        {/* MODAL */}
         <Modal
           show={showPopup}
           onHide={handleClosePopup}
@@ -361,11 +373,21 @@ const SocialMedia = () => {
               ✕
             </button>
 
-            <img
-              src={selectedImage}
-              alt="preview"
-              className="popup-image"
-            />
+            {selectedType === "video" ? (
+              <video
+                src={selectedSrc}
+                controls
+                autoPlay
+                playsInline
+                className="popup-media popup-video"
+              />
+            ) : (
+              <img
+                src={selectedSrc}
+                alt="preview"
+                className="popup-media"
+              />
+            )}
           </Modal.Body>
         </Modal>
       </section>

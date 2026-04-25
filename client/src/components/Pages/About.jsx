@@ -431,6 +431,87 @@ const About = () => {
             border-left:17px solid #fff;
           }
         }
+          .stat-box{
+  text-align:center;
+  padding:25px;
+  border-radius:18px;
+  transition:0.35s ease;
+}
+
+.stat-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(124,58,237,0.15);
+}
+
+.icon-wrap{
+  width:60px;
+  height:60px;
+  margin:0 auto;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
+  color:#fff;
+  box-shadow:0 12px 30px rgba(124,58,237,0.25);
+  position:relative;
+  overflow:hidden;
+}
+
+.icon-wrap::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  transform:rotate(25deg);
+  animation:shineIcon 3s infinite;
+}
+
+@keyframes shineIcon{
+  0%{transform:translateX(-100%) rotate(25deg);}
+  100%{transform:translateX(100%) rotate(25deg);}
+}
+
+.number{
+  font-size:30px;
+  font-weight:800;
+  background:linear-gradient(90deg,#7c3aed,#ec4899);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.stat-box p{
+  margin:0;
+  color:#6b7280;
+  font-weight:500;
+}
+
+.stats-section{
+  padding:20px 0 60px;
+  background:#fff;
+}
+
+@media(max-width:767px){
+  .stats-section{
+    padding:10px 0 45px;
+  }
+
+  .stat-box{
+    padding:22px 16px;
+  }
+
+  .number{
+    font-size:26px;
+  }
+}
       `}</style>
 
       <Container>
@@ -476,40 +557,51 @@ const About = () => {
           </Row>
         </div>
 
-        {/* STATS */}
-        <Row className="g-4 text-center mb-5">
-          <Col md={3}>
-            <div className="glass stat-box p-4">
-              <div className="icon-wrap mb-3"><GraphUpArrow size={26} /></div>
-              <div className="number">500+</div>
-              <p>Projects Completed</p>
-            </div>
-          </Col>
+       <section className="stats-section">
+  <Container>
+    <Row className="g-4 text-center">
+      <Col md={3} sm={6}>
+        <div className="glass stat-box">
+          <div className="icon-wrap mb-3">
+            <GraphUpArrow size={26} />
+          </div>
+          <div className="number">500+</div>
+          <p>Projects Completed</p>
+        </div>
+      </Col>
 
-          <Col md={3}>
-            <div className="glass stat-box p-4">
-              <div className="icon-wrap mb-3"><Stars size={26} /></div>
-              <div className="number">200+</div>
-              <p>Happy Clients</p>
-            </div>
-          </Col>
+      <Col md={3} sm={6}>
+        <div className="glass stat-box">
+          <div className="icon-wrap mb-3">
+            <Stars size={26} />
+          </div>
+          <div className="number">200+</div>
+          <p>Happy Clients</p>
+        </div>
+      </Col>
 
-          <Col md={3}>
-            <div className="glass stat-box p-4">
-              <div className="icon-wrap mb-3"><Gem size={26} /></div>
-              <div className="number">15+</div>
-              <p>Awards Won</p>
-            </div>
-          </Col>
+      <Col md={3} sm={6}>
+        <div className="glass stat-box">
+          <div className="icon-wrap mb-3">
+            <Gem size={26} />
+          </div>
+          <div className="number">15+</div>
+          <p>Awards Won</p>
+        </div>
+      </Col>
 
-          <Col md={3}>
-            <div className="glass stat-box p-4">
-              <div className="icon-wrap mb-3"><RocketTakeoffFill size={26} /></div>
-              <div className="number">40+</div>
-              <p>Team Members</p>
-            </div>
-          </Col>
-        </Row>
+      <Col md={3} sm={6}>
+        <div className="glass stat-box">
+          <div className="icon-wrap mb-3">
+            <RocketTakeoffFill size={26} />
+          </div>
+          <div className="number">40+</div>
+          <p>Team Members</p>
+        </div>
+      </Col>
+    </Row>
+  </Container>
+</section>
 
         {/* WHY CHOOSE US */}
         <section className="why-choose-section">
