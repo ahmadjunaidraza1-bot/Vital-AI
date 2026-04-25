@@ -86,9 +86,10 @@ const Clothes = () => {
         }
 
         .img-card {
-          height: 360px;
+          height: 280px;
           border-radius: 20px;
           overflow: hidden;
+          background: #fff;
           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
           transition: all 0.4s ease;
           animation: fadeUp 0.7s ease both;
@@ -103,8 +104,10 @@ const Clothes = () => {
         .img-card img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           display: block;
+          background: #fff;
+          padding: 8px;
           transition: transform 0.6s ease;
         }
 
@@ -117,11 +120,22 @@ const Clothes = () => {
           object-fit: cover;
         }
 
+        .modal-content {
+          background: transparent;
+          border: none;
+        }
+
+        .modal-header {
+          background: #fff;
+          border-radius: 14px 14px 0 0;
+        }
+
         .modal-img {
           width: 100%;
-          max-height: 80vh;
+          max-height: 88vh;
           object-fit: contain;
           background: #fff;
+          border-radius: 0 0 14px 14px;
         }
 
         @keyframes fadeUp {
@@ -135,18 +149,51 @@ const Clothes = () => {
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
+          .section-heading h1 {
+            font-size: 2.4rem;
+          }
+
           .img-card {
-            height: 260px;
+            height: 420px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .clothes-page {
+            padding: 50px 0 60px;
+          }
+
+          .section-heading h1 {
+            font-size: 2rem;
+          }
+
+          .img-card {
+            height: 390px;
+          }
+
+          .img-card img {
+            object-fit: contain;
+            padding: 6px;
           }
 
           .carousel img {
-            height: 300px;
+            height: 320px;
+            object-fit: cover;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .img-card {
+            height: 360px;
+          }
+
+          .carousel img {
+            height: 280px;
           }
         }
       `}</style>
 
-      {/* TOP SIMPLE CAROUSEL */}
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
           <img src="/Images/cb1.png" className="w-100" alt="slide1" />
@@ -162,7 +209,8 @@ const Clothes = () => {
           <div className="section-heading">
             <div className="mini-title">Fashion Collection</div>
             <h1>
-              Explore Premium <span className="gradient-text">Clothing Gallery</span>
+              Explore Premium{" "}
+              <span className="gradient-text">Clothing Gallery</span>
             </h1>
             <p>
               Discover modern fashion styles in a clean and elegant visual showcase.
@@ -171,7 +219,7 @@ const Clothes = () => {
 
           <Row className="g-4">
             {clothesItems.map((item, index) => (
-              <Col lg={3} md={6} sm={6} key={item.id}>
+              <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
                 <div
                   className="img-card"
                   style={{ animationDelay: `${index * 0.08}s` }}
@@ -185,7 +233,6 @@ const Clothes = () => {
         </Container>
       </section>
 
-      {/* MODAL WITH CLOSE BUTTON */}
       <Modal show={show} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton />
         <Modal.Body className="p-0">

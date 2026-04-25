@@ -30,237 +30,251 @@ const TikTok = () => {
   return (
     <>
       <style>{`
-        body {
-          background: #f8f9fc;
-          font-family: 'Poppins', sans-serif;
+        body{
+          background:#f8f9fc;
+          font-family:'Poppins',sans-serif;
         }
 
-        .tiktok-page {
-          padding: 0 0 80px;
+        .tiktok-page{
+          padding:0 0 80px;
           background:
-            radial-gradient(circle at top left, rgba(255, 0, 128, 0.08), transparent 25%),
-            radial-gradient(circle at top right, rgba(0, 242, 234, 0.08), transparent 25%),
+            radial-gradient(circle at top left, rgba(255,0,128,0.08), transparent 25%),
+            radial-gradient(circle at top right, rgba(0,242,234,0.08), transparent 25%),
             #f8f9fc;
-          min-height: 100vh;
+          min-height:100vh;
         }
 
-        .mini-title {
-          display: inline-block;
-          padding: 7px 16px;
-          border-radius: 50px;
-          background: linear-gradient(135deg, rgba(255, 0, 128, 0.12), rgba(0, 242, 234, 0.12));
-          color: #ff0050;
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          margin-bottom: 14px;
+        .mini-title{
+          display:inline-block;
+          padding:7px 16px;
+          border-radius:50px;
+          background:linear-gradient(135deg, rgba(255,0,128,0.12), rgba(0,242,234,0.12));
+          color:#ff0050;
+          font-size:12px;
+          font-weight:700;
+          letter-spacing:1px;
+          text-transform:uppercase;
+          margin-bottom:14px;
         }
 
-        .gradient-text {
-          background: linear-gradient(90deg, #ff0050, #7c3aed, #00f2ea);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: 800;
+        .gradient-text{
+          background:linear-gradient(90deg,#ff0050,#7c3aed,#00f2ea);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+          font-weight:800;
         }
 
-        .hero-carousel {
-          margin-bottom: 50px;
+        /* HERO */
+        .video-slide{
+          position:relative;
+          height:560px;
+          background:#000;
         }
 
-        .video-slide {
-          position: relative;
-          height: 560px;
-          background: #000;
+        .hero-video{
+          width:100%;
+          height:100%;
+          object-fit:cover;
         }
 
-        .hero-video {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          display: block;
-          background: #000;
-        }
-
-        .hero-overlay {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          background: linear-gradient(
+        .hero-overlay{
+          position:absolute;
+          inset:0;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          background:linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.65) 0%,
-            rgba(0, 0, 0, 0.35) 50%,
-            rgba(0, 0, 0, 0.15) 100%
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.15)
           );
-          padding: 20px;
+          padding:20px;
         }
 
-        .hero-content {
-          max-width: 850px;
-          margin: 0 auto;
-          margin-top: 150px;
+        .hero-content{
+          max-width:850px;
         }
 
-        .hero-content .mini-title {
-          color: #fff;
-          background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
-          backdrop-filter: blur(10px);
+        .hero-content h1{
+          font-size:3.2rem;
+          font-weight:800;
+          color:#fff;
+          margin-bottom:15px;
         }
 
-        .hero-content h1 {
-          font-size: 3.2rem;
-          font-weight: 800;
-          color: #fff;
-          margin-bottom: 16px;
-          line-height: 1.15;
+        .hero-content p{
+          color:rgba(255,255,255,0.92);
+          font-size:1.05rem;
+          margin:0;
         }
 
-        .hero-content p {
-          color: rgba(255,255,255,0.92);
-          font-size: 1.05rem;
-          line-height: 1.8;
-          margin: 0;
+        /* HEADING */
+        .section-heading{
+          max-width:820px;
+          margin:60px auto 45px;
+          text-align:center;
         }
 
-        .section-heading {
-          max-width: 820px;
-          margin: 0 auto 30px;
-          text-align: center;
+        .section-heading h2{
+          font-size:3rem;
+          font-weight:800;
+          color:#111827;
+          margin-bottom:14px;
         }
 
-        .video-card {
-          position: relative;
-          height: 360px;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-          transition: all 0.4s ease;
-          animation: fadeUp 0.7s ease both;
-          background: #000;
-          cursor: pointer;
+        .section-heading p{
+          color:#6b7280;
+          margin:0;
         }
 
-        .video-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        /* VIDEO CARD */
+        .video-card{
+          position:relative;
+          height:450px;
+          border-radius:20px;
+          overflow:hidden;
+          background:#fff;
+          box-shadow:0 15px 40px rgba(0,0,0,0.10);
+          cursor:pointer;
+          transition:0.4s ease;
         }
 
-        .video-card video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
+        .video-card:hover{
+          transform:translateY(-8px);
+          box-shadow:0 25px 60px rgba(0,0,0,0.15);
         }
 
-        .video-card::after {
-          content: "▶";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.18);
-          backdrop-filter: blur(8px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          font-size: 24px;
-          opacity: 0;
-          transition: 0.3s ease;
-          pointer-events: none;
+        .video-card video{
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          object-position:center;
+          display:block;
+          background:#fff;
+          transition:0.6s ease;
         }
 
-        .video-card:hover::after {
-          opacity: 1;
+        .video-card:hover video{
+          transform:scale(1.05);
         }
 
-        .custom-modal .modal-content {
-          background: #000;
-          border: none;
-          border-radius: 20px;
-          overflow: hidden;
+        .video-card::after{
+          content:"▶";
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%,-50%);
+          width:58px;
+          height:58px;
+          border-radius:50%;
+          background:rgba(255,255,255,0.18);
+          color:#fff;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:22px;
+          backdrop-filter:blur(8px);
         }
 
-        .custom-modal .modal-header {
-          border: none;
-          padding: 10px 14px;
-          background: #000;
+        /* MODAL */
+        .custom-modal .modal-content{
+          background:#000;
+          border:none;
+          border-radius:18px;
+          overflow:hidden;
         }
 
-        .custom-modal .btn-close {
-          filter: invert(1);
-          opacity: 1;
+        .custom-modal .modal-header{
+          background:#000;
+          border:none;
         }
 
-        .custom-modal .modal-body {
-          padding: 0;
-          background: #000;
+        .custom-modal .btn-close{
+          filter:invert(1);
+          opacity:1;
         }
 
-        .modal-video {
-          width: 100%;
-          height: auto;
-          display: block;
-          background: #000;
-          max-height: 80vh;
+        .custom-modal .modal-body{
+          padding:0;
+          background:#000;
         }
 
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
+        .modal-video{
+          width:100%;
+          max-height:85vh;
+          object-fit:contain;
+          background:#000;
+        }
+
+        /* TABLET */
+        @media (max-width:991px){
+          .hero-content h1{
+            font-size:2.5rem;
           }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
 
-        @media (max-width: 991px) {
-          .hero-content h1 {
-            font-size: 2.5rem;
+          .section-heading h2{
+            font-size:2.4rem;
           }
         }
 
-        @media (max-width: 768px) {
-          .video-slide {
-            height: 420px;
+        /* MOBILE */
+        @media (max-width:768px){
+          .video-slide{
+            height:430px;
           }
 
-          .hero-content {
-            margin-top: 80px;
+          .hero-video{
+            object-fit:cover;
           }
 
-          .hero-content h1 {
-            font-size: 2rem;
+          .hero-content h1{
+            font-size:2rem;
           }
 
-          .hero-content p {
-            font-size: 0.95rem;
+          .hero-content p{
+            font-size:0.95rem;
           }
 
-          .video-card {
-            height: 260px;
+          .section-heading{
+            margin:45px auto 35px;
           }
 
-          .video-card::after {
-            opacity: 1;
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
+          .section-heading h2{
+            font-size:2rem;
+          }
+
+          .video-card{
+            height:390px;
+          }
+
+          .video-card video{
+            object-fit:contain;
+            object-position:center;
+            background:#fff;
+          }
+        }
+
+        @media (max-width:480px){
+          .video-slide{
+            height:360px;
+          }
+
+          .video-card{
+            height:320px;
+          }
+
+          .video-card video{
+            object-fit:contain;
+            background:#fff;
           }
         }
       `}</style>
 
       <section className="tiktok-page">
+
         <Carousel
-          className="hero-carousel"
           controls={false}
           indicators={false}
           interval={4000}
@@ -277,12 +291,18 @@ const TikTok = () => {
                 playsInline
                 className="hero-video"
               />
+
               <div className="hero-overlay">
                 <div className="hero-content">
+                  <div className="mini-title">TikTok Showcase</div>
+
                   <h1>
                     Trending <span className="gradient-text">TikTok Videos</span>
                   </h1>
-                  <p>Scroll-stopping viral content for modern brands.</p>
+
+                  <p>
+                    Scroll-stopping short form content for modern brands.
+                  </p>
                 </div>
               </div>
             </div>
@@ -291,15 +311,23 @@ const TikTok = () => {
 
         <Container>
           <div className="section-heading">
-            <div className="mini-title">TikTok Collection</div>
+            <div className="mini-title">Video Collection</div>
+
+            <h2>
+              Explore Premium{" "}
+              <span className="gradient-text">TikTok Gallery</span>
+            </h2>
+
+            <p>
+              High-converting short videos designed for growth and engagement.
+            </p>
           </div>
 
           <Row className="g-4">
-            {videos.map((item, index) => (
-              <Col lg={3} md={6} sm={6} key={item.id}>
+            {videos.map((item) => (
+              <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
                 <div
                   className="video-card"
-                  style={{ animationDelay: `${index * 0.08}s` }}
                   onClick={() => handleVideoClick(item.src)}
                 >
                   <video

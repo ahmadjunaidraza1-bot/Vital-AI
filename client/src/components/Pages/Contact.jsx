@@ -260,7 +260,7 @@ const Contact = () => {
                   className="contact-link"
                   style={{ color: "#7c3aed" }}
                 >
-                  ahmadjunaidraza1@gmail.com →
+                  Info@vitalai.co.uk →
                 </a>
               </div>
 

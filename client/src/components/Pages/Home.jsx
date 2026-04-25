@@ -39,10 +39,7 @@ const Home = () => {
           }
         });
       },
-      {
-        threshold: 0.16,
-        rootMargin: "0px 0px -60px 0px",
-      }
+      { threshold: 0.16, rootMargin: "0px 0px -60px 0px" }
     );
 
     Object.values(observedRefs.current).forEach((el) => {
@@ -113,38 +110,36 @@ const Home = () => {
     },
   ];
 
- // projects array ko is updated version se replace kar do
-
-const projects = [
-  {
-    id: "pro-chauffeurs",
-    title: "Pro Chauffeurs",
-    category: "Social Media Posts",
-    img: "/Images/cr11.png",
-    motion: "left",
-  },
-  {
-    id: "viper",
-    title: "Viper",
-    category: "Automotive Brand Campaign",
-    img: "/Images/vg4.png",
-    motion: "up",
-  },
-  {
-    id: "women-bags",
-    title: "Women Bags",
-    category: "Fashion Accessories Campaign",
-    img: "/Images/5.png",
-    motion: "up",
-  },
-  {
-    id: "ecommerce-clothing",
-    title: "E-Commerce Clothing",
-    category: "Fashion E-Commerce",
-    img: "/Images/cb1.png",
-    motion: "right",
-  },
-];
+  const projects = [
+    {
+      id: "pro-chauffeurs",
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts",
+      img: "/Images/cr11.png",
+      motion: "left",
+    },
+    {
+      id: "viper",
+      title: "Viper",
+      category: "Automotive Brand Campaign",
+      img: "/Images/vg4.png",
+      motion: "up",
+    },
+    {
+      id: "women-bags",
+      title: "Women Bags",
+      category: "Fashion Accessories Campaign",
+      img: "/Images/5.png",
+      motion: "up",
+    },
+    {
+      id: "ecommerce-clothing",
+      title: "E-Commerce Clothing",
+      category: "Fashion E-Commerce",
+      img: "/Images/cb1.png",
+      motion: "right",
+    },
+  ];
 
   const testimonials = [
     {
@@ -210,7 +205,6 @@ const projects = [
 
         .hover-card {
           transition: transform 0.35s ease, box-shadow 0.35s ease;
-          will-change: transform;
         }
 
         .hover-card:hover {
@@ -230,7 +224,6 @@ const projects = [
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          text-align: center;
           min-height: 40px;
           font-size: 14px;
         }
@@ -239,7 +232,6 @@ const projects = [
           transform: translateY(-3px);
           box-shadow: 0 15px 35px rgba(236, 72, 153, 0.3);
           color: #fff;
-          text-decoration: none;
         }
 
         .outline-btn {
@@ -249,12 +241,10 @@ const projects = [
           border-radius: 50px;
           font-weight: 600;
           background: #fff;
-          cursor: pointer;
           transition: 0.3s ease;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          text-align: center;
           text-decoration: none;
           min-height: 40px;
           font-size: 14px;
@@ -264,7 +254,6 @@ const projects = [
           background: #7c3aed10;
           transform: translateY(-2px);
           color: #7c3aed;
-          text-decoration: none;
         }
 
         .section-space {
@@ -296,7 +285,6 @@ const projects = [
           color: #fff;
           background: linear-gradient(135deg, #7c3aed, #ec4899);
           margin-bottom: 18px;
-          flex-shrink: 0;
         }
 
         .hero-media {
@@ -304,6 +292,7 @@ const projects = [
           height: clamp(420px, 62vw, 550px);
           object-fit: cover;
           object-position: center;
+          background: #fff;
         }
 
         .hero-overlay {
@@ -344,7 +333,6 @@ const projects = [
           display: flex;
           gap: 10px;
           flex-wrap: wrap;
-          justify-content: flex-start;
         }
 
         .hero-btn-small {
@@ -355,9 +343,10 @@ const projects = [
 
         .studio-card {
           position: relative;
-          height: clamp(220px, 28vw, 260px);
+          height: clamp(240px, 28vw, 280px);
           border-radius: 20px;
           overflow: hidden;
+          background: #fff;
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
         }
 
@@ -370,12 +359,14 @@ const projects = [
 
         .studio-visual.video {
           object-fit: cover;
+          background: #fff;
         }
 
         .studio-visual.image {
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
+          background-color: #fff;
         }
 
         .about-card {
@@ -399,16 +390,19 @@ const projects = [
           border-radius: 24px;
           overflow: hidden;
           cursor: pointer;
+          background: #fff;
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
         }
 
         .work-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          transition: 0.8s ease;
-        }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.8s ease;
+  padding: 0;
+  background: transparent;
+}
 
         .work-overlay {
           position: absolute;
@@ -418,8 +412,8 @@ const projects = [
           padding: 30px;
           background: linear-gradient(
             to top,
-            rgba(0, 0, 0, 0.92),
-            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 0, 0, 0.25),
             transparent
           );
           opacity: 0;
@@ -465,11 +459,6 @@ const projects = [
           color: #fff;
           font-weight: 600;
           font-size: 14px;
-          transition: 0.3s;
-        }
-
-        .work-btn:hover {
-          color: #ec4899;
         }
 
         .work-glass {
@@ -479,7 +468,7 @@ const projects = [
           right: 20px;
           padding: 16px 18px;
           border-radius: 18px;
-          background: rgba(255, 255, 255, 0.75);
+          background: rgba(255, 255, 255, 0.82);
           backdrop-filter: blur(18px);
           border: 1px solid rgba(255, 255, 255, 0.3);
           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
@@ -505,9 +494,9 @@ const projects = [
         }
 
         .work-card:hover .work-img {
-          transform: scale(1.15);
-          filter: blur(3px) brightness(0.7);
-        }
+  transform: scale(1.15);
+  filter: blur(3px) brightness(0.7);
+}
 
         .work-card:hover .work-overlay {
           opacity: 1;
@@ -546,7 +535,6 @@ const projects = [
           position: absolute;
           top: 15px;
           right: 20px;
-          line-height: 1;
         }
 
         .testimonial-text {
@@ -570,7 +558,6 @@ const projects = [
           object-fit: cover;
           object-position: center;
           border: 2px solid #7c3aed;
-          flex-shrink: 0;
         }
 
         .client-name {
@@ -578,14 +565,12 @@ const projects = [
           font-size: 16px;
           font-weight: 700;
           color: #111;
-          line-height: 1.2;
         }
 
         .client-role {
           font-size: 13px;
           color: #6b7280;
           display: block;
-          line-height: 1.4;
         }
 
         .modal-video {
@@ -599,45 +584,16 @@ const projects = [
         .reveal {
           opacity: 0;
           transition: opacity 0.8s ease, transform 0.8s ease;
-          will-change: opacity, transform;
         }
 
-        .reveal.up {
-          transform: translateY(40px);
-        }
-
-        .reveal.left {
-          transform: translateX(-50px);
-        }
-
-        .reveal.right {
-          transform: translateX(50px);
-        }
-
-        .reveal.zoom {
-          transform: scale(0.94);
-        }
+        .reveal.up { transform: translateY(40px); }
+        .reveal.left { transform: translateX(-50px); }
+        .reveal.right { transform: translateX(50px); }
+        .reveal.zoom { transform: scale(0.94); }
 
         .reveal.show {
           opacity: 1;
           transform: translate(0, 0) scale(1);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .reveal,
-          .gradient-text,
-          .hover-card,
-          .testimonial-card,
-          .about-card,
-          .work-img,
-          .work-overlay,
-          .work-content,
-          .work-glass {
-            transition: none !important;
-            animation: none !important;
-            transform: none !important;
-            opacity: 1 !important;
-          }
         }
 
         @media (max-width: 1199px) {
@@ -650,238 +606,207 @@ const projects = [
           }
         }
 
-       @media (max-width: 991px) {
-  .section-space {
-    padding: 60px 0;
-  }
+        @media (max-width: 991px) {
+          .section-space {
+            padding: 60px 0;
+          }
 
-  .hero-overlay {
-    align-items: flex-end;
-    justify-content: flex-start;
-    text-align: left;
-    background: linear-gradient(
-      180deg,
-      rgba(0,0,0,0.18) 0%,
-      rgba(0,0,0,0.28) 35%,
-      rgba(0,0,0,0.72) 100%
-    );
-    padding: 0 0 28px 0;
-  }
+          .hero-overlay {
+            align-items: flex-end;
+            background: linear-gradient(
+              180deg,
+              rgba(0,0,0,0.18) 0%,
+              rgba(0,0,0,0.28) 35%,
+              rgba(0,0,0,0.72) 100%
+            );
+            padding: 0 0 28px 0;
+          }
 
-  .hero-content {
-    max-width: 85%;
-    margin: 0;
-  }
+          .hero-content {
+            max-width: 85%;
+          }
 
-  .hero-buttons {
-    justify-content: flex-start;
-  }
+          .studio-card {
+            height: 280px;
+          }
 
-  .studio-card {
-    height: 240px;
-  }
+          .work-card {
+            height: 420px;
+          }
+        }
 
-  .work-overlay {
-    padding: 24px;
-  }
+        @media (max-width: 767px) {
+          .section-space {
+            padding: 50px 0;
+          }
 
-  .work-glass {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-  }
+          .container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .display-4 {
+            font-size: 2rem;
+            line-height: 1.2;
+          }
+
+          .display-5 {
+            font-size: 1.75rem;
+            line-height: 1.25;
+          }
+
+          .fs-5 {
+            font-size: 0.98rem !important;
+            line-height: 1.75;
+          }
+
+          .hero-media {
+            height: 430px;
+            object-fit: contain;
+            background: #fff;
+          }
+
+          .hero-title {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            margin-bottom: 10px !important;
+          }
+
+          .hero-mini-title {
+            font-size: 10px;
+            padding: 4px 10px;
+            margin-bottom: 8px;
+          }
+
+          .main-btn,
+          .outline-btn {
+            padding: 7px 10px;
+            font-size: 11px;
+            min-height: 34px;
+          }
+
+          .hero-btn-small {
+            padding: 7px 12px !important;
+            min-height: 34px !important;
+            font-size: 11px !important;
+          }
+
+          .studio-card {
+            height: 360px;
+            background: #fff;
+          }
+
+          .studio-visual.video {
+            object-fit: contain;
+            background: #fff;
+          }
+
+          .studio-visual.image {
+            background-size: contain;
+            background-position: center;
+            background-color: #fff;
+          }
+
+          .work-card {
+            height: 420px;
+            background: #fff;
+          }
+
+          .work-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.8s ease;
+  padding: 0;
+  background: transparent;
+}
+  .work-card:hover .work-img {
+  transform: scale(1.15);
+  filter: blur(3px) brightness(0.7);
 }
 
-@media (max-width: 767px) {
-  .section-space {
-    padding: 50px 0;
-  }
+          .work-overlay {
+            opacity: 1;
+            padding: 20px;
+            background: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.78),
+              rgba(0, 0, 0, 0.20),
+              transparent
+            );
+          }
 
-  .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+          .work-content {
+            transform: translateY(0);
+          }
 
-  .display-4 {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
+          .work-glass {
+            display: none;
+          }
 
-  .display-5 {
-    font-size: 1.75rem;
-    line-height: 1.25;
-  }
+          .work-title {
+            font-size: 22px;
+          }
 
-  .fs-5 {
-    font-size: 0.98rem !important;
-    line-height: 1.75;
-  }
+          .testimonial-card {
+            padding: 24px;
+            border-radius: 20px;
+          }
 
-  .hero-media {
-    height: 480px;
-  }
+          .modal-dialog {
+            margin: 10px;
+          }
 
-  .hero-title {
-    font-size: 1.45rem;
-    line-height: 1.2;
-    margin-bottom: 10px !important;
-  }
+          .modal-content {
+            border-radius: 20px;
+            overflow: hidden;
+          }
 
-  .hero-mini-title {
-    font-size: 10px;
-    padding: 4px 10px;
-    margin-bottom: 8px;
-  }
+          .modal-video {
+            max-height: 60vh;
+          }
+        }
 
-  .hero-buttons {
-    gap: 8px;
-  }
+        @media (max-width: 575px) {
+          .hero-media {
+            height: 390px;
+            object-fit: contain;
+            background: #fff;
+          }
 
-  .main-btn,
-  .outline-btn {
-    padding: 7px 10px;
-    font-size: 11px;
-    min-height: 34px;
-  }
+          .hero-content {
+            max-width: 92%;
+          }
 
-  .hero-btn-small {
-    padding: 7px 12px !important;
-    min-height: 34px !important;
-    font-size: 11px !important;
-  }
+          .mini-title {
+            font-size: 10px;
+            padding: 5px 12px;
+          }
 
-  .studio-card {
-    height: 240px;
-  }
+          .hero-title {
+            font-size: 1.3rem;
+          }
 
-  .studio-visual.image {
-    background-size: cover;
-    background-position: center;
-  }
+          .studio-card {
+            height: 330px;
+          }
 
-  .feature-icon {
-    width: 54px;
-    height: 54px;
-    font-size: 22px;
-    border-radius: 16px;
-  }
+          .work-card {
+            height: 390px;
+          }
 
-  .about-card {
-    padding: 16px 16px;
-    font-size: 14px;
-  }
-
-  .work-card {
-    height: 360px;
-    border-radius: 20px;
-  }
-
-  .work-overlay {
-    opacity: 1;
-    padding: 20px;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.82),
-      rgba(0, 0, 0, 0.28),
-      transparent
-    );
-  }
-
-  .work-content {
-    transform: translateY(0);
-  }
-
-  .work-glass {
-    display: none;
-  }
-
-  .work-title {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  .testimonial-card {
-    padding: 24px;
-    border-radius: 20px;
-  }
-
-  .quote-icon {
-    font-size: 42px;
-    top: 12px;
-    right: 16px;
-  }
-
-  .testimonial-text {
-    font-size: 15px;
-    margin-bottom: 20px;
-  }
-
-  .client-img {
-    width: 46px;
-    height: 46px;
-  }
-
-  .modal-dialog {
-    margin: 10px;
-  }
-
-  .modal-content {
-    border-radius: 20px;
-    overflow: hidden;
-  }
-
-  .modal-video {
-    max-height: 60vh;
-  }
-}
-
-@media (max-width: 575px) {
-  .hero-media {
-    height: 430px;
-  }
-
-  .hero-content {
-    max-width: 92%;
-  }
-
-  .mini-title {
-    font-size: 10px;
-    padding: 5px 12px;
-  }
-
-  .hero-title {
-    font-size: 1.3rem;
-  }
-
-  .studio-card {
-    height: 220px;
-  }
-
-  .work-card {
-    height: 320px;
-  }
-
-  .main-btn,
-  .outline-btn {
-    width: auto;
-  }
-
-  .client-flex {
-    align-items: flex-start;
-  }
-}
+          .client-flex {
+            align-items: flex-start;
+          }
+        }
       `}</style>
 
       <section>
         <Carousel fade controls indicators interval={3500} pause={false}>
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img
-                src="/Images/CR3.png"
-                className="w-100 hero-media"
-                alt="slide1"
-                loading="eager"
-              />
+              <img src="/Images/CR3.png" className="w-100 hero-media" alt="slide1" />
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -899,11 +824,7 @@ const projects = [
                           <Button as={Link} to="/contact" className="main-btn hero-btn-small">
                             Book a strategy Call ✨
                           </Button>
-                          <Link
-                            to="/services"
-                            className="outline-btn hero-btn-small"
-                            style={{ background: "#fff" }}
-                          >
+                          <Link to="/services" className="outline-btn hero-btn-small">
                             Learn More →
                           </Link>
                         </div>
@@ -917,12 +838,7 @@ const projects = [
 
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img
-                src="/Images/jb1.png"
-                className="w-100 hero-media"
-                alt="slide2"
-                loading="lazy"
-              />
+              <img src="/Images/jb1.png" className="w-100 hero-media" alt="slide2" />
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -943,12 +859,7 @@ const projects = [
 
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img
-                src="/Images/CR1.png"
-                className="w-100 hero-media"
-                alt="slide3"
-                loading="lazy"
-              />
+              <img src="/Images/CR1.png" className="w-100 hero-media" alt="slide3" />
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -969,121 +880,90 @@ const projects = [
         </Carousel>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("studio")}
-        data-section="studio"
-      >
+      <section className="section-space" ref={setSectionRef("studio")} data-section="studio">
         <Container>
-          <Row className="align-items-center g-5">
-            <Col lg={12}>
-              <div className="text-center mb-5">
-                <div className={revealClass("studio", "up")}>
-                  <div className="mini-title">🎬 New: AI Virtual Studio</div>
-                </div>
-                <h2 className={`fw-bold display-4 mb-3 ${revealClass("studio", "zoom")}`}>
-                  Revolutionise Your <br />
-                  <span className="gradient-text">Product Presentation</span>
-                </h2>
-                <p
-                  className={`text-muted fs-5 mb-4 mx-auto ${revealClass("studio", "up")}`}
-                  style={{ maxWidth: "800px" }}
-                >
-                  Stop spending thousands on photoshoots. Our AI generates
-                  hyper-realistic virtual try-ons and model demonstrations for
-                  your clothes and jewelry.
-                </p>
-              </div>
+          <div className="text-center mb-5">
+            <div className={revealClass("studio", "up")}>
+              <div className="mini-title">🎬 New: AI Virtual Studio</div>
+            </div>
+            <h2 className={`fw-bold display-4 mb-3 ${revealClass("studio", "zoom")}`}>
+              Revolutionise Your <br />
+              <span className="gradient-text">Product Presentation</span>
+            </h2>
+            <p className={`text-muted fs-5 mb-4 mx-auto ${revealClass("studio", "up")}`} style={{ maxWidth: "800px" }}>
+              Stop spending thousands on photoshoots. Our AI generates
+              hyper-realistic virtual try-ons and model demonstrations for
+              your clothes and jewelry.
+            </p>
+          </div>
 
-              <Row className="g-4 justify-content-center mb-4">
-                {studioItems.map((item, i) => (
-                  <Col sm={6} md={6} lg={3} key={i}>
-                    <div className={revealClass("studio", item.motion)}>
-                      <Link to={item.link} style={{ textDecoration: "none" }}>
-                        <div className="hover-card d-flex flex-column justify-content-end studio-card">
-                          {item.src ? (
-                            <video
-                              src={item.src}
-                              autoPlay
-                              muted
-                              loop
-                              playsInline
-                              preload="metadata"
-                              className="studio-visual video"
-                            />
-                          ) : (
-                            <div
-                              className="studio-visual image"
-                              style={{
-                                backgroundImage: `url(${item.img})`,
-                              }}
-                            />
-                          )}
+          <Row className="g-4 justify-content-center mb-4">
+            {studioItems.map((item, i) => (
+              <Col sm={6} md={6} lg={3} key={i}>
+                <div className={revealClass("studio", item.motion)}>
+                  <Link to={item.link} style={{ textDecoration: "none" }}>
+                    <div className="hover-card d-flex flex-column justify-content-end studio-card">
+                      {item.src ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="studio-visual video"
+                        />
+                      ) : (
+                        <div
+                          className="studio-visual image"
+                          style={{ backgroundImage: `url(${item.img})` }}
+                        />
+                      )}
 
-                          <div
-                            style={{
-                              position: "absolute",
-                              inset: 0,
-                              background:
-                                "linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), rgba(0,0,0,0.10))",
-                            }}
-                          />
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background:
+                            "linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.22), rgba(0,0,0,0.05))",
+                        }}
+                      />
 
-                          <div
-                            style={{
-                              position: "relative",
-                              zIndex: 2,
-                              padding: "22px 18px",
-                              textAlign: "center",
-                              color: "#fff",
-                            }}
-                          >
-                            <b
-                              style={{
-                                fontSize: "22px",
-                                display: "block",
-                                marginBottom: "8px",
-                                lineHeight: "1.25",
-                              }}
-                            >
-                              {item.title}
-                            </b>
-                            <p
-                              style={{
-                                margin: 0,
-                                fontSize: "14px",
-                                lineHeight: "1.6",
-                                color: "rgba(255,255,255,0.92)",
-                              }}
-                            >
-                              {item.desc}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
+                      <div
+                        style={{
+                          position: "relative",
+                          zIndex: 2,
+                          padding: "22px 18px",
+                          textAlign: "center",
+                          color: "#fff",
+                        }}
+                      >
+                        <b style={{ fontSize: "22px", display: "block", marginBottom: "8px" }}>
+                          {item.title}
+                        </b>
+                        <p style={{ margin: 0, fontSize: "14px", lineHeight: "1.6" }}>
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                  </Col>
-                ))}
-              </Row>
-
-              <div className={`d-flex gap-3 flex-wrap justify-content-center ${revealClass("studio", "up")}`}>
-                <Button as={Link} to="/contact" className="main-btn">
-                  Book a Demo
-                </Button>
-                <Button as={Link} to="/services" className="outline-btn">
-                  Learn More
-                </Button>
-              </div>
-            </Col>
+                  </Link>
+                </div>
+              </Col>
+            ))}
           </Row>
+
+          <div className={`d-flex gap-3 flex-wrap justify-content-center ${revealClass("studio", "up")}`}>
+            <Button as={Link} to="/contact" className="main-btn">
+              Book free consultation
+            </Button>
+            <Button as={Link} to="/services" className="outline-btn">
+              Learn More
+            </Button>
+          </div>
         </Container>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("services")}
-        data-section="services"
-      >
+      <section className="section-space" ref={setSectionRef("services")} data-section="services">
         <Container>
           <div className="text-center mb-5">
             <div className={revealClass("services", "up")}>
@@ -1103,7 +983,7 @@ const projects = [
                     <div className="feature-icon">{item.icon}</div>
                     <h5 className="fw-bold">{item.title}</h5>
                     <p className="text-muted">{item.desc}</p>
-                    <Link to="/services" className="gradient-text" style={{ cursor: "pointer" }}>
+                    <Link to="/services" className="gradient-text">
                       Learn More →
                     </Link>
                   </Card>
@@ -1114,11 +994,7 @@ const projects = [
         </Container>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("about")}
-        data-section="about"
-      >
+      <section className="section-space" ref={setSectionRef("about")} data-section="about">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10} xl={8}>
@@ -1159,11 +1035,7 @@ const projects = [
         </Container>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("work")}
-        data-section="work"
-      >
+      <section className="section-space" ref={setSectionRef("work")} data-section="work">
         <Container>
           <div className="text-center mb-5">
             <div className={revealClass("work", "up")}>
@@ -1183,17 +1055,9 @@ const projects = [
             {projects.map((item, i) => (
               <Col md={6} lg={4} key={i}>
                 <div className={revealClass("work", item.motion)}>
-                  <div
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/portfolio/${item.id}`)}
-                  >
+                  <div onClick={() => navigate(`/portfolio/${item.id}`)}>
                     <div className="work-card">
-                      <img
-                        src={item.img}
-                        alt={item.title}
-                        className="work-img"
-                        loading="lazy"
-                      />
+                      <img src={item.img} alt={item.title} className="work-img" />
                       <div className="work-overlay">
                         <div className="work-content">
                           <div className="work-line">
@@ -1217,11 +1081,7 @@ const projects = [
         </Container>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("testimonials")}
-        data-section="testimonials"
-      >
+      <section className="section-space" ref={setSectionRef("testimonials")} data-section="testimonials">
         <Container>
           <div className="text-center mb-5">
             <div className={revealClass("testimonials", "up")}>
@@ -1240,12 +1100,7 @@ const projects = [
                     <div className="quote-icon">❝</div>
                     <p className="testimonial-text">{item.text}</p>
                     <div className="client-flex">
-                      <img
-                        src={item.img}
-                        alt={item.name}
-                        className="client-img"
-                        loading="lazy"
-                      />
+                      <img src={item.img} alt={item.name} className="client-img" />
                       <div>
                         <h5 className="client-name">{item.name}</h5>
                         <span className="client-role">{item.role}</span>
@@ -1259,11 +1114,7 @@ const projects = [
         </Container>
       </section>
 
-      <section
-        className="section-space"
-        ref={setSectionRef("cta")}
-        data-section="cta"
-      >
+      <section className="section-space" ref={setSectionRef("cta")} data-section="cta">
         <Container>
           <div className={revealClass("cta", "zoom")}>
             <Card className="glass border-0 p-4 p-md-5 text-center">
@@ -1273,8 +1124,7 @@ const projects = [
               </h2>
               <p className="text-muted fs-5 mt-3 mb-4">
                 Join 500+ businesses already growing with VITAL AI to automate
-                their <br className="d-none d-md-block" /> growth and dominate
-                their market.
+                their growth and dominate their market.
               </p>
               <div className="d-flex gap-3 justify-content-center flex-wrap">
                 <Button as={Link} to="/contact" className="main-btn">

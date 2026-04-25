@@ -3,33 +3,33 @@ import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const socialMediaItems = [
-    { id: 1, img: "/Images/cr10.png" },
-    { id: 2, img: "/Images/cr4.png" },
-    { id: 3, img: "/Images/cr6.png" },
-    { id: 4, img: "/Images/cr7.png" },
-    { id: 5, img: "/Images/cr 15.png" },
-    { id: 6, img: "/Images/cr 16.png" },
-    { id: 7, img: "/Images/cr 17.png" },
-    { id: 8, img: "/Images/cr 18.png" },
+  { id: 1, img: "/Images/cr10.png" },
+  { id: 2, img: "/Images/cr4.png" },
+  { id: 3, img: "/Images/cr11.png" },
+  { id: 4, img: "/Images/cr7.png" },
+  { id: 5, img: "/Images/cr 15.png" },
+  { id: 6, img: "/Images/cr 16.png" },
+  { id: 7, img: "/Images/cr 17.png" },
+  { id: 8, img: "/Images/cr 18.png" },
 ];
 
 const SocialMedia = () => {
-    const [showPopup, setShowPopup] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
-    const handleOpenPopup = (img) => {
-        setSelectedImage(img);
-        setShowPopup(true);
-    };
+  const handleOpenPopup = (img) => {
+    setSelectedImage(img);
+    setShowPopup(true);
+  };
 
-    const handleClosePopup = () => {
-        setShowPopup(false);
-        setSelectedImage("");
-    };
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedImage("");
+  };
 
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         body {
           background: #f8f9fc;
           font-family: 'Poppins', sans-serif;
@@ -55,16 +55,20 @@ const SocialMedia = () => {
           display: inline-block;
           padding: 7px 16px;
           border-radius: 50px;
-          background: linear-gradient(135deg, rgba(124,58,237,0.16), rgba(236,72,153,0.16));
+          background: linear-gradient(
+            135deg,
+            rgba(124,58,237,0.16),
+            rgba(236,72,153,0.16)
+          );
           color: #fff;
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 1px;
           text-transform: uppercase;
           margin-bottom: 10px;
-          backdrop-filter: blur(10px);
         }
 
+        /* HERO SECTION */
         .hero-carousel .carousel-item {
           height: 560px;
         }
@@ -105,13 +109,7 @@ const SocialMedia = () => {
           line-height: 1.15;
         }
 
-        .hero-content p {
-          color: rgba(255,255,255,0.92);
-          font-size: 1.05rem;
-          line-height: 1.8;
-          margin: 0;
-        }
-
+        /* SECTION */
         .section-heading {
           max-width: 820px;
           margin: 60px auto 50px;
@@ -122,7 +120,11 @@ const SocialMedia = () => {
           display: inline-block;
           padding: 7px 16px;
           border-radius: 50px;
-          background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(236,72,153,0.12));
+          background: linear-gradient(
+            135deg,
+            rgba(124,58,237,0.12),
+            rgba(236,72,153,0.12)
+          );
           color: #7c3aed;
           font-size: 12px;
           font-weight: 700;
@@ -144,34 +146,38 @@ const SocialMedia = () => {
           font-size: 1rem;
         }
 
+        /* GALLERY CARD UPDATED */
         .img-card {
-          height: 360px;
-          border-radius: 20px;
+          height: 250px;
+          border-radius: 15px;
           overflow: hidden;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
-          transition: all 0.4s ease;
-          animation: fadeUp 0.7s ease both;
           background: #fff;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.10);
+          transition: all 0.4s ease;
           cursor: pointer;
         }
 
         .img-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 25px 60px rgba(0,0,0,0.15);
         }
 
+        /* FULL IMAGE SHOW */
         .img-card img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          display: block;
+          object-fit: contain;
+          padding: 10px;
+          background: #fff;
           transition: transform 0.6s ease;
         }
 
+        /* ZOOM EFFECT */
         .img-card:hover img {
-          transform: scale(1.05);
+          transform: scale(1.12);
         }
 
+        /* MODAL */
         .image-popup-modal .modal-content {
           background: transparent;
           border: none;
@@ -191,17 +197,7 @@ const SocialMedia = () => {
           background: #fff;
         }
 
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(25px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
+        /* RESPONSIVE */
         @media (max-width: 991px) {
           .hero-content h1 {
             font-size: 2.5rem;
@@ -221,133 +217,160 @@ const SocialMedia = () => {
             font-size: 2rem;
           }
 
-          .hero-content p {
-            font-size: 0.95rem;
-          }
-
-          .section-heading {
-            margin: 45px auto 35px;
-          }
-
           .section-heading h2 {
             font-size: 2rem;
           }
 
+          /* MOBILE BIGGER IMAGES */
           .img-card {
-            height: 260px;
+            height: 400px;
+          }
+
+          .img-card img {
+            object-fit: contain;
+            padding: 8px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .img-card {
+            height: 300px;
           }
         }
       `}</style>
 
-            <section className="social-page">
-                <Carousel className="hero-carousel" fade controls indicators interval={3000}>
-                    <Carousel.Item>
-                        <div style={{ position: "relative", height: "100%" }}>
-                            <img src="/Images/CR2.png" alt="Social media banner 1" />
-                            <div className="hero-overlay">
-                                <div className="hero-content">
-                                    <div className="mini-title">Social Media Showcase</div>
-                                    <h1>
-                                        Creative <span className="gradient-text">Social Media Content</span>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </Carousel.Item>
+      <section className="social-page">
+        {/* HERO */}
+        <Carousel
+          className="hero-carousel"
+          fade
+          controls
+          indicators
+          interval={3000}
+        >
+          <Carousel.Item>
+            <div style={{ position: "relative", height: "100%" }}>
+              <img src="/Images/CR2.png" alt="banner1" />
+              <div className="hero-overlay">
+                <div className="hero-content">
+                  <div className="mini-title">Social Media Showcase</div>
+                  <h1>
+                    Creative{" "}
+                    <span className="gradient-text">
+                      Social Media Content
+                    </span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
 
-                    <Carousel.Item>
-                        <div style={{ position: "relative", height: "100%" }}>
-                            <img src="/Images/cr 17.png" alt="Social media banner 2" />
-                            <div className="hero-overlay">
-                                <div className="hero-content">
-                                    <div className="mini-title">Viral Content Design</div>
-                                    <h1>
-                                        Bold Ideas for <span className="gradient-text">Modern Campaigns</span>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </Carousel.Item>
+          <Carousel.Item>
+            <div style={{ position: "relative", height: "100%" }}>
+              <img src="/Images/cr 17.png" alt="banner2" />
+              <div className="hero-overlay">
+                <div className="hero-content">
+                  <div className="mini-title">Viral Content Design</div>
+                  <h1>
+                    Bold Ideas for{" "}
+                    <span className="gradient-text">
+                      Modern Campaigns
+                    </span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
 
-                    <Carousel.Item>
-                        <div style={{ position: "relative", height: "100%" }}>
-                            <img src="/Images/cr 18.png" alt="Social media banner 3" />
-                            <div className="hero-overlay">
-                                <div className="hero-content">
-                                    <div className="mini-title">Brand Visual Gallery</div>
-                                    <h1>
-                                        Showcase Your <span className="gradient-text">Best Social Posts</span>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </Carousel.Item>
-                </Carousel>
+          <Carousel.Item>
+            <div style={{ position: "relative", height: "100%" }}>
+              <img src="/Images/cr 18.png" alt="banner3" />
+              <div className="hero-overlay">
+                <div className="hero-content">
+                  <div className="mini-title">Brand Visual Gallery</div>
+                  <h1>
+                    Showcase Your{" "}
+                    <span className="gradient-text">
+                      Best Social Posts
+                    </span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
 
-                <Container>
-                    <div className="section-heading">
-                        <div className="section-mini">Social Media Collection</div>
-                        <h2>
-                            Explore Premium <span className="gradient-text">Social Media Gallery</span>
-                        </h2>
-                        <p>
-                            Discover modern social media creatives in a clean and elegant visual showcase.
-                        </p>
-                    </div>
+        {/* GALLERY */}
+        <Container>
+          <div className="section-heading">
+            <div className="section-mini">Social Media Collection</div>
 
-                    <Row className="g-4">
-                        {socialMediaItems.map((item, index) => (
-                            <Col lg={3} md={6} sm={6} key={item.id}>
-                                <div
-                                    className="img-card"
-                                    style={{ animationDelay: `${index * 0.08}s` }}
-                                    onClick={() => handleOpenPopup(item.img)}
-                                >
-                                    <img src={item.img} alt="social media creative" />
-                                </div>
-                            </Col>
-                        ))}
-                    </Row>
-                </Container>
+            <h2>
+              Explore Premium{" "}
+              <span className="gradient-text">
+                Social Media Gallery
+              </span>
+            </h2>
 
-                <Modal
-                    show={showPopup}
-                    onHide={handleClosePopup}
-                    centered
-                    size="md"
-                    className="image-popup-modal"
+            <p>
+              Discover modern social media creatives in a clean
+              and elegant visual showcase.
+            </p>
+          </div>
+
+          <Row className="g-4">
+            {socialMediaItems.map((item) => (
+              <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
+                <div
+                  className="img-card"
+                  onClick={() => handleOpenPopup(item.img)}
                 >
-                    <Modal.Body style={{ position: "relative" }}>
+                  <img src={item.img} alt="gallery" />
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
 
-                        {/* CLOSE BUTTON */}
-                        <button
-                            onClick={handleClosePopup}
-                            style={{
-                                position: "absolute",
-                                top: "10px",
-                                right: "10px",
-                                background: "rgba(0,0,0,0.6)",
-                                color: "#fff",
-                                border: "none",
-                                width: "35px",
-                                height: "35px",
-                                borderRadius: "50%",
-                                fontSize: "18px",
-                                cursor: "pointer",
-                                zIndex: 10,
-                            }}
-                        >
-                            ✕
-                        </button>
+        {/* MODAL */}
+        <Modal
+          show={showPopup}
+          onHide={handleClosePopup}
+          centered
+          size="md"
+          className="image-popup-modal"
+        >
+          <Modal.Body style={{ position: "relative" }}>
+            <button
+              onClick={handleClosePopup}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                background: "rgba(0,0,0,0.6)",
+                color: "#fff",
+                border: "none",
+                width: "35px",
+                height: "35px",
+                borderRadius: "50%",
+                fontSize: "18px",
+                cursor: "pointer",
+                zIndex: 10,
+              }}
+            >
+              ✕
+            </button>
 
-                        {/* IMAGE */}
-                        <img src={selectedImage} alt="full preview" className="popup-image" />
-
-                    </Modal.Body>
-                </Modal>
-            </section>
-        </>
-    );
+            <img
+              src={selectedImage}
+              alt="preview"
+              className="popup-image"
+            />
+          </Modal.Body>
+        </Modal>
+      </section>
+    </>
+  );
 };
 
 export default SocialMedia;
