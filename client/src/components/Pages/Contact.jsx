@@ -402,11 +402,7 @@ const Contact = () => {
                   </Row>
                 </Form>
 
-                <div className="mt-4 pt-3 text-center">
-                  <p className="text-muted small mb-0">
-                    Messages will be delivered to: ahmadjunaidraza1@gmail.com
-                  </p>
-                </div>
+               
               </div>
             </Col>
           </Row>

@@ -26,7 +26,7 @@ export default function Header() {
     "About",
     "Services",
     "Portfolio",
-    "Case Study",
+    // "Case Study",
     "Blog",
     "Pricing",
     "Contact",

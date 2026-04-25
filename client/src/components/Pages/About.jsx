@@ -10,6 +10,7 @@ import {
   PeopleFill,
   BarChartLineFill,
 } from "react-bootstrap-icons";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const About = () => {
@@ -181,36 +182,7 @@ const About = () => {
           transform:translateY(-8px);
           box-shadow:0 25px 60px rgba(124,58,237,0.15);
         }
-
-        .team-member {
-          display:flex;
-          flex-direction:column;
-          align-items:center;
-        }
-
-        .team-img-wrap {
-          width:100%;
-          max-width:340px;
-          height:370px;
-          border-radius:20px;
-          overflow:hidden;
-          box-shadow:0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .team-img-wrap img {
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          transition:transform 0.6s ease;
-        }
-
-        .team-img-wrap:hover img {
-          transform:scale(1.05);
-        }
-
-        .team-member h5{
-          margin-top:15px;
-        }
+       
 
         .why-choose-section{
           position:relative;
@@ -677,44 +649,7 @@ const About = () => {
           </Col>
         </Row>
 
-        {/* LEADERSHIP */}
-        <div className="text-center mb-4 mt-5">
-          <h2 className="fw-bold">
-            Meet Our <span className="gradient-text">Leadership</span>
-          </h2>
-        </div>
-
-        <Row className="g-5 text-center">
-          <Col md={4}>
-            <div className="team-member">
-              <div className="team-img-wrap">
-                <img src="/Images/user9.png" alt="Dr. Aris Thorne" />
-              </div>
-              <h5>Dr. Aris Thorne</h5>
-              <p className="text-muted">Chief AI Officer</p>
-            </div>
-          </Col>
-
-          <Col md={4}>
-            <div className="team-member">
-              <div className="team-img-wrap">
-                <img src="/Images/user9.png" alt="Sarah Jenkins" />
-              </div>
-              <h5>Sarah Jenkins</h5>
-              <p className="text-muted">CEO & Founder</p>
-            </div>
-          </Col>
-
-          <Col md={4}>
-            <div className="team-member">
-              <div className="team-img-wrap">
-                <img src="/Images/user9.png" alt="Marcus Chen" />
-              </div>
-              <h5>Marcus Chen</h5>
-              <p className="text-muted">Head of Design</p>
-            </div>
-          </Col>
-        </Row>
+       
       </Container>
     </div>
   );

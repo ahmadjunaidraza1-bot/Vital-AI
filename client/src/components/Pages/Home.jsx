@@ -85,28 +85,28 @@ const Home = () => {
     return () => observer.disconnect();
   }, [startCount]);
 
-  useEffect(() => {
-    if (!startCount) return;
+ useEffect(() => {
+  if (!startCount) return;
 
-    let current = 0;
+  let current = 0;
 
-    const interval = setInterval(() => {
-      current += 1;
+  const interval = setInterval(() => {
+    current += 1;
 
-      setCounts({
-        projects: Math.min(current * 10, 500),
-        clients: Math.min(current * 4, 200),
-        awards: Math.min(Math.floor(current * 0.3), 15),
-        team: Math.min(Math.floor(current * 0.8), 40),
-      });
+    setCounts({
+      projects: Math.min(current * 6, 300),
+      clients: Math.min(current * 3, 150),
+      awards: Math.min(Math.floor(current * 0.1), 5),
+      team: Math.min(Math.floor(current * 0.5), 25),
+    });
 
-      if (current >= 50) {
-        clearInterval(interval);
-      }
-    }, 90);
+    if (current >= 50) {
+      clearInterval(interval);
+    }
+  }, 30);
 
-    return () => clearInterval(interval);
-  }, [startCount]);
+  return () => clearInterval(interval);
+}, [startCount]);
 
   const revealClass = (sectionId, type = "up") =>
     `${visible[sectionId] ? `reveal ${type} show` : `reveal ${type}`}`;
