@@ -329,7 +329,7 @@ const Footer = () => {
           {/* Bottom */}
           <Row className="bottom-bar">
             <Col md={6} className="text-center text-md-start mb-2 mb-md-0">
-              © 2026 <span className="shine-text">VITAL AI Solutions</span>
+              © 2026 <span className="shine-text">VITAL AI Solutions.</span> All rights reserved
             </Col>
 
             <Col md={6} className="text-center text-md-end">
