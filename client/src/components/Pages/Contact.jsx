@@ -415,16 +415,16 @@ const Contact = () => {
             className="glass-card p-2 overflow-hidden"
             style={{ borderRadius: "24px" }}
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.3759876462436!2d-2.2487476!3d53.4796115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1c2f9e3cdf9%3A0x429f267898d93986!2sDeansgate%2C%20Manchester%2C%20UK!5e0!3m2!1sen!2s!4v1776843668991!5m2!1sen!2s"
-              width="100%"
-              height="350"
-              style={{ border: 0, borderRadius: "16px" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Manchester Location"
-            ></iframe>
+           <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.544980973171!2d-2.2462665231532566!3d53.476591664969995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1ea183342fd%3A0x18db61892d2c316f!2sBartle%20House%2C%20Manchester%20M2%203WQ%2C%20UK!5e0!3m2!1sen!2s!4v1777635953175!5m2!1sen!2s"
+  width="100%"
+  height="350"
+  style={{ border: 0, borderRadius: "16px" }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Bartle House Manchester Location"
+></iframe>
           </div>
         </Container>
       </section>
