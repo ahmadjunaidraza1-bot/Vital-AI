@@ -16,8 +16,9 @@ import {
   Stars,
   CheckCircleFill,
   GraphUpArrow,
-  Gem,
-  RocketTakeoffFill,
+  MegaphoneFill,
+  EnvelopePaperFill,
+  DisplayFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -28,16 +29,7 @@ const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [activeVideo, setActiveVideo] = useState("");
 
-  const [startCount, setStartCount] = useState(false);
-  const [counts, setCounts] = useState({
-    projects: 0,
-    clients: 0,
-    awards: 0,
-    team: 0,
-  });
-
   const observedRefs = useRef({});
-  const statsRef = useRef(null);
 
   const setSectionRef = (id) => (el) => {
     if (el) observedRefs.current[id] = el;
@@ -69,73 +61,45 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !startCount) {
-          setStartCount(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.6 }
-    );
-
-    if (statsRef.current) observer.observe(statsRef.current);
-
-    return () => observer.disconnect();
-  }, [startCount]);
-
- useEffect(() => {
-  if (!startCount) return;
-
-  let current = 0;
-
-  const interval = setInterval(() => {
-    current += 1;
-
-    setCounts({
-      projects: Math.min(current * 6, 300),
-      clients: Math.min(current * 3, 150),
-      awards: Math.min(Math.floor(current * 0.1), 5),
-      team: Math.min(Math.floor(current * 0.5), 25),
-    });
-
-    if (current >= 50) {
-      clearInterval(interval);
-    }
-  }, 30);
-
-  return () => clearInterval(interval);
-}, [startCount]);
-
   const revealClass = (sectionId, type = "up") =>
     `${visible[sectionId] ? `reveal ${type} show` : `reveal ${type}`}`;
 
   const services = [
-    {
-      title: "Virtual Product Demo",
-      icon: <CameraVideoFill />,
-      desc: "AI-powered try-ons and ads",
-      motion: "left",
-    },
-    {
-      title: "E-Commerce Solutions",
-      icon: <Globe2 />,
-      desc: "Smart stores & AI automation",
-      motion: "up",
-    },
-    {
-      title: "Web Development",
-      icon: <LightningChargeFill />,
-      desc: "Modern blazing-fast websites",
-      motion: "up",
-    },
-    {
-      title: "Social Media Content",
-      icon: <Stars />,
-      desc: "Viral reels and ad creatives",
-      motion: "right",
-    },
+  {
+    title: "Virtual Product Demo",
+    icon: <CameraVideoFill />,
+    desc: "AI-powered try-ons and ads",
+    motion: "left",
+    link: "/services#virtual-product-demo",
+  },
+  {
+    title: "E-Commerce Solutions",
+    icon: <Globe2 />,
+    desc: "Smart stores & AI automation",
+    motion: "up",
+    link: "/services#ecommerce-solutions",
+  },
+  {
+    title: "Web Development",
+    icon: <LightningChargeFill />,
+    desc: "Modern blazing-fast websites",
+    motion: "up",
+    link: "/services#website-building",
+  },
+  {
+    title: "Social Media Content",
+    icon: <Stars />,
+    desc: "Viral reels and ad creatives",
+    motion: "right",
+    link: "/services#digital-marketing",
+  },
+];
+
+  const marketingCards = [
+    { title: "TiKTok Store Management", icon: <DisplayFill /> },
+    { title: "SEO", icon: <GraphUpArrow /> },
+    { title: "Social Media Marketing", icon: <MegaphoneFill /> },
+    { title: "Google Adds Marketing", icon: <EnvelopePaperFill /> },
   ];
 
   const studioItems = [
@@ -428,73 +392,80 @@ const Home = () => {
           background-color: #fff;
         }
 
-        .stats-section {
-          padding: 20px 0 60px;
-          background: #fff;
+        .marketing-grid-section {
+          padding: 40px 0 70px;
+          background:
+            radial-gradient(circle at top left, rgba(124,58,237,0.08), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(6,182,212,0.08), transparent 34%),
+            #fafafa;
         }
 
-        .stat-box {
+        .marketing-card {
+          position: relative;
+          min-height: 195px;
+          border-radius: 20px;
+          background: #f8fafc;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           text-align: center;
-          padding: 25px;
-          border-radius: 18px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.08);
           transition: 0.35s ease;
-          height: 100%;
+          padding: 30px 20px;
+          overflow: hidden;
         }
 
-        .stat-box:hover {
+        .marketing-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: linear-gradient(135deg, rgba(124,58,237,.08), rgba(236,72,153,.06), rgba(6,182,212,.08));
+          opacity: 0;
+          transition: 0.35s ease;
+        }
+
+        .marketing-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 50px rgba(124,58,237,0.15);
+          box-shadow: 0 25px 60px rgba(124, 58, 237, 0.15);
         }
 
-        .icon-wrap {
-          width: 60px;
-          height: 60px;
-          margin: 0 auto;
+        .marketing-card:hover::before {
+          opacity: 1;
+        }
+
+        .marketing-card > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        .marketing-icon {
+          width: 70px;
+          height: 70px;
           border-radius: 18px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
-          color: #fff;
-          box-shadow: 0 12px 30px rgba(124,58,237,0.25);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .icon-wrap::after {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: linear-gradient(
-            120deg,
-            transparent,
-            rgba(255,255,255,0.4),
-            transparent
-          );
-          transform: rotate(25deg);
-          animation: shineIcon 3s infinite;
-        }
-
-        @keyframes shineIcon {
-          0% { transform: translateX(-100%) rotate(25deg); }
-          100% { transform: translateX(100%) rotate(25deg); }
-        }
-
-        .number {
           font-size: 30px;
-          font-weight: 800;
-          background: linear-gradient(90deg,#7c3aed,#ec4899);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          margin-bottom: 20px;
+          background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
+          color: #fff;
+          box-shadow: 0 10px 25px rgba(124, 58, 237, 0.35);
+          transition: 0.35s ease;
         }
 
-        .stat-box p {
+        .marketing-card:hover .marketing-icon {
+          transform: translateY(-3px) scale(1.06);
+          box-shadow: 0 14px 35px rgba(236, 72, 153, 0.35);
+        }
+
+        .marketing-card h4 {
           margin: 0;
-          color: #6b7280;
-          font-weight: 500;
+          color: #334155;
+          font-size: 16px;
+          font-weight: 800;
+          line-height: 1.3;
         }
 
         .about-card {
@@ -761,6 +732,10 @@ const Home = () => {
           .work-card {
             height: 420px;
           }
+
+          .marketing-card {
+            min-height: 180px;
+          }
         }
 
         @media (max-width: 767px) {
@@ -835,16 +810,24 @@ const Home = () => {
             background-color: #fff;
           }
 
-          .stats-section {
-            padding: 10px 0 45px;
+          .marketing-grid-section {
+            padding: 25px 0 50px;
           }
 
-          .stat-box {
-            padding: 22px 16px;
+          .marketing-card {
+            min-height: 160px;
           }
 
-          .number {
-            font-size: 26px;
+          .marketing-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            font-size: 25px;
+            margin-bottom: 16px;
+          }
+
+          .marketing-card h4 {
+            font-size: 15px;
           }
 
           .work-card {
@@ -926,29 +909,27 @@ const Home = () => {
             align-items: flex-start;
           }
 
-          .stats-section .row {
-            --bs-gutter-x: 12px;
-            --bs-gutter-y: 12px;
+          .marketing-grid-section .row {
+            --bs-gutter-x: 14px;
+            --bs-gutter-y: 14px;
           }
 
-          .stat-box {
-            padding: 16px 8px;
+          .marketing-card {
+            min-height: 145px;
             border-radius: 16px;
+            padding: 22px 10px;
           }
 
-          .icon-wrap {
-            width: 46px;
-            height: 46px;
+          .marketing-icon {
+            width: 50px;
+            height: 50px;
             border-radius: 14px;
-          }
-
-          .number {
             font-size: 22px;
+            margin-bottom: 14px;
           }
 
-          .stat-box p {
-            font-size: 12px;
-            line-height: 1.3;
+          .marketing-card h4 {
+            font-size: 13px;
           }
         }
       `}</style>
@@ -1124,48 +1105,17 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className="stats-section" ref={statsRef}>
+      <section className="marketing-grid-section">
         <Container>
-          <Row className="g-4 text-center">
-            <Col lg={3} md={3} sm={6} xs={6}>
-              <div className="glass stat-box">
-                <div className="icon-wrap mb-3">
-                  <GraphUpArrow size={26} />
+          <Row className="g-4 justify-content-center">
+            {marketingCards.map((item, index) => (
+              <Col lg={3} md={6} xs={6} key={index}>
+                <div className="marketing-card">
+                  <div className="marketing-icon">{item.icon}</div>
+                  <h4>{item.title}</h4>
                 </div>
-                <div className="number">{counts.projects}+</div>
-                <p>Projects Completed</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={3} sm={6} xs={6}>
-              <div className="glass stat-box">
-                <div className="icon-wrap mb-3">
-                  <Stars size={26} />
-                </div>
-                <div className="number">{counts.clients}+</div>
-                <p>Happy Clients</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={3} sm={6} xs={6}>
-              <div className="glass stat-box">
-                <div className="icon-wrap mb-3">
-                  <Gem size={26} />
-                </div>
-                <div className="number">{counts.awards}+</div>
-                <p>Awards Won</p>
-              </div>
-            </Col>
-
-            <Col lg={3} md={3} sm={6} xs={6}>
-              <div className="glass stat-box">
-                <div className="icon-wrap mb-3">
-                  <RocketTakeoffFill size={26} />
-                </div>
-                <div className="number">{counts.team}+</div>
-                <p>Team Members</p>
-              </div>
-            </Col>
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>
@@ -1183,21 +1133,24 @@ const Home = () => {
           </div>
 
           <Row className="g-4">
-            {services.map((item, i) => (
-              <Col md={6} lg={3} key={i}>
-                <div className={revealClass("services", item.motion)}>
-                  <Card className="glass p-4 h-100 border-0 hover-card">
-                    <div className="feature-icon">{item.icon}</div>
-                    <h5 className="fw-bold">{item.title}</h5>
-                    <p className="text-muted">{item.desc}</p>
-                    <Link to="/services" className="gradient-text">
-                      Learn More →
-                    </Link>
-                  </Card>
-                </div>
-              </Col>
-            ))}
-          </Row>
+  {services.map((item, i) => (
+    <Col md={6} lg={3} key={i}>
+      <div className={revealClass("services", item.motion)}>
+        <Card className="glass p-4 h-100 border-0 hover-card">
+          <div className="feature-icon">{item.icon}</div>
+
+          <h5 className="fw-bold">{item.title}</h5>
+
+          <p className="text-muted">{item.desc}</p>
+
+          <Link to={item.link} className="gradient-text">
+            Learn More →
+          </Link>
+        </Card>
+      </div>
+    </Col>
+  ))}
+</Row>
         </Container>
       </section>
 
@@ -1336,9 +1289,6 @@ const Home = () => {
               <div className="d-flex gap-3 justify-content-center flex-wrap">
                 <Button as={Link} to="/contact" className="main-btn">
                   Get Started Now
-                </Button>
-                <Button as={Link} to="/pricing" className="outline-btn">
-                  View Pricing
                 </Button>
               </div>
             </Card>

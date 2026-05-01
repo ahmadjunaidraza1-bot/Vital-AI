@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { CheckCircleFill } from "react-bootstrap-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const services = [
   {
+    id: "virtual-product-demo",
     title: "AI Virtual Product Demonstration",
     desc: "Revolutionize how you showcase your products with AI-powered virtual try-ons.",
     image: "/Images/CR2.png",
@@ -21,6 +22,7 @@ const services = [
     ],
   },
   {
+    id: "ecommerce-solutions",
     title: "AI Powered E-Commerce Solutions",
     desc: "Smart AI systems to optimize sales and customer experience.",
     image: "/Images/Sr1.png",
@@ -37,9 +39,10 @@ const services = [
     ],
   },
   {
+    id: "website-building",
     title: "AI Powered Website Building",
     desc: "Fast, SEO optimized and intelligent websites.",
-    image: "/Images/CR3.png",
+    image: "/Images/CR3(2).png",
     features: [
       "Real-time Optimization",
       "A/B Testing AI",
@@ -53,6 +56,7 @@ const services = [
     ],
   },
   {
+    id: "digital-marketing",
     title: "AI Powered Digital Marketing",
     desc: "Scale your brand with data-driven precision using AI-managed ads, SEO and content strategies.",
     image: "/Images/CR1.png",
@@ -72,6 +76,22 @@ const services = [
 
 export default function Services() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const section = document.querySelector(location.hash);
+
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 150);
+      }
+    }
+  }, [location]);
 
   return (
     <div style={{ padding: "100px 0", background: "#fff" }}>
@@ -96,6 +116,7 @@ export default function Services() {
           gap:60px;
           margin-bottom:120px;
           flex-wrap:wrap;
+          scroll-margin-top:120px;
         }
 
         .service-content{
@@ -122,12 +143,10 @@ export default function Services() {
           display:block;
         }
 
-        /* IMAGE HOVER ZOOM */
         .service-image:hover img{
           transform:scale(1.06);
         }
 
-        /* SHINING EFFECT */
         .service-image::before{
           content:"";
           position:absolute;
@@ -234,16 +253,39 @@ export default function Services() {
           .service-section{
             flex-direction:column !important;
             text-align:center;
+            gap:32px;
+            margin-bottom:80px;
+            scroll-margin-top:100px;
+          }
+
+          .service-image{
+            order:1;
+            width:100%;
+          }
+
+          .service-content{
+            order:2;
+            width:100%;
+          }
+
+          .service-image img{
+            max-width:100%;
+            height:280px;
+            object-fit:contain;
+            margin:0 auto;
           }
 
           .info-row{
             flex-direction:column;
           }
+
+          .item{
+            text-align:left;
+          }
         }
       `}</style>
 
       <Container>
-        {/* HEADER */}
         <div className="text-center mb-5">
           <h5
             className="fw-bold"
@@ -251,7 +293,7 @@ export default function Services() {
               letterSpacing: "2px",
               textTransform: "uppercase",
               color: "#7c3aed",
-              fontSize: "16px"
+              fontSize: "16px",
             }}
           >
             Our Services
@@ -261,7 +303,7 @@ export default function Services() {
             className="fw-bold mb-3"
             style={{
               fontSize: "54px",
-              lineHeight: "1.2"
+              lineHeight: "1.2",
             }}
           >
             <span className="gradient-text">
@@ -284,13 +326,13 @@ export default function Services() {
 
         {services.map((s, i) => (
           <div
-            key={i}
+            key={s.id}
+            id={s.id}
             className="service-section"
             style={{
               flexDirection: i % 2 === 0 ? "row" : "row-reverse",
             }}
           >
-            {/* TEXT */}
             <div className="service-content">
               <h2 className="gradient-text">{s.title}</h2>
               <p className="text-muted">{s.desc}</p>
@@ -325,7 +367,6 @@ export default function Services() {
               </button>
             </div>
 
-            {/* IMAGE */}
             <div className="service-image">
               <img src={s.image} alt={s.title} />
             </div>

@@ -304,12 +304,12 @@ const Footer = () => {
 
                 <div className="contact-row">
                   <span className="contact-icon"><GeoAltFill size={15} /></span>
-                  <span>Manchester, United Kingdom</span>
+                  <span>Bartle House, Oxford Court, Manchester M2 3WQ, United Kingdom</span>
                 </div>
 
                 <div className="contact-row">
                   <span className="contact-icon"><TelephoneFill size={14} /></span>
-                  <span>+44 7398 390815</span>
+                  <span>+44 161 394 0458</span>
                 </div>
 
                 <div className="contact-row">

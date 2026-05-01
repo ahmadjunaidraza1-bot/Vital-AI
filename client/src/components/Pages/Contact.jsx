@@ -296,7 +296,7 @@ const Contact = () => {
                 </div>
 
                 <h5 className="fw-bold mb-2">Our Headquarters</h5>
-                <p className="text-muted mb-0">Manchester</p>
+                <p className="text-muted mb-0">Bartle House, Oxford Court, Manchester M2 3WQ</p>
                 <p className="text-muted mb-0">United Kingdom</p>
               </div>
 
@@ -370,7 +370,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+44 7398 390815"
+                        placeholder="+44 161 394 0458"
                         className="form-control-custom"
                       />
                     </Col>
