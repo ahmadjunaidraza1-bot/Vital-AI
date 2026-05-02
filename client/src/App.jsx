@@ -6,10 +6,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Services from "./components/Pages/Services";
-import Portfolio from "./components/Pages/Portfolio";
+// import OurWork from "./components/Pages/OurWork";
 // import CaseStudy from "./components/Pages/CaseStudy";
 import Blog from "./components/Pages/Blog";
-// import Pricing from "./components/Pages/Pricing";
 import Contact from "./components/Pages/Contact";
 import NotFound from "./components/Pages/NotFound";
 import PortfolioDetail from "./components/Pages/PortfolioDetail";
@@ -17,6 +16,7 @@ import Jewelry from "./components/Pages/Jewelery";
 import Clothes from "./components/Pages/Clothes";
 import TikTok from "./components/Pages/TikTok";
 import SocialMedia from "./components/Pages/SocialMedia";
+import OurWork from "./components/Pages/OurWork";
 
 function App() {
   return (
@@ -28,10 +28,9 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
-          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="our-work" element={<OurWork />} />
           {/* <Route path="case-study" element={<CaseStudy />} /> */}
           <Route path="blog" element={<Blog />} />
-          {/* <Route path="pricing" element={<Pricing />} /> */}
           <Route path="contact" element={<Contact />} />
           <Route path="jewelery" element={<Jewelry />} />
           <Route path="clothes" element={<Clothes />} />

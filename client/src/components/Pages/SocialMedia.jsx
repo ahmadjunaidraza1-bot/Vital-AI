@@ -259,7 +259,15 @@ const SocialMedia = () => {
         >
           <Carousel.Item>
             <div style={{ position: "relative", height: "100%" }}>
-              <img src="/Images/CR2.png" alt="banner1" />
+              <img
+                src="/Images/CR2.png"
+                alt="Social media showcase banner"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width="1400"
+                height="600"
+              />
               <div className="hero-overlay">
                 <div className="hero-content">
                   <div className="mini-title">Social Media Showcase</div>
@@ -276,7 +284,14 @@ const SocialMedia = () => {
 
           <Carousel.Item>
             <div style={{ position: "relative", height: "100%" }}>
-              <img src="/Images/cr 17.png" alt="banner2" />
+              <img
+                src="/Images/cr 17.png"
+                alt="Viral content design banner"
+                loading="lazy"
+                decoding="async"
+                width="1400"
+                height="600"
+              />
               <div className="hero-overlay">
                 <div className="hero-content">
                   <div className="mini-title">Viral Content Design</div>
@@ -291,7 +306,14 @@ const SocialMedia = () => {
 
           <Carousel.Item>
             <div style={{ position: "relative", height: "100%" }}>
-              <img src="/Images/cr 18.png" alt="banner3" />
+              <img
+                src="/Images/cr 18.png"
+                alt="Brand visual gallery banner"
+                loading="lazy"
+                decoding="async"
+                width="1400"
+                height="600"
+              />
               <div className="hero-overlay">
                 <div className="hero-content">
                   <div className="mini-title">Brand Visual Gallery</div>
@@ -321,7 +343,7 @@ const SocialMedia = () => {
           </div>
 
           <Row className="g-4">
-            {socialMediaItems.map((item) => (
+            {socialMediaItems.map((item, index) => (
               <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
                 <div
                   className="img-card"
@@ -330,14 +352,22 @@ const SocialMedia = () => {
                   {item.type === "video" ? (
                     <video
                       src={item.src}
-                      autoPlay
                       muted
                       loop
                       playsInline
+                      preload="none"
                       className="gallery-video"
+                      poster="/Images/new4.png"
                     />
                   ) : (
-                    <img src={item.src} alt="gallery" />
+                    <img
+                      src={item.src}
+                      alt={`Social media creative ${index + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      width="400"
+                      height="400"
+                    />
                   )}
                 </div>
               </Col>
@@ -379,13 +409,16 @@ const SocialMedia = () => {
                 controls
                 autoPlay
                 playsInline
+                preload="metadata"
                 className="popup-media popup-video"
               />
             ) : (
               <img
                 src={selectedSrc}
-                alt="preview"
+                alt="Social media preview"
                 className="popup-media"
+                loading="lazy"
+                decoding="async"
               />
             )}
           </Modal.Body>

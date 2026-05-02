@@ -196,11 +196,28 @@ const Clothes = () => {
 
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/cb1.webp" className="w-100" alt="slide1" />
+          <img
+            src="/Images/cb1.webp"
+            className="w-100"
+            alt="Premium clothing AI showcase banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="1400"
+            height="600"
+          />
         </Carousel.Item>
 
         <Carousel.Item>
-          <img src="/Images/cb2.png" className="w-100" alt="slide2" />
+          <img
+            src="/Images/cb2.png"
+            className="w-100"
+            alt="Fashion product visualization banner"
+            loading="lazy"
+            decoding="async"
+            width="1400"
+            height="600"
+          />
         </Carousel.Item>
       </Carousel>
 
@@ -225,7 +242,14 @@ const Clothes = () => {
                   style={{ animationDelay: `${index * 0.08}s` }}
                   onClick={() => handleOpen(item.img)}
                 >
-                  <img src={item.img} alt="clothing" />
+                  <img
+                    src={item.img}
+                    alt={`AI clothing product showcase ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="400"
+                  />
                 </div>
               </Col>
             ))}
@@ -236,7 +260,15 @@ const Clothes = () => {
       <Modal show={show} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton />
         <Modal.Body className="p-0">
-          <img src={activeImg} alt="full" className="modal-img" />
+          {activeImg && (
+            <img
+              src={activeImg}
+              alt="Full clothing product preview"
+              className="modal-img"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </Modal.Body>
       </Modal>
     </>

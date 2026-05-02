@@ -27,17 +27,13 @@ const About = () => {
         if (!hasUserStarted) return;
 
         if (entry.isIntersecting) {
-          video.play().then(() => {
-            setIsPlaying(true);
-          }).catch(() => {});
+          video.play().then(() => setIsPlaying(true)).catch(() => {});
         } else {
           video.pause();
           setIsPlaying(false);
         }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: 0.5 }
     );
 
     observer.observe(video);
@@ -53,9 +49,7 @@ const About = () => {
 
     if (video.paused) {
       setHasUserStarted(true);
-      video.play().then(() => {
-        setIsPlaying(true);
-      }).catch(() => {});
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
     } else {
       video.pause();
       setIsPlaying(false);
@@ -88,6 +82,27 @@ const About = () => {
       text: "We focus on measurable growth, stronger brand visibility, and performance that truly matters.",
     },
   ];
+
+ const officeImages = [
+  {
+    img: "/Images/building.webp",
+    fallback: "/Images/building.webp",
+    title: "Our Office Building",
+    text: "A professional business location built for client trust and digital operations.",
+  },
+  {
+    img: "/Images/workspace.webp",
+    fallback: "/Images/workspace.webp",
+    title: "Creative Workspace",
+    text: "A focused environment where our team works on websites, AI visuals, and growth campaigns.",
+  },
+  {
+    img: "/Images/meeting.webp",
+    fallback: "/Images/meeting.webp",
+    title: "Client Meeting Room",
+    text: "A dedicated space for strategy sessions, consultations, and project planning.",
+  },
+];
 
   return (
     <div style={{ padding: "120px 0", background: "#fff" }}>
@@ -134,7 +149,7 @@ const About = () => {
           display:flex;
           align-items:center;
           justify-content:center;
-          background: linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
+          background:linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
           color:#fff;
           box-shadow:0 12px 30px rgba(124,58,237,0.25);
           position:relative;
@@ -155,10 +170,10 @@ const About = () => {
             transparent
           );
           transform:rotate(25deg);
-          animation: shineIcon 3s infinite;
+          animation:shineIcon 3s infinite;
         }
 
-        @keyframes shineIcon {
+        @keyframes shineIcon{
           0%{transform:translateX(-100%) rotate(25deg);}
           100%{transform:translateX(100%) rotate(25deg);}
         }
@@ -169,6 +184,17 @@ const About = () => {
           background:linear-gradient(90deg,#7c3aed,#ec4899);
           -webkit-background-clip:text;
           -webkit-text-fill-color:transparent;
+        }
+
+        .stat-box p{
+          margin:0;
+          color:#6b7280;
+          font-weight:500;
+        }
+
+        .stats-section{
+          padding:20px 0 60px;
+          background:#fff;
         }
 
         .mission-card,
@@ -182,7 +208,6 @@ const About = () => {
           transform:translateY(-8px);
           box-shadow:0 25px 60px rgba(124,58,237,0.15);
         }
-       
 
         .why-choose-section{
           position:relative;
@@ -331,43 +356,98 @@ const About = () => {
           margin-left:5px;
         }
 
+        .office-section{
+          padding:75px 0 85px;
+          background:
+            radial-gradient(circle at top left, rgba(124,58,237,0.08), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(6,182,212,0.08), transparent 34%),
+            #fafafa;
+          border-radius:32px;
+          margin:60px 0 70px;
+        }
+
+        .office-card{
+          position:relative;
+          height:330px;
+          border-radius:24px;
+          overflow:hidden;
+          background:#fff;
+          box-shadow:0 20px 55px rgba(0,0,0,0.12);
+          transition:0.4s ease;
+        }
+
+        .office-card:hover{
+          transform:translateY(-8px);
+          box-shadow:0 28px 70px rgba(124,58,237,0.18);
+        }
+
+        .office-card img{
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          display:block;
+          transition:0.8s ease;
+        }
+
+        .office-card:hover img{
+          transform:scale(1.12);
+          filter:brightness(0.72);
+        }
+
+        .office-overlay{
+          position:absolute;
+          inset:0;
+          display:flex;
+          align-items:flex-end;
+          padding:24px;
+          background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.18), transparent);
+        }
+
+        .office-content{
+          color:#fff;
+          transform:translateY(12px);
+          transition:0.4s ease;
+        }
+
+        .office-card:hover .office-content{
+          transform:translateY(0);
+        }
+
+        .office-content h5{
+          font-weight:800;
+          margin-bottom:8px;
+        }
+
+        .office-content p{
+          margin:0;
+          color:rgba(255,255,255,0.8);
+          line-height:1.6;
+          font-size:14px;
+        }
+
         @keyframes slideLeft{
-          from{
-            opacity:0;
-            transform:translateX(-50px);
-          }
-          to{
-            opacity:1;
-            transform:translateX(0);
-          }
+          from{ opacity:0; transform:translateX(-50px); }
+          to{ opacity:1; transform:translateX(0); }
         }
 
         @keyframes slideRight{
-          from{
-            opacity:0;
-            transform:translateX(50px);
-          }
-          to{
-            opacity:1;
-            transform:translateX(0);
-          }
+          from{ opacity:0; transform:translateX(50px); }
+          to{ opacity:1; transform:translateX(0); }
         }
 
         @keyframes slideUpCard{
-          from{
-            opacity:0;
-            transform:translateY(40px);
-          }
-          to{
-            opacity:1;
-            transform:translateY(0);
-          }
+          from{ opacity:0; transform:translateY(40px); }
+          to{ opacity:1; transform:translateY(0); }
         }
 
         @media (max-width: 991px){
           .why-choose-left{
             padding-right:0;
             margin-bottom:24px;
+          }
+
+          .office-card{
+            height:300px;
           }
         }
 
@@ -402,88 +482,29 @@ const About = () => {
             border-bottom:11px solid transparent;
             border-left:17px solid #fff;
           }
-        }
+
+          .stats-section{
+            padding:10px 0 45px;
+          }
+
           .stat-box{
-  text-align:center;
-  padding:25px;
-  border-radius:18px;
-  transition:0.35s ease;
-}
+            padding:22px 16px;
+          }
 
-.stat-box:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 50px rgba(124,58,237,0.15);
-}
+          .number{
+            font-size:26px;
+          }
 
-.icon-wrap{
-  width:60px;
-  height:60px;
-  margin:0 auto;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#7c3aed,#ec4899,#06b6d4);
-  color:#fff;
-  box-shadow:0 12px 30px rgba(124,58,237,0.25);
-  position:relative;
-  overflow:hidden;
-}
+          .office-section{
+            padding:55px 0 60px;
+            margin:40px 0 55px;
+            border-radius:22px;
+          }
 
-.icon-wrap::after{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.4),
-    transparent
-  );
-  transform:rotate(25deg);
-  animation:shineIcon 3s infinite;
-}
-
-@keyframes shineIcon{
-  0%{transform:translateX(-100%) rotate(25deg);}
-  100%{transform:translateX(100%) rotate(25deg);}
-}
-
-.number{
-  font-size:30px;
-  font-weight:800;
-  background:linear-gradient(90deg,#7c3aed,#ec4899);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.stat-box p{
-  margin:0;
-  color:#6b7280;
-  font-weight:500;
-}
-
-.stats-section{
-  padding:20px 0 60px;
-  background:#fff;
-}
-
-@media(max-width:767px){
-  .stats-section{
-    padding:10px 0 45px;
-  }
-
-  .stat-box{
-    padding:22px 16px;
-  }
-
-  .number{
-    font-size:26px;
-  }
-}
+          .office-card{
+            height:280px;
+          }
+        }
       `}</style>
 
       <Container>
@@ -499,8 +520,8 @@ const About = () => {
               </h1>
 
               <p className="text-muted fs-5 mt-3">
-                At VITAL AI, we believe that the future belongs to those who can harness
-                the power of artificial intelligence.
+                At VITAL AI, we believe that the future belongs to those who can
+                harness the power of artificial intelligence.
               </p>
             </Col>
 
@@ -529,51 +550,95 @@ const About = () => {
           </Row>
         </div>
 
-       <section className="stats-section">
-  <Container>
-    <Row className="g-4 text-center">
-      <Col md={3} sm={6}>
-        <div className="glass stat-box">
-          <div className="icon-wrap mb-3">
-            <GraphUpArrow size={26} />
-          </div>
-          <div className="number">500+</div>
-          <p>Projects Completed</p>
-        </div>
-      </Col>
+        {/* STATS */}
+        <section className="stats-section">
+          <Container>
+            <Row className="g-4 text-center">
+              <Col md={3} sm={6}>
+                <div className="glass stat-box">
+                  <div className="icon-wrap mb-3">
+                    <GraphUpArrow size={26} />
+                  </div>
+                  <div className="number">500+</div>
+                  <p>Projects Completed</p>
+                </div>
+              </Col>
 
-      <Col md={3} sm={6}>
-        <div className="glass stat-box">
-          <div className="icon-wrap mb-3">
-            <Stars size={26} />
-          </div>
-          <div className="number">200+</div>
-          <p>Happy Clients</p>
-        </div>
-      </Col>
+              <Col md={3} sm={6}>
+                <div className="glass stat-box">
+                  <div className="icon-wrap mb-3">
+                    <Stars size={26} />
+                  </div>
+                  <div className="number">200+</div>
+                  <p>Happy Clients</p>
+                </div>
+              </Col>
 
-      <Col md={3} sm={6}>
-        <div className="glass stat-box">
-          <div className="icon-wrap mb-3">
-            <Gem size={26} />
-          </div>
-          <div className="number">15+</div>
-          <p>Awards Won</p>
-        </div>
-      </Col>
+              <Col md={3} sm={6}>
+                <div className="glass stat-box">
+                  <div className="icon-wrap mb-3">
+                    <Gem size={26} />
+                  </div>
+                  <div className="number">15+</div>
+                  <p>Awards Won</p>
+                </div>
+              </Col>
 
-      <Col md={3} sm={6}>
-        <div className="glass stat-box">
-          <div className="icon-wrap mb-3">
-            <RocketTakeoffFill size={26} />
-          </div>
-          <div className="number">40+</div>
-          <p>Team Members</p>
-        </div>
-      </Col>
-    </Row>
-  </Container>
-</section>
+              <Col md={3} sm={6}>
+                <div className="glass stat-box">
+                  <div className="icon-wrap mb-3">
+                    <RocketTakeoffFill size={26} />
+                  </div>
+                  <div className="number">40+</div>
+                  <p>Team Members</p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        {/* OFFICE SECTION */}
+        <section className="office-section">
+          <Container>
+            <div className="text-center mb-5">
+              <h5 className="text-uppercase text-muted fw-bold">
+                Our Workspace
+              </h5>
+              <h2 className="fw-bold display-5">
+                Built for <span className="gradient-text">Creative Execution</span>
+              </h2>
+              <p className="text-muted fs-5 mx-auto" style={{ maxWidth: "760px" }}>
+                A modern environment where strategy, design, development, and
+                AI-powered content come together to build high-performing digital solutions.
+              </p>
+            </div>
+
+            <Row className="g-4">
+              {officeImages.map((item, index) => (
+                <Col lg={4} md={6} key={index}>
+                  <div className="office-card">
+                    <picture>
+                      <source srcSet={item.img} type="image/webp" />
+                      <img
+                        src={item.fallback}
+                        alt={item.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
+
+                    <div className="office-overlay">
+                      <div className="office-content">
+                        <h5>{item.title}</h5>
+                        <p>{item.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </section>
 
         {/* WHY CHOOSE US */}
         <section className="why-choose-section">
@@ -588,16 +653,17 @@ const About = () => {
                 </h2>
 
                 <p className="text-muted fs-5" style={{ lineHeight: "1.8" }}>
-                  We combine strategy, creativity, and AI-powered execution to help
-                  brands scale with confidence. Our focus is not just design or
-                  development — it is building meaningful results for your business.
+                  We combine strategy, creativity, and AI-powered execution to
+                  help brands scale with confidence. Our focus is not just design
+                  or development — it is building meaningful results for your
+                  business.
                 </p>
 
                 <div className="why-highlight-box">
                   <h6>Professional. Scalable. Future-Ready.</h6>
                   <p>
-                    From branding to automation, we build modern solutions that look
-                    premium, perform better, and create long-term value.
+                    From branding to automation, we build modern solutions that
+                    look premium, perform better, and create long-term value.
                   </p>
                 </div>
               </div>
@@ -632,8 +698,8 @@ const About = () => {
             <Card className="glass mission-card p-4 border-0 h-100">
               <h3 className="fw-bold gradient-text">Our Mission</h3>
               <p className="text-muted fs-5 mt-3">
-                To empower every organization on the planet with intelligent digital solutions
-                that drive growth, efficiency, and innovation.
+                To empower every organization on the planet with intelligent
+                digital solutions that drive growth, efficiency, and innovation.
               </p>
             </Card>
           </Col>
@@ -642,14 +708,12 @@ const About = () => {
             <Card className="glass vision-card p-4 border-0 h-100">
               <h3 className="fw-bold gradient-text">Our Vision</h3>
               <p className="text-muted fs-5 mt-3">
-                To become the world's leading AI-first digital agency transforming industries
-                through machine learning and automation.
+                To become the world's leading AI-first digital agency transforming
+                industries through machine learning and automation.
               </p>
             </Card>
           </Col>
         </Row>
-
-       
       </Container>
     </div>
   );

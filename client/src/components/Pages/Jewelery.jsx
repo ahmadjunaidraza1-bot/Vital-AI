@@ -99,69 +99,70 @@ const Jewelry = () => {
           background: #fff;
           border-radius: 0 0 14px 14px;
         }
-          .mini-title {
-  display: inline-block;
-  padding: 7px 16px;
-  border-radius: 50px;
-  background: linear-gradient(
-    135deg,
-    rgba(124,58,237,0.12),
-    rgba(236,72,153,0.12)
-  );
-  color: #7c3aed;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
 
-.gradient-text {
-  background: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-}
+        .mini-title {
+          display: inline-block;
+          padding: 7px 16px;
+          border-radius: 50px;
+          background: linear-gradient(
+            135deg,
+            rgba(124,58,237,0.12),
+            rgba(236,72,153,0.12)
+          );
+          color: #7c3aed;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
 
-.section-heading {
-  max-width: 820px;
-  margin: 0 auto 50px;
-  text-align: center;
-}
+        .gradient-text {
+          background: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 800;
+        }
 
-.section-heading h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 16px;
-}
+        .section-heading {
+          max-width: 820px;
+          margin: 0 auto 50px;
+          text-align: center;
+        }
 
-.section-heading p {
-  color: #6b7280;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 0;
-}
+        .section-heading h1 {
+          font-size: 3rem;
+          font-weight: 800;
+          color: #111827;
+          margin-bottom: 16px;
+        }
 
-@media (max-width: 991px) {
-  .section-heading h1 {
-    font-size: 2.4rem;
-  }
-}
+        .section-heading p {
+          color: #6b7280;
+          font-size: 1rem;
+          line-height: 1.7;
+          margin: 0;
+        }
 
-@media (max-width: 768px) {
-  .section-heading {
-    margin: 0 auto 35px;
-  }
+        @media (max-width: 991px) {
+          .section-heading h1 {
+            font-size: 2.4rem;
+          }
+        }
 
-  .section-heading h1 {
-    font-size: 2rem;
-  }
+        @media (max-width: 768px) {
+          .section-heading {
+            margin: 0 auto 35px;
+          }
 
-  .section-heading p {
-    font-size: 0.95rem;
-  }
-}
+          .section-heading h1 {
+            font-size: 2rem;
+          }
+
+          .section-heading p {
+            font-size: 0.95rem;
+          }
+        }
 
         @media (max-width: 991px) {
           .img-card {
@@ -203,11 +204,28 @@ const Jewelry = () => {
       {/* CAROUSEL */}
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/jb1.webp" className="w-100" alt="slide1" />
+          <img
+            src="/Images/jb1.webp"
+            className="w-100"
+            alt="Jewelry banner"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width="1400"
+            height="600"
+          />
         </Carousel.Item>
 
         <Carousel.Item>
-          <img src="/Images/jb2.png" className="w-100" alt="slide2" />
+          <img
+            src="/Images/jb2.png"
+            className="w-100"
+            alt="Jewelry showcase"
+            loading="lazy"
+            decoding="async"
+            width="1400"
+            height="600"
+          />
         </Carousel.Item>
       </Carousel>
 
@@ -215,23 +233,28 @@ const Jewelry = () => {
       <section className="jewelry-page">
         <Container>
           <div className="section-heading">
-  <div className="mini-title">Jewelry Collection</div>
-  <h1>
-    Explore Premium{" "}
-    <span className="gradient-text">Jewelry Gallery</span>
-  </h1>
-  <p>
-    Discover elegant jewelry designs in a clean and luxurious visual showcase.
-  </p>
-</div>
+            <div className="mini-title">Jewelry Collection</div>
+            <h1>
+              Explore Premium{" "}
+              <span className="gradient-text">Jewelry Gallery</span>
+            </h1>
+            <p>
+              Discover elegant jewelry designs in a clean and luxurious visual showcase.
+            </p>
+          </div>
+
           <Row className="g-4">
-            {jewelryItems.map((item) => (
+            {jewelryItems.map((item, index) => (
               <Col lg={3} md={6} sm={6} xs={12} key={item.id}>
-                <div
-                  className="img-card"
-                  onClick={() => handleOpen(item.img)}
-                >
-                  <img src={item.img} alt="jewelry" />
+                <div className="img-card" onClick={() => handleOpen(item.img)}>
+                  <img
+                    src={item.img}
+                    alt={`Jewelry product ${index + 1}`}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="400"
+                  />
                 </div>
               </Col>
             ))}
@@ -243,7 +266,15 @@ const Jewelry = () => {
       <Modal show={show} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton />
         <Modal.Body className="p-0">
-          <img src={activeImg} alt="full" className="modal-img" />
+          {activeImg && (
+            <img
+              src={activeImg}
+              alt="Full jewelry preview"
+              className="modal-img"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </Modal.Body>
       </Modal>
     </>

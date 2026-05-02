@@ -1002,8 +1002,8 @@ const Home = () => {
                           Digital Solutions
                         </h1>
                         <div className="hero-buttons">
-                          <Link to="/services" className="outline-btn hero-btn-small">
-                            Learn More →
+                          <Link to="/our-work" className="outline-btn hero-btn-small">
+                            See Our Work →
                           </Link>
                         </div>
                       </div>
@@ -1037,8 +1037,8 @@ const Home = () => {
                           Visual Experience
                         </h1>
                         <div className="hero-buttons">
-                          <Link to="/services" className="outline-btn hero-btn-small">
-                            Learn More →
+                          <Link to="/our-work" className="outline-btn hero-btn-small">
+                            See Our Work →
                           </Link>
                         </div>
                       </div>
@@ -1072,8 +1072,8 @@ const Home = () => {
                           Built to Convert
                         </h1>
                         <div className="hero-buttons">
-                          <Link to="/services" className="outline-btn hero-btn-small">
-                            Learn More →
+                          <Link to="/our-work" className="outline-btn hero-btn-small">
+                           See Our Work →
                           </Link>
                         </div>
                       </div>

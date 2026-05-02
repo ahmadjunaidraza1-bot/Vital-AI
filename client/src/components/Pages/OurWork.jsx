@@ -1,35 +1,41 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
-const Portfolio = () => {
+const OurWork = () => {
   const [active, setActive] = useState("All");
 
- const projects = [
-  {
-    title: "Pro Chauffeurs",
-    category: "Social Media Posts",
-    img: "/Images/p1.webp",
-    link: "/portfolio/pro-chauffeurs",
-  },
-  {
-    title: "Viper",
-    category: "E-Commerce",
-    img: "/Images/p2.webp",
-    link: "/portfolio/viper", // ✅ FIXED
-  },
-  {
-    title: "Women Bags",
-    category: "Virtual Demos",
-    img: "/Images/5.webp",
-    link: "/portfolio/women-bags", // ✅ FIXED
-  },
-  {
-    title: "E-Commerce Clothing",
-    category: "E-Commerce",
-    img: "/Images/31.png",
-    link: "/portfolio/ecommerce-clothing", // ✅ FIXED
-  },
-];
+  const projects = [
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts",
+      img: "/Images/p1.webp",
+      link: "/portfolio/pro-chauffeurs",
+    },
+    {
+  title: "TikTok Store",
+  category: "TikTok Store",
+  img: "/Images/h1-poster.webp",
+  link: "/portfolio/tiktok",
+},
+    {
+      title: "Viper",
+      category: "E-Commerce",
+      img: "/Images/p2.webp",
+      link: "/portfolio/viper",
+    },
+    {
+      title: "Women Bags",
+      category: "Virtual Demos",
+      img: "/Images/5.webp",
+      link: "/portfolio/women-bags",
+    },
+    {
+      title: "E-Commerce Clothing",
+      category: "E-Commerce",
+      img: "/Images/31.png",
+      link: "/portfolio/ecommerce-clothing",
+    },
+  ];
 
   const categories = [
     "All",
@@ -37,6 +43,7 @@ const Portfolio = () => {
     "Websites",
     "Social Media Posts",
     "Virtual Demos",
+    "TikTok Store", 
   ];
 
   const filtered =
@@ -55,26 +62,24 @@ const Portfolio = () => {
           text-transform:uppercase;
         }
 
-       .portfolio-heading {
-  font-size: 44px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+        .portfolio-heading {
+          font-size: 44px;
+          font-weight: 900;
+          background: linear-gradient(135deg, #7c3aed, #ec4899, #06b6d4);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
 
-        /* CARD */
         .portfolio-card{
           position:relative;
           overflow:hidden;
           border-radius:28px;
-          height:410px; /* 🔥 INCREASED HEIGHT */
+          height:410px;
           cursor:pointer;
           box-shadow:0 25px 60px rgba(0,0,0,0.12);
         }
 
-        /* IMAGE */
         .portfolio-card img{
           width:100%;
           height:100%;
@@ -82,13 +87,11 @@ const Portfolio = () => {
           transition:1s ease;
         }
 
-        /* 🔥 ZOOM INSIDE + DARK + BLUR */
         .portfolio-card:hover img{
-          transform:scale(1.25); /* inside zoom */
+          transform:scale(1.25);
           filter:blur(3px) brightness(0.6);
         }
 
-        /* OVERLAY */
         .overlay{
           position:absolute;
           inset:0;
@@ -110,7 +113,6 @@ const Portfolio = () => {
           opacity:1;
         }
 
-        /* TOP CONTENT ANIMATION */
         .overlay-content{
           transform:translateY(30px);
           opacity:0;
@@ -152,7 +154,6 @@ const Portfolio = () => {
           transform:translateX(5px);
         }
 
-        /* BOTTOM GLASS CARD (like your example) */
         .bottom-card{
           position:absolute;
           bottom:20px;
@@ -192,7 +193,7 @@ const Portfolio = () => {
 
         {/* HEADER */}
         <div className="text-center mb-5">
-          <h5 className="portfolio-title">Portfolio</h5>
+          <h5 className="portfolio-title">Our Work</h5>
           <h1 className="portfolio-heading">
             Our Latest Projects
           </h1>
@@ -224,12 +225,16 @@ const Portfolio = () => {
 
                 <div className="portfolio-card">
 
-                  {/* IMAGE */}
-                  <img src={item.img} alt={item.title} />
+                  {/* IMAGE (LAZY ADDED) */}
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
 
-                  {/* DARK OVERLAY CONTENT */}
+                  {/* OVERLAY */}
                   <div className="overlay">
-
                     <div className="overlay-content">
                       <div className="tag">{item.category}</div>
                       <div className="title">{item.title}</div>
@@ -238,10 +243,9 @@ const Portfolio = () => {
                         Explore Project →
                       </div>
                     </div>
-
                   </div>
 
-                  {/* BOTTOM GLASS CARD */}
+                  {/* BOTTOM CARD */}
                   <div className="bottom-card">
                     <div className="tag" style={{ opacity: 0.8 }}>
                       {item.category}
@@ -265,4 +269,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default OurWork;

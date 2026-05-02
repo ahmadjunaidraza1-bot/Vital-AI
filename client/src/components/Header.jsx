@@ -50,7 +50,7 @@ export default function Header() {
     setExpanded(false);
   }, [location.pathname]);
 
-  const navItems = ["Home", "About", "Services", "Portfolio", "Blog", "Contact"];
+  const navItems = ["Home", "About", "Services", "Our Work", "Blog", "Contact"];
 
   const handleNavClick = () => setExpanded(false);
 

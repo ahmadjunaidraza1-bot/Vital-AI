@@ -12,16 +12,21 @@ const PortfolioDetail = () => {
   const socialVideoRef = useRef(null);
 
   const [showGalleryModal, setShowGalleryModal] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedMedia, setSelectedMedia] = useState("");
+  const [selectedMediaType, setSelectedMediaType] = useState("image");
 
-  const openGalleryImage = (img) => {
-    setSelectedImage(img);
+  const openGalleryMedia = (item) => {
+    const isVideo = item.endsWith(".mp4");
+
+    setSelectedMedia(item);
+    setSelectedMediaType(isVideo ? "video" : "image");
     setShowGalleryModal(true);
   };
 
   const closeGalleryImage = () => {
     setShowGalleryModal(false);
-    setSelectedImage("");
+    setSelectedMedia("");
+    setSelectedMediaType("image");
   };
 
   const projects = {
@@ -248,6 +253,67 @@ const PortfolioDetail = () => {
         "/Images/39.webp",
       ],
     },
+    tiktok: {
+      title: "TikTok Store",
+      category: "TikTok E-Commerce & Viral Content",
+      banner: "/Images/new4.png",
+
+      description:
+        "AI-powered TikTok store visuals and viral content strategy designed to boost engagement and drive sales.",
+
+      story:
+        "TikTok Store was developed as a high-performance e-commerce solution focused entirely on short-form video platforms. The goal was to create scroll-stopping product visuals, AI-generated model showcases, and viral-ready content that converts viewers into buyers. We built a content system optimized for TikTok Shop, combining trend-driven storytelling with product-focused presentation to maximize reach and engagement.",
+
+      highlights: [
+        {
+          title: "AI Product Visuals",
+          desc: "Realistic AI-generated models showcasing products in engaging and high-converting formats.",
+        },
+        {
+          title: "Viral Content Strategy",
+          desc: "Short-form videos optimized for TikTok trends, hooks, and algorithm-driven reach.",
+        },
+      ],
+
+      details: {
+        client: "TikTok Store Brand",
+        industry: "E-Commerce / Social Commerce",
+        services: "AI Visuals, TikTok Content, Product Videos",
+        year: "2025",
+      },
+
+      cinematic: {
+        title: "Cinematic Experience",
+        subtitle: "TikTok Store Visual Showcase",
+        videoSrc: "/videos/h1.mp4",
+        posterUrl: "/Images/h1-poster.webp",
+      },
+
+      socialMedia: {
+        title: "TikTok Content",
+        subtitle: "High-Converting Viral Videos",
+        description:
+          "We created short-form TikTok videos focused on high retention and conversion. Each video is designed with strong hooks, smooth transitions, and product storytelling to maximize engagement and drive direct sales from TikTok Shop.",
+
+        features: [
+          "High-Retention Hooks",
+          "Product Storytelling",
+          "Trend-Based Editing",
+          "TikTok Shop Optimization",
+        ],
+
+        videoSrc: "/videos/h1.mp4",
+        posterUrl: "/Images/h1-poster.webp",
+      },
+
+      gallery: [
+        "/videos/h1.mp4",
+        "/videos/h2.mp4",
+        "/videos/h3.mp4",
+        "/videos/h4.mp4",
+      ],
+    },
+
   };
 
   const project = projects[id];
@@ -579,6 +645,9 @@ const PortfolioDetail = () => {
               src={project.banner}
               alt={project.title}
               className="project-banner-img"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
 
             <div
@@ -673,7 +742,7 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
-      {id === "pro-chauffeurs" && (
+      {project.cinematic && (
         <section className="py-5">
           <Container>
             <Card className="custom-card border-0 shadow-sm overflow-hidden">
@@ -694,7 +763,10 @@ const PortfolioDetail = () => {
                     preload="metadata"
                     loop
                   >
-                    <source src={project.cinematic.videoSrc} type="video/mp4" />
+                    <source
+                      src={project.cinematic.videoSrc}
+                      type="video/mp4"
+                    />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -775,16 +847,55 @@ const PortfolioDetail = () => {
               </div>
 
               <Row className="g-4">
-                {project.gallery.map((img, i) => (
-                  <Col md={4} lg={3} sm={6} xs={12} key={i}>
-                    <img
-                      src={img}
-                      alt={`Gallery ${i + 1}`}
-                      className="gallery-img"
-                      onClick={() => openGalleryImage(img)}
-                    />
-                  </Col>
-                ))}
+                {project.gallery.map((item, i) => {
+                  const isVideo = item.endsWith(".mp4");
+
+                  return (
+                    <Col md={4} lg={3} sm={6} xs={12} key={i}>
+                      {isVideo ? (
+                        <div
+                          style={{ position: "relative", cursor: "pointer" }}
+                          onClick={() => openGalleryMedia(item)}
+                        >
+                          <video
+                            src={item}
+                            className="gallery-img"
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                          />
+
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "50%",
+                              left: "50%",
+                              transform: "translate(-50%, -50%)",
+                              fontSize: "40px",
+                              color: "#fff",
+                              opacity: 0.85,
+                              pointerEvents: "none",
+                            }}
+                          >
+                            ▶
+                          </div>
+
+                          
+                        </div>
+                      ) : (
+                        <img
+                          src={item}
+                          alt={`Gallery ${i + 1}`}
+                          className="gallery-img"
+                          loading="lazy"
+                          decoding="async"
+                          onClick={() => openGalleryMedia(item)}
+                        />
+                      )}
+                    </Col>
+                  );
+                })}
               </Row>
             </Card.Body>
           </Card>
@@ -813,21 +924,40 @@ const PortfolioDetail = () => {
       </section>
 
       <Modal
-        show={showGalleryModal}
-        onHide={closeGalleryImage}
-        centered
-        size="xl"
-        className="gallery-modal"
-      >
-        <Modal.Header closeButton />
-        <Modal.Body className="text-center p-2">
-          <img
-            src={selectedImage}
-            alt="Gallery Preview"
-            className="gallery-popup-img"
-          />
-        </Modal.Body>
-      </Modal>
+  show={showGalleryModal}
+  onHide={closeGalleryImage}
+  centered
+  size="xl"
+  className="gallery-modal"
+>
+  <Modal.Header closeButton />
+  <Modal.Body className="text-center p-2">
+    {selectedMediaType === "video" ? (
+      <video
+        src={selectedMedia}
+        controls
+        autoPlay
+        playsInline
+        preload="metadata"
+        style={{
+          width: "100%",
+          maxHeight: "85vh",
+          objectFit: "contain",
+          background: "#000",
+          borderRadius: "18px",
+        }}
+      />
+    ) : (
+      <img
+        src={selectedMedia}
+        alt="Gallery Preview"
+        className="gallery-popup-img"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+  </Modal.Body>
+</Modal>
     </>
   );
 };
