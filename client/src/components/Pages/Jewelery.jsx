@@ -3,18 +3,18 @@ import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const jewelryItems = [
-  { id: 1, img: "/Images/1.png" },
-  { id: 2, img: "/Images/2.png" },
-  { id: 3, img: "/Images/4.png" },
-  { id: 4, img: "/Images/9.png" },
-  { id: 5, img: "/Images/10.png" },
-  { id: 6, img: "/Images/11.png" },
-  { id: 7, img: "/Images/14.png" },
-  { id: 8, img: "/Images/15.png" },
-  { id: 9, img: "/Images/19.png" },
-  { id: 10, img: "/Images/20.png" },
-  { id: 11, img: "/Images/16.png" },
-  { id: 12, img: "/Images/17.png" },
+  { id: 1, img: "/Images/1.webp" },
+  { id: 2, img: "/Images/2.webp" },
+  { id: 3, img: "/Images/4.webp" },
+  { id: 4, img: "/Images/9.webp" },
+  { id: 5, img: "/Images/10.webp" },
+  { id: 6, img: "/Images/11.webp" },
+  { id: 7, img: "/Images/14.webp" },
+  { id: 8, img: "/Images/15.webp" },
+  { id: 9, img: "/Images/19.webp" },
+  { id: 10, img: "/Images/20.webp" },
+  { id: 11, img: "/Images/16.webp" },
+  { id: 12, img: "/Images/17.webp" },
 ];
 
 const Jewelry = () => {
@@ -203,7 +203,7 @@ const Jewelry = () => {
       {/* CAROUSEL */}
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/jb1.png" className="w-100" alt="slide1" />
+          <img src="/Images/jb1.webp" className="w-100" alt="slide1" />
         </Carousel.Item>
 
         <Carousel.Item>

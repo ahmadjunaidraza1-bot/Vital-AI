@@ -20,7 +20,7 @@ const Portfolio = () => {
   {
     title: "Women Bags",
     category: "Virtual Demos",
-    img: "/Images/5.png",
+    img: "/Images/5.webp",
     link: "/portfolio/women-bags", // ✅ FIXED
   },
   {

@@ -14,14 +14,14 @@ const Blog = () => {
       category: "Technology",
       date: "March 20, 2024",
       author: "Elena Vance",
-      img: "/Images/CR3.png",
+      img: "/Images/CR3.webp",
     },
     {
       title: "Data-Driven Marketing: A Guide for Startups",
       category: "Marketing",
       date: "March 15, 2024",
       author: "Marcus Thorne",
-      img: "/Images/CR1.png",
+      img: "/Images/CR1.webp",
     },
   ];
 

@@ -196,7 +196,7 @@ const Clothes = () => {
 
       <Carousel fade controls indicators interval={3000}>
         <Carousel.Item>
-          <img src="/Images/cb1.png" className="w-100" alt="slide1" />
+          <img src="/Images/cb1.webp" className="w-100" alt="slide1" />
         </Carousel.Item>
 
         <Carousel.Item>

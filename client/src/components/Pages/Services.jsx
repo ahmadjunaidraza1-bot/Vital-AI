@@ -59,7 +59,7 @@ const services = [
     id: "digital-marketing",
     title: "AI Powered Digital Marketing",
     desc: "Scale your brand with data-driven precision using AI-managed ads, SEO and content strategies.",
-    image: "/Images/CR1.png",
+    image: "/Images/CR1.webp",
     features: [
       "Automated Ad Bidding",
       "AI Content Generation",

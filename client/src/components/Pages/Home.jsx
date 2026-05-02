@@ -64,70 +64,80 @@ const Home = () => {
   const revealClass = (sectionId, type = "up") =>
     `${visible[sectionId] ? `reveal ${type} show` : `reveal ${type}`}`;
 
+  const openVideo = (src) => {
+    setActiveVideo(src);
+    setShowVideo(true);
+  };
+
   const services = [
-  {
-    title: "Virtual Product Demo",
-    icon: <CameraVideoFill />,
-    desc: "AI-powered try-ons and ads",
-    motion: "left",
-    link: "/services#virtual-product-demo",
-  },
-  {
-    title: "E-Commerce Solutions",
-    icon: <Globe2 />,
-    desc: "Smart stores & AI automation",
-    motion: "up",
-    link: "/services#ecommerce-solutions",
-  },
-  {
-    title: "Web Development",
-    icon: <LightningChargeFill />,
-    desc: "Modern blazing-fast websites",
-    motion: "up",
-    link: "/services#website-building",
-  },
-  {
-    title: "Social Media Content",
-    icon: <Stars />,
-    desc: "Viral reels and ad creatives",
-    motion: "right",
-    link: "/services#digital-marketing",
-  },
-];
+    {
+      title: "Virtual Product Demo",
+      icon: <CameraVideoFill />,
+      desc: "AI-powered try-ons and ads",
+      motion: "left",
+      link: "/services#virtual-product-demo",
+    },
+    {
+      title: "E-Commerce Solutions",
+      icon: <Globe2 />,
+      desc: "Smart stores & AI automation",
+      motion: "up",
+      link: "/services#ecommerce-solutions",
+    },
+    {
+      title: "Web Development",
+      icon: <LightningChargeFill />,
+      desc: "Modern blazing-fast websites",
+      motion: "up",
+      link: "/services#website-building",
+    },
+    {
+      title: "Social Media Content",
+      icon: <Stars />,
+      desc: "Viral reels and ad creatives",
+      motion: "right",
+      link: "/services#digital-marketing",
+    },
+  ];
 
   const marketingCards = [
-    { title: "TiKTok Store Management", icon: <DisplayFill /> },
+    { title: "TikTok Store Management", icon: <DisplayFill /> },
     { title: "SEO", icon: <GraphUpArrow /> },
     { title: "Social Media Marketing", icon: <MegaphoneFill /> },
-    { title: "Google Adds Marketing", icon: <EnvelopePaperFill /> },
+    { title: "Google Ads Marketing", icon: <EnvelopePaperFill /> },
   ];
 
   const studioItems = [
     {
       title: "Virtual Try-Ons",
       desc: "Let customers see clothes on realistic AI models.",
-      img: "/Images/new.png",
+      img: "/Images/new.webp",
+      fallbackImg: "/Images/new.png",
       link: "/clothes",
       motion: "left",
     },
     {
       title: "Jewelry Rendering",
       desc: "Hyper-realistic 3D jewelry demonstrations.",
-      img: "/Images/4.png",
+      img: "/Images/4.webp",
+      fallbackImg: "/Images/4.png",
       link: "/jewelery",
       motion: "up",
     },
     {
       title: "TikTok Trending Store",
       desc: "Viral-ready videos for TikTok & Instagram.",
-      src: "/videos/h6.mp4",
+      src: "/videos/h1.mp4",
+      poster: "/Images/h1-poster.webp",
+      fallbackPoster: "/Images/new.png",
       link: "/tiktok",
       motion: "up",
     },
     {
       title: "Social Media Ads",
       desc: "Generate 100+ ad variations in minutes.",
-      img: "/Images/cr4.png",
+      img: "/Images/cr4.webp",
+      fallbackImg: "/Images/cr4.png",
       link: "/socialmedia",
       motion: "right",
     },
@@ -138,28 +148,32 @@ const Home = () => {
       id: "pro-chauffeurs",
       title: "Pro Chauffeurs",
       category: "Social Media Posts",
-      img: "/Images/cr11.png",
+      img: "/Images/cr11.webp",
+      fallbackImg: "/Images/cr11.png",
       motion: "left",
     },
     {
       id: "viper",
       title: "Viper",
       category: "Automotive Brand Campaign",
-      img: "/Images/vg4.png",
+      img: "/Images/vg4.webp",
+      fallbackImg: "/Images/vg4.png",
       motion: "up",
     },
     {
       id: "women-bags",
       title: "Women Bags",
       category: "Fashion Accessories Campaign",
-      img: "/Images/5.png",
+      img: "/Images/5.webp",
+      fallbackImg: "/Images/5.png",
       motion: "up",
     },
     {
       id: "ecommerce-clothing",
       title: "E-Commerce Clothing",
       category: "Fashion E-Commerce",
-      img: "/Images/cb1.png",
+      img: "/Images/cb1.webp",
+      fallbackImg: "/Images/cb1.png",
       motion: "right",
     },
   ];
@@ -169,14 +183,16 @@ const Home = () => {
       text: `"VITAL AI transformed our digital presence. Their AI-driven approach to e-commerce increased our conversion rate by 45% in just three months."`,
       name: "Sarah Johnson",
       role: "CEO at TechFlow",
-      img: "/Images/t1.jpg",
+      img: "/Images/t1.webp",
+      fallbackImg: "/Images/t1.jpg",
       motion: "left",
     },
     {
       text: `"The most professional team we have worked with. Their ability to blend high-end design with complex AI logic is truly impressive."`,
       name: "Michael Chen",
       role: "Founder of Nexus",
-      img: "/Images/t2.jpg",
+      img: "/Images/t2.webp",
+      fallbackImg: "/Images/t2.jpg",
       motion: "right",
     },
   ];
@@ -187,6 +203,31 @@ const Home = () => {
     "Global expert team",
     "High-performance AI systems",
   ];
+
+  const OptimizedImage = ({
+    webp,
+    fallback,
+    alt,
+    className,
+    loading = "lazy",
+    fetchPriority,
+    width,
+    height,
+  }) => (
+    <picture>
+      <source srcSet={webp} type="image/webp" />
+      <img
+        src={fallback || webp}
+        alt={alt}
+        className={className}
+        loading={loading}
+        decoding="async"
+        fetchPriority={fetchPriority}
+        width={width}
+        height={height}
+      />
+    </picture>
+  );
 
   return (
     <>
@@ -380,16 +421,25 @@ const Home = () => {
           height: 100%;
         }
 
-        .studio-visual.video {
-          object-fit: cover;
+        .studio-visual.video,
+        .studio-visual.image {
+          object-fit: contain;
+          object-position: center;
           background: #fff;
         }
 
-        .studio-visual.image {
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-color: #fff;
+        .video-play-btn {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          border: 0;
+          background: rgba(0,0,0,0.18);
+          color: #fff;
+          font-size: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
         }
 
         .marketing-grid-section {
@@ -799,17 +849,6 @@ const Home = () => {
             background: #fff;
           }
 
-          .studio-visual.video {
-            object-fit: contain;
-            background: #fff;
-          }
-
-          .studio-visual.image {
-            background-size: contain;
-            background-position: center;
-            background-color: #fff;
-          }
-
           .marketing-grid-section {
             padding: 25px 0 50px;
           }
@@ -938,7 +977,17 @@ const Home = () => {
         <Carousel fade controls indicators interval={3500} pause={false}>
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img src="/Images/CR3.png" className="w-100 hero-media" alt="slide1" />
+              <OptimizedImage
+                webp="/Images/CR3.webp"
+                fallback="/Images/CR3.png"
+                alt="AI powered digital solutions"
+                className="w-100 hero-media"
+                loading="eager"
+                fetchPriority="high"
+                width="1400"
+                height="600"
+              />
+
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -967,7 +1016,16 @@ const Home = () => {
 
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img src="/Images/jb1.png" className="w-100 hero-media" alt="slide2" />
+              <OptimizedImage
+                webp="/Images/jb1.webp"
+                fallback="/Images/jb1.png"
+                alt="Luxury jewelry visual experience"
+                className="w-100 hero-media"
+                loading="lazy"
+                width="1400"
+                height="600"
+              />
+
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -993,7 +1051,16 @@ const Home = () => {
 
           <Carousel.Item>
             <div style={{ position: "relative" }}>
-              <img src="/Images/CR1.png" className="w-100 hero-media" alt="slide3" />
+              <OptimizedImage
+                webp="/Images/CR1.webp"
+                fallback="/Images/CR1.png"
+                alt="Smart AI websites built to convert"
+                className="w-100 hero-media"
+                loading="lazy"
+                width="1400"
+                height="600"
+              />
+
               <div className="hero-overlay">
                 <Container>
                   <Row className="align-items-center">
@@ -1025,10 +1092,12 @@ const Home = () => {
             <div className={revealClass("studio", "up")}>
               <div className="mini-title">🎬 New: AI Virtual Studio</div>
             </div>
+
             <h2 className={`fw-bold display-4 mb-3 ${revealClass("studio", "zoom")}`}>
               Revolutionise Your <br />
               <span className="gradient-text">Product Presentation</span>
             </h2>
+
             <p
               className={`text-muted fs-5 mb-4 mx-auto ${revealClass("studio", "up")}`}
               style={{ maxWidth: "800px" }}
@@ -1046,19 +1115,41 @@ const Home = () => {
                   <Link to={item.link} style={{ textDecoration: "none" }}>
                     <div className="hover-card d-flex flex-column justify-content-end studio-card">
                       {item.src ? (
-                        <video
-                          src={item.src}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
-                          className="studio-visual video"
-                        />
+                        <>
+                          <picture>
+                            <source srcSet={item.poster} type="image/webp" />
+                            <img
+                              src={item.fallbackPoster}
+                              alt={item.title}
+                              className="studio-visual image"
+                              loading="lazy"
+                              decoding="async"
+                              width="500"
+                              height="500"
+                            />
+                          </picture>
+
+                          <button
+                            type="button"
+                            className="video-play-btn"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              openVideo(item.src);
+                            }}
+                            aria-label={`Play ${item.title} video`}
+                          >
+                            ▶
+                          </button>
+                        </>
                       ) : (
-                        <div
+                        <OptimizedImage
+                          webp={item.img}
+                          fallback={item.fallbackImg}
+                          alt={item.title}
                           className="studio-visual image"
-                          style={{ backgroundImage: `url(${item.img})` }}
+                          loading="lazy"
+                          width="500"
+                          height="500"
                         />
                       )}
 
@@ -1074,7 +1165,7 @@ const Home = () => {
                       <div
                         style={{
                           position: "relative",
-                          zIndex: 2,
+                          zIndex: 4,
                           padding: "22px 18px",
                           textAlign: "center",
                           color: "#fff",
@@ -1126,6 +1217,7 @@ const Home = () => {
             <div className={revealClass("services", "up")}>
               <div className="mini-title">Our Expertise</div>
             </div>
+
             <h2 className={`fw-bold display-5 ${revealClass("services", "zoom")}`}>
               Intelligent Solutions for <br />
               <span className="gradient-text">Every Digital Need</span>
@@ -1133,24 +1225,21 @@ const Home = () => {
           </div>
 
           <Row className="g-4">
-  {services.map((item, i) => (
-    <Col md={6} lg={3} key={i}>
-      <div className={revealClass("services", item.motion)}>
-        <Card className="glass p-4 h-100 border-0 hover-card">
-          <div className="feature-icon">{item.icon}</div>
-
-          <h5 className="fw-bold">{item.title}</h5>
-
-          <p className="text-muted">{item.desc}</p>
-
-          <Link to={item.link} className="gradient-text">
-            Learn More →
-          </Link>
-        </Card>
-      </div>
-    </Col>
-  ))}
-</Row>
+            {services.map((item, i) => (
+              <Col md={6} lg={3} key={i}>
+                <div className={revealClass("services", item.motion)}>
+                  <Card className="glass p-4 h-100 border-0 hover-card">
+                    <div className="feature-icon">{item.icon}</div>
+                    <h5 className="fw-bold">{item.title}</h5>
+                    <p className="text-muted">{item.desc}</p>
+                    <Link to={item.link} className="gradient-text">
+                      Learn More →
+                    </Link>
+                  </Card>
+                </div>
+              </Col>
+            ))}
+          </Row>
         </Container>
       </section>
 
@@ -1162,10 +1251,12 @@ const Home = () => {
                 <div className={revealClass("about", "up")}>
                   <div className="mini-title">About Us</div>
                 </div>
+
                 <h2 className={`display-5 fw-bold ${revealClass("about", "zoom")}`}>
                   We Are Building The <br />
                   <span className="gradient-text">Future of Digital</span>
                 </h2>
+
                 <p className={`text-muted fs-5 mt-4 ${revealClass("about", "up")}`}>
                   We leverage the latest in machine learning and automation to
                   build products that are not just functional—but intelligent.
@@ -1201,9 +1292,11 @@ const Home = () => {
             <div className={revealClass("work", "up")}>
               <div className="mini-title">Our Work</div>
             </div>
+
             <h2 className={`fw-bold display-5 ${revealClass("work", "zoom")}`}>
               Selected <span className="gradient-text">Projects</span>
             </h2>
+
             <div className={revealClass("work", "up")}>
               <Button as={Link} to="/portfolio" className="main-btn mt-3">
                 View All Projects
@@ -1217,7 +1310,16 @@ const Home = () => {
                 <div className={revealClass("work", item.motion)}>
                   <div onClick={() => navigate(`/portfolio/${item.id}`)}>
                     <div className="work-card">
-                      <img src={item.img} alt={item.title} className="work-img" />
+                      <OptimizedImage
+                        webp={item.img}
+                        fallback={item.fallbackImg}
+                        alt={item.title}
+                        className="work-img"
+                        loading="lazy"
+                        width="700"
+                        height="900"
+                      />
+
                       <div className="work-overlay">
                         <div className="work-content">
                           <div className="work-line">
@@ -1228,6 +1330,7 @@ const Home = () => {
                           <div className="work-btn">Explore Project →</div>
                         </div>
                       </div>
+
                       <div className="work-glass">
                         <span className="glass-cat">{item.category}</span>
                         <h5 className="glass-title">{item.title}</h5>
@@ -1247,6 +1350,7 @@ const Home = () => {
             <div className={revealClass("testimonials", "up")}>
               <div className="mini-title">Testimonials</div>
             </div>
+
             <h2 className={`fw-bold display-5 ${revealClass("testimonials", "zoom")}`}>
               What Our <span className="gradient-text">Clients Say</span>
             </h2>
@@ -1259,8 +1363,18 @@ const Home = () => {
                   <div className="testimonial-card">
                     <div className="quote-icon">❝</div>
                     <p className="testimonial-text">{item.text}</p>
+
                     <div className="client-flex">
-                      <img src={item.img} alt={item.name} className="client-img" />
+                      <OptimizedImage
+                        webp={item.img}
+                        fallback={item.fallbackImg}
+                        alt={item.name}
+                        className="client-img"
+                        loading="lazy"
+                        width="80"
+                        height="80"
+                      />
+
                       <div>
                         <h5 className="client-name">{item.name}</h5>
                         <span className="client-role">{item.role}</span>
@@ -1282,10 +1396,12 @@ const Home = () => {
                 Ready to Scale Your <br />
                 <span className="gradient-text">Business with AI?</span>
               </h2>
+
               <p className="text-muted fs-5 mt-3 mb-4">
                 Join 500+ businesses already growing with VITAL AI to automate
                 their growth and dominate their market.
               </p>
+
               <div className="d-flex gap-3 justify-content-center flex-wrap">
                 <Button as={Link} to="/contact" className="main-btn">
                   Get Started Now
