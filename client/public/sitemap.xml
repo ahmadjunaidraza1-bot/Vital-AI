@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.vitalai.co.uk/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vitalai.co.uk/services</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vitalai.co.uk/about</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vitalai.co.uk/contact</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.vitalai.co.uk/portfolio</loc>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
