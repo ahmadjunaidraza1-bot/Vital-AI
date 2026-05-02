@@ -1001,6 +1001,9 @@ const Home = () => {
                           <br />
                           Digital Solutions
                         </h1>
+                        <p className="text-white-50 mb-3" style={{ fontSize: "15px", lineHeight: "1.7" }}>
+                          AI-powered websites & digital marketing solutions for UK businesses.
+                        </p>
                         <div className="hero-buttons">
                           <Link to="/our-work" className="outline-btn hero-btn-small">
                             See Our Work →
@@ -1036,6 +1039,9 @@ const Home = () => {
                           <br />
                           Visual Experience
                         </h1>
+                        <p className="text-white-50 mb-3" style={{ fontSize: "15px", lineHeight: "1.7" }}>
+                          AI-powered websites & digital marketing solutions for UK businesses.
+                        </p>
                         <div className="hero-buttons">
                           <Link to="/our-work" className="outline-btn hero-btn-small">
                             See Our Work →
@@ -1071,9 +1077,12 @@ const Home = () => {
                           <br />
                           Built to Convert
                         </h1>
+                        <p className="text-white-50 mb-3" style={{ fontSize: "15px", lineHeight: "1.7" }}>
+                          AI-powered websites & digital marketing solutions for UK businesses.
+                        </p>
                         <div className="hero-buttons">
                           <Link to="/our-work" className="outline-btn hero-btn-small">
-                           See Our Work →
+                            See Our Work →
                           </Link>
                         </div>
                       </div>
