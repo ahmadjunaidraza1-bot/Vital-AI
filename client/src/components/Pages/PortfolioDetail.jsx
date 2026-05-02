@@ -632,7 +632,7 @@ const PortfolioDetail = () => {
 
       <section className="pt-5">
         <Container>
-          <div onClick={() => navigate("/portfolio")} className="back-link">
+          <div onClick={() => navigate("/our-work")} className="back-link">
             <ArrowLeft size={20} /> Back to Portfolio
           </div>
         </Container>
