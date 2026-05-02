@@ -3,18 +3,18 @@ import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const clothesItems = [
-  { id: 1, img: "/Images/40.png" },
-  { id: 2, img: "/Images/42.png" },
-  { id: 3, img: "/Images/30.png" },
-  { id: 4, img: "/Images/32.png" },
-  { id: 5, img: "/Images/35.png" },
-  { id: 6, img: "/Images/36.png" },
-  { id: 7, img: "/Images/37.png" },
-  { id: 8, img: "/Images/38.png" },
-  { id: 9, img: "/Images/50.png" },
-  { id: 10, img: "/Images/51.png" },
-  { id: 11, img: "/Images/52.png" },
-  { id: 12, img: "/Images/53.png" },
+  { id: 1, img: "/Images/40.webp" },
+  { id: 2, img: "/Images/42.webp" },
+  { id: 3, img: "/Images/30.webp" },
+  { id: 4, img: "/Images/32.webp" },
+  { id: 5, img: "/Images/35.webp" },
+  { id: 6, img: "/Images/36.webp" },
+  { id: 7, img: "/Images/37.webp" },
+  { id: 8, img: "/Images/38.webp" },
+  { id: 9, img: "/Images/50.webp" },
+  { id: 10, img: "/Images/51.webp" },
+  { id: 11, img: "/Images/52.webp" },
+  { id: 12, img: "/Images/53.webp" },
 ];
 
 const Clothes = () => {
