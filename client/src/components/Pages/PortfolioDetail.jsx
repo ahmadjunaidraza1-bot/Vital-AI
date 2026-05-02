@@ -858,13 +858,14 @@ const PortfolioDetail = () => {
                           onClick={() => openGalleryMedia(item)}
                         >
                           <video
-                            src={item}
-                            className="gallery-img"
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
-                          />
+  src={item}
+  className="gallery-img"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+/>
 
                           <div
                             style={{
