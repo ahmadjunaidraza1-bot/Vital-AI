@@ -103,6 +103,7 @@ export default function Services() {
   useEffect(() => {
     if (location.hash) {
       const section = document.querySelector(location.hash);
+
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({
@@ -132,22 +133,37 @@ export default function Services() {
         }
 
         .service-section{
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          gap:60px;
           margin-bottom:120px;
-          flex-wrap:wrap;
+          scroll-margin-top:120px;
+        }
+
+        .service-title{
+          margin-bottom:30px;
+          font-size:34px;
+          line-height:1.2;
+        }
+
+        .service-grid{
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          align-items:center;
+          gap:60px;
+        }
+
+        .service-grid.reverse{
+          direction:rtl;
+        }
+
+        .service-grid.reverse .service-content,
+        .service-grid.reverse .service-image{
+          direction:ltr;
         }
 
         .service-content{
-          flex:1;
-          min-width:300px;
+          min-width:0;
         }
 
         .service-image{
-          flex:1;
-          min-width:300px;
           border-radius:25px;
           overflow:hidden;
         }
@@ -158,7 +174,8 @@ export default function Services() {
           object-fit:cover;
           border-radius:25px;
           box-shadow:0 20px 50px rgba(0,0,0,0.12);
-          transition:0.4s;
+          transition:0.4s ease;
+          display:block;
         }
 
         .service-image:hover img{
@@ -187,6 +204,7 @@ export default function Services() {
           gap:10px;
           margin-bottom:10px;
           font-size:14px;
+          align-items:flex-start;
         }
 
         .btn-custom{
@@ -201,94 +219,110 @@ export default function Services() {
           display:inline-flex;
           align-items:center;
           gap:10px;
+          transition:0.3s ease;
         }
-          @media(max-width:768px){
-  .service-section{
-    flex-direction:column !important;
-    text-align:center;
-    gap:32px;
-    margin-bottom:80px;
-  }
 
-  .service-image{
-    order:1;
-    width:100%;
-  }
+        .btn-custom:hover{
+          transform:translateY(-3px);
+          box-shadow:0 12px 30px rgba(124,58,237,0.25);
+        }
 
-  .service-content{
-    order:2;
-    width:100%;
-  }
+        @media(max-width:768px){
+          .service-section{
+            margin-bottom:85px;
+          }
 
-  .service-image img{
-    max-width:100%;
-    height:280px;
-    object-fit:contain;
-    margin:0 auto;
-    background:#fff;
-  }
+          .service-title{
+            text-align:center;
+            font-size:26px;
+            margin-bottom:18px;
+          }
 
-  .info-row{
-    flex-direction:column;
-  }
+          .service-grid,
+          .service-grid.reverse{
+            display:flex;
+            flex-direction:column;
+            direction:ltr;
+            gap:24px;
+          }
 
-  .item{
-    text-align:left;
-  }
-}
+          .service-image{
+            order:1;
+            width:100%;
+          }
+
+          .service-content{
+            order:2;
+            width:100%;
+            text-align:center;
+          }
+
+          .service-image img{
+            max-width:100%;
+            height:280px;
+            object-fit:contain;
+            margin:0 auto;
+            background:#fff;
+          }
+
+          .info-row{
+            flex-direction:column;
+          }
+
+          .glass-card{
+            min-width:100%;
+          }
+
+          .item{
+            text-align:left;
+          }
+        }
       `}</style>
 
       <Container>
         {services.map((s, i) => (
-          <div
-            key={s.id}
-            className="service-section"
-            style={{ flexDirection: i % 2 === 0 ? "row" : "row-reverse" }}
-          >
-            <div className="service-content">
-              {/* CLICKABLE TITLE */}
-              <h2
-                className="gradient-text"
-                onClick={() => navigate(s.link)}
-              >
-                {s.title}
-              </h2>
+          <div key={s.id} id={s.id} className="service-section">
+            <h2
+              className="gradient-text service-title"
+              onClick={() => navigate(s.link)}
+            >
+              {s.title}
+            </h2>
 
-              <p className="text-muted">{s.desc}</p>
-
-              <div className="info-row">
-                <div className="glass-card">
-                  <h5>Key Features</h5>
-                  {s.features.map((f, idx) => (
-                    <div key={idx} className="item">
-                      <CheckCircleFill color="#16a34a" size={18} />
-                      {f}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="glass-card">
-                  <h5>Benefits</h5>
-                  {s.benefits.map((b, idx) => (
-                    <div key={idx} className="item">
-                      <CheckCircleFill color="#7c3aed" size={18} />
-                      {b}
-                    </div>
-                  ))}
-                </div>
+            <div className={`service-grid ${i % 2 !== 0 ? "reverse" : ""}`}>
+              <div className="service-image">
+                <img src={s.image} alt={s.title} />
               </div>
 
-              {/* UPDATED BUTTON */}
-              <button
-                className="btn-custom"
-                onClick={() => navigate(s.link)}
-              >
-                View Details →
-              </button>
-            </div>
+              <div className="service-content">
+                <p className="text-muted">{s.desc}</p>
 
-            <div className="service-image">
-              <img src={s.image} alt={s.title} />
+                <div className="info-row">
+                  <div className="glass-card">
+                    <h5>Key Features</h5>
+                    {s.features.map((f, idx) => (
+                      <div key={idx} className="item">
+                        <CheckCircleFill color="#16a34a" size={18} />
+                        {f}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="glass-card">
+                    <h5>Benefits</h5>
+                    {s.benefits.map((b, idx) => (
+                      <div key={idx} className="item">
+                        <CheckCircleFill color="#7c3aed" size={18} />
+                        {b}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <button className="btn-custom" onClick={() => navigate(s.link)}>
+                  View Details →
+                </button>
+              </div>
             </div>
           </div>
         ))}

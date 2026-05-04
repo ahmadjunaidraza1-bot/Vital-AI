@@ -520,7 +520,7 @@ const Contact = () => {
               automation, and digital growth.
             </p>
 
-            <Button
+            {/* <Button
               className="main-btn bg-white"
               style={{
                 color: "#7c3aed",
@@ -531,7 +531,7 @@ const Contact = () => {
               }}
             >
               View Pricing Plans →
-            </Button>
+            </Button> */}
           </div>
         </Container>
       </section>
