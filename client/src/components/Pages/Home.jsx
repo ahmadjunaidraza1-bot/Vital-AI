@@ -101,10 +101,31 @@ const Home = () => {
   ];
 
   const marketingCards = [
-    { title: "TikTok Store Management", icon: <DisplayFill /> },
-    { title: "SEO", icon: <GraphUpArrow /> },
-    { title: "Social Media Marketing", icon: <MegaphoneFill /> },
-    { title: "Google Ads Marketing", icon: <EnvelopePaperFill /> },
+    {
+      title: "TikTok Shop Management",
+      icon: <DisplayFill />,
+      link: "/services/tiktok-shop-management-uk",
+    },
+    {
+      title: "AI Product Visualization",
+      icon: <CameraVideoFill />,
+      link: "/services/ai-product-visualization-virtual-try-on-uk",
+    },
+    {
+      title: "AI E-Commerce Growth",
+      icon: <GraphUpArrow />,
+      link: "/services/ai-ecommerce-growth-solutions-uk",
+    },
+    {
+      title: "AI Website Design",
+      icon: <Globe2 />,
+      link: "/services/ai-website-design-development-uk",
+    },
+    {
+      title: "AI Digital Marketing",
+      icon: <MegaphoneFill />,
+      link: "/services/ai-digital-marketing-paid-ads-uk",
+    },
   ];
 
   const studioItems = [
@@ -183,7 +204,7 @@ const Home = () => {
       text: `"VITAL AI transformed our digital presence. Their AI-driven approach to e-commerce increased our conversion rate by 45% in just three months."`,
       name: "Sarah Johnson",
       role: "CEO at TechFlow",
-      img: "/Images/t1.webp",
+      img: "/Images/user9.webp",
       fallbackImg: "/Images/t1.jpg",
       motion: "left",
     },
@@ -191,7 +212,7 @@ const Home = () => {
       text: `"The most professional team we have worked with. Their ability to blend high-end design with complex AI logic is truly impressive."`,
       name: "Michael Chen",
       role: "Founder of Nexus",
-      img: "/Images/t2.webp",
+      img: "/Images/user9.webp",
       fallbackImg: "/Images/t2.jpg",
       motion: "right",
     },
@@ -1210,10 +1231,12 @@ const Home = () => {
           <Row className="g-4 justify-content-center">
             {marketingCards.map((item, index) => (
               <Col lg={3} md={6} xs={6} key={index}>
-                <div className="marketing-card">
-                  <div className="marketing-icon">{item.icon}</div>
-                  <h4>{item.title}</h4>
-                </div>
+                <Link to={item.link} style={{ textDecoration: "none" }}>
+                  <div className="marketing-card">
+                    <div className="marketing-icon">{item.icon}</div>
+                    <h4>{item.title}</h4>
+                  </div>
+                </Link>
               </Col>
             ))}
           </Row>

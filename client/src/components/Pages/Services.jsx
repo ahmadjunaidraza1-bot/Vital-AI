@@ -5,8 +5,27 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const services = [
   {
+    id: "tiktok-shop-management",
+    title: "TikTok Shop Management & Growth",
+    link: "/services/tiktok-shop-management-uk",
+    desc: "Scale your e-commerce sales with AI-powered TikTok Shop management, viral content and conversion-focused strategies.",
+    image: "/Images/new4.png",
+    features: [
+      "TikTok Shop Setup & Optimization",
+      "AI Generated Product Videos",
+      "Influencer & UGC Strategy",
+      "TikTok Ads Management",
+    ],
+    benefits: [
+      "Increase sales through viral content",
+      "Reach UK TikTok buyers",
+      "Boost product visibility instantly",
+    ],
+  },
+  {
     id: "virtual-product-demo",
     title: "AI Virtual Product Demonstration",
+    link: "/services/ai-product-visualization-virtual-try-on-uk",
     desc: "Revolutionize how you showcase your products with AI-powered virtual try-ons.",
     image: "/Images/CR2.png",
     features: [
@@ -24,6 +43,7 @@ const services = [
   {
     id: "ecommerce-solutions",
     title: "AI Powered E-Commerce Solutions",
+    link: "/services/ai-ecommerce-growth-solutions-uk",
     desc: "Smart AI systems to optimize sales and customer experience.",
     image: "/Images/Sr1.png",
     features: [
@@ -41,6 +61,7 @@ const services = [
   {
     id: "website-building",
     title: "AI Powered Website Building",
+    link: "/services/ai-website-design-development-uk",
     desc: "Fast, SEO optimized and intelligent websites.",
     image: "/Images/CR3(2).png",
     features: [
@@ -58,6 +79,7 @@ const services = [
   {
     id: "digital-marketing",
     title: "AI Powered Digital Marketing",
+    link: "/services/ai-digital-marketing-paid-ads-uk",
     desc: "Scale your brand with data-driven precision using AI-managed ads, SEO and content strategies.",
     image: "/Images/CR1.webp",
     features: [
@@ -81,7 +103,6 @@ export default function Services() {
   useEffect(() => {
     if (location.hash) {
       const section = document.querySelector(location.hash);
-
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({
@@ -103,6 +124,7 @@ export default function Services() {
           -webkit-text-fill-color:transparent;
           animation:shine 5s linear infinite;
           font-weight:800;
+          cursor:pointer;
         }
 
         @keyframes shine{
@@ -116,7 +138,6 @@ export default function Services() {
           gap:60px;
           margin-bottom:120px;
           flex-wrap:wrap;
-          scroll-margin-top:120px;
         }
 
         .service-content{
@@ -127,46 +148,21 @@ export default function Services() {
         .service-image{
           flex:1;
           min-width:300px;
-          position:relative;
-          overflow:hidden;
           border-radius:25px;
+          overflow:hidden;
         }
 
         .service-image img{
           width:100%;
-          max-width:520px;
           height:380px;
           object-fit:cover;
           border-radius:25px;
           box-shadow:0 20px 50px rgba(0,0,0,0.12);
-          transition:0.5s ease;
-          display:block;
+          transition:0.4s;
         }
 
         .service-image:hover img{
-          transform:scale(1.06);
-        }
-
-        .service-image::before{
-          content:"";
-          position:absolute;
-          top:0;
-          left:-120%;
-          width:60%;
-          height:100%;
-          background:linear-gradient(
-            120deg,
-            transparent,
-            rgba(255,255,255,0.55),
-            transparent
-          );
-          transform:skewX(-20deg);
-          z-index:2;
-          transition:0.7s;
-        }
-
-        .service-image:hover::before{
-          left:130%;
+          transform:scale(1.05);
         }
 
         .info-row{
@@ -181,7 +177,6 @@ export default function Services() {
           min-width:250px;
           background:rgba(255,255,255,0.75);
           backdrop-filter:blur(16px);
-          border:1px solid rgba(0,0,0,0.08);
           border-radius:18px;
           padding:18px;
           box-shadow:0 10px 25px rgba(0,0,0,0.08);
@@ -191,7 +186,6 @@ export default function Services() {
           display:flex;
           gap:10px;
           margin-bottom:10px;
-          align-items:flex-start;
           font-size:14px;
         }
 
@@ -207,163 +201,89 @@ export default function Services() {
           display:inline-flex;
           align-items:center;
           gap:10px;
-          transition:0.4s ease;
-          position:relative;
-          overflow:hidden;
         }
+          @media(max-width:768px){
+  .service-section{
+    flex-direction:column !important;
+    text-align:center;
+    gap:32px;
+    margin-bottom:80px;
+  }
 
-        .arrow{
-          font-size:22px;
-          transition:0.3s ease;
-        }
+  .service-image{
+    order:1;
+    width:100%;
+  }
 
-        .btn-custom:hover{
-          transform:translateY(-3px);
-          box-shadow:
-            0 0 15px rgba(124,58,237,0.6),
-            0 0 30px rgba(236,72,153,0.4),
-            0 15px 40px rgba(0,0,0,0.2);
-        }
+  .service-content{
+    order:2;
+    width:100%;
+  }
 
-        .btn-custom:hover .arrow{
-          transform:translateX(6px);
-        }
+  .service-image img{
+    max-width:100%;
+    height:280px;
+    object-fit:contain;
+    margin:0 auto;
+    background:#fff;
+  }
 
-        .btn-custom::before{
-          content:"";
-          position:absolute;
-          top:0;
-          left:-100%;
-          width:100%;
-          height:100%;
-          background:linear-gradient(
-            120deg,
-            transparent,
-            rgba(255,255,255,0.4),
-            transparent
-          );
-          transition:0.5s;
-        }
+  .info-row{
+    flex-direction:column;
+  }
 
-        .btn-custom:hover::before{
-          left:100%;
-        }
-
-        @media(max-width:768px){
-          .service-section{
-            flex-direction:column !important;
-            text-align:center;
-            gap:32px;
-            margin-bottom:80px;
-            scroll-margin-top:100px;
-          }
-
-          .service-image{
-            order:1;
-            width:100%;
-          }
-
-          .service-content{
-            order:2;
-            width:100%;
-          }
-
-          .service-image img{
-            max-width:100%;
-            height:280px;
-            object-fit:contain;
-            margin:0 auto;
-          }
-
-          .info-row{
-            flex-direction:column;
-          }
-
-          .item{
-            text-align:left;
-          }
-        }
+  .item{
+    text-align:left;
+  }
+}
       `}</style>
 
       <Container>
-        <div className="text-center mb-5">
-          <h5
-            className="fw-bold"
-            style={{
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              color: "#7c3aed",
-              fontSize: "16px",
-            }}
-          >
-            Our Services
-          </h5>
-
-          <h2
-            className="fw-bold mb-3"
-            style={{
-              fontSize: "54px",
-              lineHeight: "1.2",
-            }}
-          >
-            <span className="gradient-text">
-              Intelligent Solutions for a <br /> Digital World
-            </span>
-          </h2>
-
-          <p
-            className="text-muted mx-auto"
-            style={{
-              maxWidth: "760px",
-              fontSize: "17px",
-              lineHeight: "1.8",
-            }}
-          >
-            We provide a comprehensive suite of AI-powered services designed
-            to help your business thrive in the modern technological landscape.
-          </p>
-        </div>
-
         {services.map((s, i) => (
           <div
             key={s.id}
-            id={s.id}
             className="service-section"
-            style={{
-              flexDirection: i % 2 === 0 ? "row" : "row-reverse",
-            }}
+            style={{ flexDirection: i % 2 === 0 ? "row" : "row-reverse" }}
           >
             <div className="service-content">
-              <h2 className="gradient-text">{s.title}</h2>
+              {/* CLICKABLE TITLE */}
+              <h2
+                className="gradient-text"
+                onClick={() => navigate(s.link)}
+              >
+                {s.title}
+              </h2>
+
               <p className="text-muted">{s.desc}</p>
 
               <div className="info-row">
                 <div className="glass-card">
-                  <h5 className="mb-3">Key Features</h5>
+                  <h5>Key Features</h5>
                   {s.features.map((f, idx) => (
                     <div key={idx} className="item">
                       <CheckCircleFill color="#16a34a" size={18} />
-                      <span>{f}</span>
+                      {f}
                     </div>
                   ))}
                 </div>
 
                 <div className="glass-card">
-                  <h5 className="mb-3">Benefits</h5>
+                  <h5>Benefits</h5>
                   {s.benefits.map((b, idx) => (
                     <div key={idx} className="item">
                       <CheckCircleFill color="#7c3aed" size={18} />
-                      <span>{b}</span>
+                      {b}
                     </div>
                   ))}
                 </div>
               </div>
 
+              {/* UPDATED BUTTON */}
               <button
                 className="btn-custom"
-                onClick={() => navigate("/contact")}
+                onClick={() => navigate(s.link)}
               >
-                Request a Quote <span className="arrow">→</span>
+                View Details →
               </button>
             </div>
 

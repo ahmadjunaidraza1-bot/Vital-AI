@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import {
   EnvelopeFill,
+  TelephoneFill,
   Whatsapp,
   GeoAltFill,
   ClockFill,
@@ -34,11 +35,11 @@ const Contact = () => {
     setLoading(true);
 
     const templateParams = {
-  name: formData.name,
-  email: formData.email,
-  phone: formData.phone,
-  message: formData.message,
-};
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
 
     emailjs
       .send(
@@ -75,6 +76,7 @@ const Contact = () => {
         body {
           background: #f8f9fc;
           font-family: 'Poppins', sans-serif;
+          overflow-x: hidden;
         }
 
         .gradient-text {
@@ -122,6 +124,27 @@ const Contact = () => {
         .glass-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        .map-card,
+        .map-card:hover {
+          transform: none !important;
+        }
+
+        .map-wrapper {
+          height: 370px;
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+          border-radius: 24px;
+        }
+
+        .map-wrapper iframe {
+          width: 100%;
+          height: 100%;
+          border: 0;
+          border-radius: 16px;
+          display: block;
         }
 
         .contact-card {
@@ -203,6 +226,12 @@ const Contact = () => {
           text-decoration: underline;
         }
 
+        .faq-section {
+          position: relative;
+          z-index: 2;
+          background: #f8f9fc;
+        }
+
         @media (max-width: 767px) {
           .contact-hero {
             padding-top: 100px !important;
@@ -218,6 +247,10 @@ const Contact = () => {
 
           .contact-card {
             padding: 20px;
+          }
+
+          .map-wrapper {
+            height: 320px;
           }
         }
       `}</style>
@@ -256,7 +289,7 @@ const Contact = () => {
                 </p>
 
                 <a
-                  href="mailto:ahmadjunaidraza1@gmail.com"
+                  href="mailto:info@vitalai.co.uk"
                   className="contact-link"
                   style={{ color: "#7c3aed" }}
                 >
@@ -274,20 +307,32 @@ const Contact = () => {
                   <Whatsapp size={24} />
                 </div>
 
-                <h5 className="fw-bold mb-2">WhatsApp Us</h5>
+                <h5 className="fw-bold mb-2">WhatsApp / Call Us</h5>
                 <p className="text-muted mb-3">
-                  Instant chat support for quick discussion.
+                  Instant chat support and phone support for quick discussion.
                 </p>
 
-                <a
-                  href="https://wa.me/447398390815"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-link"
-                  style={{ color: "#25D366" }}
-                >
-                  +44 7398 390815 →
-                </a>
+                <div className="d-flex flex-column gap-2">
+                  <a
+                    href="https://wa.me/447398390815"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-link d-flex align-items-center gap-2"
+                    style={{ color: "#25D366" }}
+                  >
+                    <Whatsapp size={18} />
+                    <span>+44 7398 390815 →</span>
+                  </a>
+
+                  <a
+                    href="tel:+441613940458"
+                    className="contact-link d-flex align-items-center gap-2"
+                    style={{ color: "#7c3aed" }}
+                  >
+                    <TelephoneFill size={18} />
+                    <span>+44 161 394 0458</span>
+                  </a>
+                </div>
               </div>
 
               <div className="contact-card mb-4">
@@ -296,7 +341,9 @@ const Contact = () => {
                 </div>
 
                 <h5 className="fw-bold mb-2">Our Headquarters</h5>
-                <p className="text-muted mb-0">Bartle House, Oxford Court, Manchester M2 3WQ</p>
+                <p className="text-muted mb-0">
+                  Bartle House, Oxford Court, Manchester M2 3WQ
+                </p>
                 <p className="text-muted mb-0">United Kingdom</p>
               </div>
 
@@ -401,35 +448,27 @@ const Contact = () => {
                     </Col>
                   </Row>
                 </Form>
-
-               
               </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      <section className="py-5">
+      <section className="py-5" style={{ position: "relative", zIndex: 1 }}>
         <Container>
-          <div
-            className="glass-card p-2 overflow-hidden"
-            style={{ borderRadius: "24px" }}
-          >
-           <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.544980973171!2d-2.2462665231532566!3d53.476591664969995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1ea183342fd%3A0x18db61892d2c316f!2sBartle%20House%2C%20Manchester%20M2%203WQ%2C%20UK!5e0!3m2!1sen!2s!4v1777635953175!5m2!1sen!2s"
-  width="100%"
-  height="350"
-  style={{ border: 0, borderRadius: "16px" }}
-  allowFullScreen
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-  title="Bartle House Manchester Location"
-></iframe>
+          <div className="glass-card map-card p-2 map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.544980973171!2d-2.2462665231532566!3d53.476591664969995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1ea183342fd%3A0x18db61892d2c316f!2sBartle%20House%2C%20Manchester%20M2%203WQ%2C%20UK!5e0!3m2!1sen!2s!4v1777635953175!5m2!1sen!2s"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Bartle House Manchester Location"
+            ></iframe>
           </div>
         </Container>
       </section>
 
-      <section className="py-5">
+      <section className="py-5 faq-section">
         <Container>
           <div className="text-center mb-5">
             <span className="section-title">FAQ</span>

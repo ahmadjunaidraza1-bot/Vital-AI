@@ -17,7 +17,6 @@ const PortfolioDetail = () => {
 
   const openGalleryMedia = (item) => {
     const isVideo = item.endsWith(".mp4");
-
     setSelectedMedia(item);
     setSelectedMediaType(isVideo ? "video" : "image");
     setShowGalleryModal(true);
@@ -30,6 +29,146 @@ const PortfolioDetail = () => {
   };
 
   const projects = {
+    "ai-website-design": {
+      title: "Roofing Service Website",
+      category: "AI Websites & Development",
+      banner: "/Images/roofing.webp",
+      
+      story:
+        "This roofing service website was designed to help local roofing businesses generate more leads and build trust with customers. We focused on clear service presentation, strong call-to-action sections, and location-based SEO structure. The goal was to make it easy for users to quickly understand services like roof repair, installation, and maintenance, and instantly contact the business.",
+      highlights: [
+        {
+          title: "Local Service Focus",
+          desc: "Designed specifically for roofing businesses targeting local customers and service areas.",
+        },
+        {
+          title: "Lead Generation Layout",
+          desc: "Strategic placement of call buttons, forms and service sections to increase enquiries.",
+        },
+      ],
+      cinematic: {
+        title: "Website Showcase",
+        videoSrc: "/videos/roof1.mp4",
+        posterUrl: "/Images/roof1.webp",
+      },
+      socialMedia: {
+        title: "Website Experience",
+        subtitle: "Service-Based Website Flow",
+        features: [
+          "Service-Based Layout",
+          "Call & Quote Buttons",
+          "Local SEO Pages",
+          "Mobile Responsive Design",
+        ],
+        videoSrc: "/videos/roof1.mp4",
+        posterUrl: "/Images/roof1.webp",
+      },
+      gallery: [
+        "/Images/roofing.webp",
+        "/Images/roof1.webp",
+        "/Images/roof2.webp",
+        "/Images/roof3.webp",
+        "/Images/roof4.webp",
+        "/Images/roof5.webp",
+      ],
+    },
+
+    tiktok: {
+      title: "TikTok Store",
+      category: "TikTok E-Commerce & Viral Content",
+      banner: "/Images/new4.png",
+      description:
+        "AI-powered TikTok store visuals and viral content strategy designed to boost engagement and drive sales.",
+      story:
+        "TikTok Store was developed as a high-performance e-commerce solution focused entirely on short-form video platforms. The goal was to create scroll-stopping product visuals, AI-generated model showcases, and viral-ready content that converts viewers into buyers.",
+      highlights: [
+        {
+          title: "AI Product Visuals",
+          desc: "Realistic AI-generated models showcasing products in engaging and high-converting formats.",
+        },
+        {
+          title: "Viral Content Strategy",
+          desc: "Short-form videos optimized for TikTok trends, hooks, and algorithm-driven reach.",
+        },
+      ],
+      cinematic: {
+        title: "Cinematic Experience",
+        videoSrc: "/videos/h1.mp4",
+        posterUrl: "/Images/h1-poster.webp",
+      },
+      socialMedia: {
+        title: "TikTok Content",
+        subtitle: "High-Converting Viral Videos",
+        features: [
+          "High-Retention Hooks",
+          "Product Storytelling",
+          "Trend-Based Editing",
+          "TikTok Shop Optimization",
+        ],
+        videoSrc: "/videos/h1.mp4",
+        posterUrl: "/Images/h1-poster.webp",
+      },
+      gallery: [
+        "/videos/h1.mp4",
+        "/videos/h2.mp4",
+        "/videos/h3.mp4",
+        "/videos/h4.mp4",
+        "/videos/ss1.mp4",
+        "/videos/ss2.mp4",
+        "/videos/h5.mp4",
+        "/videos/h6.mp4",
+        "/videos/tiktok.mp4",
+      ],
+    },
+    "dentist-website": {
+  title: "Dentist Clinic Website",
+  category: "AI Websites & Development",
+  banner: "/Images/dentist.webp",
+
+  story:
+    "This dentist clinic website was designed to help dental practices generate more patient enquiries and provide a smooth online booking experience. We focused on clear treatment presentation, trust-building sections, doctor selection, calendar-based appointment booking, and a simple patient journey from service discovery to confirmed booking. The goal was to make it easy for patients to choose their preferred dentist, select an available date and time, and submit their appointment request quickly.",
+
+  highlights: [
+    {
+      title: "Online Appointment Booking",
+      desc: "Patients can select treatment type, preferred doctor, date, and appointment time through a structured booking flow.",
+    },
+    {
+      title: "Doctor Selection System",
+      desc: "Designed with doctor profiles so patients can choose the dentist they prefer before booking.",
+    },
+  ],
+
+  cinematic: {
+    title: "Website Showcase",
+    videoSrc: "/videos/dentist1.mp4",
+    posterUrl: "/Images/dentist1.webp",
+  },
+
+  socialMedia: {
+    title: "Website Experience",
+    subtitle: "Dental Clinic Booking Flow",
+    features: [
+      "Doctor Selection",
+      "Calendar Booking",
+      "Treatment Pages",
+      "Mobile Responsive Design",
+    ],
+    videoSrc: "/videos/dentist1.mp4",
+    posterUrl: "/Images/dentist1.webp",
+  },
+
+  gallery: [
+    "/Images/dent1.webp",
+    "/Images/dent2.webp",
+    "/Images/dent3.webp",
+    "/Images/dent4.webp",
+    "/Images/dent5.webp",
+    "/Images/dent6.webp",
+    "/Images/dent7.webp",
+  ],
+},
+
     "pro-chauffeurs": {
       title: "Pro Chauffeurs",
       category: "Social Media Campaign",
@@ -37,7 +176,7 @@ const PortfolioDetail = () => {
       description:
         "Luxury car booking system branding and social media growth strategy.",
       story:
-        "Pro Chauffeurs is a premier luxury car booking service that redefines executive travel. Our goal was to translate their high-end physical service into a digital experience that resonates with elite clients. We focused on 'The Arrival Experience'—the feeling of luxury from the moment you book to the moment you reach your destination.",
+        "Pro Chauffeurs is a premier luxury car booking service that redefines executive travel. Our goal was to translate their high-end physical service into a digital experience that resonates with elite clients.",
       highlights: [
         {
           title: "Mobile-First Ads",
@@ -48,23 +187,14 @@ const PortfolioDetail = () => {
           desc: "A consistent visual language using deep blacks, gold accents, and clean typography.",
         },
       ],
-      details: {
-        client: "Pro Chauffeurs",
-        industry: "Luxury Transport",
-        services: "Social Media, UI/UX",
-        year: "2024",
-      },
       cinematic: {
         title: "Cinematic Experience",
-        subtitle: "Brand Showcase Video",
         videoSrc: "/videos/pd1.mp4",
         posterUrl: "/Images/p1.webp",
       },
       socialMedia: {
         title: "Social Media",
         subtitle: "Viral Content Strategy",
-        description:
-          "We created a series of vertical reels designed to capture attention in the first 2 seconds. By showcasing the sleek interiors and professional service, we increased their social engagement by 200%.",
         features: [
           "High-Retention Hooks",
           "Seamless Transitions",
@@ -93,7 +223,7 @@ const PortfolioDetail = () => {
       description:
         "A bold digital campaign crafted for a performance-driven automotive brand.",
       story:
-        "Viper was positioned as a high-impact automotive identity focused on speed, power, and aggressive visual storytelling. We built a campaign system that highlighted the vehicle's strong personality across digital banners, premium ad creatives, and cinematic motion-led visuals. The aim was to create a brand presence that felt modern, premium, and unmistakably performance-focused.",
+        "Viper was positioned as a high-impact automotive identity focused on speed, power, and aggressive visual storytelling.",
       highlights: [
         {
           title: "Performance Visual Identity",
@@ -104,23 +234,14 @@ const PortfolioDetail = () => {
           desc: "Multiple campaign-ready layouts for web, social media, and promotional banners.",
         },
       ],
-      details: {
-        client: "Viper Performance",
-        industry: "Automotive",
-        services: "Branding, Social Media, Ad Creatives",
-        year: "2024",
-      },
       cinematic: {
         title: "Cinematic Experience",
-        subtitle: "Performance Brand Showcase",
         videoSrc: "/videos/h3.mp4",
         posterUrl: "/Images/viper2.png",
       },
       socialMedia: {
         title: "Social Media",
         subtitle: "Automotive Content Strategy",
-        description:
-          "For Viper, we developed attention-grabbing visuals and short-form promotional content designed to amplify brand personality and create a premium automotive aesthetic across social platforms.",
         features: [
           "Bold Motion Visuals",
           "Luxury Automotive Styling",
@@ -149,7 +270,7 @@ const PortfolioDetail = () => {
       description:
         "Premium campaign design for elegant women’s handbags and fashion accessories.",
       story:
-        "Women Bags was developed as a polished fashion-focused portfolio project for showcasing premium handbags with a luxury editorial feel. The visual direction centered around elegance, lifestyle appeal, and product-first storytelling. We created a refined campaign language suitable for e-commerce, social promotions, and seasonal launch creatives.",
+        "Women Bags was developed as a polished fashion-focused portfolio project for showcasing premium handbags with a luxury editorial feel.",
       highlights: [
         {
           title: "Luxury Product Presentation",
@@ -160,23 +281,14 @@ const PortfolioDetail = () => {
           desc: "A coordinated asset system for product launches, promotions, and social media campaigns.",
         },
       ],
-      details: {
-        client: "Women Bags Studio",
-        industry: "Fashion Accessories",
-        services: "Creative Direction, Product Campaigns, Social Media",
-        year: "2024",
-      },
       cinematic: {
         title: "Cinematic Experience",
-        subtitle: "Luxury Bag Collection Showcase",
-        videoSrc: "/videos/bags1.mp4",
+        videoSrc: "/videos/h2.mp4",
         posterUrl: "/Images/bag2.png",
       },
       socialMedia: {
         title: "Social Media",
         subtitle: "Fashion Visual Strategy",
-        description:
-          "We designed premium visual assets tailored for handbag promotions, fashion drops, and social media storytelling that elevated the brand with a polished, upscale look.",
         features: [
           "Luxury Fashion Layouts",
           "Premium Product Focus",
@@ -195,6 +307,14 @@ const PortfolioDetail = () => {
         "/Images/9.webp",
         "/Images/10.webp",
         "/Images/11.webp",
+        "/Images/b1.webp",
+        "/Images/b2.webp",
+        "/Images/b3.webp",
+        "/Images/b4.webp",
+        "/Images/bb1.webp",
+        "/Images/bb2.webp",
+        "/Images/bb3.webp",
+        "/Images/p8.webp",
       ],
     },
 
@@ -205,7 +325,7 @@ const PortfolioDetail = () => {
       description:
         "A modern fashion e-commerce project focused on conversion and product appeal.",
       story:
-        "E-Commerce Clothing was built to represent a modern online apparel brand where product presentation, trust, and conversion were equally important. We created a visually clean and brand-consistent approach that balanced lifestyle branding with strong product visibility, making it ideal for collection launches, digital storefronts, and ad campaigns.",
+        "E-Commerce Clothing was built to represent a modern online apparel brand where product presentation, trust, and conversion were equally important.",
       highlights: [
         {
           title: "Conversion-Focused Design",
@@ -216,23 +336,14 @@ const PortfolioDetail = () => {
           desc: "A scalable creative system for seasonal drops, hero banners, and clothing promotions.",
         },
       ],
-      details: {
-        client: "E-Commerce Clothing",
-        industry: "Fashion Retail",
-        services: "E-Commerce Design, Branding, Social Media",
-        year: "2024",
-      },
       cinematic: {
         title: "Cinematic Experience",
-        subtitle: "Fashion Store Brand Showcase",
-        videoSrc: "/videos/clothing1.mp4",
+        videoSrc: "/videos/h4.mp4",
         posterUrl: "/Images/cloth2.png",
       },
       socialMedia: {
         title: "Social Media",
         subtitle: "Apparel Marketing Strategy",
-        description:
-          "We designed a fashion-led visual system for digital marketing, enabling the brand to showcase clothing collections in a premium and conversion-friendly way across web and social platforms.",
         features: [
           "Fashion Drop Campaigns",
           "E-Commerce Banner Design",
@@ -253,67 +364,6 @@ const PortfolioDetail = () => {
         "/Images/39.webp",
       ],
     },
-    tiktok: {
-      title: "TikTok Store",
-      category: "TikTok E-Commerce & Viral Content",
-      banner: "/Images/new4.png",
-
-      description:
-        "AI-powered TikTok store visuals and viral content strategy designed to boost engagement and drive sales.",
-
-      story:
-        "TikTok Store was developed as a high-performance e-commerce solution focused entirely on short-form video platforms. The goal was to create scroll-stopping product visuals, AI-generated model showcases, and viral-ready content that converts viewers into buyers. We built a content system optimized for TikTok Shop, combining trend-driven storytelling with product-focused presentation to maximize reach and engagement.",
-
-      highlights: [
-        {
-          title: "AI Product Visuals",
-          desc: "Realistic AI-generated models showcasing products in engaging and high-converting formats.",
-        },
-        {
-          title: "Viral Content Strategy",
-          desc: "Short-form videos optimized for TikTok trends, hooks, and algorithm-driven reach.",
-        },
-      ],
-
-      details: {
-        client: "TikTok Store Brand",
-        industry: "E-Commerce / Social Commerce",
-        services: "AI Visuals, TikTok Content, Product Videos",
-        year: "2025",
-      },
-
-      cinematic: {
-        title: "Cinematic Experience",
-        subtitle: "TikTok Store Visual Showcase",
-        videoSrc: "/videos/h1.mp4",
-        posterUrl: "/Images/h1-poster.webp",
-      },
-
-      socialMedia: {
-        title: "TikTok Content",
-        subtitle: "High-Converting Viral Videos",
-        description:
-          "We created short-form TikTok videos focused on high retention and conversion. Each video is designed with strong hooks, smooth transitions, and product storytelling to maximize engagement and drive direct sales from TikTok Shop.",
-
-        features: [
-          "High-Retention Hooks",
-          "Product Storytelling",
-          "Trend-Based Editing",
-          "TikTok Shop Optimization",
-        ],
-
-        videoSrc: "/videos/h1.mp4",
-        posterUrl: "/Images/h1-poster.webp",
-      },
-
-      gallery: [
-        "/videos/h1.mp4",
-        "/videos/h2.mp4",
-        "/videos/h3.mp4",
-        "/videos/h4.mp4",
-      ],
-    },
-
   };
 
   const project = projects[id];
@@ -328,9 +378,7 @@ const PortfolioDetail = () => {
     const handleIntersection = (entries, videoRef) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && videoRef.current) {
-          videoRef.current.play().catch((error) => {
-            console.log("Auto-play prevented:", error);
-          });
+          videoRef.current.play().catch(() => {});
         } else if (videoRef.current) {
           videoRef.current.pause();
         }
@@ -525,13 +573,15 @@ const PortfolioDetail = () => {
           overflow: hidden;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
           background: #000;
+          width: 100%;
           aspect-ratio: 16 / 9;
         }
 
         .video-wrapper video {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
+          background: #000;
         }
 
         .portrait-video-wrapper {
@@ -674,71 +724,47 @@ const PortfolioDetail = () => {
         </Container>
       </section>
 
+      {project.story && (
+        <section className="py-5">
+          <Container>
+            <Card className="custom-card border-0 shadow-sm">
+              <Card.Body className="p-4 p-lg-5">
+                <span className="section-title">Project Overview</span>
+
+                <h2 className="display-5 fw-bold card-gradient-heading mb-4">
+                  {project.title}
+                </h2>
+
+                <p
+                  className="text-muted fs-5 mb-0"
+                  style={{ lineHeight: "1.9", maxWidth: "950px" }}
+                >
+                  {project.story}
+                </p>
+              </Card.Body>
+            </Card>
+          </Container>
+        </section>
+      )}
+
       <section className="py-5">
         <Container>
-          <Row className="g-5">
-            <Col lg={7}>
-              <Card className="custom-card h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 p-lg-5">
-                  <span className="section-title">The Brand Story</span>
-
-                  <h2 className="fw-bold display-6 mb-4 card-gradient-heading">
-                    {project.title}
-                  </h2>
-
-                  <p
-                    className="text-muted fs-5 mb-4"
-                    style={{ lineHeight: "1.8" }}
-                  >
-                    {project.story}
-                  </p>
-
-                  <Row className="g-3 mt-2">
-                    {project.highlights.map((item, i) => (
-                      <Col md={6} key={i}>
-                        <div className="feature-badge">
-                          <h6 className="fw-bold mb-2 card-gradient-heading">
-                            {item.title}
-                          </h6>
-                          <p className="text-muted small mb-0">{item.desc}</p>
-                        </div>
-                      </Col>
-                    ))}
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col lg={5}>
-              <Card className="custom-card h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 p-lg-5">
-                  <h5 className="fw-bold mb-4 gradient-text">
-                    Project Details
-                  </h5>
-
-                  <div className="mb-3 pb-2 border-bottom">
-                    <small className="text-muted d-block mb-1">Client</small>
-                    <strong>{project.details.client}</strong>
-                  </div>
-
-                  <div className="mb-3 pb-2 border-bottom">
-                    <small className="text-muted d-block mb-1">Industry</small>
-                    <strong>{project.details.industry}</strong>
-                  </div>
-
-                  <div className="mb-3 pb-2 border-bottom">
-                    <small className="text-muted d-block mb-1">Services</small>
-                    <strong>{project.details.services}</strong>
-                  </div>
-
-                  <div>
-                    <small className="text-muted d-block mb-1">Year</small>
-                    <strong>{project.details.year}</strong>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+          <Card className="custom-card h-100 border-0 shadow-sm">
+            <Card.Body className="p-4 p-lg-5">
+              <Row className="g-3 mt-2">
+                {project.highlights.map((item, i) => (
+                  <Col md={6} key={i}>
+                    <div className="feature-badge">
+                      <h6 className="fw-bold mb-2 card-gradient-heading">
+                        {item.title}
+                      </h6>
+                      <p className="text-muted small mb-0">{item.desc}</p>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Card.Body>
+          </Card>
         </Container>
       </section>
 
@@ -747,10 +773,8 @@ const PortfolioDetail = () => {
           <Container>
             <Card className="custom-card border-0 shadow-sm overflow-hidden">
               <Card.Body className="p-4 p-lg-5 text-center">
-                <span className="section-title">{project.cinematic.title}</span>
-
                 <h2 className="display-4 fw-bold card-gradient-heading mb-4">
-                  {project.cinematic.subtitle}
+                  {project.cinematic.title}
                 </h2>
 
                 <div className="video-wrapper">
@@ -763,10 +787,7 @@ const PortfolioDetail = () => {
                     preload="metadata"
                     loop
                   >
-                    <source
-                      src={project.cinematic.videoSrc}
-                      type="video/mp4"
-                    />
+                    <source src={project.cinematic.videoSrc} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -789,13 +810,6 @@ const PortfolioDetail = () => {
                   <h2 className="fw-bold display-5 mb-4 card-gradient-heading">
                     {project.socialMedia.subtitle}
                   </h2>
-
-                  <p
-                    className="text-muted fs-5 mb-4"
-                    style={{ lineHeight: "1.8" }}
-                  >
-                    {project.socialMedia.description}
-                  </p>
 
                   <Row className="g-3">
                     {project.socialMedia.features.map((feature, i) => (
@@ -858,14 +872,14 @@ const PortfolioDetail = () => {
                           onClick={() => openGalleryMedia(item)}
                         >
                           <video
-  src={item}
-  className="gallery-img"
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="auto"
-/>
+                            src={item}
+                            className="gallery-img"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="auto"
+                          />
 
                           <div
                             style={{
@@ -881,8 +895,6 @@ const PortfolioDetail = () => {
                           >
                             ▶
                           </div>
-
-                          
                         </div>
                       ) : (
                         <img
@@ -925,40 +937,40 @@ const PortfolioDetail = () => {
       </section>
 
       <Modal
-  show={showGalleryModal}
-  onHide={closeGalleryImage}
-  centered
-  size="xl"
-  className="gallery-modal"
->
-  <Modal.Header closeButton />
-  <Modal.Body className="text-center p-2">
-    {selectedMediaType === "video" ? (
-      <video
-        src={selectedMedia}
-        controls
-        autoPlay
-        playsInline
-        preload="metadata"
-        style={{
-          width: "100%",
-          maxHeight: "85vh",
-          objectFit: "contain",
-          background: "#000",
-          borderRadius: "18px",
-        }}
-      />
-    ) : (
-      <img
-        src={selectedMedia}
-        alt="Gallery Preview"
-        className="gallery-popup-img"
-        loading="lazy"
-        decoding="async"
-      />
-    )}
-  </Modal.Body>
-</Modal>
+        show={showGalleryModal}
+        onHide={closeGalleryImage}
+        centered
+        size="xl"
+        className="gallery-modal"
+      >
+        <Modal.Header closeButton />
+        <Modal.Body className="text-center p-2">
+          {selectedMediaType === "video" ? (
+            <video
+              src={selectedMedia}
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              style={{
+                width: "100%",
+                maxHeight: "85vh",
+                objectFit: "contain",
+                background: "#000",
+                borderRadius: "18px",
+              }}
+            />
+          ) : (
+            <img
+              src={selectedMedia}
+              alt="Gallery Preview"
+              className="gallery-popup-img"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

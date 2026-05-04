@@ -3,7 +3,7 @@ import React from "react";
 const Blog = () => {
   const posts = [
     {
-      title: "How AI is Revolutionizing E-Commerce in 2024",
+      title: "How AI is Revolutionising E-Commerce in 2024",
       category: "AI",
       date: "March 24, 2024",
       author: "Alex Rivera",

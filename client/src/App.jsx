@@ -17,6 +17,11 @@ import Clothes from "./components/Pages/Clothes";
 import TikTok from "./components/Pages/TikTok";
 import SocialMedia from "./components/Pages/SocialMedia";
 import OurWork from "./components/Pages/OurWork";
+import TikTokShopManagement from "./components/Pages/TikTokShopManagement";
+import AIDigitalMarketingPaidAds from "./components/Pages/AIDigitalMarketing&PaidAds";
+import AIECommerceGrowthSolutions from "./components/Pages/AIE-CommerceGrowthSolutions";
+import AIProductVisualizationVirtualTryOn from "./components/Pages/AIProductVisualization&VirtualTry-On";
+import AIWebsiteDesignDevelopment from "./components/Pages/AIWebsiteDesign&Development";
 
 function App() {
   return (
@@ -38,6 +43,11 @@ function App() {
           <Route path="socialmedia" element={<SocialMedia />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/portfolio/:id" element={<PortfolioDetail />} />
+          <Route path="/services/tiktok-shop-management-uk" element={<TikTokShopManagement />}/>
+          <Route path="/services/ai-digital-marketing-paid-ads-uk" element={<AIDigitalMarketingPaidAds />}/>
+          <Route  path="/services/ai-ecommerce-growth-solutions-uk"element={<AIECommerceGrowthSolutions />}/>
+          <Route path="/services/ai-product-visualization-virtual-try-on-uk"  element={<AIProductVisualizationVirtualTryOn />}/>
+          <Route  path="/services/ai-website-design-development-uk"  element={<AIWebsiteDesignDevelopment />}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -7,43 +7,57 @@ const OurWork = () => {
   const projects = [
     {
       title: "Pro Chauffeurs",
-      category: "Social Media Posts",
+      category: "Social Media Posts & Marketing",
       img: "/Images/p1.webp",
       link: "/portfolio/pro-chauffeurs",
     },
     {
-  title: "TikTok Store",
-  category: "TikTok Store",
+  title: "TikTok ",
+  category: "TikTok Shop",
   img: "/Images/h1-poster.webp",
   link: "/portfolio/tiktok",
 },
     {
       title: "Viper",
-      category: "E-Commerce",
+      category: "AI E-Commerce",
+      category: "AI Virtual Demos",
       img: "/Images/p2.webp",
       link: "/portfolio/viper",
     },
     {
       title: "Women Bags",
-      category: "Virtual Demos",
+      category: "Social Media Posts & Marketing",
+      category: "AI Virtual Demos",
       img: "/Images/5.webp",
       link: "/portfolio/women-bags",
     },
     {
       title: "E-Commerce Clothing",
-      category: "E-Commerce",
+      category: "AI E-Commerce",
       img: "/Images/31.png",
       link: "/portfolio/ecommerce-clothing",
     },
+    {
+  title: "AI Website Design",
+  category: "AI Websites",
+  img: "/Images/roofing.webp",
+  link: "/portfolio/ai-website-design",
+},
+{
+  title: "Dentist Clinic Website",
+  category: "AI Websites",
+  img: "/Images/dentist.webp",
+  link: "/portfolio/dentist-website",
+},
   ];
 
   const categories = [
     "All",
-    "E-Commerce",
-    "Websites",
-    "Social Media Posts",
-    "Virtual Demos",
-    "TikTok Store", 
+    "AI E-Commerce",
+    "AI Websites",
+    "Social Media Posts & Marketing",
+    "AI Virtual Demos",
+    "TikTok Shop", 
   ];
 
   const filtered =
