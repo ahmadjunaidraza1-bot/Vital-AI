@@ -29,49 +29,76 @@ const PortfolioDetail = () => {
   };
 
   const projects = {
-    "ai-website-design": {
-      title: "Roofing Service Website",
-      category: "AI Websites & Development",
-      banner: "/Images/roofing.webp",
-      
-      story:
-        "This roofing service website was designed to help local roofing businesses generate more leads and build trust with customers. We focused on clear service presentation, strong call-to-action sections, and location-based SEO structure. The goal was to make it easy for users to quickly understand services like roof repair, installation, and maintenance, and instantly contact the business.",
-      highlights: [
-        {
-          title: "Local Service Focus",
-          desc: "Designed specifically for roofing businesses targeting local customers and service areas.",
-        },
-        {
-          title: "Lead Generation Layout",
-          desc: "Strategic placement of call buttons, forms and service sections to increase enquiries.",
-        },
-      ],
-      cinematic: {
-        title: "Website Showcase",
-        videoSrc: "/videos/roof1.mp4",
-        posterUrl: "/Images/roof1.webp",
-      },
-      socialMedia: {
-        title: "Website Experience",
-        subtitle: "Service-Based Website Flow",
-        features: [
-          "Service-Based Layout",
-          "Call & Quote Buttons",
-          "Local SEO Pages",
-          "Mobile Responsive Design",
-        ],
-        videoSrc: "/videos/roof1.mp4",
-        posterUrl: "/Images/roof1.webp",
-      },
-      gallery: [
-        "/Images/roofing.webp",
-        "/Images/roof1.webp",
-        "/Images/roof2.webp",
-        "/Images/roof3.webp",
-        "/Images/roof4.webp",
-        "/Images/roof5.webp",
-      ],
+   "ai-website-design": {
+  title: "Roofing Service Website",
+  category: "AI Websites & Development",
+  banner: "/Images/roofing.webp",
+
+  description:
+    "A high-converting roofing service website designed for local lead generation, trust building, and fast customer enquiries.",
+
+  story:
+    "This roofing service website was built for a local roofing company to generate more calls, quote requests, and booked jobs. The main focus was on creating a clean service-based layout where customers can quickly understand services like roof repairs, replacements, flat roofing, and emergency fixes. We structured the website to guide users from problem to solution and then to a strong call-to-action, ensuring maximum conversions.",
+
+  highlights: [
+    {
+      title: "Local Lead Generation Focus",
+      desc: "Designed to capture enquiries from local customers searching for roofing services in their area.",
     },
+    {
+      title: "High Conversion Layout",
+      desc: "Strategic placement of call buttons, quote forms and urgency-based CTAs.",
+    },
+  ],
+
+  // ⭐ NEW (VERY IMPORTANT FOR CLIENT UNDERSTANDING)
+  features: [
+    "Service Pages (Roof Repair, Replacement, Flat Roof)",
+    "Before & After Work Showcase",
+    "Instant Quote Request Form",
+    "Click-to-Call & WhatsApp Integration",
+    "Location-Based SEO Pages",
+    "Mobile Optimized Design",
+    "Trust Sections (Reviews & Testimonials)",
+    "Emergency Call CTA",
+  ],
+
+  details: {
+    client: "Local Roofing Company",
+    industry: "Roofing & Home Services",
+    services: "Website Design, UI/UX, SEO Structure, Lead Generation System",
+    year: "2025",
+  },
+
+  cinematic: {
+    title: "Website Showcase",
+    subtitle: "Roofing Business Experience",
+    videoSrc: "/videos/roof1.mp4",
+    posterUrl: "/Images/roof1.webp",
+  },
+
+  socialMedia: {
+    title: "Website Experience",
+    subtitle: "Service-Based Conversion Flow",
+    features: [
+      "Before & After Sections",
+      "Quote Request System",
+      "Emergency Contact Buttons",
+      "Local SEO Structure",
+    ],
+    videoSrc: "/videos/roof1.mp4",
+    posterUrl: "/Images/roof1.webp",
+  },
+
+  gallery: [
+    "/Images/roofing.webp",
+    "/Images/roof1.webp",
+    "/Images/roof2.webp",
+    "/Images/roof3.webp",
+    "/Images/roof4.webp",
+    "/Images/roof5.webp",
+  ],
+},
 
     tiktok: {
       title: "TikTok Store",
