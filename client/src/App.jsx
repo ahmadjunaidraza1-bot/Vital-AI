@@ -6,8 +6,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
 import Services from "./components/Pages/Services";
-// import OurWork from "./components/Pages/OurWork";
-// import CaseStudy from "./components/Pages/CaseStudy";
 import Blog from "./components/Pages/Blog";
 import Contact from "./components/Pages/Contact";
 import NotFound from "./components/Pages/NotFound";
