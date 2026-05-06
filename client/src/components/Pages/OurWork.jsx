@@ -899,30 +899,32 @@ const OurWork = () => {
     })
     .filter((section) => section.projects.length > 0 || section.allProjects.length > 0);
 
-  const renderMedia = (item, popup = false) => {
-    if (item.type === "video") {
-      return (
-        <video
-          src={item.src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={popup ? "popup-media" : "project-media"}
-        />
-      );
-    }
-
+  const renderMedia = (item, popup = false, index = 0) => {
+  if (item.type === "video") {
     return (
-      <img
+      <video
         src={item.src}
-        alt="Portfolio work"
-        loading="lazy"
-        decoding="async"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
         className={popup ? "popup-media" : "project-media"}
       />
     );
-  };
+  }
+
+  return (
+    <img
+      src={item.src}
+      alt="Portfolio work"
+      loading={popup || index === 0 ? "eager" : "lazy"}
+      fetchPriority={popup || index === 0 ? "high" : "low"}
+      decoding="async"
+      className={popup ? "popup-media" : "project-media"}
+    />
+  );
+};
 
   const handleClick = (project) => {
     if (project.link) {
@@ -1455,6 +1457,10 @@ const OurWork = () => {
             padding:8px 14px;
           }
         }
+          .project-media,
+.popup-media{
+  content-visibility:auto;
+}
       `}</style>
 
       <Container fluid className="portfolio-container">
@@ -1563,7 +1569,7 @@ const OurWork = () => {
                         >
                           {getProjectMedia(project).map((item, i) => (
                             <Carousel.Item key={i}>
-                              {renderMedia(item)}
+                              {renderMedia(item, false, i)}
                             </Carousel.Item>
                           ))}
                         </Carousel>
@@ -1602,7 +1608,7 @@ const OurWork = () => {
               className="popup-carousel"
             >
               {getProjectMedia(selectedProject).map((item, i) => (
-                <Carousel.Item key={i}>{renderMedia(item, true)}</Carousel.Item>
+                <Carousel.Item key={i}>{renderMedia(item, true, i)}</Carousel.Item>
               ))}
             </Carousel>
           )}
