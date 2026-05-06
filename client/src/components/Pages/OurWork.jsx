@@ -11,80 +11,164 @@ const OurWork = () => {
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Luxury Campaigns",
+      subCategory: "Cab Booking",
       images: ["/Images/cr5.webp", "/Images/cr10.webp", "/Images/cr4.webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Luxury Campaigns",
-      images: ["/Images/cr11.webp", "/Images/cr6.webp","/Images/new3.png"],
+      subCategory: "Cab Booking",
+      images: ["/Images/cr11.webp", "/Images/cr7.webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Bag",
+      subCategory: "Cab Booking",
+      images: ["/Images/cr9.webp", "/Images/cr4.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Cab Booking",
+      images: ["/Images/cr8.webp", "/Images/new3.png"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Ladies Bags & Jwellery",
       images: ["/Images/jb1.webp", "/Images/jb2.png"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Bag",
-      images: ["/Images/wb (1).webp", "/Images/wb (2).webp","/Images/wb (6).webp"],
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/new1.png", "/Images/new2.png"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Bag",
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/p3.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/wb (8).webp", "/Images/wb (6).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/wb (1).webp", "/Images/wb (2).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Ladies Bags & Jwellery",
       images: ["/Images/wb (4).webp", "/Images/wb (3).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Bag",
-      images: ["/Images/wb (7).webp", "/Images/wb (8).webp"],
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/wb (5).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Jwellery",
-      images: ["/Images/wj (14).webp", "/Images/wj (1).webp"],
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/wb (7).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Jwellery",
-      images: ["/Images/wj (2).webp", "/Images/wj (3).webp"],
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/n9 (10).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Jwellery",
-      images: ["/Images/wj (4).webp", "/Images/wj (5).webp"],
-    },
-    {
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Jwellery",
-      images: ["/Images/wj (6).webp", "/Images/wj (7).webp"],
-    },
-    {
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts & Marketing",
-      subCategory: "Ladies Jwellery",
-      images: ["/Images/wj (10).webp", "/Images/wj (11).webp"],
+      subCategory: "Ladies Bags & Jwellery",
+      images: ["/Images/n9 (64).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/mix (10).webp", "/Images/mix (11).webp","/Images/mix (12).webp"],
+      images: ["/Images/mix (10).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/mix (13).webp", "/Images/mix (14).webp","/Images/mix (15).webp"],
+      images: ["/Images/mix (11).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (50).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (51).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (1).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (23).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (24).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (25).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/n9 (26).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/mix (12).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/mix (13).webp", "/Images/mix (15).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/mix (14).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Clothing",
+      images: ["/Images/new.webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -96,55 +180,111 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/mix (17).webp", "/Images/la.webp"],
+      images: ["/Images/la.webp",],
+    },
+
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Leather Collection",
+      images: ["/Images/mix (17).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/mix (1).webp", "/Images/mix (16).webp",],
+      images: ["/Images/n9 (3).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/la (1).webp", "/Images/la (4).webp",],
+      images: ["/Images/n9 (4).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/la (2).webp", "/Images/la (3).webp",],
+      images: ["/Images/n9 (5).webp"],
+    },
+
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/mix (2).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/mix (2).webp", "/Images/b1.webp"],
+      images: ["/Images/mix (4).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/mix (4).webp", "/Images/b3.webp"],
+      images: ["/Images/mix (3).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/b4.webp", "/Images/b2.webp"],
+      images: ["/Images/n9 (62).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/mix (3).webp", "/Images/p8.webp"],
+      images: ["/Images/n9 (11).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (12).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (13).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (58).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (59).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (60).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Belts & Ties",
+      images: ["/Images/n9 (61).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Pet Accessories",
-      images: ["/Images/mix (7).webp","/Images/mix (9).webp"],
+      images: ["/Images/mix (7).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Social Media Posts & Marketing",
+      subCategory: "Pet Accessories",
+      images: ["/Images/mix (9).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -155,62 +295,44 @@ const OurWork = () => {
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "GYM Accesories",
-      images: ["/Images/vp (2).webp","/Images/vg1.webp", "/Images/vp (4).webp"],
+      subCategory: "Pet Accessories",
+      images: ["/Images/n9 (53).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "GYM Accesories",
-      images: ["/Images/vg3.webp", "/Images/vg5.webp","/Images/vp (13).webp"],
+      subCategory: "Pet Accessories",
+      images: ["/Images/n9 (55).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "GYM Accesories",
-      images: ["/Images/vp (9).webp","/Images/vg2.webp"],
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (2).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "FootBall Accesories",
-      images: ["/Images/vp (3).webp", "/Images/vp (20).webp"],
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (3).webp",],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "FootBall Accesories",
-      images: ["/Images/vp (10).webp", "/Images/vp (14).webp"],
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (20).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "FootBall Accesories",
-      images: ["/Images/vp (15).webp", "/Images/vp (17).webp"],
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (8).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
-      subCategory: "Martial Arts Accesories",
-      images: ["/Images/vp (8).webp", "/Images/vp (20).webp"],
-    },
-    {
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts & Marketing",
-      subCategory: "Martial Arts Accesories",
-      images: ["/Images/vp (8).webp", "/Images/vp (20).webp"],
-    },
-    {
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts & Marketing",
-      subCategory: "Martial Arts Accesories",
-      images: ["/Images/vg6.webp", "/Images/vg8.webp"],
-    },
-    {
-      title: "Pro Chauffeurs",
-      category: "Social Media Posts & Marketing",
-      subCategory: "Martial Arts Accesories",
-      images: ["/Images/vg7.webp", "/Images/vp (7).webp"],
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (4).webp"],
     },
     {
       title: "TikTok Shop Video Creatives",
@@ -322,99 +444,399 @@ const OurWork = () => {
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies School Bags",
-      images: ["/Images/9.webp", "/Images/10.webp","/Images/sl (4).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/9.webp", "/Images/10.webp", "/Images/sl (4).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies School Bags",
-      images: ["/Images/11.webp","/Images/sl (5).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/11.webp", "/Images/sl (5).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/1.webp","/Images/4.webp","/Images/sl (9).webp",],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/1.webp", "/Images/4.webp", "/Images/sl (9).webp",],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/2.webp","/Images/sl (11).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/2.webp", "/Images/sl (11).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/3.webp","/Images/sl (12).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/3.webp", "/Images/sl (12).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/5.webp","/Images/sl (10).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/5.webp", "/Images/sl (10).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/6.webp","/Images/sl (1).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/6.webp", "/Images/sl (1).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/7.webp","/Images/sl (2).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/7.webp", "/Images/sl (2).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/8.webp","/Images/sl (3).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/8.webp", "/Images/sl (3).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/bb1.webp", "/Images/bb2.webp","/Images/sl (7).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/bb1.webp", "/Images/bb2.webp", "/Images/sl (7).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/bb3.webp","/Images/sl (8).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/bb3.webp", "/Images/sl (8).webp"],
     },
-     {
+    {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/sl (13).webp","/Images/sl (16).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/sl (13).webp", "/Images/sl (16).webp"],
     }, {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Fashion Bags",
-      images: ["/Images/sl (15).webp","/Images/sl (14).webp"],
+      subCategory: "Ladies School & Fashion Bags",
+      images: ["/Images/sl (15).webp", "/Images/sl (14).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Ladies Jwellery",
+      images: ["/Images/wj (2).webp", "/Images/wj (3).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Ladies Jwellery",
+      images: ["/Images/wj (4).webp", "/Images/wj (5).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Ladies Jwellery",
+      images: ["/Images/wj (6).webp", "/Images/wj (7).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Ladies Jwellery",
+      images: ["/Images/wj (10).webp", "/Images/wj (11).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Ladies Jwellery",
+      images: ["/Images/wj (14).webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Wear",
+      subCategory: "Mens & Womens Wear",
       images: ["/Images/48.webp", "/Images/50.webp", "/Images/49.png"],
     },
     {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/la (1).webp", "/Images/la (4).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/la (2).webp", "/Images/la (3).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/p7.webp"],
+    },
+    {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Wear",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/46.webp",],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/47.webp",],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/51.webp", "/Images/52.webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (35).webp", "/Images/n9 (36).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (37).webp", "/Images/n9 (47).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (28).webp", "/Images/n9 (29).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (34).webp", "/Images/n9 (67).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (46).webp", "/Images/n9 (48).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (57).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (63).webp"],
+    },
+    {
+      title: "AI Product Demo",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
       images: ["/Images/b2.webp", "/Images/b4.webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
-      subCategory: "Ladies Wear",
+      subCategory: "Mens & Womens Wear",
       images: ["/Images/b1.webp",],
     },
-    
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/39.webp", "/Images/40.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/34.webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/43.webp", "/Images/n9 (44).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/31.png"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/32.webp", "/Images/n9 (7).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (8).webp", "/Images/n9 (9).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (68).webp", "/Images/n9 (21).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (30).webp", "/Images/n9 (31).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (16).webp", "/Images/n9 (17).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (18).webp", "/Images/n9 (19).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (20).webp", "/Images/n9 (22).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (14).webp", "/Images/n9 (15).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (32).webp", "/Images/n9 (33).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (41).webp", "/Images/n9 (39).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (40).webp", "/Images/n9 (42).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/p4.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/p5.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/p8.webp", "/Images/ti2.png"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/ti1.png"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (65).webp", "/Images/n9 (66).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/p6.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n (1).webp", "/Images/n9 (2).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Mens & Womens Wear",
+      images: ["/Images/n9 (68).webp", "/Images/n9 (21).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vg1.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vg6.webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (12).png"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (13).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (9).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vg8.webp", "/Images/vp (7).webp"],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (10).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (14).webp",],
+    },
+    {
+      title: "Pro Chauffeurs",
+      category: "Product Demos",
+      subCategory: "Sports Accesories",
+      images: ["/Images/vp (15).webp"],
+    },
+
   ];
 
   const categories = [
@@ -628,21 +1050,22 @@ const OurWork = () => {
         }
 
         .project-col{
-          display:flex;
-        }
+  display:flex;
+  padding-top:24px;
+}
 
         .project-box{
-          width:100%;
-          position:relative;
-          background:#fff;
-          border-radius:30px;
-          padding:12px;
-          box-shadow:0 25px 70px rgba(16,24,40,0.12);
-          border:1px solid rgba(124,58,237,0.12);
-          cursor:pointer;
-          transition:0.35s ease;
-          overflow:hidden;
-        }
+  width:100%;
+  position:relative;
+  background:#fff;
+  border-radius:30px;
+  padding:12px;
+  box-shadow:0 25px 70px rgba(16,24,40,0.12);
+  border:1px solid rgba(124,58,237,0.12);
+  cursor:pointer;
+  transition:0.35s ease;
+  overflow:visible;
+}
 
         .project-box:hover{
           transform:translateY(-8px);
@@ -650,21 +1073,24 @@ const OurWork = () => {
         }
 
         .project-name-badge{
-          position:absolute;
-          top:22px;
-          left:22px;
-          z-index:15;
-          padding:9px 16px;
-          border-radius:999px;
-          background:rgba(255,255,255,0.66);
-          color:#111827;
-          border:1px solid rgba(255,255,255,0.8);
-          backdrop-filter:blur(14px);
-          -webkit-backdrop-filter:blur(14px);
-          box-shadow:0 12px 30px rgba(16,24,40,0.16);
-          font-size:13px;
-          font-weight:900;
-        }
+  position:absolute;
+  top:-18px;
+  left:24px;
+  z-index:50;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.92);
+  color:#111827;
+  border:1px solid rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:
+    0 12px 30px rgba(16,24,40,0.14),
+    0 4px 12px rgba(124,58,237,0.12);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.3px;
+}
 
         .project-carousel,
         .project-carousel .carousel-inner,
@@ -922,12 +1348,11 @@ const OurWork = () => {
           }
 
           .project-name-badge{
-            top:14px;
-            left:14px;
-            font-size:12px;
-            padding:8px 13px;
-          }
-
+  top:-30px;
+  left:16px;
+  font-size:14px;
+  padding:8px 10px;
+}
           .project-carousel,
           .project-carousel .carousel-inner,
           .project-carousel .carousel-item{
@@ -1070,9 +1495,8 @@ const OurWork = () => {
                   {subCategories.map((sub, i) => (
                     <button
                       key={i}
-                      className={`sub-filter-btn ${
-                        selectedSub === sub ? "active" : ""
-                      }`}
+                      className={`sub-filter-btn ${selectedSub === sub ? "active" : ""
+                        }`}
                       onClick={() =>
                         setSubActive((prev) => ({
                           ...prev,
@@ -1129,12 +1553,11 @@ const OurWork = () => {
                             {project.title}
                           </div>
                         )}
-
                         <Carousel
                           interval={2500}
                           indicators={true}
                           controls={false}
-                          pause={false}
+                          pause="hover"
                           touch={false}
                           className="project-carousel"
                         >
@@ -1174,7 +1597,8 @@ const OurWork = () => {
               interval={2200}
               indicators={true}
               controls={true}
-              pause={false}
+              pause="hover"
+              touch={true}
               className="popup-carousel"
             >
               {getProjectMedia(selectedProject).map((item, i) => (

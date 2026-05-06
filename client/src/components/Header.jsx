@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav,NavDropdown } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -50,7 +50,30 @@ export default function Header() {
     setExpanded(false);
   }, [location.pathname]);
 
-  const navItems = ["Home", "About", "Services", "Our Work", "Blog", "Contact"];
+  const servicesDropdown = [
+  {
+    title: "AI Websites",
+    path: "/services/ai-website-design-development-uk",
+  },
+  {
+    title: "Social Media Management & Paid Ads",
+    path: "/services/ai-digital-marketing-paid-ads-uk",
+  },
+  {
+    title: "TikTok Shop Management",
+    path: "/services/tiktok-shop-management-uk",
+  },
+  {
+    title: "AI Product Visuals",
+    path: "/services/ai-product-visualization-virtual-try-on-uk",
+  },
+  {
+    title: "Ecommerce Management",
+    path: "/services/ai-ecommerce-growth-solutions-uk",
+  },
+];
+
+const navItems = ["Home", "About", "Our Work", "Blog", "Contact"];
 
   const handleNavClick = () => setExpanded(false);
 
@@ -183,37 +206,84 @@ export default function Header() {
 
           <Navbar.Collapse id="main-navbar-nav">
             <Nav className="ms-auto align-items-center gap-4 vital-nav">
-              {navItems.map((item, i) => {
-                const path =
-                  item === "Home"
-                    ? "/"
-                    : `/${item.toLowerCase().replace(" ", "-")}`;
+              {navItems.slice(0, 2).map((item, i) => {
+  const path =
+    item === "Home"
+      ? "/"
+      : `/${item.toLowerCase().replace(" ", "-")}`;
 
-                return (
-                  <Nav.Link
-                    key={i}
-                    as={Link}
-                    to={path}
-                    onClick={handleNavClick}
-                    className="nav-link-custom"
-                    style={{
-                      color: isActive(path) ? "#111" : "#6b7280",
-                    }}
-                  >
-                    {item}
+  return (
+    <Nav.Link
+      key={i}
+      as={Link}
+      to={path}
+      onClick={handleNavClick}
+      className="nav-link-custom"
+      style={{
+        color: isActive(path) ? "#111" : "#6b7280",
+      }}
+    >
+      {item}
 
-                    <span
-                      style={{
-                        display: isActive(path) ? "block" : "none",
-                        height: "2px",
-                        background: "#2563eb",
-                        marginTop: "4px",
-                        borderRadius: "10px",
-                      }}
-                    />
-                  </Nav.Link>
-                );
-              })}
+      <span
+        style={{
+          display: isActive(path) ? "block" : "none",
+          height: "2px",
+          background: "#2563eb",
+          marginTop: "4px",
+          borderRadius: "10px",
+        }}
+      />
+    </Nav.Link>
+  );
+})}
+
+<NavDropdown
+  title="Services"
+  id="services-dropdown"
+  className="services-dropdown"
+>
+  {servicesDropdown.map((service, index) => (
+    <NavDropdown.Item
+      key={index}
+      as={Link}
+      to={service.path}
+      onClick={handleNavClick}
+      className="dropdown-service-item"
+    >
+      {service.title}
+    </NavDropdown.Item>
+  ))}
+</NavDropdown>
+
+{navItems.slice(2).map((item, i) => {
+  const path = `/${item.toLowerCase().replace(" ", "-")}`;
+
+  return (
+    <Nav.Link
+      key={i}
+      as={Link}
+      to={path}
+      onClick={handleNavClick}
+      className="nav-link-custom"
+      style={{
+        color: isActive(path) ? "#111" : "#6b7280",
+      }}
+    >
+      {item}
+
+      <span
+        style={{
+          display: isActive(path) ? "block" : "none",
+          height: "2px",
+          background: "#2563eb",
+          marginTop: "4px",
+          borderRadius: "10px",
+        }}
+      />
+    </Nav.Link>
+  );
+})}
 
               <button
                 type="button"
@@ -427,6 +497,50 @@ export default function Header() {
         .desktop-strategy-btn{
           display:flex;
         }
+          .services-dropdown .dropdown-toggle{
+  font-style:italic;
+  font-size:12px;
+  font-weight:700;
+  color:#6b7280 !important;
+  border:none !important;
+  background:none !important;
+  transition:.3s;
+}
+
+.services-dropdown .dropdown-toggle:hover{
+  color:#2563eb !important;
+  transform:translateY(-2px);
+}
+
+.services-dropdown .dropdown-menu{
+  border:none;
+  padding:12px;
+  border-radius:18px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 55px rgba(124,58,237,.20);
+  min-width:260px;
+}
+
+.dropdown-service-item{
+  border-radius:12px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:600;
+  color:#111827 !important;
+  transition:.3s;
+  margin-bottom:4px;
+}
+
+.dropdown-service-item:hover{
+  background:linear-gradient(90deg,#7c3aed,#ec4899);
+  color:#fff !important;
+  transform:translateX(4px);
+}
+
+.dropdown-service-item:active{
+  background:linear-gradient(90deg,#7c3aed,#ec4899) !important;
+}
 
         .mobile-strategy-btn{
           display:none;

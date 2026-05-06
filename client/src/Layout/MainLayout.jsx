@@ -1,9 +1,28 @@
 import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import { Whatsapp, TelephoneFill } from "react-bootstrap-icons";
+import { Whatsapp, TelephoneFill, ArrowUpShort, } from "react-bootstrap-icons";
 
 export default function MainLayout() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    setShowScrollTop(window.scrollY > 300);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
   return (
     <div>
       <Header />
@@ -23,8 +42,70 @@ export default function MainLayout() {
       >
         <Whatsapp />
       </a>
+      {showScrollTop && (
+  <button
+    className="scroll-top-btn"
+    onClick={scrollToTop}
+    aria-label="Scroll To Top"
+  >
+    <ArrowUpShort />
+  </button>
+)}
 
       <style>{`
+      .scroll-top-btn{
+  position:fixed;
+  right:50px;
+  bottom:170px;
+  width:58px;
+  height:58px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#06b6d4);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:999999;
+  box-shadow:0 12px 30px rgba(37,99,235,.35);
+  animation:scrollFade .35s ease;
+  transition:all .3s ease;
+}
+
+.scroll-top-btn:hover{
+  transform:translateY(-4px) scale(1.08);
+}
+
+.scroll-top-btn svg{
+  width:34px;
+  height:34px;
+}
+
+@keyframes scrollFade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media (max-width:575px){
+  .scroll-top-btn{
+    right:8px;
+    bottom:148px;
+    width:52px;
+    height:52px;
+  }
+
+  .scroll-top-btn svg{
+    width:30px;
+    height:30px;
+  }
+}
         .phone-float,
         .whatsapp-float{
           position: fixed;
@@ -42,13 +123,13 @@ export default function MainLayout() {
         }
 
         .phone-float{
-          bottom: 145px;
+          bottom: 105px;
           background: linear-gradient(135deg,#7c3aed,#ec4899);
           box-shadow: 0 12px 30px rgba(124,58,237,0.35);
         }
 
         .whatsapp-float{
-          bottom: 70px;
+          bottom: 40px;
           background: #25D366;
           box-shadow: 0 12px 30px rgba(37,211,102,0.35);
           animation: whatsappPulse 2s infinite;
@@ -75,7 +156,7 @@ export default function MainLayout() {
         @media (max-width: 575px){
           .phone-float,
           .whatsapp-float{
-            right: 15px;
+            right: 8px;
             width: 52px;
             height: 52px;
           }
