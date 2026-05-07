@@ -273,12 +273,12 @@ const Footer = () => {
               <div className="glass-card">
                 <h5 className="footer-heading">Quick Links</h5>
                 <ul className="list-unstyled m-0">
-                  <li><a href="#home" className="footer-link">Home</a></li>
-                  <li><a href="#services" className="footer-link">Services</a></li>
-                  <li><a href="#portfolio" className="footer-link">Portfolio</a></li>
-                  <li><a href="#blog" className="footer-link">Blog</a></li>
-                  <li><a href="#contact" className="footer-link">Contact</a></li>
-                  <li><a href="#about" className="footer-link">About</a></li>
+                  <li><a href="/home" className="footer-link">Home</a></li>
+                  <li><a href="/services" className="footer-link">Services</a></li>
+                  <li><a href="/our-work" className="footer-link">Our Work</a></li>
+                  <li><a href="/blog" className="footer-link">Blog</a></li>
+                  <li><a href="/contact" className="footer-link">Contact</a></li>
+                  <li><a href="/about" className="footer-link">About</a></li>
                 </ul>
               </div>
             </Col>
@@ -288,11 +288,11 @@ const Footer = () => {
               <div className="glass-card">
                 <h5 className="footer-heading">Services</h5>
                 <ul className="list-unstyled m-0">
-                  <li><a href="#services" className="footer-link">AI E-Commerce</a></li>
-                  <li><a href="#services" className="footer-link">Web Development</a></li>
-                  <li><a href="#services" className="footer-link">Digital Marketing</a></li>
-                  <li><a href="#services" className="footer-link">Virtual Product Demo</a></li>
-                  <li><a href="#services" className="footer-link">Social Media Content</a></li>
+                  <li><a href="/services/ai-website-design-development-uk" className="footer-link">AI Websites</a></li>
+                  <li><a href="/services/ai-digital-marketing-paid-ads-uk" className="footer-link">Social Media Management & Paid Adds</a></li>
+                  <li><a href="/services/tiktok-shop-management-uk" className="footer-link">TikTok Shop Managemnet</a></li>
+                  <li><a href="/services/ai-product-visualization-virtual-try-on-uk" className="footer-link">AI Product Visuals</a></li>
+                  <li><a href="/services/ai-ecommerce-growth-solutions-uk" className="footer-link">Ecommerce Management</a></li>
                 </ul>
               </div>
             </Col>
