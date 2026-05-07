@@ -421,6 +421,13 @@ const OurWork = () => {
       images: ["/Images/elc1.webp", "/Images/elc2.webp", "/Images/elc3.webp"],
     },
     {
+      title: "DriveWay Cleaning Services",
+      category: "AI E-Commerce & AI Websites",
+      subCategory: "Service Websites",
+      link: "https://pure-aevvoj97x-webvitalais-projects.vercel.app/",
+      images: ["/Images/dr2.webp", "/Images/dr1.webp", "/Images/dr3.webp"],
+    },
+    {
       title: "Dentist Clinic Website",
       category: "AI E-Commerce & AI Websites",
       subCategory: "Clinic Websites",
