@@ -414,6 +414,13 @@ const OurWork = () => {
       images: ["/Images/roofing.webp", "/Images/roof3.webp", "/Images/roof4.webp"],
     },
     {
+      title: "Electricity Services Website",
+      category: "AI E-Commerce & AI Websites",
+      subCategory: "Service Websites",
+      link: "https://star-electric-dod9pzcwu-webvitalais-projects.vercel.app/",
+      images: ["/Images/elc1.webp", "/Images/elc2.webp", "/Images/elc3.webp"],
+    },
+    {
       title: "Dentist Clinic Website",
       category: "AI E-Commerce & AI Websites",
       subCategory: "Clinic Websites",
