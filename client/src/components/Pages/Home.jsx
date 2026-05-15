@@ -1328,14 +1328,7 @@ const Home = () => {
             <h2 className={`fw-bold display-5 ${revealClass("work", "zoom")}`}>
               Selected <span className="gradient-text">Projects</span>
             </h2>
-
-            <div className={revealClass("work", "up")}>
-              <Button as={Link} to="/portfolio" className="main-btn mt-3">
-                View All Projects
-              </Button>
-            </div>
           </div>
-
           <Row className="g-4">
             {projects.map((item, i) => (
               <Col md={6} lg={4} key={i}>

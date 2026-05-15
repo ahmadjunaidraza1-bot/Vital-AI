@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Container, Row, Col, Carousel, Modal } from "react-bootstrap";
 
 const OurWork = () => {
@@ -6,6 +6,10 @@ const OurWork = () => {
   const [subActive, setSubActive] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [visibleMap, setVisibleMap] = useState({});
+
+  const INITIAL_VISIBLE = 9;
+  const LOAD_MORE_STEP = 9;
 
   const projects = [
     {
@@ -60,13 +64,13 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Ladies Bags & Jwellery",
-      images: ["/Images/wb (1).webp", "/Images/wb (2).webp",],
+      images: ["/Images/wb (1).webp", "/Images/wb (2).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Ladies Bags & Jwellery",
-      images: ["/Images/wb (4).webp", "/Images/wb (3).webp",],
+      images: ["/Images/wb (4).webp", "/Images/wb (3).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -108,43 +112,43 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (50).webp",],
+      images: ["/Images/n9 (50).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (51).webp",],
+      images: ["/Images/n9 (51).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (1).webp",],
+      images: ["/Images/n9 (1).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (23).webp",],
+      images: ["/Images/n9 (23).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (24).webp",],
+      images: ["/Images/n9 (24).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (25).webp",],
+      images: ["/Images/n9 (25).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Clothing",
-      images: ["/Images/n9 (26).webp",],
+      images: ["/Images/n9 (26).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -180,9 +184,8 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/la.webp",],
+      images: ["/Images/la.webp"],
     },
-
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
@@ -193,7 +196,7 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Leather Collection",
-      images: ["/Images/n9 (3).webp",],
+      images: ["/Images/n9 (3).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -207,12 +210,11 @@ const OurWork = () => {
       subCategory: "Leather Collection",
       images: ["/Images/n9 (5).webp"],
     },
-
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/mix (2).webp",],
+      images: ["/Images/mix (2).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -224,55 +226,55 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/mix (3).webp",],
+      images: ["/Images/mix (3).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (62).webp",],
+      images: ["/Images/n9 (62).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (11).webp",],
+      images: ["/Images/n9 (11).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (12).webp",],
+      images: ["/Images/n9 (12).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (13).webp",],
+      images: ["/Images/n9 (13).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (58).webp",],
+      images: ["/Images/n9 (58).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (59).webp",],
+      images: ["/Images/n9 (59).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (60).webp",],
+      images: ["/Images/n9 (60).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Belts & Ties",
-      images: ["/Images/n9 (61).webp",],
+      images: ["/Images/n9 (61).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -308,13 +310,13 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Sports Accesories",
-      images: ["/Images/vp (2).webp",],
+      images: ["/Images/vp (2).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Social Media Posts & Marketing",
       subCategory: "Sports Accesories",
-      images: ["/Images/vp (3).webp",],
+      images: ["/Images/vp (3).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -338,73 +340,55 @@ const OurWork = () => {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Pet Videos",
-      media: [
-        { type: "video", src: "/videos/h1.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h1.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Pet Videos",
-      media: [
-        { type: "video", src: "/videos/h6.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h6.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Cab Booking",
-      media: [
-        { type: "video", src: "/videos/pd2.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/pd2.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "GYM Wear",
-      media: [
-        { type: "video", src: "/videos/h3.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h3.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Women Wear",
-      media: [
-        { type: "video", src: "/videos/h4.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h4.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Ladies Bag",
-      media: [
-        { type: "video", src: "/videos/h2.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h2.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Mens Wear",
-      media: [
-        { type: "video", src: "/videos/h5.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/h5.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Mens Wear",
-      media: [
-        { type: "video", src: "/videos/pd1.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/pd1.mp4" }],
     },
     {
       title: "TikTok Shop Video Creatives",
       category: "TikTok Shop Creatives",
       subCategory: "Mens Wear",
-      media: [
-        { type: "video", src: "/videos/ss1.mp4" },
-      ],
+      media: [{ type: "video", src: "/videos/ss1.mp4" }],
     },
     {
       title: "Roofing Service Website",
@@ -478,7 +462,7 @@ const OurWork = () => {
       title: "AI Product Demo",
       category: "Product Demos",
       subCategory: "Ladies School & Fashion Bags",
-      images: ["/Images/1.webp", "/Images/4.webp", "/Images/sl (9).webp",],
+      images: ["/Images/1.webp", "/Images/4.webp", "/Images/sl (9).webp"],
     },
     {
       title: "AI Product Demo",
@@ -533,7 +517,8 @@ const OurWork = () => {
       category: "Product Demos",
       subCategory: "Ladies School & Fashion Bags",
       images: ["/Images/sl (13).webp", "/Images/sl (16).webp"],
-    }, {
+    },
+    {
       title: "AI Product Demo",
       category: "Product Demos",
       subCategory: "Ladies School & Fashion Bags",
@@ -579,13 +564,13 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/la (1).webp", "/Images/la (4).webp",],
+      images: ["/Images/la (1).webp", "/Images/la (4).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/la (2).webp", "/Images/la (3).webp",],
+      images: ["/Images/la (2).webp", "/Images/la (3).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -597,13 +582,13 @@ const OurWork = () => {
       title: "AI Product Demo",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/46.webp",],
+      images: ["/Images/46.webp"],
     },
     {
       title: "AI Product Demo",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/47.webp",],
+      images: ["/Images/47.webp"],
     },
     {
       title: "AI Product Demo",
@@ -663,7 +648,7 @@ const OurWork = () => {
       title: "AI Product Demo",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/b1.webp",],
+      images: ["/Images/b1.webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -675,7 +660,7 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Product Demos",
       subCategory: "Mens & Womens Wear",
-      images: ["/Images/34.webp",],
+      images: ["/Images/34.webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -843,13 +828,13 @@ const OurWork = () => {
       title: "Pro Chauffeurs",
       category: "Product Demos",
       subCategory: "Sports Accesories",
-      images: ["/Images/vp (10).webp",],
+      images: ["/Images/vp (10).webp"],
     },
     {
       title: "Pro Chauffeurs",
       category: "Product Demos",
       subCategory: "Sports Accesories",
-      images: ["/Images/vp (14).webp",],
+      images: ["/Images/vp (14).webp"],
     },
     {
       title: "Pro Chauffeurs",
@@ -857,7 +842,6 @@ const OurWork = () => {
       subCategory: "Sports Accesories",
       images: ["/Images/vp (15).webp"],
     },
-
   ];
 
   const categories = [
@@ -881,73 +865,78 @@ const OurWork = () => {
       heading: "AI Product Demos & Virtual Photoshoots",
       desc: "Realistic AI product visuals, model photoshoots and e-commerce product showcases.",
     },
-    "TikTok Shop": {
+    "TikTok Shop Creatives": {
       heading: "TikTok Shop Video Creatives",
       desc: "Auto-scroll product videos designed for TikTok Shop, short-form ads and social selling.",
     },
   };
 
-  const getProjectMedia = (project) => {
+  const getProjectMedia = useCallback((project) => {
     if (project.media) return project.media;
-    return project.images.map((img) => ({ type: "image", src: img }));
-  };
+    return (project.images || []).map((img) => ({ type: "image", src: img }));
+  }, []);
 
-  const getSubCategories = (items) => {
+  const getSubCategories = useCallback((items) => {
     return ["All", ...new Set(items.map((item) => item.subCategory))];
-  };
+  }, []);
 
-  const groupedByCategory = categories
-    .filter((cat) => cat !== "All")
-    .map((cat) => {
-      const categoryProjects =
-        active === "All" || active === cat
-          ? projects.filter((p) => p.category === cat)
-          : [];
+  const groupedByCategory = useMemo(() => {
+    return categories
+      .filter((cat) => cat !== "All")
+      .map((cat) => {
+        const categoryProjects =
+          active === "All" || active === cat
+            ? projects.filter((p) => p.category === cat)
+            : [];
 
-      const selectedSub = subActive[cat] || "All";
+        const selectedSub = subActive[cat] || "All";
 
-      const filteredProjects =
-        active === "All" || selectedSub === "All"
-          ? categoryProjects
-          : categoryProjects.filter((p) => p.subCategory === selectedSub);
+        const filteredProjects =
+          active === "All" || selectedSub === "All"
+            ? categoryProjects
+            : categoryProjects.filter((p) => p.subCategory === selectedSub);
 
-      return {
-        category: cat,
-        ...sectionInfo[cat],
-        allProjects: categoryProjects,
-        projects: filteredProjects,
-      };
-    })
-    .filter((section) => section.projects.length > 0 || section.allProjects.length > 0);
+        const visibleLimit = visibleMap[cat] || INITIAL_VISIBLE;
 
-  const renderMedia = (item, popup = false, index = 0) => {
-  if (item.type === "video") {
+        return {
+          category: cat,
+          ...sectionInfo[cat],
+          allProjects: categoryProjects,
+          totalProjects: filteredProjects.length,
+          projects: filteredProjects.slice(0, visibleLimit),
+        };
+      })
+      .filter((section) => section.projects.length > 0 || section.allProjects.length > 0);
+  }, [active, subActive, visibleMap]);
+
+  const renderMedia = (item, popup = false) => {
+    if (item.type === "video") {
+      return (
+        <video
+          src={item.src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload={popup ? "metadata" : "none"}
+          className={popup ? "popup-media" : "project-media"}
+        />
+      );
+    }
+
     return (
-      <video
+      <img
         src={item.src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+        alt="Portfolio work"
+        loading={popup ? "eager" : "lazy"}
+        fetchPriority={popup ? "high" : "low"}
+        decoding="async"
         className={popup ? "popup-media" : "project-media"}
       />
     );
-  }
+  };
 
-  return (
-    <img
-      src={item.src}
-      alt="Portfolio work"
-      loading={popup || index === 0 ? "eager" : "lazy"}
-      fetchPriority={popup || index === 0 ? "high" : "low"}
-      decoding="async"
-      className={popup ? "popup-media" : "project-media"}
-    />
-  );
-};
-
-  const handleClick = (project) => {
+  const handleClick = useCallback((project) => {
     if (project.link) {
       window.open(project.link, "_blank", "noopener,noreferrer");
       return;
@@ -955,12 +944,12 @@ const OurWork = () => {
 
     setSelectedProject(project);
     setShowModal(true);
-  };
+  }, []);
 
-  const closePopup = () => {
+  const closePopup = useCallback(() => {
     setShowModal(false);
     setSelectedProject(null);
-  };
+  }, []);
 
   return (
     <section className="portfolio-section">
@@ -1073,22 +1062,24 @@ const OurWork = () => {
         }
 
         .project-col{
-  display:flex;
-  padding-top:24px;
-}
+          display:flex;
+          padding-top:24px;
+          content-visibility:auto;
+          contain-intrinsic-size:460px;
+        }
 
         .project-box{
-  width:100%;
-  position:relative;
-  background:#fff;
-  border-radius:30px;
-  padding:12px;
-  box-shadow:0 25px 70px rgba(16,24,40,0.12);
-  border:1px solid rgba(124,58,237,0.12);
-  cursor:pointer;
-  transition:0.35s ease;
-  overflow:visible;
-}
+          width:100%;
+          position:relative;
+          background:#fff;
+          border-radius:30px;
+          padding:12px;
+          box-shadow:0 25px 70px rgba(16,24,40,0.12);
+          border:1px solid rgba(124,58,237,0.12);
+          cursor:pointer;
+          transition:0.35s ease;
+          overflow:visible;
+        }
 
         .project-box:hover{
           transform:translateY(-8px);
@@ -1096,24 +1087,22 @@ const OurWork = () => {
         }
 
         .project-name-badge{
-  position:absolute;
-  top:-18px;
-  left:24px;
-  z-index:50;
-  padding:10px 18px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.92);
-  color:#111827;
-  border:1px solid rgba(255,255,255,0.95);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  box-shadow:
-    0 12px 30px rgba(16,24,40,0.14),
-    0 4px 12px rgba(124,58,237,0.12);
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:.3px;
-}
+          position:absolute;
+          top:-18px;
+          left:24px;
+          z-index:50;
+          padding:10px 18px;
+          border-radius:999px;
+          background:rgba(255,255,255,0.92);
+          color:#111827;
+          border:1px solid rgba(255,255,255,0.95);
+          backdrop-filter:blur(16px);
+          -webkit-backdrop-filter:blur(16px);
+          box-shadow:0 12px 30px rgba(16,24,40,0.14),0 4px 12px rgba(124,58,237,0.12);
+          font-size:13px;
+          font-weight:900;
+          letter-spacing:.3px;
+        }
 
         .project-carousel,
         .project-carousel .carousel-inner,
@@ -1132,6 +1121,7 @@ const OurWork = () => {
           display:block;
           border-radius:24px;
           background:#fff;
+          content-visibility:auto;
         }
 
         .website-cta{
@@ -1186,6 +1176,7 @@ const OurWork = () => {
           border:1px solid rgba(124,58,237,0.12);
           overflow:hidden;
           transition:0.35s ease;
+          cursor:pointer;
         }
 
         .tiktok-card:hover{
@@ -1250,6 +1241,24 @@ const OurWork = () => {
           height:18px;
         }
 
+        .load-more-btn{
+          border:none;
+          outline:none;
+          padding:12px 28px;
+          border-radius:999px;
+          background:linear-gradient(90deg,#7c3aed,#ec4899);
+          color:#fff;
+          font-size:14px;
+          font-weight:900;
+          box-shadow:0 14px 34px rgba(124,58,237,0.26);
+          transition:0.3s ease;
+        }
+
+        .load-more-btn:hover{
+          transform:translateY(-2px);
+          box-shadow:0 18px 42px rgba(124,58,237,0.34);
+        }
+
         .portfolio-popup .modal-dialog{
           max-width:1180px;
           width:94%;
@@ -1302,86 +1311,51 @@ const OurWork = () => {
           background:#fff;
           display:block;
           border-radius:26px;
+          content-visibility:auto;
         }
 
         @media(max-width:1399px){
-          .portfolio-container{
-            max-width:1320px;
-          }
-
-          .project-media{
-            height:400px;
-          }
+          .portfolio-container{ max-width:1320px; }
+          .project-media{ height:400px; }
         }
 
         @media(max-width:1199px){
-          .project-media{
-            height:390px;
-          }
-
-          .tiktok-card{
-            width:290px;
-          }
-
-          .tiktok-video{
-            height:510px;
-          }
+          .project-media{ height:390px; }
+          .tiktok-card{ width:290px; }
+          .tiktok-video{ height:510px; }
         }
 
         @media(max-width:991px){
-          .project-media{
-            height:420px;
-          }
-
-          .tiktok-card{
-            width:270px;
-          }
-
-          .tiktok-video{
-            height:480px;
-          }
+          .project-media{ height:420px; }
+          .tiktok-card{ width:270px; }
+          .tiktok-video{ height:480px; }
         }
 
         @media(max-width:768px){
-          .portfolio-section{
-            padding:80px 0;
-          }
-
-          .portfolio-heading{
-            font-size:34px;
-          }
-
+          .portfolio-section{ padding:80px 0; }
+          .portfolio-heading{ font-size:34px; }
           .portfolio-container{
             max-width:100%;
             padding-left:12px;
             padding-right:12px;
           }
-
-          .section-heading{
-            font-size:28px;
-          }
-
-          .section-desc{
-            font-size:14px;
-          }
-
+          .section-heading{ font-size:28px; }
+          .section-desc{ font-size:14px; }
           .project-box{
             border-radius:22px;
             padding:8px;
           }
-
           .project-name-badge{
-  top:-30px;
-  left:16px;
-  font-size:14px;
-  padding:8px 10px;
-}
+            top:-30px;
+            left:16px;
+            font-size:14px;
+            padding:8px 10px;
+          }
           .project-carousel,
           .project-carousel .carousel-inner,
           .project-carousel .carousel-item{
             border-radius:18px;
           }
-
           .project-media{
             width:100%;
             height:auto;
@@ -1391,50 +1365,39 @@ const OurWork = () => {
             border-radius:18px;
             background:#fff;
           }
-
           .website-cta{
             left:14px;
             bottom:14px;
             font-size:13px;
             padding:9px 15px;
           }
-
           .carousel-indicators [data-bs-target]{
             width:18px;
             height:5px;
           }
-
-          .carousel-indicators .active{
-            width:30px;
-          }
-
+          .carousel-indicators .active{ width:30px; }
           .tiktok-feed-track{
             gap:16px;
             animation-duration:18s;
           }
-
           .tiktok-card{
             width:240px;
             border-radius:24px;
             padding:8px;
           }
-
           .tiktok-video{
             height:430px;
             border-radius:18px;
           }
-
           .portfolio-popup .modal-dialog{
             max-width:100%;
             width:100%;
             margin:0;
           }
-
           .portfolio-popup .modal-content{
             min-height:100vh;
             border-radius:0;
           }
-
           .popup-body{
             min-height:100vh;
             display:flex;
@@ -1442,12 +1405,10 @@ const OurWork = () => {
             padding:54px 10px 20px;
             background:#fff;
           }
-
           .popup-carousel{
             width:100%;
             border-radius:18px;
           }
-
           .popup-media{
             width:100%;
             height:auto;
@@ -1456,7 +1417,6 @@ const OurWork = () => {
             border-radius:18px;
             background:#fff;
           }
-
           .popup-close{
             top:14px;
             right:14px;
@@ -1464,24 +1424,14 @@ const OurWork = () => {
         }
 
         @media(max-width:480px){
-          .portfolio-heading{
-            font-size:30px;
-          }
-
-          .project-media{
-            min-height:330px;
-          }
-
+          .portfolio-heading{ font-size:30px; }
+          .project-media{ min-height:330px; }
           .filter-btn,
           .sub-filter-btn{
             font-size:13px;
             padding:8px 14px;
           }
         }
-          .project-media,
-.popup-media{
-  content-visibility:auto;
-}
       `}</style>
 
       <Container fluid className="portfolio-container">
@@ -1498,7 +1448,10 @@ const OurWork = () => {
             <button
               key={i}
               className={`filter-btn ${active === cat ? "active" : ""}`}
-              onClick={() => setActive(cat)}
+              onClick={() => {
+                setActive(cat);
+                setVisibleMap({});
+              }}
             >
               {cat}
             </button>
@@ -1522,14 +1475,19 @@ const OurWork = () => {
                   {subCategories.map((sub, i) => (
                     <button
                       key={i}
-                      className={`sub-filter-btn ${selectedSub === sub ? "active" : ""
-                        }`}
-                      onClick={() =>
+                      className={`sub-filter-btn ${
+                        selectedSub === sub ? "active" : ""
+                      }`}
+                      onClick={() => {
                         setSubActive((prev) => ({
                           ...prev,
                           [section.category]: sub,
-                        }))
-                      }
+                        }));
+                        setVisibleMap((prev) => ({
+                          ...prev,
+                          [section.category]: INITIAL_VISIBLE,
+                        }));
+                      }}
                     >
                       {sub}
                     </button>
@@ -1537,25 +1495,33 @@ const OurWork = () => {
                 </div>
               )}
 
-              {section.category === "TikTok Shop" ? (
+              {section.category === "TikTok Shop Creatives" ? (
                 <div className="tiktok-feed-wrapper">
                   <div className="tiktok-feed-track">
-                    {section.projects[0]?.media &&
-                      [
-                        ...section.projects[0].media,
-                        ...section.projects[0].media,
-                      ].map((item, i) => (
-                        <div className="tiktok-card" key={i}>
-                          <video
-                            src={item.src}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="tiktok-video"
-                          />
-                        </div>
-                      ))}
+                    {[...section.projects, ...section.projects].map(
+                      (project, i) => {
+                        const item = project.media?.[0];
+                        if (!item) return null;
+
+                        return (
+                          <div
+                            className="tiktok-card"
+                            key={i}
+                            onClick={() => handleClick(project)}
+                          >
+                            <video
+                              src={item.src}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="none"
+                              className="tiktok-video"
+                            />
+                          </div>
+                        );
+                      }
+                    )}
                   </div>
                 </div>
               ) : (
@@ -1568,7 +1534,7 @@ const OurWork = () => {
                       md={6}
                       sm={10}
                       xs={12}
-                      key={index}
+                      key={`${project.title}-${project.subCategory}-${index}`}
                       className="project-col"
                     >
                       <div
@@ -1580,17 +1546,18 @@ const OurWork = () => {
                             {project.title}
                           </div>
                         )}
+
                         <Carousel
                           interval={2500}
                           indicators={true}
                           controls={false}
                           pause="hover"
-                          touch={false}
+                          touch={true}
                           className="project-carousel"
                         >
                           {getProjectMedia(project).map((item, i) => (
                             <Carousel.Item key={i}>
-                              {renderMedia(item, false, i)}
+                              {renderMedia(item, false)}
                             </Carousel.Item>
                           ))}
                         </Carousel>
@@ -1602,6 +1569,24 @@ const OurWork = () => {
                     </Col>
                   ))}
                 </Row>
+              )}
+
+              {section.totalProjects > section.projects.length && (
+                <div className="text-center mt-4">
+                  <button
+                    className="load-more-btn"
+                    onClick={() =>
+                      setVisibleMap((prev) => ({
+                        ...prev,
+                        [section.category]:
+                          (prev[section.category] || INITIAL_VISIBLE) +
+                          LOAD_MORE_STEP,
+                      }))
+                    }
+                  >
+                    Load More
+                  </button>
+                </div>
               )}
             </div>
           );
@@ -1629,7 +1614,9 @@ const OurWork = () => {
               className="popup-carousel"
             >
               {getProjectMedia(selectedProject).map((item, i) => (
-                <Carousel.Item key={i}>{renderMedia(item, true, i)}</Carousel.Item>
+                <Carousel.Item key={i}>
+                  {renderMedia(item, true)}
+                </Carousel.Item>
               ))}
             </Carousel>
           )}
