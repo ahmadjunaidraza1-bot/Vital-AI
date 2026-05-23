@@ -289,9 +289,18 @@ const Contact = () => {
                 </p>
 
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@vitalai.co.uk"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:info@vitalai.co.uk"
+                  onClick={(e) => {
+                    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                      return;
+                    }
+
+                    e.preventDefault();
+                    window.open(
+                      "https://mail.google.com/mail/?view=cm&fs=1&to=info@vitalai.co.uk",
+                      "_blank"
+                    );
+                  }}
                   className="contact-link"
                   style={{ color: "#7c3aed" }}
                 >
