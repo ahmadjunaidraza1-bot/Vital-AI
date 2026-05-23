@@ -325,12 +325,12 @@ const Contact = () => {
                   </a>
 
                   <a
-                    href="tel:+441613940458"
+                    href="tel:+441618705676"
                     className="contact-link d-flex align-items-center gap-2"
                     style={{ color: "#7c3aed" }}
                   >
                     <TelephoneFill size={18} />
-                    <span>+44 161 394 0458</span>
+                    <span>+44 161 870 5676</span>
                   </a>
                 </div>
               </div>
@@ -520,18 +520,6 @@ const Contact = () => {
               automation, and digital growth.
             </p>
 
-            {/* <Button
-              className="main-btn bg-white"
-              style={{
-                color: "#7c3aed",
-                background: "white",
-              }}
-              onClick={() => {
-                window.location.href = "/pricing";
-              }}
-            >
-              View Pricing Plans →
-            </Button> */}
           </div>
         </Container>
       </section>

@@ -309,7 +309,7 @@ const Footer = () => {
 
                 <div className="contact-row">
                   <span className="contact-icon"><TelephoneFill size={14} /></span>
-                  <span>+44 161 394 0458</span>
+                  <span>+44 161 870 5676</span>
                 </div>
 
                 <div className="contact-row">

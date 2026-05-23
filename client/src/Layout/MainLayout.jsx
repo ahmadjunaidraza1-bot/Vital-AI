@@ -29,7 +29,7 @@ const scrollToTop = () => {
       <Outlet />
       <Footer />
 
-      <a href="tel:+441613940458" className="phone-float" aria-label="Call Us">
+      <a href="tel:+441618705676" className="phone-float" aria-label="Call Us">
         <TelephoneFill />
       </a>
 
