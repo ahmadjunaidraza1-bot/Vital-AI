@@ -289,7 +289,9 @@ const Contact = () => {
                 </p>
 
                 <a
-                  href="mailto:info@vitalai.co.uk"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@vitalai.co.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="contact-link"
                   style={{ color: "#7c3aed" }}
                 >
