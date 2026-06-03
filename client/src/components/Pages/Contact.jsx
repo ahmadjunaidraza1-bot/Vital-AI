@@ -336,12 +336,12 @@ const Contact = () => {
                   </a>
 
                   <a
-                    href="tel:+441618705676"
+                    href="tel:+441618837520"
                     className="contact-link d-flex align-items-center gap-2"
                     style={{ color: "#7c3aed" }}
                   >
                     <TelephoneFill size={18} />
-                    <span>+44 161 870 5676</span>
+                    <span>+44 161 883 7520</span>
                   </a>
                 </div>
               </div>
