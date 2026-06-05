@@ -263,6 +263,10 @@ const Contact = () => {
             #ffffff;
           border: 1px solid rgba(124, 58, 237, 0.12);
           box-shadow: inset 0 0 0 1px rgba(255,255,255,0.65);
+          position: relative;
+          z-index: 1;
+          opacity: 1 !important;
+
         }
 
         .payment-title-wrap {
@@ -342,15 +346,28 @@ const Contact = () => {
         }
 
         .payment-note {
-          margin-top: 14px;
-          padding: 12px 14px;
-          border-radius: 15px;
-          background: rgba(124, 58, 237, 0.06);
-          color: #5b21b6;
-          font-size: 13px;
-          line-height: 1.6;
-          border: 1px solid rgba(124, 58, 237, 0.12);
-        }
+  position: relative;
+  z-index: 5;
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(
+  135deg,
+  #7c3aed,
+  #ec4899
+) !important;
+
+color: white !important;
+border: none;
+  border: 1px solid #f7f7f7 !important;
+  color: #f5f6f8 !important;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+  font-weight: 700;
+  opacity: 1 !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
 
         .faq-section {
           position: relative;
@@ -624,8 +641,8 @@ const Contact = () => {
 
                   <div className="payment-note">
                     Secure payment links are sent manually through WhatsApp or
-                    email after project discussion, approval, and final
-                    quotation.
+  email after project discussion, approval, and final
+  quotation.
                   </div>
                 </div>
               </div>
