@@ -9,6 +9,10 @@ import {
   ClockFill,
   SendFill,
   CheckCircleFill,
+  CreditCard2FrontFill,
+  Apple,
+  Google,
+  ShieldLockFill,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -22,6 +26,29 @@ const Contact = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const paymentMethods = [
+    {
+      name: "Visa / Cards",
+      icon: <CreditCard2FrontFill size={22} />,
+      className: "card-pay",
+    },
+    {
+      name: "Mastercard",
+      icon: <CreditCard2FrontFill size={22} />,
+      className: "master-pay",
+    },
+    {
+      name: "Apple Pay",
+      icon: <Apple size={22} />,
+      className: "apple-pay",
+    },
+    {
+      name: "Google Pay",
+      icon: <Google size={22} />,
+      className: "google-pay",
+    },
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -226,6 +253,123 @@ const Contact = () => {
           text-decoration: underline;
         }
 
+        .payment-secure-card {
+          position: relative;
+          overflow: hidden;
+          border-radius: 22px;
+          padding: 22px;
+          background:
+            radial-gradient(circle at top left, rgba(124, 58, 237, 0.16), transparent 32%),
+            radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.14), transparent 35%),
+            #ffffff;
+          border: 1px solid rgba(124, 58, 237, 0.12);
+        }
+
+        .payment-secure-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.04));
+          pointer-events: none;
+        }
+
+        .payment-header,
+        .payment-grid,
+        .payment-note {
+          position: relative;
+          z-index: 1;
+        }
+
+        .secure-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          background: linear-gradient(135deg, #7c3aed, #ec4899);
+          box-shadow: 0 12px 25px rgba(124, 58, 237, 0.22);
+          flex-shrink: 0;
+        }
+
+        .payment-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+          margin-top: 18px;
+        }
+
+        .payment-method {
+          min-height: 76px;
+          border-radius: 18px;
+          padding: 14px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border: 1px solid rgba(229, 231, 235, 0.95);
+          background: rgba(255, 255, 255, 0.9);
+          box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+          transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+          transform: translateY(-4px) scale(1.01);
+          box-shadow: 0 18px 32px rgba(124, 58, 237, 0.14);
+          border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .payment-method-icon {
+          width: 42px;
+          height: 42px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          flex-shrink: 0;
+        }
+
+        .card-pay .payment-method-icon {
+          background: linear-gradient(135deg, #2563eb, #06b6d4);
+        }
+
+        .master-pay .payment-method-icon {
+          background: linear-gradient(135deg, #f97316, #ec4899);
+        }
+
+        .apple-pay .payment-method-icon {
+          background: linear-gradient(135deg, #111827, #4b5563);
+        }
+
+        .google-pay .payment-method-icon {
+          background: linear-gradient(135deg, #10b981, #2563eb);
+        }
+
+        .payment-method-title {
+          font-size: 14px;
+          font-weight: 800;
+          color: #111827;
+          margin-bottom: 2px;
+        }
+
+        .payment-method-subtitle {
+          font-size: 12px;
+          color: #6b7280;
+          margin-bottom: 0;
+        }
+
+        .payment-note {
+          margin-top: 16px;
+          padding: 13px 15px;
+          border-radius: 16px;
+          background: rgba(124, 58, 237, 0.06);
+          color: #5b21b6;
+          font-size: 13px;
+          line-height: 1.6;
+          border: 1px solid rgba(124, 58, 237, 0.12);
+        }
+
         .faq-section {
           position: relative;
           z-index: 2;
@@ -251,6 +395,14 @@ const Contact = () => {
 
           .map-wrapper {
             height: 320px;
+          }
+
+          .payment-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .payment-method {
+            min-height: 68px;
           }
         }
       `}</style>
@@ -371,6 +523,46 @@ const Contact = () => {
 
                 <div className="availability-badge">
                   📅 Mon - Fri, 09:00 AM – 06:00 PM (BST)
+                </div>
+              </div>
+
+              <div className="payment-secure-card mt-4">
+                <div className="payment-header d-flex align-items-center gap-3">
+                  <div className="secure-icon">
+                    <ShieldLockFill size={22} />
+                  </div>
+
+                  <div>
+                    <h6 className="fw-bold mb-1">Secure Payment Options</h6>
+                    <p className="text-muted small mb-0">
+                      Professional and protected client payments.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="payment-grid">
+                  {paymentMethods.map((method, index) => (
+                    <div
+                      className={`payment-method ${method.className}`}
+                      key={index}
+                    >
+                      <div className="payment-method-icon">{method.icon}</div>
+
+                      <div>
+                        <div className="payment-method-title">
+                          {method.name}
+                        </div>
+                        <p className="payment-method-subtitle">
+                          Accepted securely
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="payment-note">
+                  Payment links are shared manually through WhatsApp or email
+                  after project consultation, approval, and final quotation.
                 </div>
               </div>
             </Col>
@@ -530,7 +722,6 @@ const Contact = () => {
               Join growing businesses using VITAL AI for websites, e-commerce,
               automation, and digital growth.
             </p>
-
           </div>
         </Container>
       </section>
