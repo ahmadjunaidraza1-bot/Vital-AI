@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import {
   Facebook,
   Twitter,
@@ -8,19 +8,18 @@ import {
   GeoAltFill,
   TelephoneFill,
   EnvelopeFill,
+  Whatsapp,
+  CreditCard2FrontFill,
+  Apple,
+  Google,
+  ShieldLockFill,
 } from "react-bootstrap-icons";
 
 const Footer = () => {
   return (
     <>
-      {/* ====== Inline Styles & Animations ====== */}
       <style>{`
         @keyframes shine {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
-        }
-
-        @keyframes shineText {
           0% { background-position: 0% center; }
           100% { background-position: 200% center; }
         }
@@ -28,6 +27,12 @@ const Footer = () => {
         @keyframes floatOrb {
           0%, 100% { transform: translate(0, 0) scale(1); }
           50% { transform: translate(20px, -20px) scale(1.08); }
+        }
+
+        @keyframes paymentSlide {
+          0% { transform: translateX(-8px); opacity: 0.75; }
+          50% { transform: translateX(8px); opacity: 1; }
+          100% { transform: translateX(-8px); opacity: 0.75; }
         }
 
         .vital-footer {
@@ -104,18 +109,10 @@ const Footer = () => {
           color: #fff;
         }
 
-        .vital-logo {
-          width: 46px;
-          height: 46px;
-          display: grid;
-          place-items: center;
-          background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
-          border: 1.5px solid rgba(255,255,255,0.35);
-          border-radius: 12px;
-          font-weight: 900;
-          color: #fff;
-          font-size: 1.25rem;
-          box-shadow: inset 0 0 12px rgba(255,255,255,0.2);
+        .footer-logo {
+          height: 40px;
+          width: auto;
+          object-fit: contain;
         }
 
         .footer-heading {
@@ -193,26 +190,64 @@ const Footer = () => {
           color: #fff;
         }
 
-        .newsletter-input {
-          background: rgba(255,255,255,0.12) !important;
-          border: 1px solid rgba(255,255,255,0.28) !important;
-          color: #fff !important;
-          border-radius: 12px !important;
-          padding: 12px 14px !important;
+        .payment-line-card {
+          margin-top: 34px;
+          padding: 18px 20px;
+          border-radius: 18px;
+          background: rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.2);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          box-shadow: 0 10px 35px rgba(31, 38, 135, 0.16);
         }
 
-        .newsletter-input::placeholder {
-          color: rgba(255,255,255,0.65);
+        .payment-line-title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 800;
+          margin-bottom: 14px;
         }
 
-        .btn-gradient {
-          background: linear-gradient(90deg, #f0abfc, #a78bfa, #60a5fa);
-          border: none;
+        .payment-line-title span {
+          color: rgba(255,255,255,0.9);
+        }
+
+        .payment-line {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          flex-wrap: wrap;
+          animation: paymentSlide 5s ease-in-out infinite;
+        }
+
+        .payment-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 16px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.14);
+          border: 1px solid rgba(255,255,255,0.24);
           color: #fff;
-          font-weight: 600;
-          border-radius: 12px;
-          padding: 10px 22px;
-          white-space: nowrap;
+          font-weight: 700;
+          font-size: 13px;
+          box-shadow: inset 0 0 12px rgba(255,255,255,0.08);
+          transition: all 0.3s ease;
+        }
+
+        .payment-pill:hover {
+          transform: translateY(-4px);
+          background: rgba(255,255,255,0.2);
+          box-shadow: 0 10px 28px rgba(255,255,255,0.14);
+        }
+
+        .payment-note {
+          margin-top: 12px;
+          color: rgba(255,255,255,0.78);
+          font-size: 13px;
+          text-align: center;
         }
 
         .shine-text {
@@ -223,7 +258,7 @@ const Footer = () => {
         }
 
         .bottom-bar {
-          margin-top: 50px;
+          margin-top: 38px;
           padding-top: 20px;
           border-top: 1px solid rgba(255,255,255,0.18);
           color: rgba(255,255,255,0.85);
@@ -238,6 +273,27 @@ const Footer = () => {
         .bottom-bar a:hover {
           color: #fff;
         }
+
+        @media (max-width: 767px) {
+          .vital-footer {
+            padding-top: 60px;
+          }
+
+          .payment-line {
+            justify-content: flex-start;
+            animation: none;
+          }
+
+          .payment-pill {
+            width: 100%;
+            justify-content: center;
+          }
+
+          .bottom-bar a {
+            margin-left: 8px;
+            margin-right: 8px;
+          }
+        }
       `}</style>
 
       <footer className="vital-footer">
@@ -246,17 +302,16 @@ const Footer = () => {
 
         <Container style={{ position: "relative", zIndex: 2 }}>
           <Row className="gy-4">
-            {/* Brand */}
             <Col xs={12} md={6} lg={3}>
               <div className="glass-card">
                 <div className="vital-brand mb-3">
-                  {/* <span className="vital-logo">V</span> */}
-                  <img src="/Images/logoW.png" alt="" style={{height:"40px"}} />
+                  <img src="/Images/logoW.png" alt="Vital AI Logo" className="footer-logo" />
                   <span>VITAL AI</span>
                 </div>
 
                 <p style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
-                  Empowering businesses with cutting-edge AI solutions.We transform complex challenges into scalable digital growth.
+                  Empowering businesses with cutting-edge AI solutions. We transform
+                  complex challenges into scalable digital growth.
                 </p>
 
                 <div className="d-flex gap-2 mt-3">
@@ -268,7 +323,6 @@ const Footer = () => {
               </div>
             </Col>
 
-            {/* Links */}
             <Col xs={12} md={6} lg={2}>
               <div className="glass-card">
                 <h5 className="footer-heading">Quick Links</h5>
@@ -283,21 +337,19 @@ const Footer = () => {
               </div>
             </Col>
 
-            {/* Services */}
             <Col xs={12} md={6} lg={3}>
               <div className="glass-card">
                 <h5 className="footer-heading">Services</h5>
                 <ul className="list-unstyled m-0">
                   <li><a href="/services/ai-website-design-development-uk" className="footer-link">AI Websites</a></li>
-                  <li><a href="/services/ai-digital-marketing-paid-ads-uk" className="footer-link">Social Media Management & Paid Adds</a></li>
-                  <li><a href="/services/tiktok-shop-management-uk" className="footer-link">TikTok Shop Managemnet</a></li>
+                  <li><a href="/services/ai-digital-marketing-paid-ads-uk" className="footer-link">Social Media Management & Paid Ads</a></li>
+                  <li><a href="/services/tiktok-shop-management-uk" className="footer-link">TikTok Shop Management</a></li>
                   <li><a href="/services/ai-product-visualization-virtual-try-on-uk" className="footer-link">AI Product Visuals</a></li>
                   <li><a href="/services/ai-ecommerce-growth-solutions-uk" className="footer-link">Ecommerce Management</a></li>
                 </ul>
               </div>
             </Col>
 
-            {/* Contact */}
             <Col xs={12} md={6} lg={4}>
               <div className="glass-card">
                 <h5 className="footer-heading">Contact Us</h5>
@@ -313,6 +365,11 @@ const Footer = () => {
                 </div>
 
                 <div className="contact-row">
+                  <span className="contact-icon"><Whatsapp size={15} /></span>
+                  <span>+44 7398 390815</span>
+                </div>
+
+                <div className="contact-row">
                   <span className="contact-icon"><EnvelopeFill size={14} /></span>
                   <span>info@vitalai.co.uk</span>
                 </div>
@@ -320,13 +377,37 @@ const Footer = () => {
                 <Form
                   className="d-flex gap-2 mt-3"
                   onSubmit={(e) => e.preventDefault()}
-                >
-                </Form>
+                ></Form>
               </div>
             </Col>
           </Row>
 
-          {/* Bottom */}
+          <div className="payment-line-card">
+            <div className="payment-line-title justify-content-center">
+              <ShieldLockFill size={18} />
+              <span>Secure Payment Methods</span>
+            </div>
+
+            <div className="payment-line">
+              <span className="payment-pill">
+                <CreditCard2FrontFill size={17} /> Visa / Cards
+              </span>
+              <span className="payment-pill">
+                <CreditCard2FrontFill size={17} /> Mastercard
+              </span>
+              <span className="payment-pill">
+                <Apple size={17} /> Apple Pay
+              </span>
+              <span className="payment-pill">
+                <Google size={17} /> Google Pay
+              </span>
+            </div>
+
+            <div className="payment-note">
+              Secure payment links are shared manually through WhatsApp or email after quotation approval.
+            </div>
+          </div>
+
           <Row className="bottom-bar">
             <Col md={6} className="text-center text-md-start mb-2 mb-md-0">
               © 2026 <span className="shine-text">VITAL AI Solutions.</span> All rights reserved

@@ -29,23 +29,23 @@ const Contact = () => {
 
   const paymentMethods = [
     {
-      name: "Visa / Cards",
-      icon: <CreditCard2FrontFill size={22} />,
+      name: "Cards",
+      icon: <CreditCard2FrontFill size={20} />,
       className: "card-pay",
     },
     {
       name: "Mastercard",
-      icon: <CreditCard2FrontFill size={22} />,
+      icon: <CreditCard2FrontFill size={20} />,
       className: "master-pay",
     },
     {
       name: "Apple Pay",
-      icon: <Apple size={22} />,
+      icon: <Apple size={20} />,
       className: "apple-pay",
     },
     {
       name: "Google Pay",
-      icon: <Google size={22} />,
+      icon: <Google size={20} />,
       className: "google-pay",
     },
   ];
@@ -253,37 +253,29 @@ const Contact = () => {
           text-decoration: underline;
         }
 
-        .payment-secure-card {
-          position: relative;
-          overflow: hidden;
+        .form-payment-box {
+          margin-top: 26px;
+          padding: 18px;
           border-radius: 22px;
-          padding: 22px;
           background:
-            radial-gradient(circle at top left, rgba(124, 58, 237, 0.16), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.14), transparent 35%),
+            radial-gradient(circle at top left, rgba(124, 58, 237, 0.14), transparent 32%),
+            radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.12), transparent 34%),
             #ffffff;
           border: 1px solid rgba(124, 58, 237, 0.12);
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.65);
         }
 
-        .payment-secure-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.04));
-          pointer-events: none;
-        }
-
-        .payment-header,
-        .payment-grid,
-        .payment-note {
-          position: relative;
-          z-index: 1;
+        .payment-title-wrap {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 15px;
         }
 
         .secure-icon {
-          width: 44px;
-          height: 44px;
-          border-radius: 16px;
+          width: 42px;
+          height: 42px;
+          border-radius: 15px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -293,76 +285,66 @@ const Contact = () => {
           flex-shrink: 0;
         }
 
-        .payment-grid {
+        .payment-mini-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 12px;
-          margin-top: 18px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
         }
 
-        .payment-method {
-          min-height: 76px;
-          border-radius: 18px;
-          padding: 14px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
+        .payment-mini-card {
+          border-radius: 16px;
+          padding: 13px 10px;
+          background: rgba(255, 255, 255, 0.88);
           border: 1px solid rgba(229, 231, 235, 0.95);
-          background: rgba(255, 255, 255, 0.9);
-          box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+          text-align: center;
           transition: all 0.3s ease;
+          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
         }
 
-        .payment-method:hover {
-          transform: translateY(-4px) scale(1.01);
-          box-shadow: 0 18px 32px rgba(124, 58, 237, 0.14);
+        .payment-mini-card:hover {
+          transform: translateY(-3px);
           border-color: rgba(124, 58, 237, 0.35);
+          box-shadow: 0 14px 26px rgba(124, 58, 237, 0.12);
         }
 
-        .payment-method-icon {
-          width: 42px;
-          height: 42px;
+        .payment-mini-icon {
+          width: 38px;
+          height: 38px;
           border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #ffffff;
-          flex-shrink: 0;
+          margin: 0 auto 8px;
+          color: #fff;
         }
 
-        .card-pay .payment-method-icon {
+        .card-pay .payment-mini-icon {
           background: linear-gradient(135deg, #2563eb, #06b6d4);
         }
 
-        .master-pay .payment-method-icon {
+        .master-pay .payment-mini-icon {
           background: linear-gradient(135deg, #f97316, #ec4899);
         }
 
-        .apple-pay .payment-method-icon {
+        .apple-pay .payment-mini-icon {
           background: linear-gradient(135deg, #111827, #4b5563);
         }
 
-        .google-pay .payment-method-icon {
+        .google-pay .payment-mini-icon {
           background: linear-gradient(135deg, #10b981, #2563eb);
         }
 
-        .payment-method-title {
-          font-size: 14px;
+        .payment-mini-title {
+          font-size: 12px;
           font-weight: 800;
           color: #111827;
-          margin-bottom: 2px;
-        }
-
-        .payment-method-subtitle {
-          font-size: 12px;
-          color: #6b7280;
-          margin-bottom: 0;
+          line-height: 1.2;
         }
 
         .payment-note {
-          margin-top: 16px;
-          padding: 13px 15px;
-          border-radius: 16px;
+          margin-top: 14px;
+          padding: 12px 14px;
+          border-radius: 15px;
           background: rgba(124, 58, 237, 0.06);
           color: #5b21b6;
           font-size: 13px;
@@ -374,6 +356,12 @@ const Contact = () => {
           position: relative;
           z-index: 2;
           background: #f8f9fc;
+        }
+
+        @media (max-width: 991px) {
+          .payment-mini-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         @media (max-width: 767px) {
@@ -397,12 +385,8 @@ const Contact = () => {
             height: 320px;
           }
 
-          .payment-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .payment-method {
-            min-height: 68px;
+          .payment-mini-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
       `}</style>
@@ -525,46 +509,6 @@ const Contact = () => {
                   📅 Mon - Fri, 09:00 AM – 06:00 PM (BST)
                 </div>
               </div>
-
-              <div className="payment-secure-card mt-4">
-                <div className="payment-header d-flex align-items-center gap-3">
-                  <div className="secure-icon">
-                    <ShieldLockFill size={22} />
-                  </div>
-
-                  <div>
-                    <h6 className="fw-bold mb-1">Secure Payment Options</h6>
-                    <p className="text-muted small mb-0">
-                      Professional and protected client payments.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="payment-grid">
-                  {paymentMethods.map((method, index) => (
-                    <div
-                      className={`payment-method ${method.className}`}
-                      key={index}
-                    >
-                      <div className="payment-method-icon">{method.icon}</div>
-
-                      <div>
-                        <div className="payment-method-title">
-                          {method.name}
-                        </div>
-                        <p className="payment-method-subtitle">
-                          Accepted securely
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="payment-note">
-                  Payment links are shared manually through WhatsApp or email
-                  after project consultation, approval, and final quotation.
-                </div>
-              </div>
             </Col>
 
             <Col lg={7}>
@@ -651,6 +595,39 @@ const Contact = () => {
                     </Col>
                   </Row>
                 </Form>
+
+                <div className="form-payment-box">
+                  <div className="payment-title-wrap">
+                    <div className="secure-icon">
+                      <ShieldLockFill size={21} />
+                    </div>
+
+                    <div>
+                      <h6 className="fw-bold mb-1">Secure Payment Options</h6>
+                      <p className="text-muted small mb-0">
+                        Payment links are shared after quotation approval.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="payment-mini-grid">
+                    {paymentMethods.map((method, index) => (
+                      <div
+                        className={`payment-mini-card ${method.className}`}
+                        key={index}
+                      >
+                        <div className="payment-mini-icon">{method.icon}</div>
+                        <div className="payment-mini-title">{method.name}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="payment-note">
+                    Secure payment links are sent manually through WhatsApp or
+                    email after project discussion, approval, and final
+                    quotation.
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>
