@@ -113,7 +113,9 @@ export default function PayMonthlyLanding() {
   return (
     <main className="vital-pay-page">
       <style>{`
-        html { scroll-behavior: smooth; }
+        html {
+          scroll-behavior: smooth;
+        }
 
         .vital-pay-page {
           --primary: #7c3aed;
@@ -129,12 +131,14 @@ export default function PayMonthlyLanding() {
             radial-gradient(circle at 90% 12%, rgba(37,99,235,.12), transparent 30%),
             radial-gradient(circle at 50% 90%, rgba(236,72,153,.08), transparent 34%),
             #ffffff;
-          overflow: hidden;
+          overflow-x: hidden;
           transform: translateZ(0);
           backface-visibility: hidden;
         }
 
-        .vital-pay-page * { box-sizing: border-box; }
+        .vital-pay-page * {
+          box-sizing: border-box;
+        }
 
         .vital-pay-container {
           width: min(1180px, calc(100% - 32px));
@@ -149,7 +153,7 @@ export default function PayMonthlyLanding() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 110px 0 140px;
+          padding: 110px 0 145px;
           overflow: visible;
           text-align: center;
           background:
@@ -172,7 +176,6 @@ export default function PayMonthlyLanding() {
         }
 
         .hero-grid {
-          min-height: auto;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -203,6 +206,7 @@ export default function PayMonthlyLanding() {
           font-weight: 800;
           margin-bottom: 22px;
           box-shadow: 0 10px 24px rgba(15,23,42,.12);
+          text-align: center;
         }
 
         .section-heading .vital-badge,
@@ -256,6 +260,7 @@ export default function PayMonthlyLanding() {
         .vital-price-pill {
           display: inline-flex;
           align-items: flex-end;
+          justify-content: center;
           gap: 8px;
           margin: 26px auto 12px;
           padding: 18px 32px;
@@ -301,7 +306,6 @@ export default function PayMonthlyLanding() {
 
         .vital-actions {
           margin-top: 28px;
-          justify-content: center;
         }
 
         .vital-checks span {
@@ -318,6 +322,7 @@ export default function PayMonthlyLanding() {
           font-weight: 800;
           box-shadow: 0 10px 24px rgba(15,23,42,.08);
           transition: transform .25s ease, border-color .25s ease;
+          text-align: center;
         }
 
         .vital-checks span:hover {
@@ -325,7 +330,10 @@ export default function PayMonthlyLanding() {
           border-color: rgba(255,255,255,.45);
         }
 
-        .vital-checks svg { color: #ff4fbe; }
+        .vital-checks svg {
+          color: #ff4fbe;
+          flex-shrink: 0;
+        }
 
         .vital-btn-primary,
         .vital-btn-light {
@@ -341,6 +349,7 @@ export default function PayMonthlyLanding() {
           font-weight: 900;
           transition: transform .25s ease, box-shadow .25s ease;
           will-change: transform;
+          text-align: center;
         }
 
         .vital-btn-primary {
@@ -387,7 +396,9 @@ export default function PayMonthlyLanding() {
           text-align: left;
         }
 
-        .hero-trust-item:last-child { border-right: 0; }
+        .hero-trust-item:last-child {
+          border-right: 0;
+        }
 
         .hero-trust-icon {
           width: 46px;
@@ -486,7 +497,9 @@ export default function PayMonthlyLanding() {
         }
 
         .service-card:hover::before,
-        .review-card:hover::before { opacity: 1; }
+        .review-card:hover::before {
+          opacity: 1;
+        }
 
         .service-icon {
           position: relative;
@@ -531,7 +544,9 @@ export default function PayMonthlyLanding() {
           margin: 0;
         }
 
-        .marquee-section { padding: 30px 0 90px; }
+        .marquee-section {
+          padding: 30px 0 90px;
+        }
 
         .marquee-shell {
           overflow: hidden;
@@ -574,7 +589,9 @@ export default function PayMonthlyLanding() {
           will-change: transform;
         }
 
-        .website-marquee:hover { animation-play-state: paused; }
+        .website-marquee:hover {
+          animation-play-state: paused;
+        }
 
         @keyframes websiteScroll {
           from { transform: translateX(0); }
@@ -714,7 +731,9 @@ export default function PayMonthlyLanding() {
           flex-shrink: 0;
         }
 
-        .payment-section { padding: 10px 0 90px; }
+        .payment-section {
+          padding: 10px 0 90px;
+        }
 
         .payment-shell {
           border-radius: 42px;
@@ -771,7 +790,9 @@ export default function PayMonthlyLanding() {
           border-color: rgba(124,58,237,.28);
         }
 
-        .payment-card:hover::before { opacity: 1; }
+        .payment-card:hover::before {
+          opacity: 1;
+        }
 
         .payment-card:hover::after {
           opacity: .45;
@@ -970,7 +991,9 @@ export default function PayMonthlyLanding() {
           color: var(--dark);
         }
 
-        .faq-question svg { flex-shrink: 0; }
+        .faq-question svg {
+          flex-shrink: 0;
+        }
 
         .faq-answer {
           padding: 0 22px 22px;
@@ -1005,12 +1028,24 @@ export default function PayMonthlyLanding() {
           line-height: 1.8;
         }
 
+        @media (max-width: 1199px) {
+          .payment-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .process-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
         @media (max-width: 992px) {
+          .vital-pay-container {
+            width: min(100% - 28px, 760px);
+          }
+
           .cards-grid,
           .split-section,
           .reviews-grid,
-          .process-grid,
-          .payment-grid,
           .hero-trust-strip {
             grid-template-columns: 1fr;
           }
@@ -1020,7 +1055,9 @@ export default function PayMonthlyLanding() {
             bottom: auto;
             left: auto;
             transform: none;
-            margin: 40px auto -20px;
+            width: 100%;
+            margin: 42px auto -20px;
+            border-radius: 24px;
           }
 
           .hero-trust-item {
@@ -1028,10 +1065,13 @@ export default function PayMonthlyLanding() {
             border-bottom: 1px solid rgba(15,23,42,.08);
           }
 
-          .hero-trust-item:last-child { border-bottom: 0; }
+          .hero-trust-item:last-child {
+            border-bottom: 0;
+          }
 
           .vital-hero {
             min-height: auto;
+            padding: 95px 0 70px;
           }
 
           .stats-row {
@@ -1044,12 +1084,302 @@ export default function PayMonthlyLanding() {
           }
 
           .payment-shell {
-            padding: 32px 22px;
+            padding: 34px 22px;
+            border-radius: 32px;
           }
         }
 
         @media (max-width: 768px) {
-          .website-marquee { animation-duration: 60s; }
+          .vital-pay-container {
+            width: min(100% - 24px, 620px);
+          }
+
+          .vital-hero {
+            display: block;
+            padding: 76px 0 44px;
+            min-height: auto;
+            overflow: hidden;
+            border-bottom-left-radius: 34px;
+            border-bottom-right-radius: 34px;
+          }
+
+          .hero-grid {
+            display: block;
+            width: 100%;
+          }
+
+          .hero-copy {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            text-align: center;
+          }
+
+          .vital-badge {
+            max-width: 100%;
+            padding: 9px 14px;
+            font-size: 12.5px;
+            line-height: 1.3;
+            margin-bottom: 16px;
+          }
+
+          .vital-hero h1 {
+            font-size: clamp(31px, 9.2vw, 45px);
+            line-height: 1.12;
+            letter-spacing: -1.1px;
+            max-width: 100%;
+            margin: 0 auto 15px;
+          }
+
+          .vital-hero p {
+            max-width: 96%;
+            font-size: 15.5px;
+            line-height: 1.65;
+            margin: 0 auto;
+          }
+
+          .vital-price-pill {
+            width: min(100%, 320px);
+            padding: 15px 20px;
+            border-radius: 18px;
+            margin: 22px auto 0;
+          }
+
+          .vital-price-pill strong {
+            font-size: 40px;
+          }
+
+          .vital-price-pill span {
+            font-size: 14px;
+          }
+
+          .vital-checks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            gap: 10px;
+            margin-top: 20px;
+          }
+
+          .vital-checks span {
+            min-width: 0;
+            width: 100%;
+            padding: 10px 8px;
+            font-size: 12.5px;
+            border-radius: 15px;
+            line-height: 1.25;
+          }
+
+          .vital-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+            gap: 10px;
+            margin-top: 20px;
+          }
+
+          .vital-btn-primary,
+          .vital-btn-light {
+            width: 100%;
+            min-width: 0;
+            min-height: 50px;
+            padding: 13px 16px;
+          }
+
+          .hero-trust-strip {
+            position: relative;
+            left: auto;
+            bottom: auto;
+            transform: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+            margin: 28px auto 0;
+            border-radius: 20px;
+            overflow: hidden;
+          }
+
+          .hero-trust-item {
+            width: 100%;
+            padding: 15px 16px;
+            gap: 12px;
+            border-right: 0;
+            border-bottom: 1px solid rgba(15,23,42,.08);
+          }
+
+          .hero-trust-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            font-size: 19px;
+          }
+
+          .hero-trust-item strong {
+            font-size: 14px;
+            line-height: 1.2;
+          }
+
+          .hero-trust-item span {
+            font-size: 11.5px;
+          }
+
+          .section-heading {
+            margin-bottom: 34px;
+          }
+
+          .section-heading h2 {
+            font-size: clamp(28px, 8vw, 40px);
+            letter-spacing: -1.2px;
+          }
+
+          .section-heading p {
+            font-size: 15.5px;
+            line-height: 1.65;
+          }
+
+          .vital-section {
+            padding: 58px 0;
+          }
+
+          .cards-grid,
+          .reviews-grid,
+          .process-grid,
+          .payment-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .service-card,
+          .package-card,
+          .gradient-box,
+          .review-card,
+          .process-card {
+            padding: 24px 20px;
+            border-radius: 24px;
+          }
+
+          .service-card {
+            min-height: auto;
+          }
+
+          .service-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            font-size: 25px;
+            margin-bottom: 16px;
+          }
+
+          .marquee-section {
+            padding: 15px 0 58px;
+          }
+
+          .marquee-shell {
+            border-radius: 24px;
+            padding: 18px 0;
+          }
+
+          .marquee-shell::before,
+          .marquee-shell::after {
+            width: 45px;
+          }
+
+          .website-marquee {
+            gap: 16px;
+            animation-duration: 60s;
+          }
+
+          .website-shot {
+            width: 255px;
+            height: 170px;
+            border-radius: 20px;
+          }
+
+          .split-section {
+            gap: 22px;
+          }
+
+          .gradient-box h2 {
+            font-size: clamp(28px, 8vw, 40px);
+            letter-spacing: -1.2px;
+          }
+
+          .main-price {
+            font-size: 44px;
+          }
+
+          .package-list li {
+            font-size: 14.5px;
+            line-height: 1.45;
+          }
+
+          .payment-section {
+            padding: 0 0 58px;
+          }
+
+          .payment-shell {
+            padding: 28px 18px;
+            border-radius: 26px;
+          }
+
+          .payment-grid {
+            margin-top: 25px;
+          }
+
+          .payment-card {
+            min-height: 138px;
+            padding: 20px;
+            border-radius: 22px;
+          }
+
+          .payment-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            font-size: 24px;
+            margin-bottom: 14px;
+          }
+
+          .payment-brand {
+            font-size: 23px;
+          }
+
+          .payment-note {
+            font-size: 13.5px;
+            line-height: 1.5;
+          }
+
+          .process-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+          }
+
+          .faq-question {
+            padding: 18px;
+            font-size: 15px;
+            line-height: 1.45;
+          }
+
+          .faq-answer {
+            padding: 0 18px 18px;
+            font-size: 14.5px;
+          }
+
+          .final-cta {
+            padding: 42px 18px;
+            border-radius: 28px;
+          }
+
+          .final-cta h2 {
+            font-size: clamp(30px, 8vw, 42px);
+            letter-spacing: -1.2px;
+          }
+
+          .final-cta p {
+            font-size: 15.5px;
+            line-height: 1.65;
+          }
 
           .service-card:hover,
           .review-card:hover,
@@ -1058,44 +1388,78 @@ export default function PayMonthlyLanding() {
           .payment-card:hover,
           .website-shot:hover,
           .stat-card:hover,
-          .faq-item:hover {
+          .faq-item:hover,
+          .vital-btn-primary:hover,
+          .vital-btn-light:hover,
+          .vital-price-pill:hover {
             transform: none;
           }
         }
 
-        @media (max-width: 576px) {
-          .vital-hero { padding: 90px 0 60px; }
-
-          .vital-hero h1 { letter-spacing: -1.5px; }
-
-          .vital-hero p,
-          .section-heading p { font-size: 16px; }
-
-          .vital-actions { width: 100%; }
-
-          .vital-btn-primary,
-          .vital-btn-light { width: 100%; }
-
-          .vital-section { padding: 65px 0; }
-
-          .service-card,
-          .package-card,
-          .gradient-box,
-          .review-card,
-          .process-card {
-            padding: 28px 22px;
+        @media (max-width: 430px) {
+          .vital-pay-container {
+            width: calc(100% - 20px);
           }
 
-          .main-price { font-size: 46px; }
+          .vital-hero {
+            padding: 68px 0 40px;
+          }
+
+          .vital-hero h1 {
+            font-size: 30px;
+            letter-spacing: -0.8px;
+          }
+
+          .vital-hero p {
+            font-size: 14.5px;
+          }
+
+          .vital-price-pill {
+            width: 100%;
+            padding: 14px 18px;
+          }
+
+          .vital-price-pill strong {
+            font-size: 36px;
+          }
+
+          .vital-checks {
+            grid-template-columns: 1fr;
+          }
+
+          .vital-checks span {
+            border-radius: 14px;
+            min-height: 44px;
+          }
+
+          .hero-trust-item {
+            align-items: center;
+          }
 
           .website-shot {
-            width: 260px;
-            height: 180px;
+            width: 230px;
+            height: 155px;
           }
 
-          .marquee-shell::before,
-          .marquee-shell::after {
-            width: 60px;
+          .section-heading h2 {
+            font-size: 28px;
+          }
+
+          .service-card h3,
+          .package-card h3 {
+            font-size: 21px;
+          }
+
+          .main-price {
+            font-size: 40px;
+          }
+
+          .payment-card {
+            min-height: 128px;
+          }
+
+          .reviews-grid {
+            gap: 14px;
           }
         }
       `}</style>
@@ -1183,16 +1547,9 @@ export default function PayMonthlyLanding() {
       <section className="vital-section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge">
-              <PatchCheckFill /> What You Get
-            </span>
-            <h2>
-              Everything Needed for a <span className="gradient-text">Professional Online Presence</span>
-            </h2>
-            <p>
-              This monthly website package is made for small businesses that want
-              to look professional, get more enquiries and avoid confusing technical work.
-            </p>
+            <span className="vital-badge"><PatchCheckFill /> What You Get</span>
+            <h2>Everything Needed for a <span className="gradient-text">Professional Online Presence</span></h2>
+            <p>This monthly website package is made for small businesses that want to look professional, get more enquiries and avoid confusing technical work.</p>
           </div>
 
           <div className="cards-grid">
@@ -1210,16 +1567,9 @@ export default function PayMonthlyLanding() {
       <section className="marquee-section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge">
-              <Globe2 /> Website Showcase
-            </span>
-            <h2>
-              Clean Website Styles That <span className="gradient-text">Attract Customers</span>
-            </h2>
-            <p>
-              A smooth scrolling showcase section can be used to display your
-              recent website work, landing page previews or client project visuals.
-            </p>
+            <span className="vital-badge"><Globe2 /> Website Showcase</span>
+            <h2>Clean Website Styles That <span className="gradient-text">Attract Customers</span></h2>
+            <p>A smooth scrolling showcase section can be used to display your recent website work, landing page previews or client project visuals.</p>
           </div>
 
           <div className="marquee-shell">
@@ -1242,44 +1592,26 @@ export default function PayMonthlyLanding() {
             </span>
 
             <h2>One Monthly Plan. A Professional Website Without Stress.</h2>
-            <p>
-              We keep the process simple. Your landing page or website is designed
-              to present your business professionally, explain your services clearly
-              and encourage visitors to contact you.
-            </p>
+            <p>We keep the process simple. Your landing page or website is designed to present your business professionally, explain your services clearly and encourage visitors to contact you.</p>
 
             <div className="stats-row">
-              <div className="stat-card">
-                <strong>100%</strong>
-                <span>Mobile Friendly</span>
-              </div>
-              <div className="stat-card">
-                <strong>24/7</strong>
-                <span>Online Presence</span>
-              </div>
-              <div className="stat-card">
-                <strong>Lead</strong>
-                <span>Focused Layout</span>
-              </div>
+              <div className="stat-card"><strong>100%</strong><span>Mobile Friendly</span></div>
+              <div className="stat-card"><strong>24/7</strong><span>Online Presence</span></div>
+              <div className="stat-card"><strong>Lead</strong><span>Focused Layout</span></div>
             </div>
           </div>
 
           <div className="package-card">
             <h3>Pay Monthly Website Package</h3>
-            <div className="main-price">
-              £24.99 <span>/ month</span>
-            </div>
+            <div className="main-price">£24.99 <span>/ month</span></div>
 
             <p style={{ color: "#64748b", lineHeight: "1.8", marginBottom: 0 }}>
-              A simple starting package for businesses that need a clean,
-              professional and conversion-focused web presence.
+              A simple starting package for businesses that need a clean, professional and conversion-focused web presence.
             </p>
 
             <ul className="package-list">
               {packageItems.map((item, index) => (
-                <li key={index}>
-                  <CheckCircleFill /> {item}
-                </li>
+                <li key={index}><CheckCircleFill /> {item}</li>
               ))}
             </ul>
 
@@ -1300,19 +1632,9 @@ export default function PayMonthlyLanding() {
         <div className="vital-pay-container">
           <div className="payment-shell">
             <div className="section-heading" style={{ marginBottom: 0 }}>
-              <span className="vital-badge">
-                <CreditCard2FrontFill /> Payment Accepted
-              </span>
-
-              <h2>
-                Premium & Secure <span className="gradient-text">Payment Options</span>
-              </h2>
-
-              <p>
-                We can accept major payment methods through secure payment links
-                after project discussion and approval. This section is visual only
-                and has no payment functionality.
-              </p>
+              <span className="vital-badge"><CreditCard2FrontFill /> Payment Accepted</span>
+              <h2>Premium & Secure <span className="gradient-text">Payment Options</span></h2>
+              <p>We can accept major payment methods through secure payment links after project discussion and approval. This section is visual only and has no payment functionality.</p>
             </div>
 
             <div className="payment-grid">
@@ -1335,42 +1657,16 @@ export default function PayMonthlyLanding() {
       <section className="vital-section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge">
-              <GraphUpArrow /> Simple Process
-            </span>
-            <h2>
-              From Idea to Live Page in a <span className="gradient-text">Clear Process</span>
-            </h2>
-            <p>
-              The page is designed to keep your ad funnel simple: user clicks ad,
-              lands on this page, understands the offer, then contacts you.
-            </p>
+            <span className="vital-badge"><GraphUpArrow /> Simple Process</span>
+            <h2>From Idea to Live Page in a <span className="gradient-text">Clear Process</span></h2>
+            <p>The page is designed to keep your ad funnel simple: user clicks ad, lands on this page, understands the offer, then contacts you.</p>
           </div>
 
           <div className="process-grid">
-            <div className="process-card">
-              <div className="process-number">1</div>
-              <h4>Send Requirements</h4>
-              <p>Client shares business name, services, location, logo and contact details.</p>
-            </div>
-
-            <div className="process-card">
-              <div className="process-number">2</div>
-              <h4>Design Layout</h4>
-              <p>We create a professional responsive layout focused on trust and enquiries.</p>
-            </div>
-
-            <div className="process-card">
-              <div className="process-number">3</div>
-              <h4>Review & Update</h4>
-              <p>Content, sections, images and calls-to-action are adjusted before launch.</p>
-            </div>
-
-            <div className="process-card">
-              <div className="process-number">4</div>
-              <h4>Launch & Promote</h4>
-              <p>Use the hidden direct link in ads and track enquiries from interested users.</p>
-            </div>
+            <div className="process-card"><div className="process-number">1</div><h4>Send Requirements</h4><p>Client shares business name, services, location, logo and contact details.</p></div>
+            <div className="process-card"><div className="process-number">2</div><h4>Design Layout</h4><p>We create a professional responsive layout focused on trust and enquiries.</p></div>
+            <div className="process-card"><div className="process-number">3</div><h4>Review & Update</h4><p>Content, sections, images and calls-to-action are adjusted before launch.</p></div>
+            <div className="process-card"><div className="process-number">4</div><h4>Launch & Promote</h4><p>Use the hidden direct link in ads and track enquiries from interested users.</p></div>
           </div>
         </div>
       </section>
@@ -1378,27 +1674,16 @@ export default function PayMonthlyLanding() {
       <section className="vital-section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge">
-              <PeopleFill /> Client Feedback
-            </span>
-            <h2>
-              Reviews from <span className="gradient-text">Business Clients</span>
-            </h2>
-            <p>
-              Add your real client reviews here later. For now, these professional
-              review cards are ready to match the landing page design.
-            </p>
+            <span className="vital-badge"><PeopleFill /> Client Feedback</span>
+            <h2>Reviews from <span className="gradient-text">Business Clients</span></h2>
+            <p>Add your real client reviews here later. For now, these professional review cards are ready to match the landing page design.</p>
           </div>
 
           <div className="reviews-grid">
             {reviews.map((review, index) => (
               <div className="review-card" key={index}>
-                <div className="quote-icon">
-                  <Quote size={24} />
-                </div>
-                <div className="stars">
-                  <StarFill /><StarFill /><StarFill /><StarFill /><StarFill />
-                </div>
+                <div className="quote-icon"><Quote size={24} /></div>
+                <div className="stars"><StarFill /><StarFill /><StarFill /><StarFill /><StarFill /></div>
                 <p>“{review.text}”</p>
                 <h5>{review.name}</h5>
                 <span>{review.role}</span>
@@ -1411,32 +1696,19 @@ export default function PayMonthlyLanding() {
       <section className="vital-section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge">
-              <CheckCircleFill /> Pricing FAQ
-            </span>
-            <h2>
-              Frequently Asked Questions <span className="gradient-text">About Our Price</span>
-            </h2>
-            <p>
-              Clear answers for customers who want to understand the monthly
-              website package before contacting Vital AI.
-            </p>
+            <span className="vital-badge"><CheckCircleFill /> Pricing FAQ</span>
+            <h2>Frequently Asked Questions <span className="gradient-text">About Our Price</span></h2>
+            <p>Clear answers for customers who want to understand the monthly website package before contacting Vital AI.</p>
           </div>
 
           <div className="faq-wrap">
             {faqs.map((faq, index) => (
               <div className="faq-item" key={index}>
-                <button
-                  className="faq-question"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                >
+                <button className="faq-question" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
                   {faq.q}
                   <ChevronDown />
                 </button>
-
-                {openFaq === index && (
-                  <div className="faq-answer">{faq.a}</div>
-                )}
+                {openFaq === index && <div className="faq-answer">{faq.a}</div>}
               </div>
             ))}
           </div>
@@ -1447,10 +1719,7 @@ export default function PayMonthlyLanding() {
         <div className="vital-pay-container">
           <div className="final-cta">
             <h2>Ready to Launch Your Professional Website?</h2>
-            <p>
-              Start with a simple monthly website package and give your business
-              a cleaner, stronger and more professional online presence.
-            </p>
+            <p>Start with a simple monthly website package and give your business a cleaner, stronger and more professional online presence.</p>
 
             <div className="vital-actions" style={{ justifyContent: "center" }}>
               <a href="https://wa.me/447398390815" target="_blank" rel="noreferrer" className="vital-btn-light">
@@ -1462,7 +1731,7 @@ export default function PayMonthlyLanding() {
               </a>
 
               <a href="https://vitalai.co.uk" target="_blank" rel="noreferrer" className="vital-btn-light">
-                <Globe2 /> Visit Official Website
+                <Globe2 /> Official Website
               </a>
             </div>
           </div>
