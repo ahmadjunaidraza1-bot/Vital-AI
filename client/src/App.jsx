@@ -20,6 +20,7 @@ import AIDigitalMarketingPaidAds from "./components/Pages/AIDigitalMarketing&Pai
 import AIECommerceGrowthSolutions from "./components/Pages/AIE-CommerceGrowthSolutions";
 import AIProductVisualizationVirtualTryOn from "./components/Pages/AIProductVisualization&VirtualTry-On";
 import AIWebsiteDesignDevelopment from "./components/Pages/AIWebsiteDesign&Development";
+import PayMonthlyLanding from "./components/Pages/PayMonthlyLanding";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="socialmedia" element={<SocialMedia />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/portfolio/:id" element={<PortfolioDetail />} />
+          <Route   path="/pay-monthly-website" element={<PayMonthlyLanding />} />
           <Route path="/services/tiktok-shop-management-uk" element={<TikTokShopManagement />}/>
           <Route path="/services/ai-digital-marketing-paid-ads-uk" element={<AIDigitalMarketingPaidAds />}/>
           <Route  path="/services/ai-ecommerce-growth-solutions-uk"element={<AIECommerceGrowthSolutions />}/>

@@ -1079,7 +1079,7 @@ const Home = () => {
           <Carousel.Item>
             <div style={{ position: "relative" }}>
               <OptimizedImage
-                webp="/Images/CR1.webp"
+                webp="/Images/H1.webp"
                 fallback="/Images/CR1.png"
                 alt="Smart AI websites built to convert"
                 className="w-100 hero-media"

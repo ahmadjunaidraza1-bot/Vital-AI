@@ -394,7 +394,7 @@ const OurWork = () => {
       title: "Roofing Service Website",
       category: "AI E-Commerce & AI Websites",
       subCategory: "Service Websites",
-      link: "https://roof-services-6jpixek9k-webvitalais-projects.vercel.app/",
+      link: "https://tylor-roofing-gyaxaq4pq-webvitalais-projects.vercel.app/",
       images: ["/Images/roofing.webp", "/Images/roof3.webp", "/Images/roof4.webp"],
     },
     {
@@ -429,7 +429,7 @@ const OurWork = () => {
       title: "Hair Salon Website",
       category: "AI E-Commerce & AI Websites",
       subCategory: "Beauty Websites",
-      link: "https://hair-saloon-5tay1j3hv-webvitalais-projects.vercel.app/",
+      link: "https://hair-lounge-b6ydzjbd6-webvitalais-projects.vercel.app/",
       images: ["/Images/hair1.webp", "/Images/hair2.webp", "/Images/dent3.webp"],
     },
     {
