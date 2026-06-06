@@ -716,6 +716,21 @@ border: none;
               Join growing businesses using VITAL AI for websites, e-commerce,
               automation, and digital growth.
             </p>
+            <Button
+  href="/pay-monthly-website"
+  size="lg"
+  style={{
+    background: "#fff",
+    color: "#7c3aed",
+    border: "none",
+    borderRadius: "50px",
+    padding: "14px 36px",
+    fontWeight: "700",
+    boxShadow: "0 15px 35px rgba(0,0,0,0.15)",
+  }}
+>
+  Explore Our Solutions
+</Button>
           </div>
         </Container>
       </section>
