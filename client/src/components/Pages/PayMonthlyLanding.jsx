@@ -4,9 +4,7 @@ import {
   CheckCircleFill,
   Whatsapp,
   TelephoneFill,
-  Globe2,
   ShieldCheck,
-  EnvelopeFill,
   LightningChargeFill,
   Search,
   GearFill,
@@ -18,35 +16,96 @@ import {
   PeopleFill,
   GraphUpArrow,
   PatchCheckFill,
-  CreditCard2FrontFill,
-  Apple,
-  Google,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function PayMonthlyLanding() {
+  const whatsappNumber = "447398390815";
+
   const [openFaq, setOpenFaq] = useState(0);
+  const [formData, setFormData] = useState({
+    name: "",
+    business: "",
+    phone: "",
+    email: "",
+    type: "",
+    message: "",
+  });
+
+  const updateField = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendToWhatsApp = (e) => {
+    e.preventDefault();
+
+    const message = `
+New Website Mockup Request
+
+Name: ${formData.name}
+Business Name: ${formData.business}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Business Type: ${formData.type}
+
+Message:
+${formData.message}
+
+Package Interest:
+£24.99/month website plan
+Live in 7 days
+No £1,500 upfront fee
+`;
+
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
 
   const cards = [
-    { icon: <BrushFill />, title: "Bespoke Design", text: "Custom website design created around your business, services, brand and target customers." },
-    { icon: <ShieldCheck />, title: "SSL Certificate", text: "Secure website setup with SSL protection to help keep your visitors and forms protected." },
-    { icon: <EnvelopeFill />, title: "Business Emails", text: "Professional branded business email guidance to help your business look more trusted." },
-    { icon: <LightningChargeFill />, title: "Fast Website Setup", text: "Clean, lightweight and mobile-friendly pages designed for smooth customer experience." },
-    { icon: <Search />, title: "Basic SEO Setup", text: "SEO-friendly structure, headings, meta basics and content layout to support online visibility." },
-    { icon: <GearFill />, title: "Monthly Updates", text: "Website edits, content changes and ongoing support guidance included in your monthly plan." },
+    {
+      icon: <BrushFill />,
+      title: "Bespoke Design",
+      text: "A clean website designed around your services, offer and target customers.",
+    },
+    {
+      icon: <ShieldCheck />,
+      title: "Hosting & SSL",
+      text: "Secure hosting, SSL setup and professional online structure included.",
+    },
+    {
+      icon: <Search />,
+      title: "Basic SEO",
+      text: "SEO-friendly headings, sections and content layout from day one.",
+    },
+    {
+      icon: <LightningChargeFill />,
+      title: "Fast Launch",
+      text: "Your website can be designed, refined and launched within 7 days.",
+    },
+    {
+      icon: <GearFill />,
+      title: "Monthly Updates",
+      text: "Need changes? Send details and we update your website every month.",
+    },
+    {
+      icon: <TelephoneFill />,
+      title: "Lead Focused",
+      text: "Built with WhatsApp, call buttons and enquiry form to generate leads.",
+    },
   ];
 
   const packageItems = [
-    "Professional landing page / website design",
-    "Mobile responsive layout",
-    "Hero section with strong call-to-action",
-    "Service sections and trust-building content",
-    "WhatsApp / call / contact buttons",
-    "Basic SEO-friendly structure",
-    "SSL and secure setup guidance",
-    "Monthly content updates",
-    "Official website link included",
-    "Suitable for ads and lead generation",
+    "Professional website / landing page",
+    "Mobile responsive design",
+    "Live in 7 days",
+    "No £1,500 upfront agency fee",
+    "Hosting and SSL included",
+    "WhatsApp, call and form buttons",
+    "Basic SEO structure",
+    "Monthly updates included",
+    "Perfect for ads and lead generation",
   ];
 
   const websites = [
@@ -62,1494 +121,1661 @@ export default function PayMonthlyLanding() {
     {
       name: "Roofing Business Owner",
       role: "UK Local Service Business",
-      text: "Vital AI created a clean, professional website concept for our business. The page looked modern, loaded well on mobile and made it easy for customers to contact us.",
+      text: "The website looked professional, loaded smoothly on mobile and helped us get more customer enquiries.",
     },
     {
       name: "Salon Owner",
       role: "Beauty & Local Services",
-      text: "The landing page helped us present our services in a much better way. The design looked premium and the WhatsApp button made enquiries simple.",
+      text: "The page looked premium and made it very easy for customers to contact us through WhatsApp.",
     },
     {
-      name: "E-commerce Client",
-      role: "Online Store",
-      text: "The team understood our business quickly and gave us a professional web presence with clear sections, better visuals and a strong call-to-action.",
+      name: "Takeaway Business Owner",
+      role: "Food & Delivery Business",
+      text: "The layout was clear, modern and helped us present our menu, offers and contact details properly.",
     },
-  ];
-
-  const paymentMethods = [
-    { name: "Visa", brand: "VISA", className: "visa-pay", icon: <CreditCard2FrontFill /> },
-    { name: "Mastercard", brand: "mastercard.", className: "master-pay", icon: <CreditCard2FrontFill /> },
-    { name: "Apple Pay", brand: "Apple Pay", className: "apple-pay", icon: <Apple /> },
-    { name: "Google Pay", brand: "G Pay", className: "google-pay", icon: <Google /> },
   ];
 
   const faqs = [
     {
-      q: "What is included in the £24.99/month price?",
-      a: "The plan includes a professional website or landing page design, mobile responsive layout, basic SEO-friendly structure, call-to-action setup, WhatsApp/contact links and monthly update support.",
+      q: "What is included in £24.99/month?",
+      a: "A professional website or landing page, mobile responsive layout, hosting, SSL, basic SEO setup, WhatsApp/contact buttons and monthly content updates.",
     },
     {
       q: "Is there a large upfront cost?",
-      a: "No. This offer is designed for small businesses that want a professional online presence without paying a large upfront website design fee.",
+      a: "No. This package is designed for businesses that do not want to pay the typical £1,500+ upfront website fee.",
     },
     {
-      q: "Can I use this landing page for ads?",
-      a: "Yes. This landing page is ideal for Facebook, Instagram, TikTok, LinkedIn or Google ads. You can keep it hidden from your main website menu and use the direct URL in ads.",
+      q: "How quickly can my website go live?",
+      a: "Most small business websites can go live within 7 days after receiving your content, images and approval.",
     },
     {
-      q: "Can customers visit the official Vital AI website from this page?",
-      a: "Yes. The page includes an official website button so visitors can also explore your main Vital AI website.",
-    },
-    {
-      q: "Can I upgrade the package later?",
-      a: "Yes. You can start with the monthly website plan and later upgrade to more pages, advanced SEO, e-commerce, booking systems, automation or social media management.",
-    },
-    {
-      q: "Is the price fixed forever?",
-      a: "The £24.99/month price can be used as your advertised starting price. You can mention that final scope may depend on client requirements if the project becomes larger.",
+      q: "Can I use this page for ads?",
+      a: "Yes. The page is suitable for Google, Facebook, Instagram, TikTok and LinkedIn ads.",
     },
   ];
 
   return (
     <main className="vital-pay-page">
       <style>{`
-        html {
-          scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         .vital-pay-page {
-          --primary: #7c3aed;
-          --secondary: #2563eb;
-          --pink: #ec4899;
-          --cyan: #06b6d4;
-          --dark: #0f172a;
-          --muted: #64748b;
-          font-family: "Poppins", "Inter", sans-serif;
-          color: var(--dark);
-          background:
-            radial-gradient(circle at 12% 8%, rgba(124,58,237,.12), transparent 32%),
-            radial-gradient(circle at 90% 12%, rgba(37,99,235,.12), transparent 30%),
-            radial-gradient(circle at 50% 90%, rgba(236,72,153,.08), transparent 34%),
-            #ffffff;
-          overflow-x: hidden;
-          transform: translateZ(0);
-          backface-visibility: hidden;
+          --primary:#7c3aed;
+          --secondary:#2563eb;
+          --pink:#ec4899;
+          --dark:#0f172a;
+          --muted:#64748b;
+          --green:#22c55e;
+          --soft:#f8fafc;
+          font-family:"Poppins","Inter",system-ui,sans-serif;
+          color:var(--dark);
+          background:#fff;
+          overflow-x:hidden;
         }
 
-        .vital-pay-page * {
-          box-sizing: border-box;
-        }
+        .vital-pay-page * { box-sizing:border-box; }
 
         .vital-pay-container {
-          width: min(1180px, calc(100% - 32px));
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
+          width:min(1180px,calc(100% - 32px));
+          margin:0 auto;
         }
 
         .vital-hero {
-          min-height: 92vh;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 110px 0 145px;
-          overflow: visible;
-          text-align: center;
+          position:relative;
+          min-height:94vh;
+          display:flex;
+          align-items:center;
+          padding:88px 0 78px;
+          color:#fff;
+          overflow:hidden;
           background:
-            radial-gradient(circle at 0% 65%, rgba(124,58,237,.48), transparent 28%),
-            radial-gradient(circle at 100% 18%, rgba(236,72,153,.55), transparent 30%),
-            radial-gradient(circle at 90% 75%, rgba(236,72,153,.28), transparent 28%),
-            linear-gradient(135deg, #07008a 0%, #4c05a9 42%, #ec0f8f 100%);
+            radial-gradient(circle at 10% 20%,rgba(236,72,153,.35),transparent 28%),
+            radial-gradient(circle at 88% 8%,rgba(37,99,235,.35),transparent 30%),
+            radial-gradient(circle at 75% 85%,rgba(124,58,237,.40),transparent 28%),
+            linear-gradient(135deg,#050018 0%,#1b0b4f 45%,#5b12a8 100%);
         }
 
         .vital-hero::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          z-index: 0;
+          content:"";
+          position:absolute;
+          inset:0;
+          background-image:
+            linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+          background-size:42px 42px;
+          opacity:.45;
+        }
+
+        .hero-inner {
+          position:relative;
+          z-index:2;
+          display:grid;
+          grid-template-columns:1.05fr .95fr;
+          gap:48px;
+          align-items:center;
+        }
+
+        .hero-badge {
+          display:inline-flex;
+          align-items:center;
+          gap:9px;
+          padding:11px 18px;
+          border-radius:999px;
+          background:rgba(255,255,255,.12);
+          border:1px solid rgba(255,255,255,.22);
+          font-weight:900;
+          margin-bottom:22px;
+        }
+
+        .hero-copy h1 {
+          font-size:clamp(42px,6vw,78px);
+          line-height:1.03;
+          font-weight:950;
+          letter-spacing:-2.5px;
+          margin:0 0 20px;
+        }
+
+        .hero-copy h1 span {
+          background:linear-gradient(135deg,#fff,#ff4fbe,#38bdf8);
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+        }
+
+        .hero-copy p {
+          max-width:720px;
+          font-size:18px;
+          line-height:1.75;
+          color:rgba(255,255,255,.86);
+          margin:0 0 28px;
+        }
+
+        .hero-actions {
+          display:flex;
+          flex-wrap:wrap;
+          gap:14px;
+          margin-bottom:30px;
+        }
+
+        .btn-main,
+        .btn-light {
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          gap:10px;
+          min-height:54px;
+          padding:15px 26px;
+          border-radius:16px;
+          border:0;
+          text-decoration:none;
+          font-weight:950;
+          cursor:pointer;
+          transition:.25s ease;
+        }
+
+        .btn-main {
+          background:linear-gradient(135deg,#ff1493,#ec4899);
+          color:#fff;
+          box-shadow:0 18px 38px rgba(236,72,153,.32);
+        }
+
+        .btn-light {
+          background:#fff;
+          color:var(--primary);
+        }
+
+        .btn-main:hover,
+        .btn-light:hover {
+          transform:translateY(-4px);
+        }
+
+        .hero-proof-row {
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:12px;
+          max-width:900px;
+        }
+
+        .proof-mini {
+          padding:16px;
+          border-radius:20px;
+          background:rgba(255,255,255,.105);
+          border:1px solid rgba(255,255,255,.18);
+          backdrop-filter:blur(10px);
+        }
+
+        .proof-mini strong {
+          display:block;
+          font-size:24px;
+          font-weight:950;
+          color:#fff;
+          line-height:1.1;
+        }
+
+        .proof-mini span {
+          display:block;
+          color:rgba(255,255,255,.74);
+          font-size:12.5px;
+          font-weight:750;
+          margin-top:5px;
+        }
+
+        .hero-visual {
+          position:relative;
+          min-height:480px;
+        }
+
+        .website-mockup {
+          position:relative;
+          border-radius:34px;
+          overflow:hidden;
+          background:#fff;
+          border:1px solid rgba(255,255,255,.75);
+          box-shadow:0 36px 90px rgba(0,0,0,.34);
+          transform:rotate(1deg);
+        }
+
+        .mockup-top {
+          height:42px;
+          display:flex;
+          align-items:center;
+          gap:8px;
+          padding:0 16px;
+          background:#f8fafc;
+          border-bottom:1px solid #e2e8f0;
+        }
+
+        .mockup-top i {
+          width:10px;
+          height:10px;
+          border-radius:999px;
+          background:#cbd5e1;
+        }
+
+        .mockup-screen {
+          padding:20px;
           background:
-            radial-gradient(circle at 18% -8%, rgba(255,255,255,.18), transparent 20%),
-            radial-gradient(circle at 96% 84%, rgba(255,255,255,.16), transparent 24%),
-            linear-gradient(120deg, rgba(0,0,0,.05), rgba(255,255,255,.03));
-          pointer-events: none;
+            linear-gradient(135deg,rgba(124,58,237,.12),rgba(236,72,153,.08)),
+            #fff;
         }
 
-        .hero-grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          position: relative;
-          z-index: 2;
+        .mock-nav {
+          height:42px;
+          border-radius:16px;
+          background:#fff;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          padding:0 16px;
+          box-shadow:0 8px 20px rgba(15,23,42,.06);
+          margin-bottom:14px;
         }
 
-        .hero-copy {
-          width: min(980px, 100%);
-          margin: 0 auto;
-          text-align: center;
-          position: relative;
-          z-index: 3;
-          padding-top: 20px;
+        .mock-logo {
+          width:120px;
+          height:14px;
+          border-radius:999px;
+          background:linear-gradient(135deg,var(--primary),var(--pink));
         }
 
-        .vital-badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 11px 20px;
-          border-radius: 999px;
-          color: #fff;
-          background: rgba(255,255,255,.14);
-          border: 1px solid rgba(255,255,255,.28);
-          font-weight: 800;
-          margin-bottom: 22px;
-          box-shadow: 0 10px 24px rgba(15,23,42,.12);
-          text-align: center;
+        .mock-btn {
+          width:94px;
+          height:26px;
+          border-radius:999px;
+          background:#ec4899;
         }
 
-        .section-heading .vital-badge,
-        .payment-shell .vital-badge {
-          color: var(--primary);
-          background: rgba(124,58,237,.08);
-          border-color: rgba(124,58,237,.16);
-          box-shadow: 0 10px 24px rgba(124,58,237,.06);
+        .mock-hero {
+          height:245px;
+          border-radius:24px;
+          padding:24px;
+          display:flex;
+          flex-direction:column;
+          justify-content:flex-end;
+          background:
+            linear-gradient(135deg,rgba(15,23,42,.56),rgba(124,58,237,.28)),
+            url("https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1100&q=80");
+          background-size:cover;
+          background-position:center;
+          color:#fff;
         }
 
-        .vital-hero h1 {
-          max-width: 900px;
-          margin: 0 auto 20px;
-          color: #fff;
-          font-size: clamp(42px, 6vw, 78px);
-          line-height: 1.04;
-          letter-spacing: -2.5px;
-          font-weight: 950;
+        .mock-hero h3 {
+          max-width:330px;
+          font-weight:950;
+          font-size:30px;
+          line-height:1.12;
+          margin:0 0 10px;
         }
 
-        .gradient-text {
-          background: linear-gradient(135deg, #ff4fbe, #ffffff, #38bdf8);
-          background-size: 220% 220%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradientFlow 8s ease infinite;
+        .mock-hero span {
+          width:150px;
+          height:34px;
+          border-radius:999px;
+          background:#fff;
+          display:block;
         }
 
-        .section-heading .gradient-text,
-        .package-card .gradient-text {
-          background: linear-gradient(135deg, var(--primary), var(--secondary), var(--pink), var(--cyan));
-          background-size: 220% 220%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+        .mock-cards {
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:12px;
+          margin-top:14px;
         }
 
-        @keyframes gradientFlow {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+        .mock-card {
+          min-height:88px;
+          border-radius:18px;
+          background:#fff;
+          box-shadow:0 8px 20px rgba(15,23,42,.06);
+          padding:14px 10px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
         }
 
-        .vital-hero p {
-          max-width: 720px;
-          margin: 0 auto;
-          color: rgba(255,255,255,.92);
-          font-size: 18px;
-          line-height: 1.75;
-          font-weight: 500;
+        .mock-card-content {
+          display:none;
         }
 
-        .vital-price-pill {
-          display: inline-flex;
-          align-items: flex-end;
-          justify-content: center;
-          gap: 8px;
-          margin: 26px auto 12px;
-          padding: 18px 32px;
-          border-radius: 20px;
-          color: #fff;
-          background: linear-gradient(135deg, rgba(236,72,153,.95), rgba(219,39,119,.92));
-          box-shadow: 0 18px 45px rgba(15,23,42,.18);
-          border: 1px solid rgba(255,255,255,.18);
-          transition: transform .25s ease, box-shadow .25s ease;
-          will-change: transform;
+        .floating-proof {
+          position:absolute;
+          left:-20px;
+          bottom:45px;
+          background:#fff;
+          color:var(--dark);
+          border-radius:22px;
+          padding:16px 18px;
+          box-shadow:0 22px 55px rgba(0,0,0,.22);
+          display:flex;
+          align-items:center;
+          gap:12px;
         }
 
-        .vital-price-pill:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 18px 45px rgba(236,72,153,.24);
+        .floating-proof .icon {
+          width:46px;
+          height:46px;
+          border-radius:16px;
+          display:grid;
+          place-items:center;
+          background:#ecfdf5;
+          color:#16a34a;
+          font-size:22px;
         }
 
-        .vital-price-pill strong {
-          font-size: clamp(36px, 5vw, 58px);
-          font-weight: 950;
-          line-height: 1;
+        .floating-proof strong {
+          display:block;
+          font-size:20px;
+          font-weight:950;
         }
 
-        .vital-price-pill span {
-          color: rgba(255,255,255,.9);
-          font-weight: 800;
-          padding-bottom: 7px;
+        .floating-proof span {
+          color:var(--muted);
+          font-size:13px;
+          font-weight:800;
         }
 
-        .vital-checks,
-        .vital-actions {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
+        .floating-reviews {
+          position:absolute;
+          right:-8px;
+          top:38px;
+          background:#fff;
+          color:var(--dark);
+          border-radius:22px;
+          padding:16px 18px;
+          box-shadow:0 22px 55px rgba(0,0,0,.22);
         }
 
-        .vital-checks {
-          max-width: 860px;
-          margin: 26px auto 0;
+        .floating-reviews .stars {
+          color:#f59e0b;
+          display:flex;
+          gap:3px;
+          margin-bottom:7px;
         }
 
-        .vital-actions {
-          margin-top: 28px;
+        .floating-reviews strong {
+          font-size:22px;
+          font-weight:950;
         }
 
-        .vital-checks span {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          min-width: 190px;
-          padding: 9px 17px;
-          border-radius: 999px;
-          color: #fff;
-          background: rgba(255,255,255,.09);
-          border: 1px solid rgba(255,255,255,.22);
-          font-weight: 800;
-          box-shadow: 0 10px 24px rgba(15,23,42,.08);
-          transition: transform .25s ease, border-color .25s ease;
-          text-align: center;
+        .floating-reviews span {
+          display:block;
+          color:var(--muted);
+          font-size:13px;
+          font-weight:800;
         }
 
-        .vital-checks span:hover {
-          transform: translateY(-3px);
-          border-color: rgba(255,255,255,.45);
+        .section {
+          padding:95px 0;
         }
 
-        .vital-checks svg {
-          color: #ff4fbe;
-          flex-shrink: 0;
-        }
-
-        .vital-btn-primary,
-        .vital-btn-light {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          min-height: 54px;
-          min-width: 190px;
-          padding: 15px 26px;
-          border-radius: 16px;
-          text-decoration: none;
-          font-weight: 900;
-          transition: transform .25s ease, box-shadow .25s ease;
-          will-change: transform;
-          text-align: center;
-        }
-
-        .vital-btn-primary {
-          color: #fff;
-          background: linear-gradient(135deg, #ff1493, #ec4899);
-          box-shadow: 0 16px 36px rgba(236,72,153,.32);
-        }
-
-        .vital-btn-light {
-          color: var(--primary);
-          background: rgba(255,255,255,.94);
-          border: 1px solid rgba(255,255,255,.4);
-          box-shadow: 0 12px 28px rgba(15,23,42,.08);
-        }
-
-        .vital-btn-primary:hover,
-        .vital-btn-light:hover {
-          transform: translateY(-4px);
-        }
-
-        .hero-trust-strip {
-          position: absolute;
-          left: 50%;
-          bottom: -54px;
-          transform: translateX(-50%);
-          width: min(1040px, calc(100% - 40px));
-          z-index: 5;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 0;
-          overflow: hidden;
-          border-radius: 22px;
-          background: rgba(255,255,255,.92);
-          border: 1px solid rgba(255,255,255,.75);
-          box-shadow: 0 18px 45px rgba(15,23,42,.16);
-        }
-
-        .hero-trust-item {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 20px 24px;
-          border-right: 1px solid rgba(15,23,42,.08);
-          text-align: left;
-        }
-
-        .hero-trust-item:last-child {
-          border-right: 0;
-        }
-
-        .hero-trust-icon {
-          width: 46px;
-          height: 46px;
-          border-radius: 16px;
-          display: grid;
-          place-items: center;
-          color: #fff;
-          font-size: 22px;
-          flex-shrink: 0;
-          background: linear-gradient(135deg, var(--primary), var(--secondary), var(--pink));
-        }
-
-        .hero-trust-item strong {
-          display: block;
-          font-size: 15px;
-          font-weight: 950;
-          color: var(--dark);
-          line-height: 1.25;
-        }
-
-        .hero-trust-item span {
-          display: block;
-          color: var(--muted);
-          font-size: 12px;
-          font-weight: 700;
-          margin-top: 3px;
-        }
-
-        .vital-section {
-          padding: 100px 0 90px;
-          position: relative;
+        .section-soft {
+          background:
+            radial-gradient(circle at top left,rgba(124,58,237,.08),transparent 30%),
+            #f8fafc;
         }
 
         .section-heading {
-          text-align: center;
-          max-width: 820px;
-          margin: 0 auto 52px;
+          max-width:850px;
+          margin:0 auto 52px;
+          text-align:center;
+        }
+
+        .small-badge {
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          padding:10px 16px;
+          border-radius:999px;
+          background:rgba(124,58,237,.08);
+          color:var(--primary);
+          font-weight:950;
+          margin-bottom:16px;
         }
 
         .section-heading h2 {
-          font-size: clamp(32px, 5vw, 58px);
-          font-weight: 950;
-          letter-spacing: -2px;
-          margin-bottom: 14px;
+          font-size:clamp(32px,5vw,58px);
+          font-weight:950;
+          letter-spacing:-1.8px;
+          margin-bottom:14px;
         }
 
         .section-heading p {
-          color: var(--muted);
-          font-size: 18px;
-          line-height: 1.8;
+          color:var(--muted);
+          font-size:18px;
+          line-height:1.75;
         }
 
-        .cards-grid,
-        .reviews-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 22px;
+        .proof-band {
+          margin-top:-44px;
+          position:relative;
+          z-index:3;
         }
 
-        .service-card,
-        .review-card,
-        .process-card,
-        .package-card,
-        .payment-card,
-        .website-shot {
-          transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-          will-change: transform;
+        .proof-band-card {
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:16px;
+          padding:22px;
+          border-radius:30px;
+          background:#fff;
+          box-shadow:0 24px 60px rgba(15,23,42,.13);
+          border:1px solid rgba(15,23,42,.06);
+        }
+
+        .proof-card {
+          padding:22px;
+          border-radius:24px;
+          background:#f8fafc;
+          border:1px solid rgba(15,23,42,.06);
+        }
+
+        .proof-card.highlight {
+          color:#fff;
+          background:linear-gradient(135deg,var(--primary),var(--secondary),var(--pink));
+        }
+
+        .proof-card strong {
+          display:block;
+          font-size:32px;
+          font-weight:950;
+          line-height:1;
+        }
+
+        .proof-card span {
+          display:block;
+          margin-top:8px;
+          color:var(--muted);
+          font-weight:800;
+          font-size:13px;
+        }
+
+        .proof-card.highlight span {
+          color:rgba(255,255,255,.78);
+        }
+
+        .form-section {
+          padding:95px 0;
+          background:#fff;
+        }
+
+        .form-layout {
+          display:grid;
+          grid-template-columns:.9fr 1.1fr;
+          gap:38px;
+          align-items:center;
+        }
+
+        .form-copy {
+          padding:38px;
+          border-radius:34px;
+          color:#fff;
+          background:
+            linear-gradient(135deg,rgba(15,23,42,.75),rgba(124,58,237,.78)),
+            url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1300&q=80");
+          background-size:cover;
+          background-position:center;
+          box-shadow:0 20px 52px rgba(15,23,42,.18);
+        }
+
+        .form-copy h2 {
+          font-size:clamp(34px,5vw,54px);
+          font-weight:950;
+          letter-spacing:-1.8px;
+          margin-bottom:14px;
+        }
+
+        .form-copy p {
+          color:rgba(255,255,255,.84);
+          line-height:1.75;
+          font-size:17px;
+        }
+
+        .form-copy ul {
+          list-style:none;
+          padding:0;
+          margin:24px 0 0;
+          display:grid;
+          gap:13px;
+        }
+
+        .form-copy li {
+          display:flex;
+          gap:10px;
+          font-weight:850;
+        }
+
+        .form-copy svg {
+          color:#38f59f;
+          flex-shrink:0;
+          margin-top:3px;
+        }
+
+        .hero-form-card {
+          background:#fff;
+          border-radius:32px;
+          padding:30px;
+          box-shadow:0 24px 60px rgba(15,23,42,.12);
+          border:1px solid rgba(15,23,42,.08);
+        }
+
+        .form-top {
+          margin-bottom:20px;
+        }
+
+        .form-pill {
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          background:#ecfdf5;
+          color:#15803d;
+          padding:9px 14px;
+          border-radius:999px;
+          font-size:13px;
+          font-weight:950;
+          margin-bottom:14px;
+        }
+
+        .hero-form-card h3 {
+          font-size:30px;
+          line-height:1.12;
+          font-weight:950;
+          margin:0 0 8px;
+        }
+
+        .hero-form-card p {
+          margin:0;
+          color:var(--muted);
+          line-height:1.6;
+        }
+
+        .price-box {
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:12px;
+          margin:20px 0;
+        }
+
+        .price-old,
+        .price-new {
+          padding:16px;
+          border-radius:18px;
+          text-align:center;
+        }
+
+        .price-old {
+          background:#fff1f2;
+          border:1px solid rgba(239,68,68,.16);
+        }
+
+        .price-new {
+          background:#f5f3ff;
+          border:1px solid rgba(124,58,237,.16);
+        }
+
+        .price-old span,
+        .price-new span {
+          display:block;
+          color:var(--muted);
+          font-size:12px;
+          font-weight:850;
+          margin-bottom:5px;
+        }
+
+        .price-old strong {
+          color:#ef4444;
+          font-size:28px;
+          font-weight:950;
+        }
+
+        .price-new strong {
+          color:var(--primary);
+          font-size:28px;
+          font-weight:950;
+        }
+
+        .lead-form {
+          display:grid;
+          gap:13px;
+        }
+
+        .form-row {
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:12px;
+        }
+
+        .lead-form input,
+        .lead-form select,
+        .lead-form textarea {
+          width:100%;
+          border:1px solid #dbe4f0;
+          border-radius:14px;
+          padding:14px 15px;
+          outline:none;
+          font-size:14px;
+          background:#fff;
+        }
+
+        .lead-form textarea {
+          resize:none;
+        }
+
+        .lead-form input:focus,
+        .lead-form select:focus,
+        .lead-form textarea:focus {
+          border-color:var(--primary);
+          box-shadow:0 0 0 4px rgba(124,58,237,.1);
+        }
+
+        .form-note {
+          text-align:center;
+          color:var(--muted);
+          font-size:12.5px;
+          font-weight:700;
+        }
+
+        .cards-grid {
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:22px;
         }
 
         .service-card {
-          position: relative;
-          padding: 38px 30px;
-          border-radius: 30px;
-          background: #fff;
-          border: 2px solid #e8e8ef;
-          min-height: 270px;
-          overflow: hidden;
-          box-shadow: 0 12px 30px rgba(15,23,42,.05);
-        }
-
-        .service-card::before,
-        .review-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(124,58,237,.09), rgba(37,99,235,.07), rgba(236,72,153,.07));
-          opacity: 0;
-          transition: opacity .25s ease;
+          background:#fff;
+          border:1px solid rgba(15,23,42,.08);
+          border-radius:28px;
+          padding:30px;
+          box-shadow:0 14px 34px rgba(15,23,42,.06);
+          transition:.25s ease;
         }
 
         .service-card:hover {
-          transform: translateY(-8px);
-          border-color: rgba(124,58,237,.36);
-          box-shadow: 0 18px 45px rgba(124,58,237,.13);
-        }
-
-        .service-card:hover::before,
-        .review-card:hover::before {
-          opacity: 1;
+          transform:translateY(-8px);
+          box-shadow:0 18px 45px rgba(124,58,237,.13);
         }
 
         .service-icon {
-          position: relative;
-          z-index: 1;
-          width: 70px;
-          height: 70px;
-          display: grid;
-          place-items: center;
-          border-radius: 22px;
-          color: #fff;
-          font-size: 30px;
-          margin-bottom: 22px;
-          background: linear-gradient(135deg, var(--primary), var(--secondary), var(--pink));
-          box-shadow: 0 12px 28px rgba(124,58,237,.22);
-          transition: transform .25s ease;
-        }
-
-        .service-card:hover .service-icon {
-          transform: rotate(-4deg) scale(1.04);
-        }
-
-        .service-card h3,
-        .service-card p,
-        .quote-icon,
-        .stars,
-        .review-card p,
-        .review-card h5,
-        .review-card span {
-          position: relative;
-          z-index: 1;
+          width:64px;
+          height:64px;
+          display:grid;
+          place-items:center;
+          border-radius:20px;
+          color:#fff;
+          font-size:28px;
+          margin-bottom:20px;
+          background:linear-gradient(135deg,var(--primary),var(--secondary),var(--pink));
         }
 
         .service-card h3 {
-          font-size: 22px;
-          font-weight: 950;
-          margin-bottom: 10px;
+          font-size:22px;
+          font-weight:950;
+          margin-bottom:10px;
         }
 
         .service-card p {
-          color: var(--muted);
-          line-height: 1.75;
-          margin: 0;
+          color:var(--muted);
+          line-height:1.75;
+          margin:0;
         }
 
-        .marquee-section {
-          padding: 30px 0 90px;
-        }
-
-        .marquee-shell {
-          overflow: hidden;
-          position: relative;
-          border-radius: 38px;
-          padding: 24px 0;
-          background:
-            radial-gradient(circle at top left, rgba(124,58,237,.12), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(37,99,235,.10), transparent 34%),
-            #f8fafc;
-          border: 1px solid rgba(124,58,237,.1);
-        }
-
-        .marquee-shell::before,
-        .marquee-shell::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          width: 120px;
-          height: 100%;
-          z-index: 3;
-          pointer-events: none;
-        }
-
-        .marquee-shell::before {
-          left: 0;
-          background: linear-gradient(90deg, #f8fafc, transparent);
-        }
-
-        .marquee-shell::after {
-          right: 0;
-          background: linear-gradient(270deg, #f8fafc, transparent);
-        }
-
-        .website-marquee {
-          display: flex;
-          gap: 24px;
-          width: max-content;
-          animation: websiteScroll 46s linear infinite;
-          will-change: transform;
-        }
-
-        .website-marquee:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes websiteScroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-
-        .website-shot {
-          width: 360px;
-          height: 235px;
-          flex: 0 0 auto;
-          border-radius: 28px;
-          overflow: hidden;
-          background: #fff;
-          border: 1px solid rgba(15,23,42,.1);
-          box-shadow: 0 14px 34px rgba(15,23,42,.1);
-        }
-
-        .website-shot:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 18px 45px rgba(124,58,237,.14);
-        }
-
-        .website-shot img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .split-section {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 44px;
-          align-items: center;
+        .package-layout {
+          display:grid;
+          grid-template-columns:.95fr 1.05fr;
+          gap:34px;
+          align-items:center;
         }
 
         .gradient-box {
-          border-radius: 36px;
-          padding: 42px;
-          color: #fff;
-          background: linear-gradient(135deg, #7c3aed, #2563eb, #ec4899);
-          box-shadow: 0 18px 45px rgba(124,58,237,.18);
+          border-radius:34px;
+          padding:40px;
+          color:#fff;
+          background:linear-gradient(135deg,#7c3aed,#2563eb,#ec4899);
+          box-shadow:0 20px 50px rgba(124,58,237,.2);
         }
 
         .gradient-box h2 {
-          font-size: clamp(34px, 5vw, 56px);
-          font-weight: 950;
-          letter-spacing: -2px;
+          font-size:clamp(34px,5vw,54px);
+          font-weight:950;
+          letter-spacing:-1.8px;
         }
 
         .gradient-box p {
-          color: rgba(255,255,255,.86);
-          line-height: 1.8;
-          font-size: 17px;
+          color:rgba(255,255,255,.86);
+          line-height:1.75;
+          font-size:17px;
         }
 
         .stats-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 16px;
-          margin-top: 26px;
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:14px;
+          margin-top:24px;
         }
 
         .stat-card {
-          padding: 22px;
-          border-radius: 24px;
-          background: rgba(255,255,255,.15);
-          border: 1px solid rgba(255,255,255,.25);
-          transition: transform .25s ease, background .25s ease;
-        }
-
-        .stat-card:hover {
-          transform: translateY(-5px);
-          background: rgba(255,255,255,.22);
+          background:rgba(255,255,255,.14);
+          border:1px solid rgba(255,255,255,.22);
+          padding:20px;
+          border-radius:22px;
         }
 
         .stat-card strong {
-          display: block;
-          font-size: 28px;
-          font-weight: 950;
+          display:block;
+          font-size:28px;
+          font-weight:950;
         }
 
         .stat-card span {
-          color: rgba(255,255,255,.82);
-          font-weight: 700;
+          color:rgba(255,255,255,.78);
+          font-weight:750;
         }
 
         .package-card {
-          padding: 38px;
-          border-radius: 36px;
-          background: #fff;
-          border: 1px solid rgba(15,23,42,.08);
-          box-shadow: 0 16px 40px rgba(15,23,42,.08);
-        }
-
-        .package-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 18px 45px rgba(124,58,237,.14);
-        }
-
-        .package-card h3 {
-          font-size: 32px;
-          font-weight: 950;
+          background:#fff;
+          border-radius:34px;
+          padding:38px;
+          border:1px solid rgba(15,23,42,.08);
+          box-shadow:0 16px 40px rgba(15,23,42,.08);
         }
 
         .main-price {
-          margin: 16px 0;
-          font-size: 58px;
-          font-weight: 950;
-          color: var(--primary);
-          line-height: 1;
+          font-size:58px;
+          font-weight:950;
+          color:var(--primary);
+          line-height:1;
+          margin:14px 0;
         }
 
         .main-price span {
-          font-size: 18px;
-          color: var(--muted);
+          font-size:18px;
+          color:var(--muted);
         }
 
         .package-list {
-          list-style: none;
-          padding: 0;
-          margin: 26px 0 0;
+          list-style:none;
+          padding:0;
+          margin:24px 0 0;
+          display:grid;
+          gap:12px;
         }
 
         .package-list li {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          margin-bottom: 14px;
-          font-weight: 700;
-          color: #334155;
+          display:flex;
+          gap:10px;
+          color:#334155;
+          font-weight:760;
         }
 
         .package-list svg {
-          color: var(--primary);
-          margin-top: 3px;
-          flex-shrink: 0;
+          color:var(--green);
+          flex-shrink:0;
+          margin-top:3px;
         }
 
-        .payment-section {
-          padding: 10px 0 90px;
+        .marquee-shell {
+          overflow:hidden;
+          border-radius:34px;
+          padding:24px 0;
+          background:#fff;
+          border:1px solid rgba(15,23,42,.08);
+          box-shadow:0 14px 34px rgba(15,23,42,.06);
         }
 
-        .payment-shell {
-          border-radius: 42px;
-          padding: 48px;
-          background:
-            radial-gradient(circle at top left, rgba(124,58,237,.12), transparent 32%),
-            radial-gradient(circle at bottom right, rgba(6,182,212,.1), transparent 34%),
-            rgba(255,255,255,.92);
-          border: 1px solid rgba(124,58,237,.12);
-          box-shadow: 0 16px 40px rgba(15,23,42,.06);
+        .website-marquee {
+          display:flex;
+          gap:22px;
+          width:max-content;
+          animation:websiteScroll 44s linear infinite;
         }
 
-        .payment-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 18px;
-          margin-top: 35px;
+        @keyframes websiteScroll {
+          from { transform:translateX(0); }
+          to { transform:translateX(-50%); }
         }
 
-        .payment-card {
-          position: relative;
-          min-height: 165px;
-          border-radius: 30px;
-          padding: 24px;
-          overflow: hidden;
-          background: #fff;
-          border: 1px solid rgba(15,23,42,.08);
-          box-shadow: 0 12px 28px rgba(15,23,42,.06);
+        .website-shot {
+          width:360px;
+          height:235px;
+          border-radius:24px;
+          overflow:hidden;
+          background:#e2e8f0;
+          flex:0 0 auto;
         }
 
-        .payment-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transition: opacity .25s ease;
-        }
-
-        .payment-card::after {
-          content: "";
-          position: absolute;
-          width: 100px;
-          height: 100px;
-          border-radius: 999px;
-          right: -42px;
-          bottom: -48px;
-          opacity: .2;
-          transition: transform .25s ease, opacity .25s ease;
-        }
-
-        .payment-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 18px 45px rgba(124,58,237,.14);
-          border-color: rgba(124,58,237,.28);
-        }
-
-        .payment-card:hover::before {
-          opacity: 1;
-        }
-
-        .payment-card:hover::after {
-          opacity: .45;
-          transform: scale(1.12);
-        }
-
-        .payment-icon {
-          position: relative;
-          z-index: 1;
-          width: 58px;
-          height: 58px;
-          border-radius: 20px;
-          display: grid;
-          place-items: center;
-          color: #fff;
-          font-size: 28px;
-          margin-bottom: 18px;
-          transition: transform .25s ease;
-        }
-
-        .payment-card:hover .payment-icon {
-          transform: rotate(-5deg) scale(1.05);
-        }
-
-        .payment-brand {
-          position: relative;
-          z-index: 1;
-          font-size: 27px;
-          font-weight: 950;
-          letter-spacing: -1px;
-          margin-bottom: 6px;
-        }
-
-        .payment-name {
-          position: relative;
-          z-index: 1;
-          color: var(--muted);
-          font-weight: 800;
-          font-size: 14px;
-        }
-
-        .visa-pay .payment-icon { background: linear-gradient(135deg, #1a1f71, #2563eb); }
-        .visa-pay::before { background: linear-gradient(135deg, rgba(26,31,113,.1), rgba(37,99,235,.06)); }
-        .visa-pay::after { background: #1a1f71; }
-
-        .master-pay .payment-icon { background: linear-gradient(135deg, #eb001b, #f79e1b); }
-        .master-pay::before { background: linear-gradient(135deg, rgba(235,0,27,.1), rgba(247,158,27,.08)); }
-        .master-pay::after { background: #f79e1b; }
-
-        .apple-pay .payment-icon { background: linear-gradient(135deg, #111827, #4b5563); }
-        .apple-pay::before { background: linear-gradient(135deg, rgba(17,24,39,.1), rgba(75,85,99,.06)); }
-        .apple-pay::after { background: #111827; }
-
-        .google-pay .payment-icon { background: linear-gradient(135deg, #4285f4, #34a853); }
-        .google-pay::before { background: linear-gradient(135deg, rgba(66,133,244,.1), rgba(52,168,83,.08)); }
-        .google-pay::after { background: #4285f4; }
-
-        .payment-note {
-          margin-top: 28px;
-          padding: 16px 20px;
-          border-radius: 18px;
-          color: #fff;
-          font-weight: 800;
-          text-align: center;
-          background: linear-gradient(135deg, var(--primary), var(--secondary), var(--pink));
-          box-shadow: 0 14px 34px rgba(124,58,237,.14);
+        .website-shot img {
+          width:100%;
+          height:100%;
+          object-fit:cover;
         }
 
         .process-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 20px;
+          display:grid;
+          grid-template-columns:repeat(4,1fr);
+          gap:20px;
         }
 
         .process-card {
-          padding: 28px;
-          border-radius: 28px;
-          background: #fff;
-          border: 1px solid rgba(15,23,42,.08);
-          box-shadow: 0 12px 30px rgba(15,23,42,.05);
-        }
-
-        .process-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 18px 45px rgba(37,99,235,.12);
-          background: linear-gradient(135deg, rgba(124,58,237,.05), rgba(37,99,235,.04), #fff);
+          background:#fff;
+          border-radius:26px;
+          padding:26px;
+          border:1px solid rgba(15,23,42,.08);
+          box-shadow:0 12px 30px rgba(15,23,42,.05);
         }
 
         .process-number {
-          width: 46px;
-          height: 46px;
-          border-radius: 16px;
-          display: grid;
-          place-items: center;
-          color: #fff;
-          font-weight: 950;
-          background: linear-gradient(135deg, var(--primary), var(--secondary));
-          margin-bottom: 18px;
+          width:46px;
+          height:46px;
+          border-radius:16px;
+          display:grid;
+          place-items:center;
+          color:#fff;
+          font-weight:950;
+          background:linear-gradient(135deg,var(--primary),var(--secondary));
+          margin-bottom:18px;
         }
 
         .process-card h4 {
-          font-size: 18px;
-          font-weight: 950;
-          margin-bottom: 8px;
+          font-weight:950;
+          margin-bottom:8px;
         }
 
         .process-card p {
-          color: var(--muted);
-          line-height: 1.7;
-          margin: 0;
-          font-size: 14px;
+          color:var(--muted);
+          line-height:1.65;
+          margin:0;
+        }
+
+        .reviews-grid {
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:22px;
         }
 
         .review-card {
-          padding: 32px;
-          border-radius: 32px;
-          background: #fff;
-          border: 1px solid rgba(15,23,42,.08);
-          box-shadow: 0 14px 34px rgba(15,23,42,.06);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .review-card:hover {
-          transform: translateY(-7px);
-          box-shadow: 0 18px 45px rgba(124,58,237,.12);
+          background:#fff;
+          border-radius:28px;
+          padding:30px;
+          border:1px solid rgba(15,23,42,.08);
+          box-shadow:0 14px 34px rgba(15,23,42,.06);
         }
 
         .quote-icon {
-          width: 50px;
-          height: 50px;
-          border-radius: 18px;
-          display: grid;
-          place-items: center;
-          background: linear-gradient(135deg, rgba(124,58,237,.12), rgba(37,99,235,.12));
-          color: var(--primary);
-          margin-bottom: 18px;
+          width:50px;
+          height:50px;
+          display:grid;
+          place-items:center;
+          border-radius:18px;
+          color:var(--primary);
+          background:rgba(124,58,237,.10);
+          margin-bottom:16px;
         }
 
         .stars {
-          display: flex;
-          gap: 4px;
-          color: #f59e0b;
-          margin-bottom: 16px;
+          display:flex;
+          gap:4px;
+          color:#f59e0b;
+          margin-bottom:14px;
         }
 
         .review-card p {
-          color: var(--muted);
-          line-height: 1.8;
-          margin-bottom: 22px;
+          color:var(--muted);
+          line-height:1.75;
         }
 
         .review-card h5 {
-          font-weight: 950;
-          margin-bottom: 4px;
+          font-weight:950;
         }
 
         .review-card span {
-          color: var(--muted);
-          font-size: 14px;
-          font-weight: 700;
+          color:var(--muted);
+          font-weight:700;
+          font-size:14px;
         }
 
         .faq-wrap {
-          max-width: 920px;
-          margin: 0 auto;
+          max-width:920px;
+          margin:0 auto;
         }
 
         .faq-item {
-          background: #fff;
-          border-radius: 22px;
-          border: 1px solid rgba(15,23,42,.08);
-          margin-bottom: 14px;
-          overflow: hidden;
-          box-shadow: 0 12px 30px rgba(15,23,42,.05);
-          transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-        }
-
-        .faq-item:hover {
-          transform: translateY(-3px);
-          border-color: rgba(124,58,237,.22);
-          box-shadow: 0 16px 38px rgba(124,58,237,.1);
+          background:#fff;
+          border-radius:20px;
+          border:1px solid rgba(15,23,42,.08);
+          margin-bottom:14px;
+          overflow:hidden;
+          box-shadow:0 10px 28px rgba(15,23,42,.05);
         }
 
         .faq-question {
-          width: 100%;
-          border: 0;
-          background: transparent;
-          padding: 22px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 18px;
-          font-weight: 900;
-          text-align: left;
-          color: var(--dark);
-        }
-
-        .faq-question svg {
-          flex-shrink: 0;
+          width:100%;
+          border:0;
+          background:transparent;
+          padding:21px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          font-weight:900;
+          text-align:left;
         }
 
         .faq-answer {
-          padding: 0 22px 22px;
-          color: var(--muted);
-          line-height: 1.8;
+          padding:0 21px 21px;
+          color:var(--muted);
+          line-height:1.75;
         }
 
         .final-cta {
-          padding: 65px 28px;
-          border-radius: 40px;
-          text-align: center;
-          color: #fff;
+          padding:65px 28px;
+          border-radius:38px;
+          text-align:center;
+          color:#fff;
           background:
-            linear-gradient(135deg, rgba(15,23,42,.76), rgba(124,58,237,.78)),
+            linear-gradient(135deg,rgba(15,23,42,.78),rgba(124,58,237,.82)),
             url("https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1600&q=80");
-          background-size: cover;
-          background-position: center;
-          box-shadow: 0 18px 45px rgba(15,23,42,.16);
+          background-size:cover;
+          background-position:center;
         }
 
         .final-cta h2 {
-          font-size: clamp(34px, 5vw, 58px);
-          font-weight: 950;
-          letter-spacing: -2px;
+          font-size:clamp(34px,5vw,58px);
+          font-weight:950;
+          letter-spacing:-1.8px;
         }
 
         .final-cta p {
-          max-width: 700px;
-          margin: 16px auto 0;
-          color: rgba(255,255,255,.86);
-          font-size: 18px;
-          line-height: 1.8;
+          max-width:720px;
+          margin:16px auto 0;
+          color:rgba(255,255,255,.86);
+          font-size:18px;
+          line-height:1.75;
         }
 
-        @media (max-width: 1199px) {
-          .payment-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .process-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+        .final-actions {
+          display:flex;
+          justify-content:center;
+          gap:14px;
+          flex-wrap:wrap;
+          margin-top:26px;
         }
 
-        @media (max-width: 992px) {
-          .vital-pay-container {
-            width: min(100% - 28px, 760px);
-          }
-
-          .cards-grid,
-          .split-section,
-          .reviews-grid,
-          .hero-trust-strip {
-            grid-template-columns: 1fr;
-          }
-
-          .hero-trust-strip {
-            position: relative;
-            bottom: auto;
-            left: auto;
-            transform: none;
-            width: 100%;
-            margin: 42px auto -20px;
-            border-radius: 24px;
-          }
-
-          .hero-trust-item {
-            border-right: 0;
-            border-bottom: 1px solid rgba(15,23,42,.08);
-          }
-
-          .hero-trust-item:last-child {
-            border-bottom: 0;
-          }
-
-          .vital-hero {
-            min-height: auto;
-            padding: 95px 0 70px;
-          }
-
-          .stats-row {
-            grid-template-columns: 1fr;
-          }
-
-          .website-shot {
-            width: 300px;
-            height: 205px;
-          }
-
-          .payment-shell {
-            padding: 34px 22px;
-            border-radius: 32px;
-          }
+        .mobile-sticky-cta {
+          display:none;
         }
 
-        @media (max-width: 768px) {
-          .vital-pay-container {
-            width: min(100% - 24px, 620px);
-          }
-
-          .vital-hero {
-            display: block;
-            padding: 76px 0 44px;
-            min-height: auto;
-            overflow: hidden;
-            border-bottom-left-radius: 34px;
-            border-bottom-right-radius: 34px;
-          }
-
-          .hero-grid {
-            display: block;
-            width: 100%;
+        @media (max-width:1024px) {
+          .hero-inner,
+          .form-layout,
+          .package-layout {
+            grid-template-columns:1fr;
           }
 
           .hero-copy {
-            width: 100%;
-            max-width: 100%;
-            padding: 0;
-            text-align: center;
+            text-align:center;
           }
 
-          .vital-badge {
-            max-width: 100%;
-            padding: 9px 14px;
-            font-size: 12.5px;
-            line-height: 1.3;
-            margin-bottom: 16px;
+          .hero-copy p {
+            margin-left:auto;
+            margin-right:auto;
           }
 
-          .vital-hero h1 {
-            font-size: clamp(31px, 9.2vw, 45px);
-            line-height: 1.12;
-            letter-spacing: -1.1px;
-            max-width: 100%;
-            margin: 0 auto 15px;
+          .hero-actions {
+            justify-content:center;
           }
 
-          .vital-hero p {
-            max-width: 96%;
-            font-size: 15.5px;
-            line-height: 1.65;
-            margin: 0 auto;
+          .hero-proof-row {
+            margin:0 auto;
           }
 
-          .vital-price-pill {
-            width: min(100%, 320px);
-            padding: 15px 20px;
-            border-radius: 18px;
-            margin: 22px auto 0;
-          }
-
-          .vital-price-pill strong {
-            font-size: 40px;
-          }
-
-          .vital-price-pill span {
-            font-size: 14px;
-          }
-
-          .vital-checks {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 100%;
-            gap: 10px;
-            margin-top: 20px;
-          }
-
-          .vital-checks span {
-            min-width: 0;
-            width: 100%;
-            padding: 10px 8px;
-            font-size: 12.5px;
-            border-radius: 15px;
-            line-height: 1.25;
-          }
-
-          .vital-actions {
-            display: grid;
-            grid-template-columns: 1fr;
-            width: 100%;
-            gap: 10px;
-            margin-top: 20px;
-          }
-
-          .vital-btn-primary,
-          .vital-btn-light {
-            width: 100%;
-            min-width: 0;
-            min-height: 50px;
-            padding: 13px 16px;
-          }
-
-          .hero-trust-strip {
-            position: relative;
-            left: auto;
-            bottom: auto;
-            transform: none;
-            display: grid;
-            grid-template-columns: 1fr;
-            width: 100%;
-            margin: 28px auto 0;
-            border-radius: 20px;
-            overflow: hidden;
-          }
-
-          .hero-trust-item {
-            width: 100%;
-            padding: 15px 16px;
-            gap: 12px;
-            border-right: 0;
-            border-bottom: 1px solid rgba(15,23,42,.08);
-          }
-
-          .hero-trust-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            font-size: 19px;
-          }
-
-          .hero-trust-item strong {
-            font-size: 14px;
-            line-height: 1.2;
-          }
-
-          .hero-trust-item span {
-            font-size: 11.5px;
-          }
-
-          .section-heading {
-            margin-bottom: 34px;
-          }
-
-          .section-heading h2 {
-            font-size: clamp(28px, 8vw, 40px);
-            letter-spacing: -1.2px;
-          }
-
-          .section-heading p {
-            font-size: 15.5px;
-            line-height: 1.65;
-          }
-
-          .vital-section {
-            padding: 58px 0;
+          .hero-visual {
+            min-height:auto;
+            max-width:680px;
+            margin:0 auto;
+            width:100%;
           }
 
           .cards-grid,
-          .reviews-grid,
+          .reviews-grid {
+            grid-template-columns:repeat(2,1fr);
+          }
+
           .process-grid,
-          .payment-grid {
-            grid-template-columns: 1fr;
-            gap: 16px;
-          }
-
-          .service-card,
-          .package-card,
-          .gradient-box,
-          .review-card,
-          .process-card {
-            padding: 24px 20px;
-            border-radius: 24px;
-          }
-
-          .service-card {
-            min-height: auto;
-          }
-
-          .service-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            font-size: 25px;
-            margin-bottom: 16px;
-          }
-
-          .marquee-section {
-            padding: 15px 0 58px;
-          }
-
-          .marquee-shell {
-            border-radius: 24px;
-            padding: 18px 0;
-          }
-
-          .marquee-shell::before,
-          .marquee-shell::after {
-            width: 45px;
-          }
-
-          .website-marquee {
-            gap: 16px;
-            animation-duration: 60s;
-          }
-
-          .website-shot {
-            width: 255px;
-            height: 170px;
-            border-radius: 20px;
-          }
-
-          .split-section {
-            gap: 22px;
-          }
-
-          .gradient-box h2 {
-            font-size: clamp(28px, 8vw, 40px);
-            letter-spacing: -1.2px;
-          }
-
-          .main-price {
-            font-size: 44px;
-          }
-
-          .package-list li {
-            font-size: 14.5px;
-            line-height: 1.45;
-          }
-
-          .payment-section {
-            padding: 0 0 58px;
-          }
-
-          .payment-shell {
-            padding: 28px 18px;
-            border-radius: 26px;
-          }
-
-          .payment-grid {
-            margin-top: 25px;
-          }
-
-          .payment-card {
-            min-height: 138px;
-            padding: 20px;
-            border-radius: 22px;
-          }
-
-          .payment-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
-            font-size: 24px;
-            margin-bottom: 14px;
-          }
-
-          .payment-brand {
-            font-size: 23px;
-          }
-
-          .payment-note {
-            font-size: 13.5px;
-            line-height: 1.5;
-          }
-
-          .process-number {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-          }
-
-          .faq-question {
-            padding: 18px;
-            font-size: 15px;
-            line-height: 1.45;
-          }
-
-          .faq-answer {
-            padding: 0 18px 18px;
-            font-size: 14.5px;
-          }
-
-          .final-cta {
-            padding: 42px 18px;
-            border-radius: 28px;
-          }
-
-          .final-cta h2 {
-            font-size: clamp(30px, 8vw, 42px);
-            letter-spacing: -1.2px;
-          }
-
-          .final-cta p {
-            font-size: 15.5px;
-            line-height: 1.65;
-          }
-
-          .service-card:hover,
-          .review-card:hover,
-          .process-card:hover,
-          .package-card:hover,
-          .payment-card:hover,
-          .website-shot:hover,
-          .stat-card:hover,
-          .faq-item:hover,
-          .vital-btn-primary:hover,
-          .vital-btn-light:hover,
-          .vital-price-pill:hover {
-            transform: none;
+          .proof-band-card {
+            grid-template-columns:repeat(2,1fr);
           }
         }
 
-        @media (max-width: 430px) {
+        @media (max-width:768px) {
           .vital-pay-container {
-            width: calc(100% - 20px);
+            width:min(100% - 24px,620px);
           }
 
           .vital-hero {
-            padding: 68px 0 40px;
+            min-height:auto;
+            padding:48px 0 38px;
           }
 
-          .vital-hero h1 {
-            font-size: 30px;
-            letter-spacing: -0.8px;
+          .hero-inner {
+            gap:24px;
           }
 
-          .vital-hero p {
-            font-size: 14.5px;
+          .hero-copy h1 {
+            font-size:clamp(32px,9.5vw,44px);
+            letter-spacing:-1.1px;
+            line-height:1.08;
           }
 
-          .vital-price-pill {
-            width: 100%;
-            padding: 14px 18px;
+          .hero-copy p {
+            font-size:15.5px;
+            line-height:1.65;
+            margin-bottom:22px;
           }
 
-          .vital-price-pill strong {
-            font-size: 36px;
+          .hero-badge {
+            font-size:12.5px;
+            padding:9px 14px;
+            margin-bottom:16px;
           }
 
-          .vital-checks {
-            grid-template-columns: 1fr;
+          .hero-actions {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+            margin-bottom:18px;
           }
 
-          .vital-checks span {
-            border-radius: 14px;
-            min-height: 44px;
+          .btn-main,
+          .btn-light {
+            width:100%;
+            min-height:48px;
+            padding:12px 12px;
+            font-size:13.5px;
+            border-radius:14px;
           }
 
-          .hero-trust-item {
-            align-items: center;
+          .hero-proof-row {
+            grid-template-columns:repeat(2,1fr);
+            gap:9px;
+            width:100%;
           }
 
-          .website-shot {
-            width: 230px;
-            height: 155px;
+          .proof-mini {
+            padding:12px 10px;
+            border-radius:16px;
+            text-align:center;
+          }
+
+          .proof-mini strong {
+            font-size:18px;
+          }
+
+          .proof-mini span {
+            font-size:11px;
+            line-height:1.25;
+          }
+
+          .hero-visual {
+            width:100%;
+            max-width:430px;
+            margin:4px auto 0;
+          }
+
+          .website-mockup {
+            transform:none;
+            border-radius:22px;
+            box-shadow:0 18px 42px rgba(0,0,0,.28);
+          }
+
+          .mockup-top {
+            height:32px;
+            padding:0 12px;
+          }
+
+          .mockup-top i {
+            width:8px;
+            height:8px;
+          }
+
+          .mockup-screen {
+            padding:12px;
+          }
+
+          .mock-nav {
+            height:34px;
+            border-radius:12px;
+            padding:0 10px;
+            margin-bottom:10px;
+          }
+
+          .mock-logo {
+            width:90px;
+            height:10px;
+          }
+
+          .mock-btn {
+            width:64px;
+            height:20px;
+          }
+
+          .mock-hero {
+            height:155px;
+            padding:15px;
+            border-radius:18px;
+          }
+
+          .mock-hero h3 {
+            font-size:18px;
+            max-width:230px;
+            margin-bottom:8px;
+          }
+
+          .mock-hero span {
+            width:105px;
+            height:26px;
+          }
+
+          .mock-cards {
+            grid-template-columns:repeat(3,1fr);
+            gap:8px;
+            margin-top:10px;
+          }
+
+          .mock-card {
+            min-height:62px;
+            padding:8px 5px;
+            border-radius:12px;
+          }
+
+          .mock-card-content {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+          }
+
+          .mock-card-icon {
+            width:24px;
+            height:24px;
+            border-radius:9px;
+            display:grid;
+            place-items:center;
+            margin-bottom:4px;
+            background:#f5f3ff;
+            color:var(--primary);
+            font-size:12px;
+          }
+
+          .mock-card strong {
+            display:block;
+            font-size:13.5px;
+            font-weight:950;
+            color:var(--dark);
+            line-height:1;
+          }
+
+          .mock-card span {
+            display:block;
+            margin-top:3px;
+            color:var(--muted);
+            font-size:8.5px;
+            font-weight:800;
+            line-height:1.15;
+          }
+
+          .floating-proof,
+          .floating-reviews {
+            display:none;
+          }
+
+          .proof-band {
+            margin-top:0;
+            padding-top:22px;
+          }
+
+          .proof-band-card {
+            grid-template-columns:repeat(2,1fr);
+            gap:10px;
+            padding:12px;
+            border-radius:22px;
+          }
+
+          .proof-card {
+            padding:14px 10px;
+            border-radius:17px;
+            text-align:center;
+          }
+
+          .proof-card strong {
+            font-size:20px;
+          }
+
+          .proof-card span {
+            font-size:11.5px;
+            line-height:1.25;
+          }
+
+          .section,
+          .form-section {
+            padding:58px 0;
+          }
+
+          .section-heading {
+            margin-bottom:34px;
           }
 
           .section-heading h2 {
-            font-size: 28px;
+            font-size:clamp(29px,8vw,40px);
+            letter-spacing:-1.1px;
           }
 
-          .service-card h3,
-          .package-card h3 {
-            font-size: 21px;
+          .section-heading p {
+            font-size:15.5px;
+          }
+
+          .form-layout,
+          .price-box,
+          .form-row,
+          .cards-grid,
+          .reviews-grid,
+          .process-grid,
+          .stats-row {
+            grid-template-columns:1fr;
+          }
+
+          .service-card,
+          .review-card,
+          .process-card,
+          .package-card,
+          .gradient-box,
+          .form-copy,
+          .hero-form-card {
+            padding:24px 20px;
+            border-radius:24px;
+          }
+
+          .hero-form-card h3 {
+            font-size:25px;
           }
 
           .main-price {
-            font-size: 40px;
+            font-size:44px;
           }
 
-          .payment-card {
-            min-height: 128px;
+          .website-shot {
+            width:270px;
+            height:185px;
           }
 
-          .reviews-grid {
-            gap: 14px;
+          .final-cta {
+            padding:42px 20px;
+            border-radius:28px;
+          }
+
+          .final-actions {
+            display:grid;
+            grid-template-columns:1fr;
+          }
+
+          .mobile-sticky-cta {
+            display:block;
+            position:fixed;
+            left:14px;
+            right:14px;
+            bottom:14px;
+            z-index:9999;
+          }
+
+          .mobile-sticky-cta a {
+            display:block;
+            text-align:center;
+            color:#fff;
+            text-decoration:none;
+            font-weight:950;
+            padding:15px;
+            border-radius:15px;
+            background:linear-gradient(135deg,#7c3aed,#ec4899);
+            box-shadow:0 10px 30px rgba(0,0,0,.25);
+          }
+        }
+
+        @media (max-width:420px) {
+          .hero-actions {
+            grid-template-columns:1fr;
+          }
+
+          .hero-proof-row {
+            grid-template-columns:repeat(2,1fr);
+          }
+
+          .mock-hero {
+            height:140px;
+          }
+
+          .mock-hero h3 {
+            font-size:16px;
+          }
+
+          .mock-cards {
+            grid-template-columns:repeat(3,1fr);
+          }
+
+          .mock-card {
+            min-height:58px;
+          }
+
+          .mock-card strong {
+            font-size:12.5px;
+          }
+
+          .mock-card span {
+            font-size:8px;
           }
         }
       `}</style>
 
-      <section className="vital-hero">
-        <div className="vital-pay-container hero-grid">
-          <div className="hero-copy">
-            <div className="vital-badge">
-              <CheckCircleFill /> Pay Monthly Website Package
+      <section className="vital-hero" id="top">
+        <div className="vital-pay-container">
+          <div className="hero-inner">
+            <div className="hero-copy">
+              <div className="hero-badge">
+                <RocketTakeoffFill /> Pay Monthly Website Offer
+              </div>
+
+              <h1>
+                Get Your Business Website <span>Live In 7 Days</span>
+              </h1>
+
+              <p>
+                Professional website for UK small businesses without the usual
+                £1,500+ upfront agency cost. Built for leads, calls, WhatsApp
+                messages and online presence.
+              </p>
+
+              <div className="hero-actions">
+                <a href="#lead-form" className="btn-main">
+                  Get Free Mockup
+                </a>
+
+                <a
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-light"
+                >
+                  <Whatsapp /> WhatsApp Now
+                </a>
+              </div>
+
+              <div className="hero-proof-row">
+                <div className="proof-mini">
+                  <strong>£0 Setup</strong>
+                  <span>No £1,500 upfront fee</span>
+                </div>
+
+                <div className="proof-mini">
+                  <strong>7 Days</strong>
+                  <span>Fast website launch</span>
+                </div>
+
+                <div className="proof-mini">
+                  <strong>550+</strong>
+                  <span>UK local reviews</span>
+                </div>
+
+                <div className="proof-mini">
+                  <strong>17+</strong>
+                  <span>Enquiries in first month</span>
+                </div>
+              </div>
             </div>
 
-            <h1>
-              Professional Website Design for{" "}
-              <span className="gradient-text">UK Businesses</span>
-            </h1>
+            <div className="hero-visual">
+              <div className="website-mockup">
+                <div className="mockup-top">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
 
-            <p>
-              Affordable monthly websites with modern design, mobile friendly layout,
-              SEO basics, WhatsApp integration and ongoing support.
-            </p>
+                <div className="mockup-screen">
+                  <div className="mock-nav">
+                    <div className="mock-logo"></div>
+                    <div className="mock-btn"></div>
+                  </div>
 
-            <div className="vital-price-pill">
-              <strong>£24.99</strong>
-              <span>/ month</span>
-            </div>
+                  <div className="mock-hero">
+                    <h3>Professional Website For Local Businesses</h3>
+                    <span></span>
+                  </div>
 
-            <div className="vital-checks">
-              <span><CheckCircleFill /> No Large Upfront Fees</span>
-              <span><CheckCircleFill /> Mobile Friendly</span>
-              <span><CheckCircleFill /> Built for Leads</span>
-              <span><CheckCircleFill /> One Monthly Price</span>
-            </div>
+                  <div className="mock-cards">
+                    <div className="mock-card">
+                      <div className="mock-card-content">
+                        <div className="mock-card-icon">
+                          <StarFill />
+                        </div>
+                        <strong>550+</strong>
+                        <span>UK local reviews</span>
+                      </div>
+                    </div>
 
-            <div className="vital-actions">
-              <a href="https://wa.me/447398390815" target="_blank" rel="noreferrer" className="vital-btn-primary">
-                <Whatsapp /> Chat on WhatsApp
-              </a>
+                    <div className="mock-card">
+                      <div className="mock-card-content">
+                        <div className="mock-card-icon">
+                          <GraphUpArrow />
+                        </div>
+                        <strong>17+</strong>
+                        <span>Enquiries first month</span>
+                      </div>
+                    </div>
 
-              <a href="tel:+441618837520" className="vital-btn-light">
-                <TelephoneFill /> Call Now
-              </a>
+                    <div className="mock-card">
+                      <div className="mock-card-content">
+                        <div className="mock-card-icon">
+                          <RocketTakeoffFill />
+                        </div>
+                        <strong>7 Days</strong>
+                        <span>Fast website launch</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <a href="https://vitalai.co.uk" target="_blank" rel="noreferrer" className="vital-btn-light">
-                <Globe2 /> Official Website
-              </a>
-            </div>
-          </div>
-        </div>
+              <div className="floating-reviews">
+                <div className="stars">
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                </div>
+                <strong>550+</strong>
+                <span>UK local reviews</span>
+              </div>
 
-        <div className="hero-trust-strip">
-          <div className="hero-trust-item">
-            <div className="hero-trust-icon"><ShieldCheck /></div>
-            <div>
-              <strong>No Large<br />Upfront Fees</strong>
-              <span>Start without stress</span>
-            </div>
-          </div>
-
-          <div className="hero-trust-item">
-            <div className="hero-trust-icon"><PeopleFill /></div>
-            <div>
-              <strong>Design That<br />Builds Trust</strong>
-              <span>Look professional online</span>
-            </div>
-          </div>
-
-          <div className="hero-trust-item">
-            <div className="hero-trust-icon"><GraphUpArrow /></div>
-            <div>
-              <strong>Built to<br />Generate Leads</strong>
-              <span>More enquiries, more sales</span>
-            </div>
-          </div>
-
-          <div className="hero-trust-item">
-            <div className="hero-trust-icon"><GearFill /></div>
-            <div>
-              <strong>Monthly Updates<br />& Support</strong>
-              <span>We’re always here</span>
+              <div className="floating-proof">
+                <div className="icon">
+                  <GraphUpArrow />
+                </div>
+                <div>
+                  <strong>17+ Enquiries</strong>
+                  <span>in just first month</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="vital-section">
+      <div className="proof-band">
+        <div className="vital-pay-container">
+          <div className="proof-band-card">
+            <div className="proof-card highlight">
+              <strong>£1,500+</strong>
+              <span>Typical upfront agency cost avoided</span>
+            </div>
+
+            <div className="proof-card">
+              <strong>7 Days</strong>
+              <span>Website launch timeline</span>
+            </div>
+
+            <div className="proof-card">
+              <strong>550+</strong>
+              <span>UK local reviews</span>
+            </div>
+
+            <div className="proof-card">
+              <strong>17+</strong>
+              <span>Enquiries in just first month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section className="form-section" id="lead-form">
+        <div className="vital-pay-container">
+          <div className="form-layout">
+            <div className="form-copy">
+              <h2>Request Your Free Website Mockup</h2>
+              <p>
+                Fill the form and your details will open directly in WhatsApp.
+                We will review your business and prepare a professional website
+                concept designed to generate more enquiries.
+              </p>
+
+              <ul>
+                <li>
+                  <CheckCircleFill /> Free mockup before you decide
+                </li>
+                <li>
+                  <CheckCircleFill /> No £1,500 upfront website fee
+                </li>
+                <li>
+                  <CheckCircleFill /> Mobile responsive on all devices
+                </li>
+                <li>
+                  <CheckCircleFill /> Built for calls, WhatsApp and enquiries
+                </li>
+              </ul>
+            </div>
+
+            <div className="hero-form-card">
+              <div className="form-top">
+                <div className="form-pill">
+                  <PatchCheckFill /> Free Website Mockup
+                </div>
+
+                <h3>Send Your Details On WhatsApp</h3>
+                <p>
+                  Complete the form below. When you submit, your message opens
+                  directly in WhatsApp.
+                </p>
+              </div>
+
+              <div className="price-box">
+                <div className="price-old">
+                  <span>Typical Agency</span>
+                  <strong>£1,500+</strong>
+                </div>
+
+                <div className="price-new">
+                  <span>Vital AI Plan</span>
+                  <strong>£24.99/mo</strong>
+                </div>
+              </div>
+
+              <form className="lead-form" onSubmit={sendToWhatsApp}>
+                <div className="form-row">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={updateField}
+                    required
+                  />
+
+                  <input
+                    type="text"
+                    name="business"
+                    placeholder="Business Name"
+                    value={formData.business}
+                    onChange={updateField}
+                    required
+                  />
+                </div>
+
+                <div className="form-row">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={updateField}
+                    required
+                  />
+
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={updateField}
+                    required
+                  />
+                </div>
+
+                <select
+                  name="type"
+                  value={formData.type}
+                  onChange={updateField}
+                  required
+                >
+                  <option value="">Select Business Type</option>
+                  <option>Restaurant / Takeaway</option>
+                  <option>Roofing / Construction</option>
+                  <option>Beauty / Salon</option>
+                  <option>Cleaning Services</option>
+                  <option>Retail / E-commerce</option>
+                  <option>Other Business</option>
+                </select>
+
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="Tell us about your business"
+                  value={formData.message}
+                  onChange={updateField}
+                />
+
+                <button type="submit" className="btn-main">
+                  <Whatsapp /> Send Details On WhatsApp
+                </button>
+
+                <div className="form-note">
+                  No spam. Your message opens directly in WhatsApp.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge"><PatchCheckFill /> What You Get</span>
-            <h2>Everything Needed for a <span className="gradient-text">Professional Online Presence</span></h2>
-            <p>This monthly website package is made for small businesses that want to look professional, get more enquiries and avoid confusing technical work.</p>
+            <div className="small-badge">
+              <CheckCircleFill /> What's Included
+            </div>
+
+            <h2>Everything Your Business Needs To Look Professional Online</h2>
+
+            <p>
+              A clean, modern and lead-focused website package for small
+              businesses that want online presence without heavy upfront cost.
+            </p>
           </div>
 
           <div className="cards-grid">
@@ -1564,19 +1790,92 @@ export default function PayMonthlyLanding() {
         </div>
       </section>
 
-      <section className="marquee-section">
+      <section className="section">
+        <div className="vital-pay-container">
+          <div className="package-layout">
+            <div className="gradient-box">
+              <h2>Why Pay £1,500 Upfront When You Can Start Monthly?</h2>
+
+              <p>
+                Most small businesses delay getting a website because of high
+                agency setup fees. Our monthly plan helps you go online quickly,
+                professionally and affordably.
+              </p>
+
+              <div className="stats-row">
+                <div className="stat-card">
+                  <strong>7 Days</strong>
+                  <span>Fast launch</span>
+                </div>
+
+                <div className="stat-card">
+                  <strong>£0</strong>
+                  <span>Setup fee</span>
+                </div>
+
+                <div className="stat-card">
+                  <strong>£24.99</strong>
+                  <span>Per month</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="package-card">
+              <div className="small-badge">
+                <PatchCheckFill /> Monthly Website Plan
+              </div>
+
+              <h3>Website Package</h3>
+
+              <div className="main-price">
+                £24.99 <span>/month</span>
+              </div>
+
+              <p>
+                No £1,500 upfront fee. Start with a professional online presence
+                and upgrade later when your business grows.
+              </p>
+
+              <ul className="package-list">
+                {packageItems.map((item, index) => (
+                  <li key={index}>
+                    <CheckCircleFill /> {item}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#lead-form"
+                className="btn-main"
+                style={{ width: "100%", marginTop: "22px" }}
+              >
+                Get Free Mockup
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-soft">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge"><Globe2 /> Website Showcase</span>
-            <h2>Clean Website Styles That <span className="gradient-text">Attract Customers</span></h2>
-            <p>A smooth scrolling showcase section can be used to display your recent website work, landing page previews or client project visuals.</p>
+            <div className="small-badge">
+              <GraphUpArrow /> Website Showcase
+            </div>
+
+            <h2>Modern Website Designs Built For First Impressions</h2>
+
+            <p>
+              Showcase your services clearly and make it easy for customers to
+              call, message or submit an enquiry.
+            </p>
           </div>
 
           <div className="marquee-shell">
             <div className="website-marquee">
               {[...websites, ...websites].map((img, index) => (
                 <div className="website-shot" key={index}>
-                  <img src={img} alt={`Website preview ${index + 1}`} />
+                  <img src={img} alt={`Website design ${index + 1}`} />
                 </div>
               ))}
             </div>
@@ -1584,107 +1883,77 @@ export default function PayMonthlyLanding() {
         </div>
       </section>
 
-      <section className="vital-section" id="package">
-        <div className="vital-pay-container split-section">
-          <div className="gradient-box">
-            <span className="vital-badge" style={{ background: "rgba(255,255,255,.18)", color: "#fff" }}>
-              <RocketTakeoffFill /> Designed for Growth
-            </span>
-
-            <h2>One Monthly Plan. A Professional Website Without Stress.</h2>
-            <p>We keep the process simple. Your landing page or website is designed to present your business professionally, explain your services clearly and encourage visitors to contact you.</p>
-
-            <div className="stats-row">
-              <div className="stat-card"><strong>100%</strong><span>Mobile Friendly</span></div>
-              <div className="stat-card"><strong>24/7</strong><span>Online Presence</span></div>
-              <div className="stat-card"><strong>Lead</strong><span>Focused Layout</span></div>
-            </div>
-          </div>
-
-          <div className="package-card">
-            <h3>Pay Monthly Website Package</h3>
-            <div className="main-price">£24.99 <span>/ month</span></div>
-
-            <p style={{ color: "#64748b", lineHeight: "1.8", marginBottom: 0 }}>
-              A simple starting package for businesses that need a clean, professional and conversion-focused web presence.
-            </p>
-
-            <ul className="package-list">
-              {packageItems.map((item, index) => (
-                <li key={index}><CheckCircleFill /> {item}</li>
-              ))}
-            </ul>
-
-            <div className="vital-actions" style={{ justifyContent: "flex-start" }}>
-              <a href="https://wa.me/447398390815" target="_blank" rel="noreferrer" className="vital-btn-primary">
-                Start on WhatsApp <Whatsapp />
-              </a>
-
-              <a href="tel:+441618837520" className="vital-btn-light">
-                Call Us <TelephoneFill />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="payment-section">
-        <div className="vital-pay-container">
-          <div className="payment-shell">
-            <div className="section-heading" style={{ marginBottom: 0 }}>
-              <span className="vital-badge"><CreditCard2FrontFill /> Payment Accepted</span>
-              <h2>Premium & Secure <span className="gradient-text">Payment Options</span></h2>
-              <p>We can accept major payment methods through secure payment links after project discussion and approval. This section is visual only and has no payment functionality.</p>
-            </div>
-
-            <div className="payment-grid">
-              {paymentMethods.map((method, index) => (
-                <div className={`payment-card ${method.className}`} key={index}>
-                  <div className="payment-icon">{method.icon}</div>
-                  <div className="payment-brand">{method.brand}</div>
-                  <div className="payment-name">{method.name}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="payment-note">
-              Visa, Mastercard, Apple Pay and Google Pay can be supported through secure payment links.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="vital-section">
+      <section className="section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge"><GraphUpArrow /> Simple Process</span>
-            <h2>From Idea to Live Page in a <span className="gradient-text">Clear Process</span></h2>
-            <p>The page is designed to keep your ad funnel simple: user clicks ad, lands on this page, understands the offer, then contacts you.</p>
+            <div className="small-badge">
+              <RocketTakeoffFill /> Simple Process
+            </div>
+
+            <h2>From First Message To Live Website In 7 Days</h2>
+
+            <p>A clear and simple process designed for busy business owners.</p>
           </div>
 
           <div className="process-grid">
-            <div className="process-card"><div className="process-number">1</div><h4>Send Requirements</h4><p>Client shares business name, services, location, logo and contact details.</p></div>
-            <div className="process-card"><div className="process-number">2</div><h4>Design Layout</h4><p>We create a professional responsive layout focused on trust and enquiries.</p></div>
-            <div className="process-card"><div className="process-number">3</div><h4>Review & Update</h4><p>Content, sections, images and calls-to-action are adjusted before launch.</p></div>
-            <div className="process-card"><div className="process-number">4</div><h4>Launch & Promote</h4><p>Use the hidden direct link in ads and track enquiries from interested users.</p></div>
+            <div className="process-card">
+              <div className="process-number">1</div>
+              <h4>Send Details</h4>
+              <p>Share your business name, services, logo and contact details.</p>
+            </div>
+
+            <div className="process-card">
+              <div className="process-number">2</div>
+              <h4>Free Mockup</h4>
+              <p>We prepare a professional homepage concept for your business.</p>
+            </div>
+
+            <div className="process-card">
+              <div className="process-number">3</div>
+              <h4>Build Website</h4>
+              <p>We build a responsive website with lead-focused sections.</p>
+            </div>
+
+            <div className="process-card">
+              <div className="process-number">4</div>
+              <h4>Go Live</h4>
+              <p>Your website goes live with WhatsApp, call and form setup.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="vital-section">
+      <section className="section section-soft">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge"><PeopleFill /> Client Feedback</span>
-            <h2>Reviews from <span className="gradient-text">Business Clients</span></h2>
-            <p>Add your real client reviews here later. For now, these professional review cards are ready to match the landing page design.</p>
+            <div className="small-badge">
+              <PeopleFill /> Client Feedback
+            </div>
+
+            <h2>Trusted By UK Local Businesses</h2>
+
+            <p>
+              550+ UK local reviews and lead-focused pages designed to generate
+              real customer enquiries.
+            </p>
           </div>
 
           <div className="reviews-grid">
             {reviews.map((review, index) => (
               <div className="review-card" key={index}>
-                <div className="quote-icon"><Quote size={24} /></div>
-                <div className="stars"><StarFill /><StarFill /><StarFill /><StarFill /><StarFill /></div>
-                <p>“{review.text}”</p>
+                <div className="quote-icon">
+                  <Quote />
+                </div>
+
+                <div className="stars">
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                </div>
+
+                <p>{review.text}</p>
                 <h5>{review.name}</h5>
                 <span>{review.role}</span>
               </div>
@@ -1693,50 +1962,72 @@ export default function PayMonthlyLanding() {
         </div>
       </section>
 
-      <section className="vital-section">
+      <section className="section">
         <div className="vital-pay-container">
           <div className="section-heading">
-            <span className="vital-badge"><CheckCircleFill /> Pricing FAQ</span>
-            <h2>Frequently Asked Questions <span className="gradient-text">About Our Price</span></h2>
-            <p>Clear answers for customers who want to understand the monthly website package before contacting Vital AI.</p>
+            <div className="small-badge">
+              <ChevronDown /> FAQ
+            </div>
+
+            <h2>Questions Business Owners Ask</h2>
+
+            <p>
+              Clear answers about the monthly website offer and launch process.
+            </p>
           </div>
 
           <div className="faq-wrap">
             {faqs.map((faq, index) => (
               <div className="faq-item" key={index}>
-                <button className="faq-question" onClick={() => setOpenFaq(openFaq === index ? null : index)}>
+                <button
+                  type="button"
+                  className="faq-question"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
                   {faq.q}
                   <ChevronDown />
                 </button>
-                {openFaq === index && <div className="faq-answer">{faq.a}</div>}
+
+                {openFaq === index && (
+                  <div className="faq-answer">{faq.a}</div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="vital-section" id="contact">
+      <section className="section section-soft">
         <div className="vital-pay-container">
           <div className="final-cta">
-            <h2>Ready to Launch Your Professional Website?</h2>
-            <p>Start with a simple monthly website package and give your business a cleaner, stronger and more professional online presence.</p>
+            <h2>Ready To Get Your Business Website Live?</h2>
 
-            <div className="vital-actions" style={{ justifyContent: "center" }}>
-              <a href="https://wa.me/447398390815" target="_blank" rel="noreferrer" className="vital-btn-light">
-                <Whatsapp /> Chat on WhatsApp
+            <p>
+              Start with a free website mockup and launch your professional
+              online presence without paying a large upfront agency fee.
+            </p>
+
+            <div className="final-actions">
+              <a href="#lead-form" className="btn-main">
+                Get Free Mockup
               </a>
 
-              <a href="tel:+441618837520" className="vital-btn-light">
-                <TelephoneFill /> Call Now
-              </a>
-
-              <a href="https://vitalai.co.uk" target="_blank" rel="noreferrer" className="vital-btn-light">
-                <Globe2 /> Official Website
+              <a
+                href={`https://wa.me/${whatsappNumber}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-light"
+              >
+                <Whatsapp /> WhatsApp Now
               </a>
             </div>
           </div>
         </div>
       </section>
+
+      <div className="mobile-sticky-cta">
+        <a href="#lead-form">Get Free Mockup</a>
+      </div>
     </main>
   );
 }
