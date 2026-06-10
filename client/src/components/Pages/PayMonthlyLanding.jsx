@@ -1687,77 +1687,72 @@ No £1,500 upfront fee
               </div>
 
               <form className="lead-form" onSubmit={sendToWhatsApp}>
-                <div className="form-row">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={updateField}
-                    required
-                  />
+  <div className="form-row">
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      value={formData.name}
+      onChange={updateField}
+    />
 
-                  <input
-                    type="text"
-                    name="business"
-                    placeholder="Business Name"
-                    value={formData.business}
-                    onChange={updateField}
-                    required
-                  />
-                </div>
+    <input
+      type="text"
+      name="business"
+      placeholder="Business Name"
+      value={formData.business}
+      onChange={updateField}
+    />
+  </div>
 
-                <div className="form-row">
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={updateField}
-                    required
-                  />
+  <div className="form-row">
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone Number"
+      value={formData.phone}
+      onChange={updateField}
+    />
 
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={updateField}
-                    required
-                  />
-                </div>
+    <input
+      type="email"
+      name="email"
+      placeholder="Email Address"
+      value={formData.email}
+      onChange={updateField}
+    />
+  </div>
 
-                <select
-                  name="type"
-                  value={formData.type}
-                  onChange={updateField}
-                  required
-                >
-                  <option value="">Select Business Type</option>
-                  <option>Restaurant / Takeaway</option>
-                  <option>Roofing / Construction</option>
-                  <option>Beauty / Salon</option>
-                  <option>Cleaning Services</option>
-                  <option>Retail / E-commerce</option>
-                  <option>Other Business</option>
-                </select>
+  <select
+    name="type"
+    value={formData.type}
+    onChange={updateField}
+  >
+    <option value="">Select Business Type</option>
+    <option>Restaurant / Takeaway</option>
+    <option>Roofing / Construction</option>
+    <option>Beauty / Salon</option>
+    <option>Cleaning Services</option>
+    <option>Retail / E-commerce</option>
+    <option>Other Business</option>
+  </select>
 
-                <textarea
-                  name="message"
-                  rows="4"
-                  placeholder="Tell us about your business"
-                  value={formData.message}
-                  onChange={updateField}
-                />
+  <textarea
+    name="message"
+    rows="4"
+    placeholder="Tell us about your business"
+    value={formData.message}
+    onChange={updateField}
+  />
 
-                <button type="submit" className="btn-main">
-                  <Whatsapp /> Send Details On WhatsApp
-                </button>
+  <button type="submit" className="btn-main">
+    <Whatsapp /> Send Details On WhatsApp
+  </button>
 
-                <div className="form-note">
-                  No spam. Your message opens directly in WhatsApp.
-                </div>
-              </form>
+  <div className="form-note">
+    No spam. Your message opens directly in WhatsApp.
+  </div>
+</form>
             </div>
           </div>
         </div>
